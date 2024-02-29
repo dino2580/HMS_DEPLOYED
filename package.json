@@ -4,5 +4,8 @@
   },
   "scripts": {
     "both": "concurrently \"cd frontend && npm run start\" \"cd ../backend && npm start\""
+  },
+  "dependencies": {
+    "react-router-dom": "^6.22.2"
   }
 }
