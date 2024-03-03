@@ -40,7 +40,7 @@ function Navbar() {
                                 <FontAwesomeIcon icon={faChartLine} className="mr-1" />
                                 Dashboard
                             </a>
-                        </li>
+                        </li>ax
                         <li>
                             <a href="#" className="text-white hover:text-gray-300 flex items-center hover:border border-gray-300 rounded-full px-2 py-1">
                                 <FontAwesomeIcon icon={faBed} className="mr-1" />
