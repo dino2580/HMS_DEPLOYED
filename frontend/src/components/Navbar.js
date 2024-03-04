@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartLine, faBed, faScroll,faFile,faUserGroup, faAddressBook,faFaceFrown, faUser,faUserGraduate,faChartSimple } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import ComplaintForm from './ComplaintForm';
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [showComplaintForm, setShowComplaintForm] = useState(false);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
+    };
+    const toggleComplaintForm = () => {
+        setShowComplaintForm(!showComplaintForm);
     };
 
     return (
@@ -75,13 +80,14 @@ function Navbar() {
                         <ul className='text-white'>
                             <li className='py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md'> <FontAwesomeIcon className='mr-1' icon={faChartSimple} />Analytics</li>
                             <li className='py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md'><FontAwesomeIcon className='mr-1' icon={faUserGraduate} />Students</li>
-                            <li className='py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md'><FontAwesomeIcon className='mr-1'  icon={faFaceFrown} />Complaints</li>
+                            <li className='py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md' onClick={toggleComplaintForm}><FontAwesomeIcon className='mr-1'  icon={faFaceFrown}  />Complaints</li>
                             <li className='py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md'><FontAwesomeIcon className='mr-1' icon={faFile} /> Fee Details</li>
                             <li className='py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md'><FontAwesomeIcon className='mr-1' icon={faUserGroup} />Workers Details</li>
                         </ul>
                     </div>
                 </nav>
             </div>
+            {showComplaintForm && <ComplaintForm />}
         </div>
 
 
