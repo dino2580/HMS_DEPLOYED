@@ -6,10 +6,10 @@ function ComplaintForm({ onClose }) {
     const [complaintType, setComplaintType] = useState('');
     const [message, setMessage] = useState('');
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async () => {
+        
         try {
-            const response = await fetch('http://localhost:3000/api/auth/complaint', {
+            const response = await fetch('http://localhost:5000/api/auth/complaint', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
