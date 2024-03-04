@@ -6,31 +6,14 @@ function ComplaintForm({ onClose }) {
     const [complaintType, setComplaintType] = useState('');
     const [message, setMessage] = useState('');
 
-    const handleSubmit = async () => {
+    const handleSubmit = (event) => {
+        event.preventDefault(); // Prevent default form submission
+    
+        console.log({ name });
+    }
+    
         
-        try {
-            const response = await fetch('http://localhost:5000/api/auth/complaint', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name,
-                    rollNo,
-                    complaintType,
-                    message,
-                }),
-            });
-            if (response.ok) {
-                console.log('Complaint submitted successfully');
-                onClose();
-            } else {
-                console.error('Failed to submit complaint');
-            }
-        } catch (error) {
-            console.error('Error submitting complaint:', error);
-        }
-    };
+        
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">

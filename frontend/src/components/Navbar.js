@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartLine, faBed, faScroll,faFile,faUserGroup, faAddressBook,faFaceFrown, faUser,faUserGraduate,faChartSimple } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import ComplaintForm from './ComplaintForm';
+import Dashboard from './Dashboard';
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -41,11 +42,11 @@ function Navbar() {
                     </div>
                     <ul className={`md:flex ${isOpen ? 'block' : 'hidden'} md:justify-evenly md:space-x-10`}>
                         <li>
-                            <a href="#" className="text-white hover:text-gray-300 flex items-center hover:border border-gray-300 rounded-full px-2 py-1">
+                        <Link to="/dashboard" className="text-white hover:text-gray-300 flex items-center hover:border border-gray-300 rounded-full px-2 py-1">
                                 <FontAwesomeIcon icon={faChartLine} className="mr-1" />
                                 Dashboard
-                            </a>
-                        </li>ax
+                            </Link>
+                        </li>
                         <li>
                             <a href="#" className="text-white hover:text-gray-300 flex items-center hover:border border-gray-300 rounded-full px-2 py-1">
                                 <FontAwesomeIcon icon={faBed} className="mr-1" />
