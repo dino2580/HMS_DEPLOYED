@@ -4,7 +4,7 @@ const {Counter,getNextSequenceValue} = require('../models/counterModel.js');
 
 const Complaint = async (req, res) => {
     try {
-        const { rollNumber, message } = req.body;
+        const { name,rollNumber,type,message } = req.body;
 
         
         const user = await User.findOne({ rollNumber });
@@ -17,8 +17,9 @@ const Complaint = async (req, res) => {
 
 
         const newComplaint = new Complaints({
-            
+            name,
             rollNumber,
+            type,
             id:nextId,
             message,
         });

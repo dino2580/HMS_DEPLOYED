@@ -1,6 +1,7 @@
 bcrypt =require("bcrypt") ;
 const check = require("../db/reterieveData.js");
 const User = require('../models/usermodel.js');
+const generateWebToken = require("../utils/generateToken.js");
 
 const signUp = async (req, res) => {
     console.log("Inside Signup");
@@ -37,6 +38,7 @@ const signUp = async (req, res) => {
             dateOfJoining,
             profilePic:gender==="M" ? boyPic:girlPic
         });
+        await generateWebToken(user);
         await newUser.save();
         check(fullName);
         return res.status(201).json({

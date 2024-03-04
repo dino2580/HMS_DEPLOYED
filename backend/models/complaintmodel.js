@@ -2,10 +2,19 @@ const mongoose = require("mongoose");
 
 
 const complaintSchema = new mongoose.Schema({
+   name:{
+    type:String,
+    required:true
+   },
    rollNumber: {
         type: Number,
         required: true,
         
+    },
+    type:
+    {
+        type:String,
+        required:true
     },
     id:{
         type:Number,

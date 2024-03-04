@@ -1,4 +1,3 @@
-// ComplaintForm.js
 import React, { useState } from 'react';
 
 function ComplaintForm({ onClose }) {
@@ -7,10 +6,30 @@ function ComplaintForm({ onClose }) {
     const [complaintType, setComplaintType] = useState('');
     const [message, setMessage] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Submitted');
-        onClose();
+        try {
+            const response = await fetch('http://localhost:3000/api/auth/complaint', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name,
+                    rollNo,
+                    complaintType,
+                    message,
+                }),
+            });
+            if (response.ok) {
+                console.log('Complaint submitted successfully');
+                onClose();
+            } else {
+                console.error('Failed to submit complaint');
+            }
+        } catch (error) {
+            console.error('Error submitting complaint:', error);
+        }
     };
 
     return (
