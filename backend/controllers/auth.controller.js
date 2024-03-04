@@ -1,3 +1,5 @@
+bcrypt =require("bcrypt") ;
+const check = require("../db/reterieveData.js");
 const User = require('../models/usermodel.js');
 
 const signUp = async (req, res) => {
@@ -7,20 +9,36 @@ const signUp = async (req, res) => {
         if (password != confirmPassword) {
             return res.status(400).json({ err: "Passwords don't match" });
         }
+        if(password.length<8) 
+        {
+            return res.status(403).json({err:"Password length must be greater than 8"})
+        }
         const user = await User.findOne({ rollNumber });
+        const userEmail =await User.findOne({email});
         if (user) {
             return res.status(400).json({ err: "Roll number already exists" });
         }
+        if(userEmail)
+        {
+            return res.status(401).json({err:"Email already exists"});
+        }
+        const salt =await bcrypt.genSalt(5);
+        const hashedPassword=await bcrypt.hash(password,salt);
+        
+        
+        const girlPic=`https://avatar.iran.liara.run/public/girl?username=${rollNumber}`;
+        const boyPic=`https://avatar.iran.liara.run/public/boy?username=${rollNumber}`;
         const newUser = new User({
             fullName,
             rollNumber,
             email,
-            password,
+            password:hashedPassword,
             gender,
-            dateOfJoining
+            dateOfJoining,
+            profilePic:gender==="M" ? boyPic:girlPic
         });
         await newUser.save();
-
+        check(fullName);
         return res.status(201).json({
             _id: newUser._id
         });

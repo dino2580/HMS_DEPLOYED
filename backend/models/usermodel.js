@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength: 8
+        
     },
     gender: {
         type: String,
@@ -33,6 +33,11 @@ const userSchema = new mongoose.Schema({
     profilePic: {
         type: String,
         default: ""
+    },
+    currentlyPresent:
+    {
+        type:Boolean,
+        default:true
     }
 });
 
