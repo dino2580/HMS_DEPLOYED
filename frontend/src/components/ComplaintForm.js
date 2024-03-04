@@ -100,7 +100,7 @@ function ComplaintForm({ onClose }) {
                     <div>
                         <button
                             type="submit"
-                            className="btn-submit w-full bg-blue-500 text-white py-2 px-4 rounded-md transition duration-300 hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+                            className="btn-submit w-full bg-blue-500 text-white py-2 px-4 rounded-md transition duration-300 hover:bg-blue-600 focus:outline-none focus:bg-blue-600" onClick={handleSubmit}
                         >
                             Submit Complaint
                         </button>
