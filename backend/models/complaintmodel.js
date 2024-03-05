@@ -9,12 +9,12 @@ const complaintSchema = new mongoose.Schema({
    rollNumber: {
         type: Number,
         required: true,
-        
     },
-    type:
+    complaintType:
     {
         type:String,
-        required:true
+        required:true,
+
     },
     id:{
         type:Number,

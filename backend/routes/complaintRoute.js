@@ -3,11 +3,15 @@ const User = require('../models/usermodel.js');
 const {Counter,getNextSequenceValue} = require('../models/counterModel.js');
 
 const Complaint = async (req, res) => {
+    console.log("complain reache");
     try {
-        const { name,rollNumber,type,message } = req.body;
+        const { name, rollNumber, complaintType, message } = req.body;
+        console.log(req.body);
+        console.log(name,rollNumber,complaintType)
 
         
         const user = await User.findOne({ rollNumber });
+        console.log(user);
         
        
         if (!user) {
@@ -19,7 +23,7 @@ const Complaint = async (req, res) => {
         const newComplaint = new Complaints({
             name,
             rollNumber,
-            type,
+            complaintType,
             id:nextId,
             message,
         });
