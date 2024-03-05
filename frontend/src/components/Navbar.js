@@ -28,11 +28,11 @@ function Navbar() {
                             viewBox="0 0 24 24"
                             stroke="currentColor"
                         >
-                            {/* Your SVG icon here */}
+                            <path d="M4 6h16M4 12h16m-7 6h7"></path>
                         </svg>
                     </button>
                 </div>
-                <ul className={`md:flex ${isOpen ? 'block' : 'hidden'} md:justify-evenly md:space-x-10`}>
+                <ul className={`md:flex ${isOpen ? 'block' : 'hidden'} md:justify-evenly md:space-x-10 md:items-center`}>
                     <li>
                         <Link to="/dashboard" className="text-white hover:text-gray-300 flex items-center hover:border border-gray-300 rounded-full px-2 py-1">
                             <FontAwesomeIcon icon={faChartLine} className="mr-1" />

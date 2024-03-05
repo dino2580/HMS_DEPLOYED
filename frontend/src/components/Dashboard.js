@@ -10,9 +10,9 @@ function Dashboard() {
 
     return (
         <div className="container mx-auto mt-8">
-            <div className="flex  gap-8">
+            <div className="flex flex-col md:flex-row gap-8">
                 
-                <div className='flex h-80 w-80 ml-4 mb-8 overflow-y-auto'>
+                <div className='flex h-auto md:h-80 w-full md:w-1/4 mb-8 overflow-y-auto'>
                     <nav className='bg-gray-800 p-4'>
                         <div className='max-w-xl'>
                             <ul className='text-white'>
@@ -27,11 +27,11 @@ function Dashboard() {
                 </div>
 
                 
-                <div className="bg-gray-800 p-8 rounded-lg shadow-md ">
-                    <div className="flex  gap-8">
-                        <div className="bg-white  p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <div className="bg-gray-800 p-8 rounded-lg shadow-md w-full md:w-3/4">
+                    <div className="flex flex-col md:flex-row gap-8">
+                        <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
                             <h2 className="text-xl font-semibold mb-4">Occupancy Rate</h2>
-                            <div className="flex  w-150 items-center justify-center">
+                            <div className="flex items-center justify-center">
                                 <div className="w-24 h-24 rounded-full border-4 border-gray-200 flex items-center justify-center hover:bg-gray-200 transition duration-300">
                                    
                                     <span className="text-3xl font-semibold text-gray-600">75%</span>
