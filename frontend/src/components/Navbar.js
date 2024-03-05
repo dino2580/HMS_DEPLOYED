@@ -39,6 +39,7 @@ function Navbar() {
                             Dashboard
                         </Link>
                     </li>
+
                     <li>
                         <a href="#" className="text-white hover:text-gray-300 flex items-center hover:border border-gray-300 rounded-full px-2 py-1">
                             <FontAwesomeIcon icon={faBed} className="mr-1" />

@@ -14,7 +14,7 @@ function Dashboard() {
                 
                 <div className='flex h-auto md:h-80 w-full md:w-1/4 mb-8 overflow-y-auto'>
                     <nav className='bg-gray-800 p-4'>
-                        <div className='max-w-xl'>
+                        <div className='max-w-xl h-1'>
                             <ul className='text-white'>
                                 <li className='py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md'> <FontAwesomeIcon className='mr-1' icon={faChartSimple} />Analytics</li>
                                 <li className='py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md'><FontAwesomeIcon className='mr-1' icon={faUserGraduate} />Students</li>
@@ -29,51 +29,51 @@ function Dashboard() {
                 
                 <div className="bg-gray-800 p-8 rounded-lg shadow-md w-full md:w-3/4">
                     <div className="flex flex-col md:flex-row gap-8">
-                        <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                            <h2 className="text-xl font-semibold mb-4">Occupancy Rate</h2>
+                        <div className="bg-black p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <h2 className="text-xl font-semibold mb-4 text-white">Occupancy Rate</h2>
                             <div className="flex items-center justify-center">
                                 <div className="w-24 h-24 rounded-full border-4 border-gray-200 flex items-center justify-center hover:bg-gray-200 transition duration-300">
                                    
-                                    <span className="text-3xl font-semibold text-gray-600">75%</span>
+                                    <span className="text-3xl font-semibold text-white">75%</span>
                                 </div>
                             </div>
-                            <p className="text-sm text-gray-500 mt-2">Currently occupied rooms</p>
+                            <p className="text-sm text-white mt-2">Currently occupied rooms</p>
                         </div>
 
-                        <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                            <h2 className="text-xl font-semibold mb-4">Total Students</h2>
+                        <div className="bg-black p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <h2 className="text-xl font-semibold mb-4 text-white">Total Students</h2>
                             <div className="flex items-center justify-center">
                                 <div className="w-24 h-24 rounded-full border-4 border-gray-200 flex items-center justify-center hover:bg-gray-200 transition duration-300">
                                     
-                                    <span className="text-3xl font-semibold text-gray-600">120</span>
+                                    <span className="text-3xl text-white font-semibold">120</span>
                                 </div>
                             </div>
-                            <p className="text-sm text-gray-500 mt-2">Students present</p>
+                            <p className="text-sm text-white mt-2">Students present</p>
                         </div>
                     </div>
 
                     <div className="mt-8">
                         <h2 className="text-xl text-white font-semibold mb-4">Complaints</h2>
                         <div className="grid grid-cols-3 gap-4">
-                            <div className="bg-gray-200 p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                                <h3 className="text-lg font-semibold mb-2">Total Complaints</h3>
+                            <div className="bg-black p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                                <h3 className="text-lg text-white font-semibold mb-2">Total Complaints</h3>
                                 <div className="flex items-center justify-between">
-                                    <p className="text-3xl font-semibold text-gray-600">{totalComplaints}</p>
-                                    <span className="text-sm text-gray-500">+10% from last month</span>
+                                    <p className="text-3xl font-semibold text-white">{totalComplaints}</p>
+                                    <span className="text-sm text-gray-300">+10% from last month</span>
                                 </div>
                             </div>
-                            <div className="bg-gray-200 p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                                <h3 className="text-lg font-semibold mb-2">Solved Complaints</h3>
+                            <div className="bg-black p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                                <h3 className="text-lg font-semibold mb-2 text-white">Solved Complaints</h3>
                                 <div className="flex items-center justify-between">
-                                    <p className="text-3xl font-semibold text-gray-600">{solvedComplaints}</p>
-                                    <span className="text-sm text-gray-500">-5% from last month</span>
+                                    <p className="text-3xl font-semibold text-white">{solvedComplaints}</p>
+                                    <span className="text-sm text-gray-300">-5% from last month</span>
                                 </div>
                             </div>
-                            <div className="bg-gray-200 p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                                <h3 className="text-lg font-semibold mb-2">Pending Complaints</h3>
+                            <div className="bg-black p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                                <h3 className="text-lg font-semibold mb-2 text-white">Pending Complaints</h3>
                                 <div className="flex items-center justify-between">
-                                    <p className="text-3xl font-semibold text-gray-600">{pendingComplaints}</p>
-                                    <span className="text-sm text-gray-500">+20% from last month</span>
+                                    <p className="text-3xl font-semibold text-white">{pendingComplaints}</p>
+                                    <span className="text-sm text-gray-300">+20% from last month</span>
                                 </div>
                             </div>
                             
