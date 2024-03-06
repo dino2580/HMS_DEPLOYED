@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartLine, faAddressBook, faBed, faFile, faScroll, faUser } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -34,35 +34,34 @@ function Navbar() {
                 </div>
                 <ul className={`md:flex ${isOpen ? 'block' : 'hidden'} md:justify-evenly md:space-x-10 md:items-center`}>
                     <li>
-                        <Link to="/dashboard" className="text-white hover:text-gray-300 flex items-center hover:border border-gray-300 rounded-full px-2 py-1">
+                        <NavLink to="/dashboard" activeClassName="text-indigo-600" className="text-white hover:text-gray-300 hover:border border-gray-300 rounded-full px-2 py-1 flex items-center">
                             <FontAwesomeIcon icon={faChartLine} className="mr-1" />
                             Dashboard
-                        </Link>
+                        </NavLink>
                     </li>
-
                     <li>
-                        <a href="#" className="text-white hover:text-gray-300 flex items-center hover:border border-gray-300 rounded-full px-2 py-1">
+                        <NavLink to="/rooms" activeClassName="text-indigo-600" className="text-white hover:text-gray-300 hover:border border-gray-300 rounded-full px-2 py-1 flex items-center">
                             <FontAwesomeIcon icon={faBed} className="mr-1" />
                             Rooms
-                        </a>
+                        </NavLink>
                     </li>
                     <li>
-                        <a href="#" className="text-white hover:text-gray-300 flex items-center hover:border border-gray-300 rounded-full px-2 py-1">
+                        <NavLink to="/announcement" activeClassName="text-indigo-600" className="text-white hover:text-gray-300 hover:border border-gray-300 rounded-full px-2 py-1 flex items-center">
                             <FontAwesomeIcon icon={faScroll} className="mr-1" />
                             Announcements
-                        </a>
+                        </NavLink>
                     </li>
                     <li>
-                        <a href="#" className="text-white hover:text-gray-300 flex items-center hover:border border-gray-300 rounded-full px-2 py-1">
+                        <NavLink to="/contact" activeClassName="text-indigo-600" className="text-white hover:text-gray-300 hover:border border-gray-300 rounded-full px-2 py-1 flex items-center">
                             <FontAwesomeIcon icon={faAddressBook} className="mr-1" />
                             Contact
-                        </a>
+                        </NavLink>
                     </li>
                     <li>
-                        <a href="#" className="text-white hover:text-gray-300 flex items-center hover:border border-gray-300 rounded-full px-2 py-1">
+                        <NavLink to="/profile" activeClassName="text-indigo-600" className="text-white hover:text-gray-300 hover:border border-gray-300 rounded-full px-2 py-1 flex items-center">
                             <FontAwesomeIcon icon={faUser} className="mr-1" />
                             Profile
-                        </a>
+                        </NavLink>
                     </li>
                 </ul>
             </div>

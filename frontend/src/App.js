@@ -3,6 +3,7 @@ import { createBrowserRouter , Router, RouterProvider } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
+import Announcement from './components/Announcement';
 
 
 // function Home() {
@@ -15,7 +16,7 @@ import Dashboard from './components/Dashboard';
 
 function App() {
   return (
-      <div className="bg-black h-screen">
+      <div>
         <Navbar />
         <Outlet/>
       </div>
@@ -40,6 +41,11 @@ const appRouter=createBrowserRouter([
               element:<Dashboard/>
               
           },
+          {
+            path:"/announcement",
+            element:<Announcement/>
+            
+        },
 
       ],
       // errorElement:<Error/>

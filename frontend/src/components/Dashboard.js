@@ -14,9 +14,10 @@ function Dashboard() {
     };
 
     return (
+        <div className="px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
         <div className="container mx-auto mt-8">
             <div className="flex justify-center items-start gap-8">
-                <nav className="w-50 h-80 bg-gray-800 p-8 rounded-lg">
+                <nav className="w-1/5 md:w-1/4 h-full bg-gray-800 p-8 rounded-lg">
                     <ul className="text-white">
                         <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
                             <FontAwesomeIcon className="mr-2" icon={faChartBar} />
@@ -41,8 +42,8 @@ function Dashboard() {
                     </ul>
                 </nav>
                 <div className="w-full md:w-3/4">
-                    <div className="grid grid-cols-1  md:grid-cols-3 gap-6">
-                        <div className="bg-gray-800 p-6  rounded-lg shadow-md transition duration-300 hover:shadow-lg">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="bg-gray-800 p-6 rounded-lg shadow-md transition duration-300 hover:shadow-lg">
                             <h2 className="text-xl font-semibold mb-4 text-white">Occupancy Rate</h2>
                             <div className="flex items-center justify-center">
                                 <div className="w-24 h-24 rounded-full border-4 border-gray-200 flex items-center justify-center hover:bg-gray-800 transition duration-300">
@@ -105,6 +106,7 @@ function Dashboard() {
                 </div>
             </div>
             {showComponent && <ComplaintForm />}
+        </div>
         </div>
     );
 }
