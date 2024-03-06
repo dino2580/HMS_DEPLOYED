@@ -43,25 +43,25 @@ function Dashboard() {
                 </nav>
                 <div className="w-full md:w-3/4">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div className="bg-gray-800 p-6 rounded-lg shadow-md transition duration-300 hover:shadow-lg">
+                        <div className="bg-gray-800 p-6 rounded-lg shadow-md transition duration-300 hover:shadow-2xl hover:bg-slate-800 flex flex-col">
                             <h2 className="text-xl font-semibold mb-4 text-white">Occupancy Rate</h2>
                             <div className="flex items-center justify-center">
                                 <div className="w-24 h-24 rounded-full border-4 border-gray-200 flex items-center justify-center hover:bg-gray-800 transition duration-300">
                                     <span className="text-3xl font-semibold text-cyan-300">75%</span>
                                 </div>
                             </div>
-                            <p className="text-sm text-cyan-300 mt-2">Currently occupied rooms</p>
+                            <p className="text-sm text-cyan-300 mt-2 mx-auto">Currently occupied rooms</p>
                         </div>
-                        <div className="bg-gray-800 p-6 rounded-lg shadow-md transition duration-300 hover:shadow-lg">
+                        <div className="bg-gray-800 p-6 rounded-lg shadow-md transition duration-300 hover:shadow-2xl hover:bg-slate-800 flex flex-col">
                             <h2 className="text-xl font-semibold mb-4 text-white">Present Students</h2>
                             <div className="flex items-center justify-center">
                                 <div className="w-24 h-24 rounded-full border-4 border-gray-200 flex items-center justify-center hover:bg-gray-800 transition duration-300">
-                                    <span className="text-3xl font-semibold text-cyan-300">120</span>
+                                    <span className="text-3xl font-semibold text-orange-500">120</span>
                                 </div>
                             </div>
-                            <p className="text-sm text-cyan-300 mt-2">No of Students present</p>
+                            <p className="text-sm text-orange-500 mt-2 mx-auto">Students present</p>
                         </div>
-                        <div className="bg-gray-800 p-6 rounded-lg shadow-md transition duration-300 hover:shadow-lg">
+                        <div className="bg-gray-800 p-6 rounded-lg shadow-md transition duration-300 hover:shadow-2xl hover:bg-slate-800 flex flex-col">
                             <h2 className="text-xl font-semibold mb-4 text-white">Workers Details</h2>
                             <div className="flex items-center justify-center">
                                 <div className="w-24 h-24 rounded-full border-4 border-gray-200 flex items-center justify-center hover:bg-gray-800 transition duration-300">
@@ -74,21 +74,21 @@ function Dashboard() {
                     <div className="mt-8">
                         <h2 className="text-xl text-white font-semibold mb-4">Complaints</h2>
                         <div className="grid grid-cols-3 gap-6">
-                            <div className="bg-gray-800 p-6 rounded-lg shadow-md transition duration-300 hover:shadow-lg">
+                            <div className="bg-gray-800 p-6 rounded-lg shadow-md transition duration-300 hover:shadow-2xl hover:bg-slate-800">
                                 <h3 className="text-lg text-white font-semibold mb-2">Total Complaints</h3>
                                 <div className="flex items-center justify-between">
                                     <p className="text-3xl font-semibold text-yellow-300">{totalComplaints}</p>
                                     <span className="text-sm text-yellow-300">+10% from last month</span>
                                 </div>
                             </div>
-                            <div className="bg-gray-800 p-6 rounded-lg shadow-md transition duration-300 hover:shadow-lg">
+                            <div className="bg-gray-800 p-6 rounded-lg shadow-md transition duration-300 hover:shadow-2xl hover:bg-slate-800">
                                 <h3 className="text-lg font-semibold mb-2 text-white">Solved Complaints</h3>
                                 <div className="flex items-center justify-between">
                                     <p className="text-3xl font-semibold text-green-400">{solvedComplaints}</p>
                                     <span className="text-sm text-green-400">-5% from last month</span>
                                 </div>
                             </div>
-                            <div className="bg-gray-800 p-6 rounded-lg shadow-md transition duration-300 hover:shadow-lg">
+                            <div className="bg-gray-800 p-6 rounded-lg shadow-md transition duration-300 hover:shadow-2xl hover:bg-slate-800">
                                 <h3 className="text-lg font-semibold mb-2 text-white">Pending Complaints</h3>
                                 <div className="flex items-center justify-between">
                                     <p className="text-3xl font-semibold text-red-500">{pendingComplaints}</p>
