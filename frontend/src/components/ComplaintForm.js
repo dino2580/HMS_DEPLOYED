@@ -8,7 +8,7 @@ function ComplaintForm({ onClose }) {
     const [message, setMessage] = useState('');
 
     const handleSubmit = async (event) => {
-        event.preventDefault(); // Prevent default form submission
+        event.preventDefault(); 
 
         console.log('Submitted with values:', name, rollNumber, complaintType, message);
         const jsonData = JSON.stringify({
