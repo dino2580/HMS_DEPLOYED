@@ -1,3 +1,4 @@
+import React from 'react';
 
 export default function Announcement() {
   return (
@@ -71,4 +72,3 @@ export default function Announcement() {
     </div>
   )
 }
-

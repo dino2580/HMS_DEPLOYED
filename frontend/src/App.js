@@ -4,6 +4,8 @@ import { Outlet } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
 import Announcement from './components/Announcement';
+import SignUpForm from './components/SignUp';
+import Home from './components/Home';
 
 
 // function Home() {
@@ -46,6 +48,17 @@ const appRouter=createBrowserRouter([
             element:<Announcement/>
             
         },
+        {
+          path:"/profile",
+          element:<SignUpForm/>
+          
+        },
+        {
+          path:"/home",
+          element:<Home/>
+          
+        },
+        
 
       ],
       // errorElement:<Error/>

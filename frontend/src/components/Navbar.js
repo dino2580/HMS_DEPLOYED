@@ -11,6 +11,7 @@ function Navbar() {
     };
 
     return (
+        
         <nav className="bg-gray-800 p-4">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
                 <div className="flex items-center">
@@ -52,7 +53,7 @@ function Navbar() {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/contact" activeClassName="text-indigo-600" className="text-white hover:text-gray-300 hover:border border-gray-300 rounded-full px-2 py-1 flex items-center">
+                        <NavLink to="/home" activeClassName="text-indigo-600" className="text-white hover:text-gray-300 hover:border border-gray-300 rounded-full px-2 py-1 flex items-center">
                             <FontAwesomeIcon icon={faAddressBook} className="mr-1" />
                             Contact
                         </NavLink>
