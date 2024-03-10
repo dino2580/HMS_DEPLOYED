@@ -1,82 +1,140 @@
 import React, { useState } from 'react';
 
-const Signup = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        rollNo: '',
-        branch: '',
-        address: '',
-        phone: '',
-        dob: '',
-        password: '',
-        confirmPassword: ''
+const SignUp = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    rollNo: '',
+    password: '',
+    confirmPassword: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
     });
+  };
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords don't match. Please make sure they match.");
+      return;
+    }
+    console.log(formData);
+    
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        console.log(formData);
-    };
-
-    return (
-        <div className='flex flex-col items-center justify-center h-screen bg-slate-500'>
-        <h1 className=' text-white text-center text-3xl font-bold'>Signup</h1>
-        <div className=' w-full flex'>
-            <div className='w-1/2 ml-40 my-10  bg-white p-6 rounded-l-md shadow-md'>
-                <form onSubmit={handleSubmit}>
-                    <fieldset>
-                        <div className='mb-4'>
-                            <label htmlFor='name' className='block text-sm font-medium text-gray-700'>Name:</label>
-                            <input type='text' id='name' name='name' value={formData.name} onChange={handleChange} className='mt-1 p-2 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' placeholder='Enter your name' required />
-                        </div>
-                        <div className='mb-4'>
-                            <label htmlFor='rollNo' className='block text-sm font-medium text-gray-700'>Roll No:</label>
-                            <input type='text' id='rollNo' name='rollNo' value={formData.rollNo} onChange={handleChange} className='mt-1 p-2 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' placeholder='Enter your roll number' required />
-                        </div>
-                        <div className='mb-4'>
-                            <label htmlFor='branch' className='block text-sm font-medium text-gray-700'>Branch:</label>
-                            <input type='text' id='branch' name='branch' value={formData.branch} onChange={handleChange} className='mt-1 p-2 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' placeholder='Enter your branch' required />
-                        </div>
-                        <div className='mb-4'>
-                            <label htmlFor='address' className='block text-sm font-medium text-gray-700'>Address:</label>
-                            <textarea id='address' name='address' value={formData.address} onChange={handleChange} rows='4' className='mt-1 p-2 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' placeholder='Enter your address' required />
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
-            <div className='w-1/2 mr-40 my-10  bg-white p-6 rounded-r-md shadow-md flex flex-col'>
-                {/* Right half content */}
-                <form onSubmit={handleSubmit}>
-                    <fieldset>
-                        <div className='mb-4'>
-                            <label htmlFor='phone' className='block text-sm font-medium text-gray-700'>Phone No:</label>
-                            <input type='tel' id='phone' name='phone' value={formData.phone} onChange={handleChange} className='mt-1 p-2 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' placeholder='Enter your phone number' required />
-                        </div>
-                        <div className='mb-4'>
-                            <label htmlFor='dob' className='block text-sm font-medium text-gray-700'>Date of Birth:</label>
-                            <input type='date' id='dob' name='dob' value={formData.dob} onChange={handleChange} className='mt-1 p-2 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' placeholder='Enter your date of birth' required />
-                        </div>
-                        <div className='mb-4'>
-                            <label htmlFor='password' className='block text-sm font-medium text-gray-700'>Password:</label>
-                            <input type='password' id='password' name='password' value={formData.password} onChange={handleChange} className='mt-1 p-2 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' placeholder='Enter your password' required />
-                        </div>
-                        <div className='mb-4'>
-                            <label htmlFor='confirmPassword' className='block text-sm font-medium text-gray-700'>Confirm Password:</label>
-                            <input type='password' id='confirmPassword' name='confirmPassword' value={formData.confirmPassword} onChange={handleChange} className='mt-1 p-2 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' placeholder='Confirm your password' required />
-                        </div>
-                        <div className='flex items-center justify-center'>
-                            <button type='submit' className='px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg'>Submit</button>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
-            </div>
+  return (
+    <div className="px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
+      <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+      <div className="flex justify-center items-center">
+        <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
+          Welcome to Visvesvaraya Bhawan H-10
+        </h2>
         </div>
-    );
+        <div className="flex justify-center items-center">
+        <p className="text-neutral-600 text-sm max-w-sm mt-2  font-bold text-gray-800 dark:text-neutral-300">
+          We are happy to see you in NIT KURUKSHETRA
+        </p>
+        </div>
+
+        <form className="my-8" onSubmit={handleSubmit}>
+          <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
+            <div className="flex flex-col space-y-2 w-full">
+              <label htmlFor="firstName" className="text-sm font-bold text-neutral-700">First name</label>
+              <input 
+                id="firstName" 
+                name="firstName"
+                type="text" 
+                placeholder="Yash" 
+                value={formData.firstName} 
+                onChange={handleChange} 
+                className="input-field focus:border-indigo-500 transition duration-300 ease-in-out" 
+                required 
+              />
+            </div>
+            <div className="flex flex-col space-y-2 w-full">
+              <label htmlFor="lastName" className="text-sm font-bold text-neutral-700">Last name</label>
+              <input 
+                id="lastName" 
+                name="lastName"
+                type="text" 
+                placeholder="Vishnoi" 
+                value={formData.lastName} 
+                onChange={handleChange} 
+                className="input-field focus:border-gray-800 transition duration-300 ease-in-out" 
+                required 
+              />
+            </div>
+          </div>
+          <div className="flex flex-col space-y-2 mb-4">
+            <label htmlFor="email"  className="text-sm font-bold text-neutral-700">Email Address</label>
+            <input 
+              id="email" 
+              name="email"
+              type="email" 
+              placeholder="myprofile@gmail.com" 
+              value={formData.email} 
+              onChange={handleChange} 
+              className="input-field focus:border-gray-800 transition duration-300 ease-in-out" 
+              required 
+            />
+          </div>
+          <div className="flex flex-col space-y-2 mb-4">
+            <label htmlFor="rollNo"  className="text-sm font-bold text-neutral-700">Roll No</label>
+            <input 
+              id="rollNo" 
+              name="rollNo"
+              type="text" 
+              placeholder="Enter your roll number" 
+              value={formData.rollNo} 
+              onChange={handleChange} 
+              className="input-field focus:border-gray-800 transition duration-300 ease-in-out" 
+              required 
+            />
+          </div>
+          <div className="flex flex-col space-y-2 mb-4">
+            <label htmlFor="password"  className="text-sm font-bold text-neutral-700">Password (min. 8 characters)</label>
+            <input 
+              id="password" 
+              name="password"
+              type="password" 
+              placeholder="••••••••" 
+              value={formData.password} 
+              onChange={handleChange} 
+              className="input-field focus:border-gray-800 transition duration-300 ease-in-out" 
+              minLength="8" 
+              required 
+            />
+          </div>
+          <div className="flex flex-col space-y-2 mb-4">
+            <label htmlFor="confirmPassword"  className="text-sm font-bold text-neutral-700">Confirm Password</label>
+            <input 
+              id="confirmPassword" 
+              name="confirmPassword"
+              type="password" 
+              placeholder="••••••••" 
+              value={formData.confirmPassword} 
+              onChange={handleChange} 
+              className="input-field focus:border-gray-800 transition duration-300 ease-in-out" 
+              minLength="8" 
+              required 
+            />
+          </div>
+
+          <div className="flex justify-center items-center">
+  <button className="btn bg-gradient-to-br from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 text-white hover:text-white font-medium py-3 px-6 rounded-md shadow-md transition duration-300 ease-in-out" type="submit">
+    Sign up &rarr;
+  </button>
+</div>
+        </form>
+      </div>
+    </div>
+  );
 };
 
-export default Signup;
+export default SignUp;
