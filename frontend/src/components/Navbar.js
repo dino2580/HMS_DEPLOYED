@@ -17,7 +17,9 @@ function Navbar() {
             <nav className="bg-gray-800 p-4">
                 <div className="max-w-7xl mx-auto flex justify-between items-center">
                     <div className="flex items-center">
-                        <a href="#" className="text-white text-lg font-bold">Logo</a>
+                        <a href="#" className="text-white text-lg font-bold">
+                            <img src="hi.svg" alt="" />
+                        </a>
                         <p className="ml-2 text-white text-lg font-bold"> HMS</p>
                     </div>
                     <div className="md:hidden">
