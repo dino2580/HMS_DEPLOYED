@@ -59,11 +59,11 @@ function App() {
           console.log("Email:", payload.email);
           console.log("Is admin:", );
           
-          const isAdmin = jwtToken.admin;
+          // const isAdmin = jwtToken.admin;
+          // console.log(isAdmin);
           localStorage.setItem('Email',payload.email);
           localStorage.setItem('admin',payload.admin);
           console.log(jwtToken.admin);
-          console.log(isAdmin);
           console.log(localStorage.getItem('admin'));
           // if (isAdmin) {
           //   // Redirect to the admin dashboard

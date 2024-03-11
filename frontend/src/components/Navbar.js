@@ -5,12 +5,11 @@ import { Link, NavLink } from 'react-router-dom';
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const isAdmin = localStorage.getItem('admin') === 'true';
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
-   
+
     return (
         
         <nav className="bg-gray-800 p-4">
@@ -35,14 +34,12 @@ function Navbar() {
                     </button>
                 </div>
                 <ul className={`md:flex ${isOpen ? 'block' : 'hidden'} md:justify-evenly md:space-x-10 md:items-center`}>
-                {isAdmin && (
-                        <li>
-                            <NavLink to="/dashboard" activeClassName="text-indigo-600" className="text-white hover:text-gray-300 hover:border border-gray-300 rounded-full px-2 py-1 flex items-center">
-                                <FontAwesomeIcon icon={faChartLine} className="mr-1" />
-                                Dashboard
-                            </NavLink>
-                        </li>
-                    )}
+                    <li>
+                        <NavLink to="/dashboard" activeClassName="text-indigo-600" className="text-white hover:text-gray-300 hover:border border-gray-300 rounded-full px-2 py-1 flex items-center">
+                            <FontAwesomeIcon icon={faChartLine} className="mr-1" />
+                            Dashboard
+                        </NavLink>
+                    </li>
                     <li>
                         <NavLink to="/rooms" activeClassName="text-indigo-600" className="text-white hover:text-gray-300 hover:border border-gray-300 rounded-full px-2 py-1 flex items-center">
                             <FontAwesomeIcon icon={faBed} className="mr-1" />
