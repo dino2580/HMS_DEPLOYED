@@ -1,8 +1,8 @@
 jwt=require("jsonwebtoken")
 secretKey="CRHqvVp7ImQa1ZI"
-const generateWebToken=(userId,res)=>
+const generateWebToken=(rollNumber,res)=>
 {
-    const token=jwt.sign({userId,secretKey},{
+    const token=jwt.sign({email,admin},secretKey,{
         expiresIn:'30d'
     })
     res.cookie("jwt",token,
