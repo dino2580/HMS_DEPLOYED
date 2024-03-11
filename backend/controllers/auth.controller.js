@@ -62,8 +62,8 @@ const login = async (req, res) => {
             return res.status(404).json({ err: "User does not exist" });
         }
     
-        const hashedPassword=await bcrypt.hash(password,5);
-        if (user.password !== hashedPassword) {
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if (!passwordMatch) {
             return res.status(401).json({ err: "Password is Incorrect" });
         }
         if(user.admin) generateWebToken({email,admin:true},res);

@@ -1,6 +1,6 @@
 jwt=require("jsonwebtoken")
 secretKey="CRHqvVp7ImQa1ZI"
-const generateWebToken=(rollNumber,res)=>
+const generateWebToken=({email,admin},res)=>
 {
     const token=jwt.sign({email,admin},secretKey,{
         expiresIn:'30d'
