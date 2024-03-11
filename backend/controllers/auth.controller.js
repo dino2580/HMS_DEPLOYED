@@ -62,8 +62,8 @@ const login = async (req, res) => {
             return res.status(404).json({ err: "User does not exist" });
         }
     
-        const hashedPassword=await bcrypt.hash(password,5);
-        if (user.password !== hashedPassword) {
+        const hashedPassword=await bcrypt.compare(password,user.password);
+        if (!hashedPassword) {
             return res.status(401).json({ err: "Password is Incorrect" });
         }
         if(user.admin) generateWebToken({email,admin:true},res);
@@ -74,5 +74,20 @@ const login = async (req, res) => {
         return res.status(500).json({ err: "Error in Login" });
     }
 };
+const logout = async (req, res) => {
+    try {
+        // Clear the JWT cookie
+        res.clearCookie('jwt');
 
-module.exports = {signUp,login};
+        // Optionally, destroy the session if you're using sessions
+        // req.session.destroy();
+
+        res.status(200).json({ message: 'Logout successful' });
+    } catch (error) {
+        console.error('Error logging out:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+};
+
+
+module.exports = {signUp,login,logout};

@@ -8,7 +8,9 @@ import Home from './components/Home';
 import Login from './components/Loginpage';
 import SignUp from './components/SignUp';
 
+
 function App() {
+
   const handleSubmit = async ( formData ) => {
     // event.preventDefault();
     const { email, password } = formData;
@@ -35,7 +37,7 @@ function App() {
         const jwtCookie = document.cookie
           .split("; ")
           .find((row) => row.startsWith("jwt="));
- 
+
         if (jwtCookie) {
           const jwtToken = jwtCookie.split("=")[1];
           console.log("JWT Token:", jwtToken);
@@ -57,21 +59,20 @@ function App() {
           
           console.log("Decoded Payload:", payload);
           console.log("Email:", payload.email);
-          console.log("Is admin:", );
-          
-          // const isAdmin = jwtToken.admin;
-          // console.log(isAdmin);
+          console.log("Is admin:", payload.admin);
+          localStorage.setItem('cookie',jwtCookie);
           localStorage.setItem('Email',payload.email);
           localStorage.setItem('admin',payload.admin);
-          console.log(jwtToken.admin);
           console.log(localStorage.getItem('admin'));
-          // if (isAdmin) {
-          //   // Redirect to the admin dashboard
-          //   window.location.href = "/dashboard";
-          // } else {
-          //   // Redirect to the user dashboard
-          //   window.location.href = "/announcement";
-          // }
+  const isAdmin = localStorage.getItem('admin') === 'true';
+          
+          if (isAdmin) {
+            // Redirect to the admin dashboard
+            window.location.href = "/dashboard";
+          } else {
+            // Redirect to the user dashboard
+            window.location.href = "/announcement";
+          }
         } else {
           console.log("JWT cookie not found");
         }
@@ -92,7 +93,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/announcement" element={<Announcement />} />
+          <Route path="/announcement" element={<Announcement />} /> 
           <Route path="/profile" element={<SignUpForm />} />
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login handleSubmit={handleSubmit} />} />
