@@ -11,6 +11,7 @@ function Dashboard() {
     const collectedfee = 600000;
     const reaminingfee= 400000;
     const [showComponent, setShowComponent] = useState(false);
+    
 
     const toggleComplaintForm = () => {
         setShowComponent(true);
