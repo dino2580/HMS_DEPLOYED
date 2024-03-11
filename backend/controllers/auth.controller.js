@@ -72,7 +72,7 @@ const login = async (req, res) => {
     } catch (error) {
         console.error("Error in login:", error);
         return res.status(500).json({ err: "Error in Login" });
-    }
+    }   
 };
 const logout = async (req, res) => {
     try {
