@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
 import Announcement from './components/Announcement';
-import SignUpForm from './components/SignUp';
 import Home from './components/Home';
 import Login from './components/Loginpage';
-import SignUp from './components/SignUp';
+import SignUp from './Signuppage';
+
 
 
 function App() {
@@ -94,7 +94,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/announcement" element={<Announcement />} /> 
-          <Route path="/profile" element={<SignUpForm />} />
+          {/* <Route path="/profile" element={<SignUpForm />} /> */}
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login handleSubmit={handleSubmit} />} />
           <Route path="/signup" element={<SignUp />} />

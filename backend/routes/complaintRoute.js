@@ -32,10 +32,7 @@ const Complaint = async (req, res) => {
         return res.status(201).json({
             id:newComplaint.id
         });
-        
-        
-        
-        
+
     } catch (error) {
         console.log(error);
         return res.status(500).json({ err: "Error in Complaints" });

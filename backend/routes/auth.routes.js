@@ -4,7 +4,7 @@ const Complaint = require('./complaintRoute');
 const menu = require('../controllers/Messmenu');
 const { getMenu } = require('../controllers/GetMenu');
 
-const router=express.Router();
+const router = express.Router();
 router.post("/signup",signUp)
 router.post("/login",login);
 router.post("/logout",logout)
