@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartLine, faAddressBook, faBed, faFile, faScroll, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Link, NavLink } from 'react-router-dom';
-
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -11,12 +10,12 @@ function Navbar() {
     };
 
     return (
-        
+
         <nav className="bg-gray-800 p-4">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
                 <div className="flex items-center">
-                    <a href="#" className="text-white text-lg font-bold">Logo</a>
-                    <p className="ml-2 text-white text-lg font-bold"> HMS</p>
+                
+                    <p className="ml-2 text-white text-lg font-bold" style={{backgroundImage:'url("logo.png")', backgroundPosition:'cover'}}>HMS</p>
                 </div>
                 <div className="md:hidden">
                     <button onClick={toggleMenu} className="text-white">

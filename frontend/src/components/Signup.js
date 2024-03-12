@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SignUp = () => {
+const Signup = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -29,15 +29,15 @@ const SignUp = () => {
   };
 
   return (
-    <div className="px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
-      <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+    <div className="px-4 py-6 md:px-6 xl:py-12 2xl:py-20 bg-gradient-to-br from-gray-800 to-gray-900">
+      <div className="max-w-lg w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
       <div className="flex justify-center items-center">
         <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
           Welcome to Visvesvaraya Bhawan H-10
         </h2>
         </div>
         <div className="flex justify-center items-center">
-        <p className="text-neutral-600 text-sm max-w-sm mt-2  font-bold text-gray-800 dark:text-neutral-300">
+        <p className="text-neutral-600 text-sm max-w-sm mt-2  font-bold  dark:text-neutral-300">
           We are happy to see you in NIT KURUKSHETRA
         </p>
         </div>
@@ -47,13 +47,14 @@ const SignUp = () => {
             <div className="flex flex-col space-y-2 w-full">
               <label htmlFor="firstName" className="text-sm font-bold text-neutral-700">First name</label>
               <input 
+                
                 id="firstName" 
                 name="firstName"
                 type="text" 
                 placeholder="Yash" 
                 value={formData.firstName} 
                 onChange={handleChange} 
-                className="input-field focus:border-indigo-500 transition duration-300 ease-in-out" 
+                className="input-field rounded-full px-4 py-1 focus:border-indigo-500 transition duration-300 ease-in-out " 
                 required 
               />
             </div>
@@ -66,7 +67,7 @@ const SignUp = () => {
                 placeholder="Vishnoi" 
                 value={formData.lastName} 
                 onChange={handleChange} 
-                className="input-field focus:border-gray-800 transition duration-300 ease-in-out" 
+                className="input-field rounded-full px-4 py-1  focus:border-gray-800 transition duration-300 ease-in-out" 
                 required 
               />
             </div>
@@ -80,7 +81,7 @@ const SignUp = () => {
               placeholder="myprofile@gmail.com" 
               value={formData.email} 
               onChange={handleChange} 
-              className="input-field focus:border-gray-800 transition duration-300 ease-in-out" 
+              className="input-field rounded-full px-4 py-1  focus:border-gray-800 transition duration-300 ease-in-out" 
               required 
             />
           </div>
@@ -93,7 +94,7 @@ const SignUp = () => {
               placeholder="Enter your roll number" 
               value={formData.rollNo} 
               onChange={handleChange} 
-              className="input-field focus:border-gray-800 transition duration-300 ease-in-out" 
+              className="input-field rounded-full px-4 py-1  focus:border-gray-800 transition duration-300 ease-in-out" 
               required 
             />
           </div>
@@ -106,7 +107,7 @@ const SignUp = () => {
               placeholder="••••••••" 
               value={formData.password} 
               onChange={handleChange} 
-              className="input-field focus:border-gray-800 transition duration-300 ease-in-out" 
+              className="input-field rounded-full px-4 py-1  focus:border-gray-800 transition duration-300 ease-in-out hover:shadow-md" 
               minLength="8" 
               required 
             />
@@ -120,7 +121,7 @@ const SignUp = () => {
               placeholder="••••••••" 
               value={formData.confirmPassword} 
               onChange={handleChange} 
-              className="input-field focus:border-gray-800 transition duration-300 ease-in-out" 
+              className="input-field rounded-full px-4 py-1  focus:border-gray-800 transition duration-300 ease-in-out" 
               minLength="8" 
               required 
             />
@@ -137,4 +138,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Signup;
