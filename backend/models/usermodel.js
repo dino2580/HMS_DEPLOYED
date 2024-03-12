@@ -48,7 +48,18 @@ const userSchema = new mongoose.Schema({
    {
     type:String,
     default:""
-   }
+   },
+   hostel_no:
+   {
+    type:String,
+    default:"0"
+   },
+   hostel_id:
+   {
+    type:String,
+    default:"0"
+   },
+
    
 });
 

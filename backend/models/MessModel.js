@@ -33,6 +33,11 @@ const messSchema = new mongoose.Schema({
    dinner_extra:{
     type:String,
     required:true
+   },
+   hostel_no:
+   {
+    type:String,
+    default:""
    }
 });
 

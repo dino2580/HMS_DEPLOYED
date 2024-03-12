@@ -3,9 +3,12 @@ import React, { useState, useEffect } from "react";
 export default function Announcement() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [menuData, setMenuData] = useState(null);
+  // const [hostelNo, setHostelNo] = useState(null);
   const [selectedDate, setSelectedDate] = useState(
     currentDate.toISOString().split("T")[0]
-  );
+    );
+   
+  
   console.log(currentDate);
   const daysOfWeek = [
     "Sunday",
@@ -20,6 +23,9 @@ export default function Announcement() {
   console.log(daysOfWeek[dayIndex]);
 
   useEffect(() => {
+    const hostel_no=localStorage.getItem('hostel_no');
+    // setHostelNo(hostel_no);
+    console.log("hey"+hostel_no);
     const fetchMenu = async () => {
       try {
         const response = await fetch(
@@ -30,7 +36,7 @@ export default function Announcement() {
               Accept: "application/json",
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ day: daysOfWeek[dayIndex] }),
+            body: JSON.stringify({ day: daysOfWeek[dayIndex],hostel_no:hostel_no}),
             credentials: "include",
           }
         );

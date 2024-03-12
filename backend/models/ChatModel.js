@@ -8,6 +8,11 @@ const chatSchema = new mongoose.Schema({
     type:String,
     required:true,
    },
+   hostel_no:
+   {
+    type:String,
+    default:""
+   }
    
 },{timestamps:true});
 

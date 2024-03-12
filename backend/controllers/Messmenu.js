@@ -2,12 +2,12 @@ const MessModel = require("../models/MessModel");
 
 const menu = async (req, res) => {
     try {
-        const { day, breakfast, breakfast_extra, lunch, lunch_extra, snacks, dinner, dinner_extra } = req.body;
+        const { day, breakfast, breakfast_extra, lunch, lunch_extra, snacks, dinner, dinner_extra,hostel_no } = req.body;
 
         // Find the menu for the specified day and update it if it exists, otherwise create a new one
         const updatedMenu = await MessModel.findOneAndUpdate(
             { day },
-            { $set: { day, breakfast, breakfast_extra, lunch, lunch_extra, snacks, dinner, dinner_extra } },
+            { $set: { day, breakfast, breakfast_extra, lunch, lunch_extra, snacks, dinner, dinner_extra,hostel_no} },
             { new: true, upsert: true }
         );
 

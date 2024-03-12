@@ -13,6 +13,11 @@ const paymentsSchema = new mongoose.Schema({
         type:Number,
         required:true,
     },
+    hostel_no:
+   {
+    type:String,
+    default:""
+   }
     
 },{ timestamps: true });
 

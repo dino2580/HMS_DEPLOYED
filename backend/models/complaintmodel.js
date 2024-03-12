@@ -30,7 +30,12 @@ const complaintSchema = new mongoose.Schema({
     {
         type:Boolean,
         default:false
-    }
+    },
+    hostel_no:
+   {
+    type:String,
+    default:""
+   }
 },{ timestamps: true });
 
 const Complaints = mongoose.model("Complaints", complaintSchema);

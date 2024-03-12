@@ -14,7 +14,12 @@ const accountSchema = new mongoose.Schema({
     user_paid:{
         type:Number,
         default:0,
-    }
+    },
+    hostel_no:
+   {
+    type:String,
+    default:""
+   }
    
 });
 

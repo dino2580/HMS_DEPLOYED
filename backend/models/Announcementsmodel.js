@@ -26,6 +26,11 @@ const announcementSchema = new mongoose.Schema({
         type: String,
         required:true,
     },
+    hostel_no:
+   {
+    type:String,
+    default:""
+   }
 },{ timestamps: true });
 
 const Announcement = mongoose.model("Announcments", announcementSchema );
