@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 
-const Login = () => {
+const Login = ({handleSubmit}) => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-    
+  const handleFormSubmit = async (event) => {
+    console.log(event);
+    event.preventDefault();
+    handleSubmit(formData); // Call the parent handleSubmit function with form data
   };
 
   return (

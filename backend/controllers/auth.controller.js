@@ -1,6 +1,7 @@
 bcrypt =require("bcrypt") ;
 
 const User = require('../models/usermodel.js');
+const generateWebToken = require("../utils/generateToken.js");
 
 
 const signUp = async (req, res) => {
@@ -38,9 +39,9 @@ const signUp = async (req, res) => {
             dateOfJoining,
             profilePic:gender==="M" ? boyPic:girlPic
         });
-       
+         
         await newUser.save();
-        check(fullName);
+        
         return res.status(201).json({
             _id: newUser._id
         });
@@ -60,18 +61,33 @@ const login = async (req, res) => {
         if (!user) {
             return res.status(404).json({ err: "User does not exist" });
         }
-
-        
-        if (user.password !== password) {
+    
+        const hashedPassword=await bcrypt.compare(password,user.password);
+        if (!hashedPassword) {
             return res.status(401).json({ err: "Password is Incorrect" });
         }
-
-        
+        if(user.admin) generateWebToken({email,admin:true},res);
+        else generateWebToken({email,admin:false},res);
         return res.status(201).json("Successful login");
     } catch (error) {
         console.error("Error in login:", error);
         return res.status(500).json({ err: "Error in Login" });
     }
 };
+const logout = async (req, res) => {
+    try {
+        // Clear the JWT cookie
+        res.clearCookie('jwt');
 
-module.exports = {signUp,login};
+        // Optionally, destroy the session if you're using sessions
+        // req.session.destroy();
+
+        res.status(200).json({ message: 'Logout successful' });
+    } catch (error) {
+        console.error('Error logging out:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+};
+
+
+module.exports = {signUp,login,logout};

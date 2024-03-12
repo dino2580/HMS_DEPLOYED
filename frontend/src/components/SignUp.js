@@ -33,7 +33,7 @@ const SignUp = () => {
       <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
       <div className="flex justify-center items-center">
         <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
-          Welcome to Visvesvaraya Bhawan H-10
+          Logo HMS
         </h2>
         </div>
         <div className="flex justify-center items-center">
