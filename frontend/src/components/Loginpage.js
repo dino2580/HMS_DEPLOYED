@@ -21,11 +21,11 @@ const Login = ({handleSubmit}) => {
   };
 
   return (
-    <div className="px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
+    <div className=" px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
       <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
         <div className="flex justify-center items-center">
           <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
-            Logo HMS
+            Welcome to Visvesvaraya Bhawan H-10
           </h2>
         </div>
         <div className="flex justify-center items-center">
@@ -80,7 +80,6 @@ const Login = ({handleSubmit}) => {
             >
               Login&rarr;
             </button>
-            
           </div>
         </form>
       </div>

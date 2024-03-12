@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 
 
 const userSchema = new mongoose.Schema({
-    fullName: {
+    full_name: {
         type: String,
         required: true
     },
-    rollNumber: {
+    roll_no: {
         type: Number,
         required: true,
         unique: true
@@ -26,15 +26,15 @@ const userSchema = new mongoose.Schema({
         required: true,
         enum: ["M", "F"]
     },
-    dateOfJoining: {
+    date_of_joining: {
         type: Date,
         required: true
     },
-    profilePic: {
+    profile_pic: {
         type: String,
         default: ""
     },
-    currentlyPresent:
+    currently_present:
     {
         type:Boolean,
         default:true
@@ -44,6 +44,22 @@ const userSchema = new mongoose.Schema({
         type:Boolean,
         default:false
     },
+   room_number:
+   {
+    type:String,
+    default:""
+   },
+   hostel_no:
+   {
+    type:String,
+    default:"0"
+   },
+   hostel_id:
+   {
+    type:String,
+    default:"0"
+   },
+
    
 });
 

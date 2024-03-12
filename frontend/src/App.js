@@ -1,17 +1,14 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Dashboard from './components/Dashboard';
-import Announcement from './components/Announcement';
-import SignUpForm from './components/SignUp';
-import Home from './components/Home';
-import Login from './components/Loginpage';
-import SignUp from './components/SignUp';
-
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Dashboard from "./components/Dashboard";
+import Announcement from "./components/Announcement";
+import Home from "./components/Home";
+import Login from "./components/Loginpage";
+import SignUp from "./Signuppage";
 
 function App() {
-
-  const handleSubmit = async ( formData ) => {
+  const handleSubmit = async (formData) => {
     // event.preventDefault();
     const { email, password } = formData;
 
@@ -44,28 +41,30 @@ function App() {
           // Check if the user is admin
 
           const extractValuesFromJWT = (jwtToken) => {
-            const tokenParts = jwtToken.split('.');
+            const tokenParts = jwtToken.split(".");
             if (tokenParts.length !== 3) {
-              throw new Error('Invalid JWT token');
+              throw new Error("Invalid JWT token");
             }
             const base64Payload = tokenParts[1];
             const decodedPayload = atob(base64Payload);
             const payloadObj = JSON.parse(decodedPayload);
             return payloadObj;
           };
-          
+
           // Example usage:
           const payload = extractValuesFromJWT(jwtToken);
-          
+
           console.log("Decoded Payload:", payload);
           console.log("Email:", payload.email);
           console.log("Is admin:", payload.admin);
-          localStorage.setItem('cookie',jwtCookie);
-          localStorage.setItem('Email',payload.email);
-          localStorage.setItem('admin',payload.admin);
-          console.log(localStorage.getItem('admin'));
-  const isAdmin = localStorage.getItem('admin') === 'true';
-          
+          localStorage.setItem("cookie", jwtCookie);
+          localStorage.setItem("Email", payload.email);
+          localStorage.setItem("admin", payload.admin);
+          localStorage.setItem("hostel_no", payload.hostel_no);
+          console.log(localStorage.getItem("admin"));
+          console.log(localStorage.getItem("hostel_no"));
+          const isAdmin = localStorage.getItem("admin") === "true";
+
           if (isAdmin) {
             // Redirect to the admin dashboard
             window.location.href = "/dashboard";
@@ -93,10 +92,13 @@ function App() {
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/announcement" element={<Announcement />} /> 
-          <Route path="/profile" element={<SignUpForm />} />
+          <Route path="/announcement" element={<Announcement />} />
+          {/* <Route path="/profile" element={<SignUpForm />} /> */}
           <Route path="/home" element={<Home />} />
-          <Route path="/login" element={<Login handleSubmit={handleSubmit} />} />
+          <Route
+            path="/login"
+            element={<Login handleSubmit={handleSubmit} />}
+          />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
       </Router>
