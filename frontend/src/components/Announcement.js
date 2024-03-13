@@ -9,7 +9,7 @@ export default function Announcement() {
     );
    
   
-  console.log(currentDate);
+  // console.log(currentDate);
   const daysOfWeek = [
     "Sunday",
     "Monday",
@@ -20,12 +20,12 @@ export default function Announcement() {
     "Saturday",
   ];
   const dayIndex = currentDate.getDay();
-  console.log(daysOfWeek[dayIndex]);
+  // console.log(daysOfWeek[dayIndex]);
 
   useEffect(() => {
     const hostel_no=localStorage.getItem('hostel_no');
     // setHostelNo(hostel_no);
-    console.log("hey"+hostel_no);
+    // console.log("hey"+hostel_no);
     const fetchMenu = async () => {
       try {
         const response = await fetch(
@@ -43,7 +43,7 @@ export default function Announcement() {
         if (response.ok) {
           const data = await response.json();
           setMenuData(data);
-          console.log(menuData);
+          // console.log(menuData);
         } else {
           console.error("Failed to fetch menu:", response.statusText);
         }
@@ -77,7 +77,7 @@ export default function Announcement() {
     return `${day}/${month}/${year}`;
   };
   return (
-    <div className="px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
+    <div className="h-screen px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
       <div className="grid max-w-5xl gap-6 mx-auto lg:grid-cols-2 lg:gap-12">
         <div className="space-y-4 lg:order-2 lg:col-start-2">
           <div className="space-y-2">
@@ -92,7 +92,7 @@ export default function Announcement() {
                 type="date"
                 id="date"
                 value={selectedDate}
-                defaultValue={currentDate.toISOString().split("T")[0]}
+                // defaultValue={currentDate.toISOString().split("T")[0]}
                 onChange={handleDateChange}
               />
             </div>
