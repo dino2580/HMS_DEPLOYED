@@ -5,7 +5,7 @@ import Dashboard from "./components/Dashboard";
 import Announcement from "./components/Announcement";
 import Home from "./components/Home";
 import Login from "./components/Loginpage";
-import SignUp from "./Signuppage";
+import SignUp from "./components/Signuppage";
 
 function App() {
   const handleSubmit = async (formData) => {
@@ -90,7 +90,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/announcement" element={<Announcement />} />
           {/* <Route path="/profile" element={<SignUpForm />} /> */}

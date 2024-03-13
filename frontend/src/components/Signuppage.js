@@ -22,10 +22,25 @@ const SignUp = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Call a function to submit the form data
-    console.log(formData);
+    try {
+      const response = await fetch("https://example.com/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log("User signed up successfully:", data);
+      } else {
+        console.error("Failed to sign up:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Failed to sign up:", error);
+    }
     // Reset form fields
     setFormData({
       full_name: "",
@@ -42,7 +57,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className=" px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
+    <div className="px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
       <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
         <div className="flex justify-center items-center">
           <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
@@ -129,26 +144,6 @@ const SignUp = () => {
               required
             />
           </div>
-          {/* <div className="flex flex-col space-y-2 mb-4">
-            <label
-              htmlFor="gender"
-              className="text-sm font-bold text-neutral-700"
-            >
-              Gender
-            </label>
-            <select
-              id="gender"
-              name="gender"
-              value={formData.gender}
-              onChange={handleChange}
-              className="input-field"
-              required
-            >
-              <option value="">Select Gender</option>
-              <option value="M">Male</option>
-              <option value="F">Female</option>
-            </select>
-          </div> */}
           <div className="flex flex-col space-y-2 mb-4">
             <label
               htmlFor="date_of_joining"
@@ -173,18 +168,8 @@ const SignUp = () => {
             >
               Profile Picture
             </label>
-            {/* <input
-              id="profile_pic"
-              name="profile_pic"
-              type="file"
-              accept="image/*"
-              // placeholder="https://example.com/profile_pic.jpg"
-              value={formData.profile_pic}
-              onChange={handleChange}
-              className="input-field"
-            /> */}
             <input
-              class="block w-full mb-5 text-xs text-gray-900 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+              className="block w-full mb-5 text-xs text-gray-900 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
               id="profile_pic"
               name="profile_pic"
               type="file"
