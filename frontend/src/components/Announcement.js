@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 export default function Announcement() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -76,8 +78,15 @@ export default function Announcement() {
     const year = date.getFullYear().toString().slice(-2);
     return `${day}/${month}/${year}`;
   };
+  const problemDescription ="SEEDHI SI BAAT HAI NAYA RULE YE HAI KI NET NHI AAYEGA JO KARNA HAI KR LO JITNA NET CHALANA HAI CHALA LO ABHI";
+  const [showFullDescription, setShowFullDescription] = useState(false);
+
+  const handleReadMore = () => {
+    setShowFullDescription(!showFullDescription);
+  };
+
   return (
-    <div className="h-screen px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
+    <div className="h-100vh px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
       <div className="grid max-w-5xl gap-6 mx-auto lg:grid-cols-2 lg:gap-12">
         <div className="space-y-4 lg:order-2 lg:col-start-2">
           <div className="space-y-2">
@@ -154,6 +163,7 @@ export default function Announcement() {
               <h2 className="text-2xl font-bold text-white dark:text-gray-100">
                 New House Rules for Common Room
               </h2>
+              
               <p className="text-gray-300 dark:text-gray-400">
                 Posted 2 hours ago
               </p>
@@ -172,6 +182,32 @@ export default function Announcement() {
               <h2 className="text-2xl font-bold text-white dark:text-gray-100">
                 New House Rules for Common Room
               </h2>
+              
+              {showFullDescription ? (
+          <div>
+            <p className="text-gray-300">
+            {problemDescription}</p>
+            <button
+              className="text-blue-500 hover:text-blue-700 mt-2"
+              onClick={handleReadMore}
+            >
+              Read Less
+            </button>
+          </div>
+        ) : (
+          <div>
+
+            <FontAwesomeIcon className="mr-2" icon={faEye} style={{ color: 'gray' }} />
+            <button
+            
+              className="text-blue-500 hover:text-blue-700"
+              onClick={handleReadMore}
+            >
+              View More
+            </button>
+          </div>
+        )}
+
               <p className="text-gray-300 dark:text-gray-400">
                 Posted 2 hours ago
               </p>

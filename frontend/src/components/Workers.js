@@ -9,7 +9,7 @@ export default function Workers() {
       <div className="container mx-auto">
         <div className="flex justify-center items-start gap-8">
 
-        <nav className="w-1/5 md:w-1/4 h-full bg-gray-800 p-8 rounded-lg">
+        <nav className="w-1/10 md:w-1/4 h-full bg-gray-800 p-4 rounded-lg">
                     <ul className="text-white">
                         <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
                             <FontAwesomeIcon className="mr-2" icon={faChartBar} />
