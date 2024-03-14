@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function Workers() {
   return (
-    <div className="h-100vh px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
+    <div className="h-screen px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
       <div className="container mx-auto">
         <div className="flex justify-center items-start gap-8">
 
@@ -55,7 +55,7 @@ export default function Workers() {
                       <input className="pl-8 w-full md:w-[400px] border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white dark:bg-gray-900 dark:text-gray-100" placeholder="Search..." type="search" />
                     </div>
                     <div>
-                      <table className="w-full md:w-[calc(100% + 4rem)] border border-gray-200 rounded-md">
+                      <table className="w-full md:w-[calc(100% + 4rem)] border border-gray-200 rounded-md overflow-hidden">
                         <thead className="bg-gray-50 dark:bg-gray-800">
                           <tr className="text-gray-400">
                             <th className="py-2 px-4 text-center">Sr.No.</th>
@@ -66,13 +66,12 @@ export default function Workers() {
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-200">
-                          <TableRow id="1" name="John Doe" email="john@example.com" conatct="122" post="man" />
-                          <TableRow id="1" name="John Doe" email="john@example.com" conatct="122" post="man" />
-                          <TableRow id="1" name="John Doe" email="john@example.com" conatct="122" post="man" />
-                          <TableRow id="1" name="John Doe" email="john@example.com" conatct="122" post="man" />
-                          <TableRow id="1" name="John Doe" email="john@example.com" conatct="122" post="man" />
-                          <TableRow id="1" name="John Doe" email="john@example.com" conatct="122" post="man" />
-        
+                          <TableRow id="1" name="John Doe" email="john@example.com" contact="122" post="man" />
+                          <TableRow id="2" name="Jane Smith" email="jane@example.com" contact="456" post="woman" />
+                          <TableRow id="3" name="Bob Johnson" email="bob@example.com" contact="789" post="man" />
+                          <TableRow id="4" name="Alice Williams" email="alice@example.com" contact="321" post="woman" />
+                          <TableRow id="5" name="Tom Davis" email="tom@example.com" contact="654" post="man" />
+                          <TableRow id="6" name="Sarah Wilson" email="sarah@example.com" contact="987" post="woman" />
                         </tbody>
                       </table>
                     </div>
@@ -89,14 +88,12 @@ export default function Workers() {
 
 function TableRow({ id, name, email, contact, post }) {
   return (
-    <tr className="text-gray-200">
-      <td className="py-2 px-4 text-center">{id}</td>
-      <td className="py-2 px-4 text-center">{name}</td>
-      <td className="py-2 px-4 text-center">{email}</td>
-      <td className="py-2 px-4 text-center">{contact}</td>
-      <td className="py-2 px-4 text-center">{post}</td>
-      
-      
+    <tr className="text-gray-200 bg-gray-800 rounded-lg my-4">
+      <td className="py-4 px-4 text-center rounded-l-lg">{id}</td>
+      <td className="py-4 px-4 text-center">{name}</td>
+      <td className="py-4 px-4 text-center">{email}</td>
+      <td className="py-4 px-4 text-center">{contact}</td>
+      <td className="py-4 px-4 text-center rounded-r-lg">{post}</td>
     </tr>
   );
 }

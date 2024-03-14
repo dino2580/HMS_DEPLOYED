@@ -5,14 +5,10 @@ import Dashboard from "./components/Dashboard";
 import Announcement from "./components/Announcement";
 import Home from "./components/Home";
 import Login from "./components/Loginpage";
-<<<<<<< Updated upstream
 import SignUp from "./components/Signuppage";
-=======
-import SignUp from "./Signuppage";
 import Student from "./components/Student";
 import Complaints from "./components/Complaints";
 import Workers from "./components/Workers";
->>>>>>> Stashed changes
 
 function App() {
   const handleSubmit = async (formData) => {

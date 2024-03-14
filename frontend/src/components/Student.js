@@ -55,7 +55,7 @@ export default function Student() {
                       <input className="pl-8 w-full md:w-[400px] border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white dark:bg-gray-900 dark:text-gray-100" placeholder="Search..." type="search" />
                     </div>
                     <div>
-                      <table className="w-full md:w-[calc(100% + 4rem)] border border-gray-200 rounded-md ">
+                      <table className="w-full md:w-[calc(100% + 4rem)] border border-gray-200 rounded-md overflow-hidden">
                         <thead className="bg-gray-50 dark:bg-gray-800">
                           <tr className="text-gray-400">
                             <th className="py-2 px-4 text-center">Sr.No.</th>
@@ -68,20 +68,20 @@ export default function Student() {
                         </thead>
                         <tbody className="divide-y divide-gray-200">
                           <TableRow id="1" name="John Doe" email="john@example.com" Roll="122" Room="A102" />
-                          <TableRow id="2" name="Jane Smith" email="jane@example.com" Roll="115"Room="A102" />
-                          <TableRow id="3" name="Robert Johnson" email="robert@example.com" Roll="111"Room="A102" />
-                          <TableRow id="4" name="Alice Brown" email="alice@example.com" Roll="110"Room="A102" />
-                          <TableRow id="5" name="David Lee" email="david@example.com" Roll="113" Room="A102"/>
-                          <TableRow id="1" name="John Doe" email="john@example.com" Roll="122" Room="A102"/>
-                          <TableRow id="2" name="Jane Smith" email="jane@example.com" Roll="115"Room="A102" />
-                          <TableRow id="3" name="Robert Johnson" email="robert@example.com" Roll="111"Room="A102" />
-                          <TableRow id="4" name="Alice Brown" email="alice@example.com" Roll="110"Room="A102" />
-                          <TableRow id="5" name="David Lee" email="david@example.com" Roll="113"Room="A102" />
-                          <TableRow id="1" name="John Doe" email="john@example.com" Roll="122" Room="A102"/>
-                          <TableRow id="2" name="Jane Smith" email="jane@example.com" Roll="115"Room="A102" />
-                          <TableRow id="3" name="Robert Johnson" email="robert@example.com" Roll="111"Room="A102" />
-                          <TableRow id="4" name="Alice Brown" email="alice@example.com" Roll="110" Room="A102"/>
-                          <TableRow id="5" name="David Lee" email="david@example.com" Roll="113"Room="A102" />
+                          <TableRow id="2" name="Jane Smith" email="jane@example.com" Roll="115" Room="A102" />
+                          <TableRow id="3" name="Robert Johnson" email="robert@example.com" Roll="111" Room="A102" />
+                          <TableRow id="4" name="Alice Brown" email="alice@example.com" Roll="110" Room="A102" />
+                          <TableRow id="5" name="David Lee" email="david@example.com" Roll="113" Room="A102" />
+                          <TableRow id="6" name="John Doe" email="john@example.com" Roll="122" Room="A102" />
+                          <TableRow id="7" name="Jane Smith" email="jane@example.com" Roll="115" Room="A102" />
+                          <TableRow id="8" name="Robert Johnson" email="robert@example.com" Roll="111" Room="A102" />
+                          <TableRow id="9" name="Alice Brown" email="alice@example.com" Roll="110" Room="A102" />
+                          <TableRow id="10" name="David Lee" email="david@example.com" Roll="113" Room="A102" />
+                          <TableRow id="11" name="John Doe" email="john@example.com" Roll="122" Room="A102" />
+                          <TableRow id="12" name="Jane Smith" email="jane@example.com" Roll="115" Room="A102" />
+                          <TableRow id="13" name="Robert Johnson" email="robert@example.com" Roll="111" Room="A102" />
+                          <TableRow id="14" name="Alice Brown" email="alice@example.com" Roll="110" Room="A102" />
+                          <TableRow id="15" name="David Lee" email="david@example.com" Roll="113" Room="A102" />
                         </tbody>
                       </table>
                     </div>
@@ -95,15 +95,16 @@ export default function Student() {
     </div>
   );
 }
+
 function TableRow({ id, name, email, Roll, Room }) {
   return (
-    <tr className="text-gray-200 rounded-lg  overflow-hidden">
-      <td className="py-2 px-4 text-center">{id}</td>
-      <td className="py-2 px-4 text-center">{name}</td>
-      <td className="py-2 px-4 text-center">{email}</td>
-      <td className="py-2 px-4 text-center">{Roll}</td>
-      <td className="py-2 px-4 text-center">{Room}</td>
-      <td className="py-2 px-4 text-center">
+    <tr className="text-gray-200 bg-gray-800 rounded-lg my-4">
+      <td className="py-4 px-4 text-center rounded-l-lg">{id}</td>
+      <td className="py-4 px-4 text-center">{name}</td>
+      <td className="py-4 px-4 text-center">{email}</td>
+      <td className="py-4 px-4 text-center">{Roll}</td>
+      <td className="py-4 px-4 text-center">{Room}</td>
+      <td className="py-4 px-4 text-center rounded-r-lg">
         <button className="flex items-center justify-center text-blue-500 hover:text-blue-700">
           <FontAwesomeIcon icon={faEdit} className="h-5 w-5 mr-1" />
           Edit
@@ -112,5 +113,3 @@ function TableRow({ id, name, email, Roll, Room }) {
     </tr>
   );
 }
-
-

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartBar, faUsers, faSadTear, faFileAlt, faUsersCog, faSearch, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -55,32 +55,23 @@ export default function Complaints() {
                       <input className="pl-8 w-full md:w-[400px] border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white dark:bg-gray-900 dark:text-gray-100" placeholder="Search..." type="search" />
                     </div>
                     <div>
-                      <table className="w-full md:w-[calc(100% + 4rem)] border border-gray-200 rounded-md">
+                      <table className="w-full md:w-[calc(100% + 4rem)] border border-gray-200 rounded-md overflow-hidden">
                         <thead className="bg-gray-50 dark:bg-gray-800">
                           <tr className="text-gray-400">
                             <th className="py-2 px-4 text-center">Sr.No.</th>
-                            <th className="py-2 px-4">Name</th>
-                            <th className="py-2 px-4">Email</th>
-                            <th className="py-2 px-4">Roll.no</th>
-                            <th className="py-2 px-4">Edit</th>
+                            <th className="py-2 px-4">Type</th>
+                            <th className="py-2 px-4">Id</th>
+                            <th className="py-2 px-4">Status</th>
+                            <th className="py-2 px-4">Problem Information</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-200">
-                          <TableRow id="1" name="John Doe" email="john@example.com" Roll="122" />
-                          <TableRow id="2" name="Jane Smith" email="jane@example.com" Roll="115" />
-                          <TableRow id="3" name="Robert Johnson" email="robert@example.com" Roll="111" />
-                          <TableRow id="4" name="Alice Brown" email="alice@example.com" Roll="110" />
-                          <TableRow id="5" name="David Lee" email="david@example.com" Roll="113" />
-                          <TableRow id="1" name="John Doe" email="john@example.com" Roll="122" />
-                          <TableRow id="2" name="Jane Smith" email="jane@example.com" Roll="115" />
-                          <TableRow id="3" name="Robert Johnson" email="robert@example.com" Roll="111" />
-                          <TableRow id="4" name="Alice Brown" email="alice@example.com" Roll="110" />
-                          <TableRow id="5" name="David Lee" email="david@example.com" Roll="113" />
-                          <TableRow id="1" name="John Doe" email="john@example.com" Roll="122" />
-                          <TableRow id="2" name="Jane Smith" email="jane@example.com" Roll="115" />
-                          <TableRow id="3" name="Robert Johnson" email="robert@example.com" Roll="111" />
-                          <TableRow id="4" name="Alice Brown" email="alice@example.com" Roll="110" />
-                          <TableRow id="5" name="David Lee" email="david@example.com" Roll="113" />
+                          <TableRow id="1" Type="Mess Related" Id="231" Status="Solved" problemDescription="The food served in the mess was not up to the standard. It was stale and tasteless." />
+                          <TableRow id="2" Type="Water Related" Id="231" Status="Pending" problemDescription="There is a water leakage issue in the hostel building. The leakage is causing water wastage and damaging the building structure." />
+                          <TableRow id="3" Type="Mess Related" Id="231" Status="Solved" problemDescription="The menu in the mess lacks variety. The same dishes are served repeatedly." />
+                          <TableRow id="4" Type="Mess Related" Id="231" Status="Solved" problemDescription="The food served in the mess was not up to the standard. It was stale and tasteless." />
+                          <TableRow id="5" Type="Water Related" Id="231" Status="Pending" problemDescription="There is a water leakage issue in the hostel building. The leakage is causing water wastage and damaging the building structure." />
+                          <TableRow id="6" Type="Mess Related" Id="231" Status="Solved" problemDescription="The menu in the mess lacks variety. The same dishes are served repeatedly." />
                         </tbody>
                       </table>
                     </div>
@@ -95,18 +86,41 @@ export default function Complaints() {
   );
 }
 
-function TableRow({ id, name, email, Roll }) {
+function TableRow({ id, Type, Id, Status, problemDescription }) {
+  const [showFullDescription, setShowFullDescription] = useState(false);
+
+  const handleReadMore = () => {
+    setShowFullDescription(!showFullDescription);
+  };
+
   return (
-    <tr className="text-gray-200">
-      <td className="py-2 px-4 text-center">{id}</td>
-      <td className="py-2 px-4 text-center">{name}</td>
-      <td className="py-2 px-4 text-center">{email}</td>
-      <td className="py-2 px-4 text-center">{Roll}</td>
-      <td className="py-2 px-4 text-center">
-        <button className="flex items-center justify-center text-blue-500 hover:text-blue-700">
-          <FontAwesomeIcon icon={faEdit} className="h-5 w-5 mr-1" />
-          Edit
-        </button>
+    <tr className="text-gray-200 bg-gray-800 rounded-lg my-4">
+      <td className="py-2 px-4 text-center rounded-l-lg">{id}</td>
+      <td className="py-2 px-4 text-center">{Type}</td>
+      <td className="py-2 px-4 text-center">{Id}</td>
+      <td className="py-2 px-4 text-center">{Status}</td>
+      <td className="py-2 px-4 text-center relative rounded-r-lg">
+        {showFullDescription ? (
+          <div>
+            <p>{problemDescription}</p>
+            <button
+              className="text-blue-500 hover:text-blue-700 mt-2"
+              onClick={handleReadMore}
+            >
+              Read Less
+            </button>
+          </div>
+        ) : (
+          <div>
+            <p>{`${problemDescription.slice(0, 50)}...`}</p>
+            <button
+              className="text-blue-500 hover:text-blue-700"
+              onClick={handleReadMore}
+            >
+              Read More
+            </button>
+          </div>
+        )}
       </td>
     </tr>
   );
