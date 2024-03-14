@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartBar, faUsers, faSadTear, faFileAlt, faUsersCog, faPlus } from '@fortawesome/free-solid-svg-icons';
 import ComplaintForm from './ComplaintForm';
+import Student from './Student';
+import { Link } from 'react-router-dom';
 
 function Dashboard() {
     const totalComplaints = 50;
@@ -16,7 +18,7 @@ function Dashboard() {
     };
 
     return (
-        <div className="px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
+        <div className="h-100vh px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
         <div className="container mx-auto ">
             <div className="flex justify-center items-start gap-8">
                 <nav className="w-1/5 md:w-1/4 h-full bg-gray-800 p-8 rounded-lg">
@@ -25,21 +27,27 @@ function Dashboard() {
                             <FontAwesomeIcon className="mr-2" icon={faChartBar} />
                             Analytics
                         </li>
-                        <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
+                        <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md" >
+                        <Link to="/Student" className="flex items-center text-white">
                             <FontAwesomeIcon className="mr-2" icon={faUsers} />
-                            Students
+                                Students
+                            </Link>
                         </li>
-                        <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
-                            <FontAwesomeIcon className="mr-2" icon={faSadTear} />
-                            Complaints
+                        <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md" >
+                        <Link to="/Complaints" className="flex items-center text-white">
+                            <FontAwesomeIcon className="mr-2" icon={faUsers} />
+                                Complaints
+                            </Link>
                         </li>
                         <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
                             <FontAwesomeIcon className="mr-2" icon={faFileAlt} />
                             Fee Details
                         </li>
-                        <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
-                            <FontAwesomeIcon className="mr-2" icon={faUsersCog} />
-                            Workers Details
+                        <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md" >
+                        <Link to="/Workers" className="flex items-center text-white">
+                            <FontAwesomeIcon className="mr-2" icon={faUsers} />
+                                Workers Details 
+                            </Link>
                         </li>
                     </ul>
                 </nav>

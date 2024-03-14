@@ -57,7 +57,11 @@ const SignUp = () => {
   };
 
   return (
+<<<<<<< Updated upstream:frontend/src/components/Signuppage.js
     <div className="px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
+=======
+    <div className=" h-100vh px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
+>>>>>>> Stashed changes:frontend/src/Signuppage.js
       <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
         <div className="flex justify-center items-center">
           <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
