@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const announcementSchema = new mongoose.Schema({
     announcement_id:{
         type:Number,
-        required:true,
+        default:0
     },
     user_name:{
     type:String,

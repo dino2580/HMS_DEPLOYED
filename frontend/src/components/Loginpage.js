@@ -21,15 +21,15 @@ const Login = ({handleSubmit}) => {
   };
 
   return (
-    <div className="h-100vh px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
-      <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+    <div className="min-h-full px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900 flex justify-center items-center">
+      <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white ">
         <div className="flex justify-center items-center">
-          <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
+          <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-700">
             Welcome to Visvesvaraya Bhawan H-10
           </h2>
         </div>
         <div className="flex justify-center items-center">
-          <p className="text-neutral-600 text-sm max-w-sm mt-2  font-bold text-gray-800 dark:text-neutral-300">
+          <p className="text-neutral-600 text-sm max-w-sm mt-2  font-bold text-gray-800 dark:text-neutral-700">
             We are happy to see you in NIT KURUKSHETRA
           </p>
         </div>

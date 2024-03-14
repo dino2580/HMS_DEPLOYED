@@ -86,7 +86,7 @@ export default function Announcement() {
   };
 
   return (
-    <div className="h-100vh px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
+    <div className="h-[92.2vh] px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
       <div className="grid max-w-5xl gap-6 mx-auto lg:grid-cols-2 lg:gap-12">
         <div className="space-y-4 lg:order-2 lg:col-start-2">
           <div className="space-y-2">
