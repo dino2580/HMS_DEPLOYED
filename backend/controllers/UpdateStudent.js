@@ -33,4 +33,9 @@ const updateStudent = async (req, res) => {
         return res.status(500).json({ err: "Error in Student Updatation" });
     }   
 };
+
+
+
+
+
 module.exports=updateStudent;

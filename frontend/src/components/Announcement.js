@@ -21,6 +21,7 @@ export default function Announcement() {
     "Friday",
     "Saturday",
   ];
+  const [announcementData, setAnnouncementData] = useState([]);
   const dayIndex = currentDate.getDay();
   // console.log(daysOfWeek[dayIndex]);
 
@@ -28,6 +29,33 @@ export default function Announcement() {
     const hostel_no=localStorage.getItem('hostel_no');
     // setHostelNo(hostel_no);
     // console.log("hey"+hostel_no);
+    const fetchAnnouncement = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/auth/getannouncements",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ hostel_no:hostel_no}),
+            credentials: "include",
+          }
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setAnnouncementData(data);
+          //console.log(data);
+          
+        } else {
+          console.error("Failed to fetch menu:", response.statusText);
+        }
+      } catch (error) {
+        console.error("Error fetching menu:", error);
+      }
+    };
+   
     const fetchMenu = async () => {
       try {
         const response = await fetch(
@@ -55,7 +83,7 @@ export default function Announcement() {
     };
 
     fetchMenu(); // Fetch menu initially
-
+    fetchAnnouncement();
     const intervalId = setInterval(() => {
       const currentDateWithOffset = new Date();
       const offsetInMinutes = currentDateWithOffset.getTimezoneOffset();
@@ -78,12 +106,35 @@ export default function Announcement() {
     const year = date.getFullYear().toString().slice(-2);
     return `${day}/${month}/${year}`;
   };
-  const problemDescription ="SEEDHI SI BAAT HAI NAYA RULE YE HAI KI NET NHI AAYEGA JO KARNA HAI KR LO JITNA NET CHALANA HAI CHALA LO ABHI";
-  const [showFullDescription, setShowFullDescription] = useState(false);
-
-  const handleReadMore = () => {
-    setShowFullDescription(!showFullDescription);
+  const calculateTimeElapsed = (createdAt) => {
+    const postedDate = new Date(createdAt);
+    const currentDate = new Date();
+    const timeDifference = Math.abs(currentDate - postedDate);
+  
+    const seconds = Math.floor(timeDifference / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+  
+    if (days > 0) {
+      return `${days} day${days > 1 ? 's' : ''} ago`;
+    } else if (hours > 0) {
+      return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+    } else if (minutes > 0) {
+      return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+    } else {
+      return 'Just now';
+    }
   };
+  const problemDescription ="SEEDHI SI BAAT HAI NAYA RULE YE HAI KI NET NHI AAYEGA JO KARNA HAI KR LO JITNA NET CHALANA HAI CHALA LO ABHI";
+  
+
+  const [expandedAnnouncement, setExpandedAnnouncement] = useState(null);
+
+  const handleReadMore = (index) => {
+    setExpandedAnnouncement(index === expandedAnnouncement ? null : index);
+  };
+  
 
   return (
     <div className="h-[92.2vh] px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
@@ -153,87 +204,37 @@ export default function Announcement() {
           </div>
         </div>
         <div className="space-y-4">
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl text-white dark:text-gray-100">
-              Announcements
-            </h1>
-          </div>
-          <div className="space-y-6">
-            <div className="space-y-2">
-              <h2 className="text-2xl font-bold text-white dark:text-gray-100">
-                New House Rules for Common Room
-              </h2>
-              
-              <p className="text-gray-300 dark:text-gray-400">
-                Posted 2 hours ago
-              </p>
-            </div>
-            <div className="border-t border-gray-200 dark:border-gray-800" />
-            <div className="space-y-2">
-              <h2 className="text-2xl font-bold text-white dark:text-gray-100">
-                New House Rules for Common Room
-              </h2>
-              <p className="text-gray-300 dark:text-gray-400">
-                Posted 2 hours ago
-              </p>
-            </div>
-            <div className="border-t border-gray-200 dark:border-gray-800" />
-            <div className="space-y-2">
-              <h2 className="text-2xl font-bold text-white dark:text-gray-100">
-                New House Rules for Common Room
-              </h2>
-              
-              {showFullDescription ? (
-          <div>
-            <p className="text-gray-300">
-            {problemDescription}</p>
-            <button
-              className="text-blue-500 hover:text-blue-700 mt-2"
-              onClick={handleReadMore}
-            >
-              Read Less
-            </button>
-          </div>
-        ) : (
-          <div>
-
-            <FontAwesomeIcon className="mr-2" icon={faEye} style={{ color: 'gray' }} />
-            <button
-            
-              className="text-blue-500 hover:text-blue-700"
-              onClick={handleReadMore}
-            >
-              View More
-            </button>
-          </div>
-        )}
-
-              <p className="text-gray-300 dark:text-gray-400">
-                Posted 2 hours ago
-              </p>
-            </div>
-            <div className="border-t border-gray-200 dark:border-gray-800" />
-
-            <div className="space-y-2">
-              <h2 className="text-2xl font-bold text-white dark:text-gray-100">
-                Upcoming Trip to the Mountains
-              </h2>
-              <p className="text-gray-300 dark:text-gray-400">
-                Posted 1 day ago
-              </p>
-            </div>
-            <div className="border-t border-gray-200 dark:border-gray-800" />
-            <div className="space-y-2">
-              <h2 className="text-2xl font-bold text-white dark:text-gray-100">
-                Movie Night in the Hostel Auditorium
-              </h2>
-              <p className="text-gray-300 dark:text-gray-400">
-                Posted 3 days ago
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div>    
+  <h1 className="text-2xl font-bold text-white dark:text-gray-100">Announcements</h1> 
+  {announcementData.map((announcement, index) => (
+    <div key={index} className="space-y-2">
+      <h2 className="text-2xl font-bold text-white dark:text-gray-100">
+        {announcement.title}
+      </h2>
+      <p className="text-gray-300 dark:text-gray-400">
+        {announcement.updatedAt===announcement.createdAt?"Created":"Updated"} {calculateTimeElapsed(announcement.updatedAt)} 
+      </p>
+      {announcement.announcement_message ? (
+  <div>
+    <p className="text-gray-300">
+      {expandedAnnouncement === index
+        ? announcement.announcement_message
+        :""}
+    </p>
+    <button
+      className="text-blue-500 hover:text-blue-700 mt-2"
+      onClick={() => handleReadMore(index)}
+    >
+      {expandedAnnouncement === index ? "Read Less" : "View More"}
+    </button>
+  </div>
+) : null}
+      <div className="border-t border-gray-200 dark:border-gray-800" />
     </div>
-  );
+  ))}
+</div>
+</div>
+</div>
+</div>
+);
 }

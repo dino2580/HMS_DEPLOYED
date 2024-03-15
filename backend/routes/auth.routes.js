@@ -6,6 +6,8 @@ const { getMenu } = require('../controllers/GetMenu');
 const addHostel = require('../controllers/Hostelscontroller');
 const createAnnouncement = require('../controllers/CreateAnnouncement');
 const getAnnouncements = require('../controllers/GetAnnouncement');
+const getStudent = require('../controllers/GetStudent');
+const updateStudent = require('../controllers/UpdateStudent');
 
 const router = express.Router();
 router.post("/signup",signUp)
@@ -15,7 +17,8 @@ router.post("/complaint",Complaint);
 router.post("/setmenu",menu);
 router.post("/getmenu",getMenu);
 router.post("/addhostel",addHostel);
-router.get("/getStudent",)
+router.get("/getStudent:hostel_no",getStudent);
+router.post("/updateStudent",updateStudent);
 router.post("/createannouncement",createAnnouncement);
 router.post('/getannouncements', getAnnouncements);
 module.exports =router;

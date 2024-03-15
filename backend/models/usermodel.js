@@ -54,11 +54,7 @@ const userSchema = new mongoose.Schema({
     type:String,
     default:"0"
    },
-   hostel_id:
-   {
-    type:String,
-    default:"0"
-   },
+ 
 
    
 });

@@ -1,9 +1,36 @@
-import React from 'react';
+import React, { useEffect ,useState} from 'react';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartBar, faUsers, faSadTear, faFileAlt, faUsersCog, faSearch, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
+
 export default function Student() {
+  const [studentsData, setStudentsData] = useState([]);
+
+  const fetchStudent = async (hostel_no) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/auth/getStudent${hostel_no}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setStudentsData(data); // Update state with fetched data
+      } else {
+        console.error(response.statusText);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    fetchStudent("H10");
+  }, []); // Empty dependency array ensures the effect runs only once when the component mounts
+
   return (
     <div className="h-100vh px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
       <div className="container mx-auto">
@@ -67,21 +94,16 @@ export default function Student() {
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-200">
-                          <TableRow id="1" name="John Doe" email="john@example.com" Roll="122" Room="A102" />
-                          <TableRow id="2" name="Jane Smith" email="jane@example.com" Roll="115" Room="A102" />
-                          <TableRow id="3" name="Robert Johnson" email="robert@example.com" Roll="111" Room="A102" />
-                          <TableRow id="4" name="Alice Brown" email="alice@example.com" Roll="110" Room="A102" />
-                          <TableRow id="5" name="David Lee" email="david@example.com" Roll="113" Room="A102" />
-                          <TableRow id="6" name="John Doe" email="john@example.com" Roll="122" Room="A102" />
-                          <TableRow id="7" name="Jane Smith" email="jane@example.com" Roll="115" Room="A102" />
-                          <TableRow id="8" name="Robert Johnson" email="robert@example.com" Roll="111" Room="A102" />
-                          <TableRow id="9" name="Alice Brown" email="alice@example.com" Roll="110" Room="A102" />
-                          <TableRow id="10" name="David Lee" email="david@example.com" Roll="113" Room="A102" />
-                          <TableRow id="11" name="John Doe" email="john@example.com" Roll="122" Room="A102" />
-                          <TableRow id="12" name="Jane Smith" email="jane@example.com" Roll="115" Room="A102" />
-                          <TableRow id="13" name="Robert Johnson" email="robert@example.com" Roll="111" Room="A102" />
-                          <TableRow id="14" name="Alice Brown" email="alice@example.com" Roll="110" Room="A102" />
-                          <TableRow id="15" name="David Lee" email="david@example.com" Roll="113" Room="A102" />
+                        {studentsData.map((student, index) => (
+        <TableRow
+          key={index}
+          id={index+1}
+          name={student.full_name}
+          email={student.email}
+          Roll={student.roll_no}
+          Room={student.room_number}
+        />
+      ))}
                         </tbody>
                       </table>
                     </div>

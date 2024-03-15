@@ -8,6 +8,8 @@ const signUp = async (req, res) => {
     console.log("Inside Signup");
     try {
         const { full_name, roll_no, email, password, confirm_password, gender, date_of_joining } = req.body;
+        console.log(password);
+        console.log(confirm_password);
         if (password !== confirm_password) {
             return res.status(400).json({ err: "Passwords don't match" });
         }
