@@ -39,9 +39,11 @@ function Dashboard() {
                                 Complaints
                             </Link>
                         </li>
-                        <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
-                            <FontAwesomeIcon className="mr-2" icon={faFileAlt} />
-                            Fee Details
+                        <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md" >
+                        <Link to="/FeeDetails" className="flex items-center text-white">
+                            <FontAwesomeIcon className="mr-2" icon={faUsers} />
+                                Fee Details
+                            </Link>
                         </li>
                         <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md" >
                         <Link to="/Workers" className="flex items-center text-white">

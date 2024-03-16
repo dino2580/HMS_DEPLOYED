@@ -9,6 +9,8 @@ import SignUp from "./components/Signuppage";
 import Student from "./components/Student";
 import Complaints from "./components/Complaints";
 import Workers from "./components/Workers";
+import FeeDetails from "./components/FeeDetails";
+import Footer from "./components/Footer";
 
 function App() {
   const handleSubmit = async (formData) => {
@@ -106,7 +108,9 @@ function App() {
           <Route path="/Student" element={<Student/>}/> 
           <Route path="/Complaints" element={<Complaints/>}/> 
           <Route path="/Workers" element={<Workers/>}/> 
+          <Route path="/FeeDetails" element={<FeeDetails/>}/> 
         </Routes>
+        <Footer/>
       </Router>
     </div>
   );
