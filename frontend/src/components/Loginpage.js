@@ -21,54 +21,66 @@ const Login = ({handleSubmit}) => {
   };
 
   return (
-    <div className="px-4 py-6 min-h-svh md:px-6 xl:py-12 2xl:py-20 bg-gradient-to-br from-gray-800 to-gray-900">
-      <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
-      <div className="flex justify-center items-center">
-        <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
-          Welcome back !
-        </h2>
+    <div className="min-h-full px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900 flex justify-center items-center">
+      <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white ">
+        <div className="flex justify-center items-center">
+          <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-700">
+            Welcome to Visvesvaraya Bhawan H-10
+          </h2>
         </div>
         <div className="flex justify-center items-center">
-        <p className="text-neutral-600 text-sm max-w-sm mt-2  font-bold  dark:text-neutral-300">
-        Step into your hostel life. Login and make memories!
-        </p>
+          <p className="text-neutral-600 text-sm max-w-sm mt-2  font-bold text-gray-800 dark:text-neutral-700">
+            We are happy to see you in NIT KURUKSHETRA
+          </p>
         </div>
 
-        <form className="my-8" onSubmit={handleSubmit}>
+        <form className="my-8" onSubmit={handleFormSubmit}>
           <div className="flex flex-col space-y-2 mb-4">
-            <label htmlFor="email"  className="text-sm font-bold text-neutral-700">Email Address</label>
-            <input 
-              id="email" 
+            <label
+              htmlFor="email"
+              className="text-sm font-bold text-neutral-700"
+            >
+              Email Address
+            </label>
+            <input
+              id="email"
               name="email"
-              type="email" 
-              placeholder="myprofile@gmail.com" 
-              value={formData.email} 
-              onChange={handleChange} 
-              className="input-field rounded-full px-4 py-1  focus:border-gray-800 transition duration-300 ease-in-out" 
-              required 
+              type="email"
+              placeholder="myprofile@gmail.com"
+              value={formData.email}
+              onChange={handleChange}
+              className="input-field focus:border-gray-800 transition duration-300 ease-in-out"
+              required
             />
           </div>
-
           <div className="flex flex-col space-y-2 mb-4">
-            <label htmlFor="password"  className="text-sm font-bold text-neutral-700">Password </label>
-            <input 
-              id="password" 
+            <label
+              htmlFor="password"
+              className="text-sm font-bold text-neutral-700"
+            >
+              Password (min. 8 characters)
+            </label>
+            <input
+              id="password"
               name="password"
-              type="password" 
-              placeholder="••••••••" 
-              value={formData.password} 
-              onChange={handleChange} 
-              className="input-field rounded-full px-4 py-1  focus:border-gray-800 transition duration-300 ease-in-out hover:shadow-md" 
-              minLength="8" 
-              required 
+              type="password"
+              placeholder="••••••••"
+              value={formData.password}
+              onChange={handleChange}
+              className="input-field focus:border-gray-800 transition duration-300 ease-in-out"
+              minLength="8"
+              required
             />
           </div>
 
           <div className="flex justify-center items-center">
-  <button className="btn bg-gradient-to-br from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 text-white hover:text-white font-medium py-3 px-6 rounded-md shadow-md transition duration-300 ease-in-out" type="submit">
-    Login &rarr;
-  </button>
-</div>
+            <button
+              className="btn bg-gradient-to-br from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 text-white hover:text-white font-medium py-3 px-6 rounded-md shadow-md transition duration-300 ease-in-out"
+              type="submit"
+            >
+              Login&rarr;
+            </button>
+          </div>
         </form>
       </div>
     </div>

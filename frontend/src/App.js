@@ -3,17 +3,19 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
 import Announcement from './components/Announcement';
-import SignUpForm from './components/SignUp';
+import SignUp from "./components/Signuppage";
 // import Signup from './components/Signup';
 import Home from './components/Home';
 import Login from './components/Loginpage';
-import SignUp from './components/SignUp';
+// import SignUp from './components/SignUp';
 import RoomList from './components/RoomList';
 import Contact from './components/Contact';
-
+import Complaints from "./components/Complaints";
+import Workers from "./components/Workers";
+import FeeDetails from "./components/FeeDetails";
+import Footer from "./components/Footer";
 function App() {
-
-  const handleSubmit = async ( formData ) => {
+  const handleSubmit = async (formData) => {
     // event.preventDefault();
     const { email, password } = formData;
 
@@ -46,28 +48,30 @@ function App() {
           // Check if the user is admin
 
           const extractValuesFromJWT = (jwtToken) => {
-            const tokenParts = jwtToken.split('.');
+            const tokenParts = jwtToken.split(".");
             if (tokenParts.length !== 3) {
-              throw new Error('Invalid JWT token');
+              throw new Error("Invalid JWT token");
             }
             const base64Payload = tokenParts[1];
             const decodedPayload = atob(base64Payload);
             const payloadObj = JSON.parse(decodedPayload);
             return payloadObj;
           };
-          
+
           // Example usage:
           const payload = extractValuesFromJWT(jwtToken);
-          
+
           console.log("Decoded Payload:", payload);
           console.log("Email:", payload.email);
           console.log("Is admin:", payload.admin);
-          localStorage.setItem('cookie',jwtCookie);
-          localStorage.setItem('Email',payload.email);
-          localStorage.setItem('admin',payload.admin);
-          console.log(localStorage.getItem('admin'));
-  const isAdmin = localStorage.getItem('admin') === 'true';
-          
+          localStorage.setItem("cookie", jwtCookie);
+          localStorage.setItem("Email", payload.email);
+          localStorage.setItem("admin", payload.admin);
+          localStorage.setItem("hostel_no", payload.hostel_no);
+          console.log(localStorage.getItem("admin"));
+          console.log(localStorage.getItem("hostel_no"));
+          const isAdmin = localStorage.getItem("admin") === "true";
+
           if (isAdmin) {
             // Redirect to the admin dashboard
             window.location.href = "/dashboard";
@@ -95,14 +99,19 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/announcement" element={<Announcement />} /> 
-          <Route path="/profile" element={<SignUpForm />} />
+          <Route path="/announcement" element={<Announcement />} />
+          {/* <Route path="/profile" element={<SignUpForm />} /> */}
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login handleSubmit={handleSubmit} />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/Student" element={<Student/>}/> 
+          <Route path="/Complaints" element={<Complaints/>}/> 
+          <Route path="/Workers" element={<Workers/>}/> 
+          <Route path="/FeeDetails" element={<FeeDetails/>}/> 
           <Route path='/rooms' element= {<RoomList/>} ></Route>
           <Route path='/contact' element={<Contact/> }/>
         </Routes>
+        <Footer/>
       </Router>
     </div>
   );

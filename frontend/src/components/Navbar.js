@@ -20,8 +20,8 @@ function Navbar() {
     setIsOpen(!isOpen);
   };
   return (
-    <nav className="bg-gray-800 p-4">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+    <nav className="bg-gray-800 p-4 border-b  ">
+      <div className="navbar-items max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <a href="#" className="text-white text-lg font-bold">
             Logo
@@ -53,7 +53,7 @@ function Navbar() {
               <NavLink
                 to="/dashboard"
                 activeClassName="text-indigo-600"
-                className="text-white hover:text-gray-300 hover:border border-gray-300 rounded-full px-2 py-1 flex items-center"
+                className="text-white border border-gray-800 hover:text-gray-300 hover:border-gray-300 rounded-full px-2 py-1 flex items-center"
               >
                 <FontAwesomeIcon icon={faChartLine} className="mr-1" />
                 adminDashboard
@@ -61,20 +61,23 @@ function Navbar() {
             </li>
           )}
           <li>
+            {/* <div  className="h-[50px]"> */}
             <NavLink
               to="/rooms"
               activeClassName="text-indigo-600"
-              className="text-white hover:text-gray-300 hover:border border-gray-300 rounded-full px-2 py-1 flex items-center"
+              className="text-white border border-gray-800 hover:text-gray-300 hover:border-gray-300 rounded-full px-2 py-1 flex items-center"
             >
               <FontAwesomeIcon icon={faBed} className="mr-1" />
               Rooms
             </NavLink>
+            {/* </div> */}
           </li>
-          <li>
+          <li style={{width:"max-content"}}>
             <NavLink
               to="/announcement"
               activeClassName="text-indigo-600"
-              className="text-white hover:text-gray-300 hover:border border-gray-300 rounded-full px-2 py-1 flex items-center"
+              className="text-white border border-gray-800 hover:text-gray-300 hover:border-gray-300 rounded-full px-2 py-1 flex items-center"
+              
             >
               <FontAwesomeIcon icon={faScroll} className="mr-1" />
               Announcements
@@ -84,7 +87,7 @@ function Navbar() {
             <NavLink
               to="/home"
               activeClassName="text-indigo-600"
-              className="text-white hover:text-gray-300 hover:border border-gray-300 rounded-full px-2 py-1 flex items-center"
+              className="text-white border border-gray-800 hover:text-gray-300 hover:border-gray-300 rounded-full px-2 py-1 flex items-center"
             >
               <FontAwesomeIcon icon={faAddressBook} className="mr-1" />
               Contact
@@ -94,7 +97,7 @@ function Navbar() {
             <NavLink
               to="/profile"
               activeClassName="text-indigo-600"
-              className="text-white hover:text-gray-300 hover:border border-gray-300 rounded-full px-2 py-1 flex items-center"
+              className="text-white border border-gray-800 hover:text-gray-300 hover:border-gray-300 rounded-full px-2 py-1 flex items-center"
             >
               <FontAwesomeIcon icon={faUser} className="mr-1" />
               Profile
@@ -105,7 +108,7 @@ function Navbar() {
               <NavLink
                 to="/login"
                 activeClassName="text-indigo-600"
-                className="text-white hover:text-gray-300 hover:border border-gray-300 rounded-full px-2 py-1 flex items-center"
+                className="text-white border border-gray-800 hover:text-gray-300 hover:border-gray-300 rounded-full px-2 py-1 flex items-center"
               >
                 <FontAwesomeIcon icon={faSignIn} className="mr-1" />
                 Login
@@ -117,7 +120,7 @@ function Navbar() {
               <NavLink
                 to="/signUp"
                 activeClassName="text-indigo-600"
-                className="text-white hover:text-gray-300 hover:border border-gray-300 rounded-full px-2 py-1 flex items-center"
+                className="text-white border border-gray-800 hover:text-gray-300 hover:border-gray-300 rounded-full px-2 py-1 flex items-center"
               >
                 <FontAwesomeIcon icon={faSignIn} className="mr-1" />
                 Signup
@@ -130,7 +133,7 @@ function Navbar() {
               <label
                 htmlFor="hey"
                 activeClassName="text-indigo-600"
-                className="text-white hover:text-gray-300 hover:border border-gray-300 rounded-full px-2 py-1 flex items-center"
+                className="text-white border border-gray-800 hover:text-gray-300 hover:border-gray-300 rounded-full px-2 py-1 flex items-center"
                 onClick={async () => {
                   try {
                     const response = await fetch(
