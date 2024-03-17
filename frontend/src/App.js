@@ -8,7 +8,8 @@ import SignUpForm from './components/SignUp';
 import Home from './components/Home';
 import Login from './components/Loginpage';
 import SignUp from './components/SignUp';
-
+import RoomList from './components/RoomList';
+import Contact from './components/Contact';
 
 function App() {
 
@@ -99,6 +100,8 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login handleSubmit={handleSubmit} />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path='/rooms' element= {<RoomList/>} ></Route>
+          <Route path='/contact' element={<Contact/> }/>
         </Routes>
       </Router>
     </div>
