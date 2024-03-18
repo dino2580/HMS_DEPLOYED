@@ -11,6 +11,7 @@ const updateStudent = require('../controllers/UpdateStudent');
 const createMessage = require('../controllers/SendMessage');
 const getGroupMessage = require('../controllers/GetGroupMessage');
 const createGroup = require('../controllers/CreateGroup');
+const getGroups = require('../controllers/GetGroup');
 
 const router = express.Router();
 router.post("/signup",signUp)
@@ -26,5 +27,6 @@ router.post("/createannouncement",createAnnouncement);
 router.post('/getannouncements', getAnnouncements);
 router.post('/send',createMessage);
 router.post('/createGroup',createGroup);
-router.get('/getgroupmessage:group_id',getGroupMessage);
+router.get('/getgroup',getGroups);
+router.get('/getgroupmessages/:group_id',getGroupMessage);
 module.exports =router;

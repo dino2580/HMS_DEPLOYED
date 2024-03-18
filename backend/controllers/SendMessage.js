@@ -4,9 +4,9 @@ const MessageModel = require("../models/MessageModel");
 const createMessage = async (req, res) => {
     try {
         const { roll_no, message, group_id } = req.body;
-        console.log(group_id);
+        console.log(req.body);
         // Find the group based on group_id
-        const group = await GroupModel.findOne(group_id);
+        const group = await GroupModel.findOne({group_id:group_id});
         console.log(group);
         // If group is not found, return an error
         if (!group) {
