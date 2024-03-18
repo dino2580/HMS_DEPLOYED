@@ -15,6 +15,9 @@ import Workers from "./components/Workers";
 import FeeDetails from "./components/FeeDetails";
 import Footer from "./components/Footer";
 import Student from './components/Student';
+import ChatRoom from './components/Chatrooms';
+import chatgroup from './components/Chatgroup';
+import Chatgroup from './components/Chatgroup';
 function App() {
   const handleSubmit = async (formData) => {
     // event.preventDefault();
@@ -111,6 +114,8 @@ function App() {
           <Route path="/FeeDetails" element={<FeeDetails/>}/> 
           <Route path='/rooms' element= {<RoomList/>} ></Route>
           <Route path='/contact' element={<Contact/> }/>
+          <Route path='/chatgroup' element={<Chatgroup/>}/>
+          <Route path='/chatroom/:group_id' element={<ChatRoom/>}/>
         </Routes>
         <Footer/>
       </Router>
