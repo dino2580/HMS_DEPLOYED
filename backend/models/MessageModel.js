@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 const messageSchema = new mongoose.Schema({
-   roll_no:{
-    type:Number,
-    required:true,
+   user_id:{
+      type:mongoose.Schema.ObjectId,
+      ref:'User',
+      required:true,
    },
    message:{
     type:String,

@@ -65,13 +65,16 @@ function App() {
           // Example usage:
           const payload = extractValuesFromJWT(jwtToken);
 
-          console.log("Decoded Payload:", payload);
-          console.log("Email:", payload.email);
-          console.log("Is admin:", payload.admin);
+          // console.log("Decoded Payload:", payload);
+          // console.log("Email:", payload.email);
+          // console.log("Is admin:", payload.admin);
+          // console.log("Is admin:", payload.userId);
           localStorage.setItem("cookie", jwtCookie);
           localStorage.setItem("Email", payload.email);
           localStorage.setItem("admin", payload.admin);
           localStorage.setItem("hostel_no", payload.hostel_no);
+          localStorage.setItem("userId", payload.userId);
+          localStorage.setItem("full_name", payload.full_name);
           console.log(localStorage.getItem("admin"));
           console.log(localStorage.getItem("hostel_no"));
           const isAdmin = localStorage.getItem("admin") === "true";
@@ -116,6 +119,7 @@ function App() {
           <Route path='/contact' element={<Contact/> }/>
           <Route path='/chatgroup' element={<Chatgroup/>}/>
           <Route path='/chatroom/:group_id' element={<ChatRoom/>}/>
+          {/* <Route path='/logout' element={<Logou/>}/> */}
         </Routes>
         <Footer/>
       </Router>

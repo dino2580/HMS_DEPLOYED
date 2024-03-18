@@ -57,6 +57,8 @@ const login = async (req, res) => {
       
         const user = await User.findOne({ email });
         const hostel_no=user.hostel_no;
+        const userId=user._id;
+        const full_name=user.full_name;
         // console.log(user.hostel_no);
 
     
@@ -68,8 +70,8 @@ const login = async (req, res) => {
         if (!hashedPassword) {
             return res.status(401).json({ err: "Password is Incorrect" });
         }
-        if(user.admin) generateWebToken({email,admin:true,hostel_no},res);
-        else generateWebToken({email,admin:false,hostel_no},res);
+        if(user.admin) generateWebToken({email,admin:true,hostel_no,userId,full_name},res);
+        else generateWebToken({email,admin:false,hostel_no,userId,full_name},res);
         return res.status(201).json("Successful login");
     } catch (error) {
         console.error("Error in login:", error);
@@ -78,6 +80,7 @@ const login = async (req, res) => {
 };
 const logout = async (req, res) => {
     try {
+        console.log("logout")
         // Clear the JWT cookie
         res.clearCookie('jwt');
 

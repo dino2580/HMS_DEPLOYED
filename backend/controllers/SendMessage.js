@@ -3,7 +3,7 @@ const MessageModel = require("../models/MessageModel");
 
 const createMessage = async (req, res) => {
     try {
-        const { roll_no, message, group_id } = req.body;
+        const { user_id, message, group_id } = req.body;
         console.log(req.body);
         // Find the group based on group_id
         const group = await GroupModel.findOne({group_id:group_id});
@@ -16,7 +16,7 @@ const createMessage = async (req, res) => {
 
         // Create a new message
         const messageDoc = new MessageModel({
-            roll_no,
+            user_id,
             message,
             group_id
         });
