@@ -21,6 +21,7 @@ const ChatRoom = () => {
 
         // Listen for incoming messages from the server
         newSocket.on('message', (data) => {
+            console.log(data)
             setChatMessages(prevMessages => [...prevMessages, { ...data, timestamp: new Date() }]);
         });
 
@@ -58,12 +59,16 @@ const ChatRoom = () => {
         console.error('User ID is required');
         return;
     }
+    const full_name = localStorage.getItem('full_name');
 
     // Send message to the server with user_id included
-    socket.emit('message', { message: messageInput, group_id, user_id: currentUser });
+    socket.emit('message', { message: messageInput, group_id,user_id: { 
+        _id: currentUser, 
+        full_name: full_name 
+    }});
     
     // Get full name from localStorage
-    const full_name = localStorage.getItem('full_name');
+   
 
     // Update sender's chat messages locally with timestamp and user details
     const senderMessage = { 
@@ -115,20 +120,23 @@ const timeAgo = (timestamp) => {
 
     return (
         <div className="max-w-md mx-auto p-4 bg-white rounded-lg shadow-md">
-            <div className="text-2xl font-bold mb-4">Chat Room</div>
-            <div className="flex flex-col space-y-4">
-                {chatMessages.map((message, index) => (
-                    <div key={index} className={`flex items-center justify-${message.user_id._id === currentUser ? 'end' : 'start'}`}>
-                        {message.user_id._id !== currentUser && (
-                            <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center mr-2">{message.user_id.full_name}</div>
-                        )}
-                        <div className={`bg-gray-200 px-4 py-2 rounded-lg ${message.user_id._id === currentUser ? 'bg-green-200 self-end' : 'bg-gray-200 self-start'}`}>
-                            <div>{message.message}</div>
-                            <div className="text-xs text-gray-500">{timeAgo(message.createdAt?message.createdAt:0)}</div>
-                        </div>
-                    </div>
-                ))}
+            <div className="max-w-md mx-auto p-4 bg-white rounded-lg shadow-md">
+    <div className="text-2xl font-bold mb-4">Chat Room</div>
+    <div className="flex flex-col space-y-4">
+        {chatMessages.map((message, index) => (
+            <div key={index} className={`flex items-center justify-${(message.user_id && message.user_id._id === currentUser) ? 'end' : 'start'}`}>
+                {message.user_id && message.user_id._id !== currentUser && (
+                    <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center mr-2">{message.user_id.full_name}</div>
+                )}
+                <div className={`bg-gray-200 px-4 py-2 rounded-lg ${(message.user_id && message.user_id._id === currentUser) ? 'bg-green-200 self-end' : 'bg-gray-200 self-start'}`}>
+                    <div>{message.message}</div>
+                    <div className="text-xs text-gray-500">{timeAgo(message.createdAt ? message.createdAt : 0)}</div>
+                </div>
             </div>
+        ))}
+    </div>
+</div>
+
             <div className="flex">
                 <input 
                     type="text" 

@@ -45,11 +45,11 @@ io.on('connection', (socket) => {
 
     socket.on('message', async (data) => {
         try {
-            const { message, group_id, user_id,user_name } = data;
-            
+            const { message, group_id, user_id} = data;
+            console.log(user_id);
             // Check if user_id is present
-            if (!user_id) {
-                throw new Error('User ID is required');
+            if (!user_id || !user_id._id) {
+                throw new Error('User ID or _id is missing');
             }
     
             // Save message to MongoDB
@@ -60,7 +60,7 @@ io.on('connection', (socket) => {
             const newMessage = new MessageModel({
                 group_id,
                 message,
-                user_id
+                user_id:user_id._id
             });
 
            
@@ -75,10 +75,10 @@ io.on('connection', (socket) => {
             await group.save();
             
             // Log sender and receiver addresses
-            console.log(`Message received from sender: ${user_id} to group: ${group_id}`);
+            console.log(`Message received from sender: ${user_id._id} to group: ${group_id}`);
             
             // Broadcast the message to all other clients in the group room
-            socket.to(group_id).emit('message', { message, sender: user_id });
+            socket.to(group_id).emit('message', { message, user_id: user_id });
             
             // Log sender and receiver addresses
             console.log(`Message sent from sender: ${user_id} to group: ${group_id}`);
