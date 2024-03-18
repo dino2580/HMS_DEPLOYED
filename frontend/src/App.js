@@ -14,6 +14,7 @@ import Complaints from "./components/Complaints";
 import Workers from "./components/Workers";
 import FeeDetails from "./components/FeeDetails";
 import Footer from "./components/Footer";
+import Student from './components/Student';
 function App() {
   const handleSubmit = async (formData) => {
     // event.preventDefault();
