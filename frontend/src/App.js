@@ -14,6 +14,13 @@ import Complaints from "./components/Complaints";
 import Workers from "./components/Workers";
 import FeeDetails from "./components/FeeDetails";
 import Footer from "./components/Footer";
+import Student from './components/Student';
+import Rules from './components/Rules';
+import Guest from './components/Guest';
+import General from './components/General';
+import Mess from './components/Mess';
+import Ragging from './components/Ragging';
+import Maintenance from './components/Maintenance';
 function App() {
   const handleSubmit = async (formData) => {
     // event.preventDefault();
@@ -110,6 +117,12 @@ function App() {
           <Route path="/FeeDetails" element={<FeeDetails/>}/> 
           <Route path='/rooms' element= {<RoomList/>} ></Route>
           <Route path='/contact' element={<Contact/> }/>
+          <Route path='/rules' element={<Rules/>} ></Route>
+          <Route path='/guest' element={<Guest/>} ></Route>
+          <Route path='/general' element={<General/>} ></Route>
+          <Route path='/mess' element={<Mess/>} ></Route>
+          <Route path='/ragging' element={<Ragging/>} ></Route>
+          <Route path='/maintenance' element={<Maintenance/>} ></Route>
         </Routes>
         <Footer/>
       </Router>

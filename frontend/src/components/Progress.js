@@ -3,7 +3,7 @@ import React from 'react';
 const CircularProgress = ({ percentage =75 }) => {
   const maxRadius = 40; // Set the maximum radius
   const radius = (percentage / 100) * maxRadius; // Calculate the radius based on the percentage
-  const circumference = 2 * Math.PI * maxRadius-;
+  const circumference = 2 * Math.PI * maxRadius;
   const strokeDashoffset = circumference - (percentage / 100) * circumference;
 
   return (
