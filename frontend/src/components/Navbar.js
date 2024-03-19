@@ -127,6 +127,18 @@ function Navbar() {
               </NavLink>
             </li>
           )}
+          {isCookie && (
+            <li>
+              <NavLink
+                to="/chatgroup"
+                activeClassName="text-indigo-600"
+                className="text-white border border-gray-800 hover:text-gray-300 hover:border-gray-300 rounded-full px-2 py-1 flex items-center"
+              >
+                <FontAwesomeIcon icon={faSignIn} className="mr-1" />
+                chats
+              </NavLink>
+            </li>
+          )}
           {
             isCookie&&
             <li>

@@ -15,6 +15,10 @@ import Workers from "./components/Workers";
 import FeeDetails from "./components/FeeDetails";
 import Footer from "./components/Footer";
 import Student from './components/Student';
+import ChatRoom from './components/Chatrooms';
+import chatgroup from './components/Chatgroup';
+import Chatgroup from './components/Chatgroup';
+import Student from './components/Student';
 import Rules from './components/Rules';
 import Guest from './components/Guest';
 import General from './components/General';
@@ -68,13 +72,16 @@ function App() {
           // Example usage:
           const payload = extractValuesFromJWT(jwtToken);
 
-          console.log("Decoded Payload:", payload);
-          console.log("Email:", payload.email);
-          console.log("Is admin:", payload.admin);
+          // console.log("Decoded Payload:", payload);
+          // console.log("Email:", payload.email);
+          // console.log("Is admin:", payload.admin);
+          // console.log("Is admin:", payload.userId);
           localStorage.setItem("cookie", jwtCookie);
           localStorage.setItem("Email", payload.email);
           localStorage.setItem("admin", payload.admin);
           localStorage.setItem("hostel_no", payload.hostel_no);
+          localStorage.setItem("userId", payload.userId);
+          localStorage.setItem("full_name", payload.full_name);
           console.log(localStorage.getItem("admin"));
           console.log(localStorage.getItem("hostel_no"));
           const isAdmin = localStorage.getItem("admin") === "true";
@@ -117,12 +124,6 @@ function App() {
           <Route path="/FeeDetails" element={<FeeDetails/>}/> 
           <Route path='/rooms' element= {<RoomList/>} ></Route>
           <Route path='/contact' element={<Contact/> }/>
-          <Route path='/rules' element={<Rules/>} ></Route>
-          <Route path='/guest' element={<Guest/>} ></Route>
-          <Route path='/general' element={<General/>} ></Route>
-          <Route path='/mess' element={<Mess/>} ></Route>
-          <Route path='/ragging' element={<Ragging/>} ></Route>
-          <Route path='/maintenance' element={<Maintenance/>} ></Route>
         </Routes>
         <Footer/>
       </Router>

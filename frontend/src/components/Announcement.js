@@ -206,7 +206,7 @@ export default function Announcement() {
         <div className="space-y-4">
   <div>    
   <h1 className="text-2xl font-bold text-white dark:text-gray-100">Announcements</h1> 
-  {announcementData.map((announcement, index) => (
+  {announcementData && announcementData.map((announcement, index) => (
     <div key={index} className="space-y-2">
       <h2 className="text-2xl font-bold text-white dark:text-gray-100">
         {announcement.title}
