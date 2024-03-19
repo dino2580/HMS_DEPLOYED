@@ -114,16 +114,22 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/announcement" element={<Announcement />} />
-          {/* <Route path="/profile" element={<SignUpForm />} /> */}
-          <Route path="/home" element={<Home />} />
-          <Route path="/login" element={<Login handleSubmit={handleSubmit} />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/Student" element={<Student/>}/> 
-          <Route path="/Complaints" element={<Complaints/>}/> 
-          <Route path="/Workers" element={<Workers/>}/> 
-          <Route path="/FeeDetails" element={<FeeDetails/>}/> 
-          <Route path='/rooms' element= {<RoomList/>} ></Route>
-          <Route path='/contact' element={<Contact/> }/>
+          <Route path="/login" element={<Login handleSubmit={handleSubmit} />} />
+          <Route path="/rooms" element={<RoomList />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/complaints" element={<Complaints />} />
+          <Route path="/workers" element={<Workers />} />
+          <Route path="/fee-details" element={<FeeDetails />} />
+          <Route path="/student" element={<Student />} />
+          <Route path="/chatroom" element={<ChatRoom />} />
+          <Route path="/chatgroup" element={<Chatgroup />} />
+          <Route path="/rules" element={<Rules />} />
+          <Route path="/guest" element={<Guest />} />
+          <Route path="/general" element={<General />} />
+          <Route path="/mess" element={<Mess />} />
+          <Route path="/ragging" element={<Ragging />} />
+          <Route path="/maintenance" element={<Maintenance />} />
         </Routes>
         <Footer/>
       </Router>
