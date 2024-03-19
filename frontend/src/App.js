@@ -19,6 +19,14 @@ import ChatRoom from './components/Chatrooms';
 import chatgroup from './components/Chatgroup';
 import Chatgroup from './components/Chatgroup';
 import HomePage from './components/Homepage';
+import Student from './components/Student';
+import Rules from './components/Rules';
+import Guest from './components/Guest';
+import General from './components/General';
+import Mess from './components/Mess';
+import Ragging from './components/Ragging';
+import Maintenance from './components/Maintenance';
+
 function App() {
   const handleSubmit = async (formData) => {
     // event.preventDefault();
@@ -118,9 +126,6 @@ function App() {
           <Route path="/FeeDetails" element={<FeeDetails/>}/> 
           <Route path='/rooms' element= {<RoomList/>} ></Route>
           <Route path='/contact' element={<Contact/> }/>
-          <Route path='/chatgroup' element={<Chatgroup/>}/>
-          <Route path='/chatroom/:group_id' element={<ChatRoom/>}/>
-          {/* <Route path='/logout' element={<Logou/>}/> */}
         </Routes>
         <Footer/>
       </Router>

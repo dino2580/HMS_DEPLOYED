@@ -29,7 +29,7 @@ const Login = ({handleSubmit}) => {
           </h2>
         </div>
         <div className="flex justify-center items-center">
-          <p className="text-neutral-600 text-sm max-w-sm mt-2  font-bold text-gray-800 dark:text-neutral-700">
+          <p className="text-neutral-600 text-sm max-w-sm mt-2  font-bold dark:text-neutral-700">
             We are happy to see you in NIT KURUKSHETRA
           </p>
         </div>
