@@ -129,7 +129,7 @@ function App() {
           <Route path='/rooms' element= {<RoomList/>} ></Route>
           <Route path='/contact' element={<Contact/> }/>
           <Route path='/chatgroup' element={<Chatgroup/> }/>
-          <Route path='/chatroom' element={<ChatRoom/> }/>
+          <Route path='/chatroom/:group_id' element={<ChatRoom/> }/>
           <Route path='/profile' element={<AdminDashboard/> }/>
 
         </Routes>
