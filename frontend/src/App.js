@@ -18,6 +18,7 @@ import Student from './components/Student';
 import ChatRoom from './components/Chatrooms';
 import chatgroup from './components/Chatgroup';
 import Chatgroup from './components/Chatgroup';
+import HomePage from './components/Homepage';
 function App() {
   const handleSubmit = async (formData) => {
     // event.preventDefault();
@@ -104,11 +105,11 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/announcement" element={<Announcement />} />
           {/* <Route path="/profile" element={<SignUpForm />} /> */}
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/login" element={<Login handleSubmit={handleSubmit} />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/Student" element={<Student/>}/> 
