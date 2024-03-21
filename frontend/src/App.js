@@ -28,8 +28,7 @@ import Ragging from './components/Ragging';
 import Maintenance from './components/Maintenance';
 import Chatgroup from './components/Chatgroup';
 import AdminDashboard from './components/AdminDashboard';
-import Menu from './components/Menu';
-// import Main from './components/Home/app';
+import Chat from './components/chat/Chat';
 
 function App() {
   const handleSubmit = async (formData) => {
@@ -116,12 +115,13 @@ function App() {
     <div>
       <Router>
         <Navbar />
+          
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/announcement" element={<Announcement />} />
           {/* <Route path="/profile" element={<SignUpForm />} /> */}
-          <Route path="/home" element={<HomePage/>} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/login" element={<Login handleSubmit={handleSubmit} />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/Student" element={<Student/>}/> 
@@ -129,8 +129,8 @@ function App() {
           <Route path="/Workers" element={<Workers/>}/> 
           <Route path="/FeeDetails" element={<FeeDetails/>}/> 
           <Route path='/rooms' element= {<RoomList/>} ></Route>
-          {/* <Route path='/contact' element={<Main/> }/> */}
-          <Route path='/chatgroup' element={<Chatgroup/> }/>
+          <Route path='/contact' element={<Contact/> }/>
+          <Route path='/chatgroup' element={<Chat/> }/>
           <Route path='/chatroom/:group_id' element={<ChatRoom/> }/>
           <Route path='/profile' element={<AdminDashboard/> }/>
 
