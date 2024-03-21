@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function Workers() {
   return (
-    <div className="min-h-screen px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
+    <div className="min-h-screen px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-{#0d0c22} ">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-center items-start gap-8">
           <nav className="w-full md:w-1/4 bg-gray-800 p-4 rounded-lg">
