@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
-function Signup() {
+function MySignup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -38,7 +38,7 @@ function Signup() {
                 <img src="/signupimg2.jpg" alt="signupimg" className='mx-auto w-[130vw]' style={{borderBottomLeftRadius:'50px', borderTopLeftRadius:'50px'}} />
         </div>
           <form onSubmit={handleSubmit} className="space-y-3 px-8 flex flex-col w-[90vw]">
-            <h2 className="text-2xl font-bold text-gray-800 mt-2 mb-3 text-center">Welcome to NIT Kurukshetra</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-3 text-center">Welcome to NIT Kurukshetra</h2>
             <div>
               <label htmlFor="name" className="block text-gray-700 font-bold mb-1">
                 Name
@@ -152,4 +152,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default MySignup;
