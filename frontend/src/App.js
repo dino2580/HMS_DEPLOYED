@@ -122,7 +122,7 @@ function App() {
           <Route path="/announcement" element={<Announcement />} />
           {/* <Route path="/profile" element={<SignUpForm />} /> */}
           <Route path="/home" element={<HomePage/>} />
-          <Route path="/login" element={<Login handleSubmit={handleSubmit} />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/Student" element={<Student/>}/> 
           <Route path="/Complaints" element={<Complaints/>}/> 

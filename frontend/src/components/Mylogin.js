@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, NavLink } from "react-router-dom";
 
 
-function Login() {
+function MyLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -28,7 +28,7 @@ function Login() {
         <div className='flex items-center justify-center max-w-[60vw]' >         
             
             <form onSubmit={handleSubmit} className="space-y-4 px-8 flex flex-col w-[90vw]">
-            <h2 className="text-2xl font-bold text-gray-800 mt-2 mb-6 text-center">Welcome to NIT Kurukshetra</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Welcome to NIT Kurukshetra</h2>
             <div>
                 <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
                 Email Address
@@ -121,4 +121,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default MyLogin;
