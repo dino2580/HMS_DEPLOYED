@@ -35,7 +35,7 @@ function Signup() {
       <div className="bg-white shadow-md mx-auto max-w-fit flex items-center justify-center m-10" style={{borderRadius:'50px'}}>
         <div className='flex items-center justify-center max-w-[65vw]'>
         <div className='flex items-center justify-center hidden xl:block' >
-                <img src="/signupimg2.jpg" alt="signupimg" className='mx-auto w-[130vw]' style={{borderBottomLeftRadius:'50px', borderTopLeftRadius:'50px'}} />
+                <img src="/signupimg.jpg" alt="signupimg" className='mx-auto w-[130vw]' style={{borderBottomLeftRadius:'50px', borderTopLeftRadius:'50px'}} />
         </div>
           <form onSubmit={handleSubmit} className="space-y-3 px-8 flex flex-col w-[90vw]">
             <h2 className="text-2xl font-bold text-gray-800 mt-2 mb-3 text-center">Welcome to NIT Kurukshetra</h2>
