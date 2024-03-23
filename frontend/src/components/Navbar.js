@@ -20,7 +20,7 @@ function Navbar() {
     setIsOpen(!isOpen);
   };
   return (
-    <nav className="bg-gray-800 p-4 border-b  ">
+    <nav className=" bg-5522a3 p-6 shadow-lg " >
       <div className="navbar-items max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <a href="#" className="text-white text-lg font-bold">
@@ -49,103 +49,110 @@ function Navbar() {
           } md:justify-evenly md:space-x-10 md:items-center`}
         >
           {isAdmin && (
-            <li>
+            <li className="relative group">
               <NavLink
                 to="/dashboard"
                 activeClassName="text-indigo-600"
-                className="text-white border border-gray-800 hover:text-gray-300 hover:border-gray-300 rounded-full px-2 py-1 flex items-center"
+                className="text-white  "
               >
-                <FontAwesomeIcon icon={faChartLine} className="mr-1" />
+                <FontAwesomeIcon icon={faChartLine} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
+
                 adminDashboard
               </NavLink>
+              <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
             </li>
           )}
-          <li>
-            {/* <div  className="h-[50px]"> */}
+          <li className="relative group">
             <NavLink
               to="/rooms"
               activeClassName="text-indigo-600"
-              className="text-white border border-gray-800 hover:text-gray-300 hover:border-gray-300 rounded-full px-2 py-1 flex items-center"
+              className="text-white "
             >
-              <FontAwesomeIcon icon={faBed} className="mr-1" />
+              <FontAwesomeIcon icon={faBed} className="mr-1 bg-white text-purple-600 p-1 text-sm rounded-md" />
               Rooms
             </NavLink>
-            {/* </div> */}
+            <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
           </li>
-          <li style={{width:"max-content"}}>
+          <li className="relative group">
             <NavLink
               to="/announcement"
               activeClassName="text-indigo-600"
-              className="text-white border border-gray-800 hover:text-gray-300 hover:border-gray-300 rounded-full px-2 py-1 flex items-center"
-              
+              className="text-white "
             >
-              <FontAwesomeIcon icon={faScroll} className="mr-1" />
+              <FontAwesomeIcon icon={faScroll} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
               Announcements
             </NavLink>
+            <div className="absolute left-0 bottom-0 h-0.5  bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></div>
           </li>
-          <li>
+          <li className="relative group">
             <NavLink
               to="/home"
               activeClassName="text-indigo-600"
-              className="text-white border border-gray-800 hover:text-gray-300 hover:border-gray-300 rounded-full px-2 py-1 flex items-center"
+              className="text-white "
             >
-              <FontAwesomeIcon icon={faAddressBook} className="mr-1" />
+              <FontAwesomeIcon icon={faAddressBook} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
               Contact
             </NavLink>
+            <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
           </li>
-          <li>
+          <li className="relative group">
             <NavLink
               to="/profile"
               activeClassName="text-indigo-600"
-              className="text-white border border-gray-800 hover:text-gray-300 hover:border-gray-300 rounded-full px-2 py-1 flex items-center"
+              className="text-white  "
             >
-              <FontAwesomeIcon icon={faUser} className="mr-1" />
+              <FontAwesomeIcon icon={faUser} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
               Profile
             </NavLink>
+            <span className="absolute left-0 bottom-0 h-0.5  bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
           </li>
           {!isCookie && (
-            <li>
+            <li className="relative group">
               <NavLink
                 to="/login"
                 activeClassName="text-indigo-600"
-                className="text-white border border-gray-800 hover:text-gray-300 hover:border-gray-300 rounded-full px-2 py-1 flex items-center"
+                className="text-white border border-35353F  rounded-full px-2 py-1 flex items-center transition-all duration-200"
+                style={{ maxWidth: "40rem" }}
               >
-                <FontAwesomeIcon icon={faSignIn} className="mr-1" />
+                <FontAwesomeIcon icon={faSignIn} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
                 Login
               </NavLink>
+              <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
             </li>
           )}
+
           {!isCookie && (
-            <li>
+            <li className="relative group">
               <NavLink
                 to="/signUp"
                 activeClassName="text-indigo-600"
-                className="text-white border border-gray-800 hover:text-gray-300 hover:border-gray-300 rounded-full px-2 py-1 flex items-center"
+                className="text-white border border-35353F  rounded-full px-2 py-1 flex items-center"
               >
-                <FontAwesomeIcon icon={faSignIn} className="mr-1" />
+                <FontAwesomeIcon icon={faSignIn} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
                 Signup
               </NavLink>
+              <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
             </li>
           )}
           {isCookie && (
-            <li>
+            <li className="relative group">
               <NavLink
                 to="/chatgroup"
                 activeClassName="text-indigo-600"
-                className="text-white border border-gray-800 hover:text-gray-300 hover:border-gray-300 rounded-full px-2 py-1 flex items-center"
+                className="text-white"
               >
-                <FontAwesomeIcon icon={faSignIn} className="mr-1" />
+                <FontAwesomeIcon icon={faSignIn} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
                 chats
               </NavLink>
+              <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
             </li>
           )}
-          {
-            isCookie&&
-            <li>
+          {isCookie && (
+            <li className="relative group">
               <label
                 htmlFor="hey"
                 activeClassName="text-indigo-600"
-                className="text-white border border-gray-800 hover:text-gray-300 hover:border-gray-300 rounded-full px-2 py-1 flex items-center"
+                className="text-white "
                 onClick={async () => {
                   try {
                     const response = await fetch(
@@ -157,11 +164,11 @@ function Navbar() {
                     );
 
                     if (response.ok) {
-                        localStorage.setItem('admin',false);
-                        localStorage.setItem('Email','');
-                        localStorage.setItem('cookie','');
-                        console.log("Logout successful");
-                        window.location.href = "/login";
+                      localStorage.setItem("admin", false);
+                      localStorage.setItem("Email", "");
+                      localStorage.setItem("cookie", "");
+                      console.log("Logout successful");
+                      window.location.href = "/login";
                       // Optionally, redirect the user to the login page or perform any other action after logout
                     } else {
                       console.error("Logout failed:", response.statusText);
@@ -175,8 +182,9 @@ function Navbar() {
               >
                 logout
               </label>
+              <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
             </li>
-          }
+          )}
         </ul>
       </div>
     </nav>
@@ -184,3 +192,4 @@ function Navbar() {
 }
 
 export default Navbar;
+ 

@@ -28,6 +28,7 @@ import Ragging from './components/Ragging';
 import Maintenance from './components/Maintenance';
 import Chatgroup from './components/Chatgroup';
 import AdminDashboard from './components/AdminDashboard';
+import Chat from './components/chat/Chat';
 
 function App() {
   const handleSubmit = async (formData) => {
@@ -129,8 +130,8 @@ function App() {
           <Route path="/FeeDetails" element={<FeeDetails/>}/> 
           <Route path='/rooms' element= {<RoomList/>} ></Route>
           <Route path='/contact' element={<Contact/> }/>
-          <Route path='/chatgroup' element={<Chatgroup/> }/>
-          <Route path='/chatroom/:group_id' element={<ChatRoom/> }/>
+          <Route path='/chatgroup' element={<Chat/> }/>
+          {/* <Route path='/chatroom/:group_id' element={<Chat/> }/> */}
           <Route path='/profile' element={<AdminDashboard/> }/>
 
         </Routes>
