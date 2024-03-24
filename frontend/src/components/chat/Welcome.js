@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 
 export default function Welcome() {
-//   const [userName, setUserName] = useState("");
-const userName="JAY"
+  const userName = "JAY";
 
   return (
-    <div className="flex justify-center items-center flex-col text-white">
+    <div className="flex justify-center items-center flex-col text-white" style={{ height: "91vh" }}>
       <img src={""} alt="" className="h-80" />
       <h1>
         Welcome, <span className="text-blue-500">{userName}!</span>

@@ -44,7 +44,7 @@ export default function Chat() {
   };
 
   return (
-    <div className="w-screen h-screen flex justify-center items-center bg-gray-900">
+    <div className=" h-91 flex justify-center items-center bg-gray-900">
       <div className="container h-full w-full bg-opacity-60 bg-back grid grid-cols-1 md:grid-cols-4">
         
         <div className="md:col-span-1">

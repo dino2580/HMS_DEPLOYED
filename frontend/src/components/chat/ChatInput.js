@@ -26,25 +26,24 @@ export default function ChatInput({ handleSendMsg }) {
   };
 
   return (
-    <div className="grid items-center grid-cols-2 bg-gray-900 px-8 py-4">
-      <div className="flex items-center space-x-4 text-white">
-        <div className="relative">
-          <BsEmojiSmileFill
-            onClick={handleEmojiPickerhideShow}
-            className="text-yellow-400 cursor-pointer"
-          />
-          {showEmojiPicker && <Picker onEmojiClick={handleEmojiClick} />}
-        </div>
+    <div className="bg-gray-900 px-8 py-4 flex items-center">
+      <div className="relative">
+        <BsEmojiSmileFill
+          onClick={handleEmojiPickerhideShow}
+          className="text-yellow-400 cursor-pointer"
+          style={{ fontSize: "1.5rem" }}
+        />
+        {showEmojiPicker && <Picker onEmojiClick={handleEmojiClick} />}
       </div>
-      <form onSubmit={(event) => sendChat(event)} className="flex items-center space-x-4">
+      <form onSubmit={(event) => sendChat(event)} className="flex-grow flex items-center ml-4">
         <input
           type="text"
           placeholder="Type your message here"
           onChange={(e) => setMsg(e.target.value)}
           value={msg}
-          className="w-full py-2 px-4 bg-gray-700 text-white rounded-lg focus:outline-none"
+          className="flex-grow py-2 px-4 bg-gray-700 text-white rounded-lg focus:outline-none"
         />
-        <button type="submit" className="py-2 px-4 bg-purple-600 text-white rounded-lg">
+        <button type="submit" className="ml-4 py-2 px-4 bg-purple-600 text-white rounded-lg">
           <IoMdSend className="text-2xl" />
         </button>
       </form>

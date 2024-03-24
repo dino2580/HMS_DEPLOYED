@@ -21,7 +21,7 @@ export default function ChatContainer({ currentChat, socket }) {
   }, [messages]);
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col" style={{ height: "91.05vh", overflowX: "hidden" }}>
       <div className="flex justify-between items-center px-8 py-4 bg-gray-800">
         <div className="flex items-center space-x-4">
           <div className="w-12 h-12">
