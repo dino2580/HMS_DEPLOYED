@@ -8,6 +8,7 @@ import {
   faScroll,
   faUser,
   faSignIn,
+  faUtensils,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, NavLink } from "react-router-dom";
 
@@ -103,6 +104,17 @@ function Navbar() {
             >
               <FontAwesomeIcon icon={faUser} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
               Profile
+            </NavLink>
+            <span className="absolute left-0 bottom-0 h-0.5  bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
+          </li>
+          <li className="relative group">
+            <NavLink
+              to="/mess"
+              activeClassName="text-indigo-600"
+              className="text-white  "
+            >
+              <FontAwesomeIcon icon={faUtensils} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
+              Mess
             </NavLink>
             <span className="absolute left-0 bottom-0 h-0.5  bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
           </li>

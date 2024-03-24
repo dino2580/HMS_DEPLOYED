@@ -11,8 +11,12 @@ module.exports = {
         '803BEC': '#803BEC',
         '5522a3': '#5522a3',
         '141415':'#141415',
-        'back' : '#392F3B'
-      }
+        'back' : 'rgb(147,197,253)'
+      },
+      scrollbar: {
+        hidden: 'scrollbar-hidden',
+      },
+
     },
   },
   plugins: [],
