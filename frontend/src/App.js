@@ -14,10 +14,11 @@ import Complaints from "./components/Complaints";
 import Workers from "./components/Workers";
 import FeeDetails from "./components/FeeDetails";
 import Footer from "./components/Footer";
-import Student from './components/Student';
+// import Student from './components/Student';
 import ChatRoom from './components/Chatrooms';
 import chatgroup from './components/Chatgroup';
-import Chatgroup from './components/Chatgroup';
+// import Chatgroup from './components/Chatgroup';
+import HomePage from './components/Homepage';
 import Student from './components/Student';
 import Rules from './components/Rules';
 import Guest from './components/Guest';
@@ -25,6 +26,9 @@ import General from './components/General';
 import Mess from './components/Mess';
 import Ragging from './components/Ragging';
 import Maintenance from './components/Maintenance';
+import Chatgroup from './components/Chatgroup';
+import AdminDashboard from './components/AdminDashboard';
+
 function App() {
   const handleSubmit = async (formData) => {
     // event.preventDefault();
@@ -111,27 +115,30 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/announcement" element={<Announcement />} />
-          <Route path="/signup" element={<SignUp />} />
+          {/* <Route path="/profile" element={<SignUpForm />} /> */}
+          <Route path="/home" element={<HomePage />} />
           <Route path="/login" element={<Login handleSubmit={handleSubmit} />} />
-          <Route path="/rooms" element={<RoomList />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/complaints" element={<Complaints />} />
-          <Route path="/workers" element={<Workers />} />
-          <Route path="/fee-details" element={<FeeDetails />} />
-          <Route path="/student" element={<Student />} />
-          <Route path="/chatroom" element={<ChatRoom />} />
-          <Route path="/chatgroup" element={<Chatgroup />} />
-          <Route path="/rules" element={<Rules />} />
-          <Route path="/guest" element={<Guest />} />
-          <Route path="/general" element={<General />} />
-          <Route path="/mess" element={<Mess />} />
-          <Route path="/ragging" element={<Ragging />} />
-          <Route path="/maintenance" element={<Maintenance />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/Student" element={<Student />} />
+          <Route path="/Complaints" element={<Complaints />} />
+          <Route path="/Workers" element={<Workers />} />
+          <Route path="/FeeDetails" element={<FeeDetails />} />
+          <Route path='/rooms' element={<RoomList />} ></Route>
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/chatgroup' element={<Chatgroup />} />
+          <Route path='/chatroom/:group_id' element={<ChatRoom />} />
+          <Route path='/profile' element={<AdminDashboard />} />
+          <Route path="/rules" element={Rules} />
+          <Route path="/guest" element={Guest} />
+          <Route path="/general" element={General} />
+          <Route path="/mess" element={Mess} />
+          <Route path="/ragging" element={Ragging} />
+          <Route path="/maintenance" element={Maintenance} />
         </Routes>
-        <Footer/>
+        <Footer />
       </Router>
     </div>
   );

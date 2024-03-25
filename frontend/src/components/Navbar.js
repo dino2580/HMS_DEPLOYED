@@ -20,7 +20,7 @@ function Navbar() {
     setIsOpen(!isOpen);
   };
   return (
-    <nav className="bg-gray-800 p-4 border-b  ">
+    <nav className="bg-gray-700 p-4 border-b  ">
       <div className="navbar-items max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <a href="#" className="text-white text-lg font-bold">
