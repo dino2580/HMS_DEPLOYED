@@ -1,76 +1,109 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-
-function Login({handleSubmit}) {
+function MySignup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [name, setName] = useState('');
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+  };
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleConfirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // Here, you would typically send the email and password to a server for authentication
     console.log('Email:', email);
     console.log('Password:', password);
-    handleSubmit({email,password});
+    console.log('Confirm Password:', confirmPassword);
   };
- 
+
   return (
-    <div>
+    <div> 
       <div className="bg-white shadow-md mx-auto max-w-fit flex items-center justify-center m-10" style={{borderRadius:'50px'}}>
-        
-        <div className='flex items-center justify-center max-w-[60vw]' >         
-            
-            <form onSubmit={handleFormSubmit} className="space-y-4 px-8 flex flex-col w-[90vw]">
-            <h2 className="text-2xl font-bold text-gray-800 mt-2 mb-6 text-center">Welcome to NIT Kurukshetra</h2>
+        <div className='flex items-center justify-center max-w-[65vw]'>
+        <div className='flex items-center justify-center hidden xl:block' >
+                <img src="/signupimg2.jpg" alt="signupimg" className='mx-auto w-[130vw]' style={{borderBottomLeftRadius:'50px', borderTopLeftRadius:'50px'}} />
+        </div>
+          <form onSubmit={handleSubmit} className="space-y-3 px-8 flex flex-col w-[90vw]">
+            <h2 className="text-2xl font-bold text-gray-800 mb-3 text-center">Welcome to NIT Kurukshetra</h2>
             <div>
-                <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
+              <label htmlFor="name" className="block text-gray-700 font-bold mb-1">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                value={name}
+                onChange={handleNameChange}
+                required
+                className="w-full px-3 py-2 bg-slate-200 rounded-md focus:outline-none"
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block text-gray-700 font-bold mb-1">
                 Email Address
-                </label>
-                <input
+              </label>
+              <input
                 type="email"
                 id="email"
                 value={email}
                 onChange={handleEmailChange}
                 required
                 className="w-full px-3 py-2 bg-slate-200 rounded-md focus:outline-none"
-                />
+              />
             </div>
             <div>
-                <label htmlFor="password" className="block text-gray-700 font-bold mb-2">
+              <label htmlFor="password" className="block text-gray-700 font-bold mb-1">
                 Password
-                </label>
-                <input
+              </label>
+              <input
                 type="password"
                 id="password"
                 value={password}
                 onChange={handlePasswordChange}
                 required
                 className="w-full px-3 py-2 bg-slate-200 rounded-md focus:outline-none"
-                />
-                <a href="#" className="text-sm text-blue-600 hover:text-blue-800 mt-2 block">
-                Forgot Password?
-                </a>
+              />
+            </div>
+            <div>
+              <label htmlFor="confirmPassword" className="block text-gray-700 font-bold mb-2">
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                id="confirmPassword"
+                value={confirmPassword}
+                onChange={handleConfirmPasswordChange}
+                required
+                className="w-full px-3 py-2 bg-slate-200 rounded-md focus:outline-none"
+              />
             </div>
             <button
-                type="submit"
-                className="w-full mx-auto py-2 px-4 bg-blue-600 text-white font-bold rounded-md hover:bg-blue-700 transition duration-300"
+              type="submit"
+              className="w-full mx-auto py-2 px-4 bg-blue-600 text-white font-bold rounded-md hover:bg-blue-700 transition duration-300"
             >
-                Login
+              Sign Up
             </button>
             <div>
-                <p className='text-center text-l'>Doesn't have account yet? <Link className="text-blue-600 hover:underline" to="/signup">Sign up</Link> </p>
+              <p className='text-center text-l'>Already have an account? <Link className="text-blue-600 hover:underline" to="/login">Login</Link></p>
             </div>
+
             <div className="text-center w-full flex justify-center items-center">
                 <div className="bg-black" style={{height:"0.5px", width:'5vw'}}></div>
-                <span className='text-center'>or login with</span>
+                <span className='text-center'>or continue with</span>
                 <div className="bg-black" style={{height:"0.5px", width:'5vw'}}></div>
             </div>
             <div className="flex justify-center">
@@ -111,15 +144,12 @@ function Login({handleSubmit}) {
                 </button>
                 </div>
             </div>
-            </form>
-            
-            <div className='flex items-center justify-center hidden xl:block' >
-                <img src="/loginimg.jpg" alt="loginimg" className='mx-auto object-contain' style={{borderBottomRightRadius:'50px', borderTopRightRadius:'50px'}} />
-            </div>
+          </form>
+          
         </div>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default MySignup;

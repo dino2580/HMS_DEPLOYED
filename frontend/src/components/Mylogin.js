@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, NavLink } from "react-router-dom";
 
 
-function Login({handleSubmit}) {
+function MyLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -14,12 +14,11 @@ function Login({handleSubmit}) {
     setPassword(e.target.value);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // Here, you would typically send the email and password to a server for authentication
     console.log('Email:', email);
     console.log('Password:', password);
-    handleSubmit({email,password});
   };
  
   return (
@@ -28,8 +27,8 @@ function Login({handleSubmit}) {
         
         <div className='flex items-center justify-center max-w-[60vw]' >         
             
-            <form onSubmit={handleFormSubmit} className="space-y-4 px-8 flex flex-col w-[90vw]">
-            <h2 className="text-2xl font-bold text-gray-800 mt-2 mb-6 text-center">Welcome to NIT Kurukshetra</h2>
+            <form onSubmit={handleSubmit} className="space-y-4 px-8 flex flex-col w-[90vw]">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Welcome to NIT Kurukshetra</h2>
             <div>
                 <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
                 Email Address
@@ -122,4 +121,4 @@ function Login({handleSubmit}) {
   );
 }
 
-export default Login;
+export default MyLogin;

@@ -28,6 +28,8 @@ import Ragging from './components/Ragging';
 import Maintenance from './components/Maintenance';
 import Chatgroup from './components/Chatgroup';
 import AdminDashboard from './components/AdminDashboard';
+import Chat from './components/chat/Chat';
+import MessMenu from './components/MessMenu';
 
 function App() {
   const handleSubmit = async (formData) => {
@@ -114,12 +116,13 @@ function App() {
     <div>
       <Router>
         <Navbar />
+          
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/announcement" element={<Announcement />} />
           {/* <Route path="/profile" element={<SignUpForm />} /> */}
-          <Route path="/home" element={<HomePage />} />
+          <Route path="/home" element={<HomePage/>} />
           <Route path="/login" element={<Login handleSubmit={handleSubmit} />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/Student" element={<Student />} />
