@@ -72,6 +72,7 @@ function Transaction() {
 
   return (
     <div className="flex flex-col bg-back">
+      <h1 className="text-3xl font-bold leading-none text-center text-blue-800 dark:text-blue-800 my-5">Transactions</h1>
       <div className="m-4 flex justify-end">
         <input
           type="text"
@@ -83,7 +84,7 @@ function Transaction() {
       </div>
       <div className="overflow-x-auto">
         <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-          <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+          <div className="shadow-lg overflow-hidden border-b border-gray-200 sm:rounded-lg">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-100/70">
                 <tr>
@@ -137,7 +138,7 @@ function Transaction() {
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-stone-100 divide-y divide-gray-200">
+              <tbody className="bg-slate-100 divide-y divide-gray-200">
                 {entries.map((entry, index) => (
                   <tr key={index}
                   className={`${
@@ -146,7 +147,7 @@ function Transaction() {
                       : entry.isDeleted
                       ? "bg-red-200"
                       : ""
-                  } `}>
+                  } shadow-lg`}>
                     <td className="px-6 py-4 whitespace-nowrap">
                       {entry.T_id}
                     </td>
