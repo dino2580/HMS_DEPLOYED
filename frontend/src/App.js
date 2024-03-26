@@ -139,7 +139,7 @@ function App() {
           <Route path='/transaction' element={<Transaction/> }/>
 
         </Routes>
-        <Footer/>
+        <Footer />
       </Router>
     </div>
   );

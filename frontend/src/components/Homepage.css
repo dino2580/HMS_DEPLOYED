@@ -1,0 +1,31 @@
+@keyframes bounce {
+    0% ,100%{
+      transform: translateY(0.7vh);
+    }
+
+    50% {
+      transform: translateY(-0.7vh);
+  }
+}
+  .animate-bounce {
+    animation: bounce 2s infinite;
+    animation-delay: 2s;
+    /* animation-duration: 2; */
+  }
+  @keyframes bounce-horizontal {
+    0%, 100% {
+      transform: translateX(0.7vw);
+    }
+  
+    50% {
+      transform: translateX(-0.7vw);
+    }
+  }
+  
+  .animate-bounce-horizontal {
+    animation: bounce-horizontal 2s infinite;
+    animation-delay: 2s;
+  }
+
+
+  
