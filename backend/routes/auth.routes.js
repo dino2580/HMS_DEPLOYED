@@ -12,15 +12,21 @@ const createMessage = require('../controllers/SendMessage');
 const getGroupMessage = require('../controllers/GetGroupMessage');
 const createGroup = require('../controllers/CreateGroup');
 const getGroups = require('../controllers/GetGroup');
+const getComplaint = require('../controllers/GetComplaints');
+const createWorker = require('../controllers/CreateWorker');
+const getWorker = require('../controllers/GetWorkers');
 
 const router = express.Router();
 router.post("/signup",signUp)
 router.post("/login",login);
 router.post("/logout",logout)
 router.post("/complaint",Complaint);
+router.post("/getcomplaint",getComplaint);
 router.post("/setmenu",menu);
 router.post("/getmenu",getMenu);
 router.post("/addhostel",addHostel);
+router.post("/createworker",createWorker);
+router.post("/getworker",getWorker);
 router.get("/getStudent:hostel_no",getStudent);
 router.post("/updateStudent",updateStudent);
 router.post("/createannouncement",createAnnouncement);

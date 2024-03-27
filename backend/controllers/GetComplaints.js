@@ -1,34 +1,25 @@
 const Complaints = require("../models/complaintmodel");
 
-
 const getComplaint = async (req, res) => {
     try {
-        const { hostel_no } = req.params;
+        const { hostel_no } = req.body;
         console.log(hostel_no);
-        // Fetch the latest 10 announcements for the given hostel
-        var complaints;
-        if(hostel_no!=0)
-        {
-         complaints = await Complaints.find({ 
-            hostel_no
-            });
 
+        let complaints;
+        if (hostel_no != 0) {
+            complaints = await Complaints.find({hostel_no });
+        } else {
+            complaints = await Complaints.find();
         }
-        else{
-             Complaints=await Complaints.find();
-        }
-        Complaints.sort((a, b) => {
-            // Assuming createdAt is in milliseconds format
-            return a.createdAt - b.createdAt;
-        });
-        
-            
-           
-        console.log(Complaints);
-        res.json(Complaints);
+
+        // Assuming createdAt is a field in the Complaints schema
+        complaints.sort((a, b) => a.createdAt - b.createdAt);
+
+        console.log(complaints);
+        res.json(complaints);
     } catch (error) {
-        console.error("Error in getComplaint", error);
-        return res.status(500).json({ err: "Error in getComplaint" });
+        console.error("Error in getComplaint:", error.message);
+        return res.status(500).json({ error: "Internal Server Error" });
     }
 };
 

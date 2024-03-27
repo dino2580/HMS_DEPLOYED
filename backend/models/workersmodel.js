@@ -15,6 +15,10 @@ const workersSchema = new mongoose.Schema({
    w_post:{
     type:String,
     required:true
+   },
+   hostel_no:{
+      type:String,
+      required:true
    }
 });
 
