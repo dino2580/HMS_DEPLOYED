@@ -8,6 +8,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.1",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
+    "braintree": "^3.23.0",
     "emoji-picker-react": "^4.9.2",
     "express": "^4.18.3",
     "mongoose": "^8.2.0",

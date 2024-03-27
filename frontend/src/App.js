@@ -31,6 +31,7 @@ import AdminDashboard from './components/AdminDashboard';
 import Chat from './components/chat/Chat';
 import MessMenu from './components/MessMenu';
 import Transaction from './components/Transaction';
+import TransactionStudent from './components/TransactionStudent';
 
 function App() {
   const handleSubmit = async (formData) => {
@@ -137,7 +138,7 @@ function App() {
           <Route path='/profile' element={<AdminDashboard/> }/>
           <Route path='/mess' element={<MessMenu/> }/>
           <Route path='/transaction' element={<Transaction/> }/>
-
+          <Route path='/transactionstudent' element={<TransactionStudent/> }/>
         </Routes>
         <Footer />
       </Router>
