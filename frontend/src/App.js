@@ -144,6 +144,7 @@ function App() {
           <Route path="/ragging" element={<Ragging/>} />
           <Route path="/maintenance" element={<Maintenance/>} />
           <Route path='/transactionstudent' element={<TransactionStudent/> }/>
+          <Route path='/transaction' element={<Transaction/> }/>
         </Routes>
         <Footer />
       </Router>
