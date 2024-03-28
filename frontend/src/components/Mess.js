@@ -1,44 +1,11 @@
 import React from "react";
 import { Link, useLocation } from 'react-router-dom';
-
+import NavRules from "./NavRules";
 const Mess = () => {
     const location = useLocation();
     return (
         <div className="flex h-full">
-            <nav className="w-1/5 md:w-1/4 bg-gray-800 p-8 rounded-lg my-1 mb-10">
-                <ul className="text-white">
-                    <li className={`py-4 px-4 text-lg font-semibold hover:bg-gray-700 transition duration-300 rounded-md ${location.pathname === "/rules" ? "bg-gray-700" : ""}`}>
-                        <Link to="/rules" className="flex items-center text-white hover:underline">
-                            Rules & Regulations
-                        </Link>
-                    </li>
-                    <li className={`py-4 px-4 text-lg font-semibold hover:bg-gray-700 transition duration-300 rounded-md ${location.pathname === "/general" ? "bg-gray-700" : ""}`}>
-                        <Link to="/general" className="flex items-center text-white hover:underline">
-                            General
-                        </Link>
-                    </li>
-                    <li className={`py-4 px-4 text-lg font-semibold hover:bg-gray-700 transition duration-300 rounded-md ${location.pathname === "/guest" ? "bg-gray-700" : ""}`}>
-                        <Link to="/guest" className="flex items-center text-white hover:underline">
-                            Guest Accommodation
-                        </Link>
-                    </li>
-                    <li className={`py-4 px-4 text-lg font-semibold hover:bg-gray-700 transition duration-300 rounded-md ${location.pathname === "/mess" ? "bg-gray-700" : ""}`}>
-                        <Link to="/mess" className="flex items-center text-white hover:underline">
-                            Mess Regulation
-                        </Link>
-                    </li>
-                    <li className={`py-4 px-4 text-lg font-semibold hover:bg-gray-700 transition duration-300 rounded-md ${location.pathname === "/ragging" ? "bg-gray-700" : ""}`}>
-                        <Link to="/ragging" className="flex items-center text-white hover:underline">
-                            Ragging
-                        </Link>
-                    </li>
-                    <li className={`py-4 px-4 text-lg font-semibold hover:bg-gray-700 transition duration-300 rounded-md ${location.pathname === "/maintenance" ? "bg-gray-700" : ""}`}>
-                        <Link to="/maintenance" className="flex items-center text-white hover:underline">
-                            Maintenance and Upkeep
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
+            <NavRules/>
             <div className="w-4/5 mx-auto p-8 mb-10">
                 <h2 className="font-bold text-3xl mb-6">Mess Rules & Regulations</h2>
                 <ul className="list-disc pl-8 text-gray-800">

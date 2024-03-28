@@ -131,15 +131,15 @@ function App() {
           <Route path="/FeeDetails" element={<FeeDetails />} />
           <Route path='/rooms' element={<RoomList />} ></Route>
           <Route path='/contact' element={<Contact />} />
-          <Route path='/chatgroup' element={<Chatgroup />} />
+          <Route path='/chatgroup' element={<Chat />} />
           <Route path='/chatroom/:group_id' element={<ChatRoom />} />
           <Route path='/profile' element={<AdminDashboard />} />
-          <Route path="/rules" element={Rules} />
-          <Route path="/guest" element={Guest} />
-          <Route path="/general" element={General} />
-          <Route path="/mess" element={Mess} />
-          <Route path="/ragging" element={Ragging} />
-          <Route path="/maintenance" element={Maintenance} />
+          <Route path="/rules" element={<Rules/>} />
+          <Route path="/guest" element={<Guest/>} />
+          <Route path="/general" element={<General/>} />
+          <Route path="/mess" element={<Mess/>} />
+          <Route path="/ragging" element={<Ragging/>} />
+          <Route path="/maintenance" element={<Maintenance/>} />
         </Routes>
         <Footer />
       </Router>

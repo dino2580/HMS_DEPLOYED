@@ -39,13 +39,13 @@ function RoomList() {
     };
     const renderFloorHeading = (floor) => {
         return (
-            <div className="text-xl font-bold text-white cursor-pointer bg-gray-700 py-2 px-4 rounded hover:bg-gray-600	">
+            <div className="text-xl font-bold text-white  cursor-pointer bg-purple-600 py-2 px-4 rounded hover:bg-indigo-600	">
                 Floor {floor}
             </div>
         );
     };
     return (
-        <div className="h-full max-h-full px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
+        <div className="h-full max-h-full px-4 py-6 md:px-6 xl:py-12 2xl:py-16  bg-cover" style={{backgroundImage: 'url("https://img.freepik.com/free-vector/purple-fluid-background-frame_53876-99020.jpg?size=626&ext=jpg&uid=R90768425&ga=GA1.1.1501107074.1707060186&semt=ais")'}}>
             <div className="container mx-auto">
                 <div className='flex justify-around mx-auto'>
                     <div className=""> {renderFloorHeading(1)} </div>
@@ -53,7 +53,7 @@ function RoomList() {
                     <div>{renderFloorHeading(3)} </div>
                 </div>
                 <br />
-                <div className='flex flex-wrap justify-center'>
+                <div className='flex flex-wrap justify-center '>
                     <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 mx-auto">
                         {renderRooms(1)}
                     </div>
