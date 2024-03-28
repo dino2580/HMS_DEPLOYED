@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const paymentsSchema = new mongoose.Schema({
-   payment_id:{
-    type:Number,
+   T_id:{
+    type:String,
     required:true,
    },
-   roll_no: {
-        type: Number,
+   user_id: {
+        type: String,
         required: true,
     },
     amount:
@@ -17,7 +17,12 @@ const paymentsSchema = new mongoose.Schema({
    {
     type:String,
     default:""
-   }
+   },
+   status:
+   {
+    type:Boolean,
+    default:false
+   },
     
 },{ timestamps: true });
 

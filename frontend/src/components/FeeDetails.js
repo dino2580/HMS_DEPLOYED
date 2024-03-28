@@ -6,40 +6,42 @@ import { Link } from 'react-router-dom';
 export default function FeeDetails() {
   return (
     <div className="min-h-screen px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
-      <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row justify-center items-start gap-8">
-          <nav className="w-full md:w-1/4 bg-gray-800 p-4 rounded-lg">
-            <ul className="text-white">
-              <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
-                <FontAwesomeIcon className="mr-2" icon={faChartBar} />
-                Analytics
-              </li>
-              <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
-                <Link to="/Student" className="flex items-center text-white">
-                  <FontAwesomeIcon className="mr-2" icon={faUsers} />
-                  Students
-                </Link>
-              </li>
-              <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
-                <Link to="/Complaints" className="flex items-center text-white">
-                  <FontAwesomeIcon className="mr-2" icon={faSadTear} />
-                  Complaints
-                </Link>
-              </li>
-              <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
-                <Link to="/FeeDetails" className="flex items-center text-white">
-                  <FontAwesomeIcon className="mr-2" icon={faFileAlt} />
-                  Fee Details
-                </Link>
-              </li>
-              <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
-                <Link to="/Workers" className="flex items-center text-white">
-                  <FontAwesomeIcon className="mr-2" icon={faUsersCog} />
-                  Workers Details
-                </Link>
-              </li>
-            </ul>
-          </nav>
+    <div className="container mx-auto">
+      <div className="flex flex-col md:flex-row justify-center items-start gap-8">
+        <nav className="w-full md:w-1/4 bg-gray-800 p-8 rounded-lg">
+          <ul className="text-white">
+            <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
+            <Link to="/dashboard" className="flex items-center text-white">
+              <FontAwesomeIcon className="mr-2" icon={faChartBar} />
+              Analytics
+            </Link>
+            </li>
+            <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
+              <Link to="/Student" className="flex items-center text-white">
+                <FontAwesomeIcon className="mr-2" icon={faUsers} />
+                Students
+              </Link>
+            </li>
+            <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
+              <Link to="/Complaints" className="flex items-center text-white">
+                <FontAwesomeIcon className="mr-2" icon={faSadTear} />
+                Complaints
+              </Link>
+            </li>
+            <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
+              <Link to="/transaction" className="flex items-center text-white">
+                <FontAwesomeIcon className="mr-2" icon={faFileAlt} />
+                Fee Details
+              </Link>
+            </li>
+            <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
+              <Link to="/Workers" className="flex items-center text-white">
+                <FontAwesomeIcon className="mr-2" icon={faUsersCog} />
+                Workers Details
+              </Link>
+            </li>
+          </ul>
+        </nav>
 
           <div className="w-full md:w-3/4 mt-8 md:mt-0">
             <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-6">

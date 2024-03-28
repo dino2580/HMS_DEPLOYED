@@ -1,46 +1,76 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartBar, faUsers, faSadTear, faFileAlt, faUsersCog, faSearch, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 export default function Complaints() {
-  return (
-    <div className="h-100vh px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
-      <div className="container mx-auto">
-        <div className="flex justify-center items-start gap-8">
+  const [complaints, setComplaints] = useState([]);
+  const hostel_no = localStorage.getItem('hostel_no');
+  console.log(hostel_no);
 
-        <nav className="w-1/5 md:w-1/4 h-full bg-gray-800 p-8 rounded-lg">
-                    <ul className="text-white">
-                        <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
-                            <FontAwesomeIcon className="mr-2" icon={faChartBar} />
-                            Analytics
-                        </li>
-                        <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md" >
-                        <Link to="/Student" className="flex items-center text-white">
-                            <FontAwesomeIcon className="mr-2" icon={faUsers} />
-                                Students
-                            </Link>
-                        </li>
-                        <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md" >
-                        <Link to="/Complaints" className="flex items-center text-white">
-                            <FontAwesomeIcon className="mr-2" icon={faUsers} />
-                                Complaints
-                            </Link>
-                        </li>
-                        <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md" >
-                        <Link to="/FeeDetails" className="flex items-center text-white">
-                            <FontAwesomeIcon className="mr-2" icon={faUsers} />
-                                Fee Details
-                            </Link>
-                        </li>
-                        <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md" >
-                        <Link to="/Workers" className="flex items-center text-white">
-                            <FontAwesomeIcon className="mr-2" icon={faUsers} />
-                                Workers Details 
-                            </Link>
-                        </li>
-                    </ul>
-                </nav>
+  const getComplaints = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/getcomplaint', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({hostel_no} )
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setComplaints(data);
+      } else {
+        console.error('Failed to fetch complaints:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error fetching complaints:', error);
+    }
+  };
+
+  useEffect(() => {
+    getComplaints();
+  }, []);
+
+  return (
+    <div className="min-h-screen px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
+    <div className="container mx-auto">
+      <div className="flex flex-col md:flex-row justify-center items-start gap-8">
+        <nav className="w-full md:w-1/4 bg-gray-800 p-8 rounded-lg">
+          <ul className="text-white">
+          <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
+            <Link to="/dashboard" className="flex items-center text-white">
+              <FontAwesomeIcon className="mr-2" icon={faChartBar} />
+              Analytics
+            </Link>
+            </li>
+            <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
+              <Link to="/Student" className="flex items-center text-white">
+                <FontAwesomeIcon className="mr-2" icon={faUsers} />
+                Students
+              </Link>
+            </li>
+            <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
+              <Link to="/Complaints" className="flex items-center text-white">
+                <FontAwesomeIcon className="mr-2" icon={faSadTear} />
+                Complaints
+              </Link>
+            </li>
+            <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
+              <Link to="/transaction" className="flex items-center text-white">
+                <FontAwesomeIcon className="mr-2" icon={faFileAlt} />
+                Fee Details
+              </Link>
+            </li>
+            <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
+              <Link to="/Workers" className="flex items-center text-white">
+                <FontAwesomeIcon className="mr-2" icon={faUsersCog} />
+                Workers Details
+              </Link>
+            </li>
+          </ul>
+        </nav>
 
           <div className="w-full md:w-3/4 mt-4 md:mt-0">
             <div className="px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
@@ -68,12 +98,16 @@ export default function Complaints() {
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-200">
-                          <TableRow id="1" Type="Mess Related" Id="231" Status="Solved" problemDescription="The food served in the mess was not up to the standard. It was stale and tasteless." />
-                          <TableRow id="2" Type="Water Related" Id="231" Status="Pending" problemDescription="There is a water leakage issue in the hostel building. The leakage is causing water wastage and damaging the building structure." />
-                          <TableRow id="3" Type="Mess Related" Id="231" Status="Solved" problemDescription="The menu in the mess lacks variety. The same dishes are served repeatedly." />
-                          <TableRow id="4" Type="Mess Related" Id="231" Status="Solved" problemDescription="The food served in the mess was not up to the standard. It was stale and tasteless." />
-                          <TableRow id="5" Type="Water Related" Id="231" Status="Pending" problemDescription="There is a water leakage issue in the hostel building. The leakage is causing water wastage and damaging the building structure." />
-                          <TableRow id="6" Type="Mess Related" Id="231" Status="Solved" problemDescription="The menu in the mess lacks variety. The same dishes are served repeatedly." />
+                          {complaints.map((complaint, index) => (
+                            <TableRow
+                              key={index}
+                              id={index + 1}
+                              Type={complaint.complaintType}
+                              Id={complaint.id}
+                              Status={complaint.status}
+                              problemDescription={complaint.message}
+                            />
+                          ))}
                         </tbody>
                       </table>
                     </div>
@@ -99,8 +133,8 @@ function TableRow({ id, Type, Id, Status, problemDescription }) {
     <tr className="text-gray-200 bg-gray-800 rounded-lg my-4">
       <td className="py-2 px-4 text-center rounded-l-lg">{id}</td>
       <td className="py-2 px-4 text-center">{Type}</td>
-      <td className="py-2 px-4 text-center">{Id}</td>
-      <td className="py-2 px-4 text-center">{Status}</td>
+      <td className="py-2 px-4 text-center">#{Id}</td>
+      <td className="py-2 px-4 text-center">{Status?"Resolved":"Not Resolved"}</td>
       <td className="py-2 px-4 text-center relative rounded-r-lg">
         {showFullDescription ? (
           <div>

@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 
 
 const accountSchema = new mongoose.Schema({
-    roll_no: {
-        type: Number,
+    user_id: {
+        type: "String",
         required: true,
         unique: true
     },
@@ -26,4 +26,4 @@ const accountSchema = new mongoose.Schema({
 
 const accounts = mongoose.model("Accounts", accountSchema);
 
-module.exports = accountSchema;
+module.exports = accounts;

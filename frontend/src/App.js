@@ -30,6 +30,8 @@ import Chatgroup from './components/Chatgroup';
 import AdminDashboard from './components/AdminDashboard';
 import Chat from './components/chat/Chat';
 import MessMenu from './components/MessMenu';
+import Transaction from './components/Transaction';
+import TransactionStudent from './components/TransactionStudent';
 
 function App() {
   const handleSubmit = async (formData) => {
@@ -140,6 +142,7 @@ function App() {
           <Route path="/mess" element={<Mess/>} />
           <Route path="/ragging" element={<Ragging/>} />
           <Route path="/maintenance" element={<Maintenance/>} />
+          <Route path='/transactionstudent' element={<TransactionStudent/> }/>
         </Routes>
         <Footer />
       </Router>

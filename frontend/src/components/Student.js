@@ -36,10 +36,12 @@ export default function Student() {
         <div className="flex flex-col md:flex-row justify-center items-start gap-8">
           <nav className="w-full md:w-1/4 bg-gray-800 p-8 rounded-lg">
             <ul className="text-white">
-              <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
-                <FontAwesomeIcon className="mr-2" icon={faChartBar} />
-                Analytics
-              </li>
+            <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
+            <Link to="/dashboard" className="flex items-center text-white">
+              <FontAwesomeIcon className="mr-2" icon={faChartBar} />
+              Analytics
+            </Link>
+            </li>
               <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
                 <Link to="/Student" className="flex items-center text-white">
                   <FontAwesomeIcon className="mr-2" icon={faUsers} />
