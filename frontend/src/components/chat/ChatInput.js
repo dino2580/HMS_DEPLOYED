@@ -26,7 +26,7 @@ export default function ChatInput({ handleSendMsg }) {
   };
 
   return (
-    <div className="bg-gray-900 px-8 py-4 flex items-center">
+    <div className="bg-indigo-700 px-8 py-4 flex items-center mb-2 mx-2 rounded-md">
       <div className="relative">
         <BsEmojiSmileFill
           onClick={handleEmojiPickerhideShow}
@@ -41,10 +41,10 @@ export default function ChatInput({ handleSendMsg }) {
           placeholder="Type your message here"
           onChange={(e) => setMsg(e.target.value)}
           value={msg}
-          className="flex-grow py-2 px-4 bg-gray-700 text-white rounded-lg focus:outline-none"
+          className="flex-grow py-2 px-4 bg-white text-black rounded-lg focus:outline-none"
         />
-        <button type="submit" className="ml-4 py-2 px-4 bg-purple-600 text-white rounded-lg">
-          <IoMdSend className="text-2xl" />
+        <button type="submit" className="ml-4 py-2 px-4 text-white rounded-lg">
+          <IoMdSend className="text-2xl text-white  hover:text-indigo-200" />
         </button>
       </form>
     </div>

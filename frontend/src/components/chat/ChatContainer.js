@@ -22,7 +22,7 @@ export default function ChatContainer({ currentChat, socket }) {
 
   return (
     <div className="flex flex-col" style={{ height: "91.05vh", overflowX: "hidden" }}>
-      <div className="flex justify-between items-center px-8 py-4 bg-gray-800">
+      <div className="flex justify-between items-center px-8 py-4 bg-indigo-600">
         <div className="flex items-center space-x-4">
           <div className="w-12 h-12">
             {/* Replace src with actual image source */}
@@ -38,8 +38,8 @@ export default function ChatContainer({ currentChat, socket }) {
         <div className="px-8 py-4 flex flex-col gap-4">
           {messages.map((message) => (
             <div key={uuidv4()} className={`flex ${message.fromSelf ? "justify-end" : "justify-start"}`}>
-              <div className="max-w-2/5 overflow-hidden rounded-lg py-4 px-6 bg-gray-700">
-                <p className="text-white">{message.message}</p>
+              <div className={`max-w-2/5 overflow-hidden rounded-lg py-4 px-6 ${message.fromSelf ? "bg-indigo-500 text-white self" : "bg-slate-200 text-black other"}`}>
+                <p>{message.message}</p>
               </div>
             </div>
           ))}

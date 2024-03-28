@@ -52,9 +52,9 @@ const Testimonial = () => {
     };
 
     return (
-        <div className='min-h-screen relative bg-slate-200'>
-            <div className='text-center my-15'>
-                <h2 className='text-4xl font-bold mt-8 mb-16'>Few Good Words About Us</h2>
+        <div className='min-h-screen relative  bg-slate-200'>
+            <div className='text-center '>
+                <h2 className='text-4xl font-bold mt-8 mb-16'><span className='relative bg-left-bottom bg-[length:0%_3px] bg-gradient-to-r from-indigo-600 to to-indigo-600 hover:bg-[length:100%_3px] bg-no-repeat transition-all duration-500 ease-in-out' >Some Words About Us</span></h2>
             </div>
             <div className='flex flex-row justify-evenly items-center'>
                 <div className='flex -translate-y-1/2 my-auto items-center text-2xl rounded-full p-2 bg-black text-indigo-600 bg-opacity-20 cursor-pointer'>

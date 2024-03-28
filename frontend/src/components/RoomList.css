@@ -1,7 +1,7 @@
 .room-box {
     width: 10vh; 
     height: 5vh; 
-    background-color: #ffffff39; 
+    background-color: rgb(203 213 225); 
     border-radius: 4px; 
     display: flex;
     justify-content: center;
@@ -11,7 +11,7 @@
     cursor: pointer; 
   }
   .vacant{
-    background-color: #ffffff39; 
+    background-color: rgb(165 180 252); 
   }
   .filled{
     background-color:green;
