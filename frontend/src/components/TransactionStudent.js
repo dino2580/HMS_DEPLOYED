@@ -4,8 +4,8 @@ import DropIn from "braintree-web-drop-in-react";
 function TransactionStudent() {
   const [entries, setEntries] = useState([]);
 
-  const [totalTransactions, setTotalTransactions] = useState(entries.length);
-  const [totalCollection, setTotalCollection] = useState(30);
+  
+  const [user_paid,setUser_paid] = useState(0);
   const [expectedCollection, setExpectedCollection] = useState(30);
   const [showPaymentForm, setShowPaymentForm] = useState(false);
   const [showPaymentForm2, setShowPaymentForm2] = useState(false);
@@ -63,6 +63,7 @@ function TransactionStudent() {
       if (amountResponse.ok) {
         const responseData = await amountResponse.json();
         const amount1 = responseData.user_dues;
+        setUser_paid(responseData.user_paid);
         setAmount(amount1); // Update 'expectedAmount' state to 'amount'
       } else {
         console.error('Failed to fetch user dues:', amountResponse.statusText);
@@ -130,6 +131,7 @@ function TransactionStudent() {
       try {
         const userId = localStorage.getItem('userId'); // Assuming you store the userId in localStorage
         const response = await fetch(`http://localhost:5000/api/auth/transactions/${userId}`);
+
         
         if (!response.ok) {
           throw new Error('Failed to fetch transactions');
@@ -158,17 +160,13 @@ function TransactionStudent() {
   return (
     <div className="flex flex-col bg-back">
       <div className="flex justify-center m-4">
-        <div className="m-5 bg-teal-300 hover:bg-teal-400 transition duration-300 text-teal-800 rounded-md p-4 flex flex-col">
-          <h3>Total Transactions</h3>
-          <p className="text-4xl font-bold mr-4">{totalTransactions}</p>
-        </div>
         <div className="m-5 bg-yellow-300 hover:bg-yellow-400 transition duration-300 text-blue-800 rounded-md p-4 flex flex-col">
-          <h3>Total Fees</h3>
-          <p className="text-4xl font-bold mr-4">₹{totalCollection}</p>
+          <h3>Total Fees Paid</h3>
+          <p className="text-4xl font-bold mr-4">₹{user_paid}</p>
         </div>
         <div className="m-5 bg-orange-300 hover:bg-orange-400 transition duration-300 text-orange-800 rounded-md p-4 flex flex-col">
           <h3>Fees To Pay</h3>
-          <p className="text-4xl font-bold mr-4">₹{expectedCollection}</p>
+          <p className="text-4xl font-bold mr-4">₹{amount}</p>
         </div>
       </div>
       <div className="flex justify-center">

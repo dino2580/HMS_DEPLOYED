@@ -42,7 +42,8 @@ const braintreePaymentController = async (req, res) => {
           T_id,
           user_id,
           amount,
-          hostel_no
+          hostel_no,
+          status:true
 
         }
       )
