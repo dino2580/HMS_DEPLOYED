@@ -1,95 +1,45 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { faBullhorn } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBullhorn } from "@fortawesome/free-solid-svg-icons";
 
 function Announcement() {
-  // Array of announcements
-  const announcements = [
-    {
-      title: "Hostel renovations are complete",
-      author: "Admin",
-      date: "2023-03-18T14:30:00", // Formatted as "YYYY-MM-DDTHH:mm:ss"
-      content:
-        "We're excited to announce that the renovations are complete! The common area has been refurbished and we've added new facilities for our guests. We can't wait for you to see the changes. Come and enjoy the new and improved hostel!",
-    },
-    {
-      title: "Upcoming hostel event",
-      author: "Admin",
-      date: "2023-04-01T10:00:00",
-      content:
-        "Mark your calendars! We're hosting a hostel event on April 15th. There will be live music, food, and fun activities. Stay tuned for more details!",
-    },
-    {
-      title: "New hostel rules",
-      author: "Admin",
-      date: "2023-03-25T14:00:00",
-      content:
-        "Please be aware of the new hostel rules that have been implemented. These rules are in place to ensure a safe and enjoyable experience for all our guests. You can find the complete list of rules on our website or at the front desk.",
-    },
-    {
-      title: "Maintenance work scheduled",
-      author: "Admin",
-      date: "2023-04-10T09:00:00",
-      content:
-        "We would like to inform you that there will be maintenance work taking place in the hostel common areas on April 20th from 9 AM to 5 PM. We apologize for any inconvenience this may cause.",
-    },
-    {
-      title: "Hostel tour available",
-      author: "Admin",
-      date: "2023-03-20T16:30:00",
-      content:
-        "Are you new to our hostel? Join us for a free tour every Saturday at 4 PM to get familiar with the facilities and amenities. Sign up at the front desk!",
-    },
-    {
-      title: "Hostel tour available",
-      author: "Admin",
-      date: "2023-03-20T16:30:00",
-      content:
-        "Are you new to our hostel? Join us for a free tour every Saturday at 4 PM to get familiar with the facilities and amenities. Sign up at the front desk!",
-    },
-    {
-      title: "Hostel tour available",
-      author: "Admin",
-      date: "2023-03-20T16:30:00",
-      content:
-        "Are you new to our hostel? Join us for a free tour every Saturday at 4 PM to get familiar with the facilities and amenities. Sign up at the front desk!",
-    },
-    {
-      title: "Hostel tour available",
-      author: "Admin",
-      date: "2023-03-20T16:30:00",
-      content:
-        "Are you new to our hostel? Join us for a free tour every Saturday at 4 PM to get familiar with the facilities and amenities. Sign up at the front desk!",
-    },
-    {
-      title: "Hostel tour available",
-      author: "Admin",
-      date: "2023-03-20T16:30:00",
-      content:
-        "Are you new to our hostel? Join us for a free tour every Saturday at 4 PM to get familiar with the facilities and amenities. Sign up at the front desk!",
-    },
-    // Add more announcements as needed
-  ];
-
-  // State for current time
-  const [currentTime, setCurrentTime] = useState(new Date());
-
-  // State to control the number of visible announcements
+  const [announcements, setAnnouncements] = useState([]);
   const [visibleAnnouncements, setVisibleAnnouncements] = useState(3);
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const hostel_no = localStorage.getItem('hostel_no');
 
   useEffect(() => {
-    // Update current time every second
+    const fetchAnnouncements = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/auth/getannouncements', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ hostel_no }),
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setAnnouncements(data);
+        } else {
+          console.error('Failed to fetch announcements');
+        }
+      } catch (error) {
+        console.error('Error fetching announcements:', error);
+      }
+    };
+
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
 
-    // Cleanup interval on component unmount
+    fetchAnnouncements();
+
     return () => clearInterval(intervalId);
-  }, []); // Empty dependency array ensures the effect runs only once on mount
+  }, [hostel_no]);
 
   const handleSeeMore = () => {
-    setVisibleAnnouncements((prevCount) => prevCount + 5);
+    setVisibleAnnouncements(prevCount => prevCount + 5);
   };
 
   return (
@@ -106,6 +56,7 @@ function Announcement() {
       <main className="mx-auto grid max-w-7xl gap-6 lg:gap-10 px-4 lg:px-6">
         <div className="flex flex-col gap-4">
           <div className="flex flex-col mt-6 gap-2 text-center">
+            
             <h1 className="text-2xl font-bold text-blue-800 dark:text-blue-800 text-center tracking-tighter sm:text-4xl">
               Hostel Announcements
             </h1>
@@ -113,15 +64,13 @@ function Announcement() {
         </div>
         <div className="grid gap-4 max-w-lg max-l-lg sm:max-w-lg md:max-w-500 border -black dark:border-black lg:max-w-2xl xl:max-w-3xl 2xl:max-w-4xl mx-auto bg-white p-10 rounded-md overflow-y-scroll h-screen mb-6 scrollbar-hidden">
           <div className="mt--1 flex items-center">
+            <h5 className="text-black text-2xl font-bold dark:text-gray-400">
             <FontAwesomeIcon
               icon={faBullhorn}
               className="text-yellow-600 text-2xl dark:text-gray-400 mr-2"
-            />
-            <h5 className="text-black text-2xl font-bold dark:text-gray-400">
-              Latest Hostel News
+            /> Latest Hostel News
             </h5>
           </div>
-          {/* Mapping through announcements */}
           {announcements.slice(0, visibleAnnouncements).map((announcement, index) => (
             <div
               key={index}
@@ -130,7 +79,7 @@ function Announcement() {
               <div className="flex flex-col justify-center px-4 py-2 bg-gray-300 dark:bg-gray-800 rounded-l-lg">
                 <div className="text-gray-600 dark:text-gray-400">
                   <div className="text-sm font-bold">
-                    {new Date(announcement.date).toLocaleString("en-US", {
+                    {new Date(announcement.createdAt).toLocaleString("en-US", {
                       month: "long",
                       day: "numeric",
                       hour: "numeric",
@@ -141,23 +90,23 @@ function Announcement() {
               </div>
               <div className="flex flex-col gap-4 p-6 flex-1">
                 <div className="flex flex-col gap-2">
-                  <h4 className="text-xl font-bold">{announcement.title}</h4>
+                  <h4 className="text-xl text-gray-500 dark:text-gray-400 font-bold">{announcement.title}</h4>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
-                    by {announcement.author}
+                    by {announcement.user_name}
                   </p>
                 </div>
                 <p className="text-base text-gray-500 dark:text-gray-400">
-                  {announcement.content}
+                  {announcement.announcement_message}
                 </p>
               </div>
             </div>
           ))}
           {visibleAnnouncements < announcements.length && (
             <p
-              className=" text-blue-700 font-bold  cursor-pointer scroll-hidden"
+              className="text-blue-700 font-bold cursor-pointer"
               onClick={handleSeeMore}
             >
-              See More
+              Read More
             </p>
           )}
         </div>

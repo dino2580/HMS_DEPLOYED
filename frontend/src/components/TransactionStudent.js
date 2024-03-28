@@ -3,8 +3,6 @@ import DropIn from "braintree-web-drop-in-react";
 
 function TransactionStudent() {
   const [entries, setEntries] = useState([]);
-
-  
   const [user_paid,setUser_paid] = useState(0);
   const [expectedCollection, setExpectedCollection] = useState(30);
   const [showPaymentForm, setShowPaymentForm] = useState(false);
@@ -14,7 +12,6 @@ function TransactionStudent() {
   const [instance, setInstance] = useState(null);
   const [amount, setAmount] = useState(0); // Rename 'expectedAmount' to 'amount'
   const [loading, setLoading] = useState(false);
-
   const [formData, setFormData] = useState({
     T_id: "",
     name: "",
@@ -22,7 +19,46 @@ function TransactionStudent() {
     room: "",
     contactNo: "",
   });
-  
+  const handlePhonePePayment = async () => {
+    try {
+      setLoading(true);
+      await fetchUserDues();
+      const user_id = localStorage.getItem('userId');
+      const hostel_no = localStorage.getItem('hostel_no');
+      const { nonce } = await instance.requestPaymentMethod();
+      
+      // Example URL for PhonePe payment endpoint (replace with actual endpoint)
+      const phonePePaymentURL = 'https://example.com/phonepe/payment';
+
+      const response = await fetch(phonePePaymentURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          user_id,
+          nonce,
+          amount,
+          hostel_no,
+          paymentMethod: 'phonepe' // Indicate PhonePe as the payment method
+        })
+      });
+      
+      const data = response.json();
+      
+      if (response.ok) {
+        alert("Payment Successful");
+        console.log('Payment response:', data);
+      } else {
+        console.error('Failed to process payment:', data.error);
+      }
+    } catch (error) {
+      console.error('Error processing payment:', error);
+    } finally {
+      setLoading(false);
+      setShowPaymentForm(false);
+    }
+  };
 
   const handlePayment = async () => {
     try {
@@ -126,12 +162,16 @@ function TransactionStudent() {
     }
   };
 
+  const launchUPI = () => {
+    const upiLink = 'upi://pay?pa=sanidhya.4@paytm&pn=PaytmUser&mc=0000&mode=02&purpose=00&orgid=159761&cust=1483872887';
+    window.location.href = upiLink;
+  };
+
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
         const userId = localStorage.getItem('userId'); // Assuming you store the userId in localStorage
         const response = await fetch(`http://localhost:5000/api/auth/transactions/${userId}`);
-
         
         if (!response.ok) {
           throw new Error('Failed to fetch transactions');
@@ -146,21 +186,30 @@ function TransactionStudent() {
         setLoading(false);
       } catch (error) {
         console.error('Error fetching transactions:', error.message);
-        
         setLoading(false);
       }
     };
 
     fetchTransactions();
-  
     fetchUserDues();
     getToken();
   }, []);
 
   return (
     <div className="flex flex-col bg-back">
+      <div className="flex flex-col bg-back">
+      {/* Your existing JSX */}
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline mt-4 mr-4"
+        onClick={handlePhonePePayment} // Add this onClick handler to the PhonePe payment button
+      >
+        Pay with PhonePe
+      </button>
+      {/* Your existing JSX */}
+    </div>
       <div className="flex justify-center m-4">
         <div className="m-5 bg-yellow-300 hover:bg-yellow-400 transition duration-300 text-blue-800 rounded-md p-4 flex flex-col">
+          
           <h3>Total Fees Paid</h3>
           <p className="text-4xl font-bold mr-4">₹{user_paid}</p>
         </div>
@@ -168,6 +217,7 @@ function TransactionStudent() {
           <h3>Fees To Pay</h3>
           <p className="text-4xl font-bold mr-4">₹{amount}</p>
         </div>
+        <button onClick={launchUPI}>Click here to initiate payment</button>
       </div>
       <div className="flex justify-center">
         <button
@@ -205,7 +255,6 @@ function TransactionStudent() {
                   required
                 />
               </div>
-           
               <button
                 type="submit"
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -308,32 +357,32 @@ function TransactionStudent() {
                 </tr>
               </thead>
               <tbody className="bg-slate-100 divide-y divide-gray-200">
-  { entries.map(( transaction, index) => (
-    <tr key={index} className="shadow-lg">
-      <td className="px-6 py-4 whitespace-nowrap">
-        {transaction.T_id}
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap">
-        {user.full_name}
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap">
-        ₹{transaction.amount}
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap">
-        {transaction.createdAt}
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap">
-        {transaction.status?"Verified":"Not Verified"}
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap">
-        {user.room_number}
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap">
-        {transaction.contactNo}
-      </td>
-    </tr>
-  ))}
-</tbody>
+                {entries.map((transaction, index) => (
+                  <tr key={index} className="shadow-lg">
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {transaction.T_id}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {user.full_name}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      ₹{transaction.amount}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {transaction.createdAt}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {transaction.status ? "Verified" : "Not Verified"}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {user.room_number}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {transaction.contactNo}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
           </div>
         </div>

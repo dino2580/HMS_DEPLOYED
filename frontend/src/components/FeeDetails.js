@@ -52,6 +52,7 @@ export default function FeeDetails() {
                       <h1 className="text-3xl font-bold tracking-tight sm:text-4xl text-white dark:text-gray-100">
                         Fee Details
                       </h1>
+
                     </div>
                     <div className="relative w-full">
                       <FontAwesomeIcon icon={faSearch} className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
