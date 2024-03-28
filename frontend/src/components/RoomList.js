@@ -1,21 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './RoomList.css';
 
 function RoomList() {
     const roomsPerFloor = 50;
 
     const [roomAvailability, setRoomAvailability] = useState(Array(roomsPerFloor * 6).fill('vacant'));
-
-    const updateRoomAvailability = (roomIndex, status) => {
+    const hostel_no=localStorage.getItem('hostel_no');
+    useEffect(() => {
+        updateRoomAvailability();
+    }, []);
+    const updateRoomAvailability = async() => {
+        for(let floor=5;floor<6;floor++)
+        {
+        for (let roomNumber = 1; roomNumber <= roomsPerFloor; roomNumber++) {
+        const roomIndex = roomNumber + (roomsPerFloor * (floor - 1)) - 1;
+        const roomStatus = roomAvailability[roomIndex];
         const updatedAvailability = [...roomAvailability];
-        if (status === 'vacant') {
-            updatedAvailability[roomIndex] = 'filled';
-        } else if (status === 'filled') {
-            updatedAvailability[roomIndex] = 'filled_not_available';
-        } else {
-            updatedAvailability[roomIndex] = 'vacant';
+        try {
+            let roomNumber1 ; 
+            if(roomNumber<10)roomNumber1="A"+floor+"0"+roomNumber;
+            else roomNumber1="A"+floor+roomNumber;
+             // Example hostel number
+            
+            const response = await fetch('http://localhost:5000/api/auth/roomNumber', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Add any additional headers if required
+                },
+                body: JSON.stringify({ room_number: roomNumber1, hostel_no: hostel_no }), // Send room_no and hostel_no in the request body
+                // You can add other options like credentials, etc., if needed
+            });
+            
+            if (!response.ok) {
+                
+                continue;
+            }
+            
+            const userData = await response.json();
+            // console.log(userData)
+            if(userData.length==0)
+            {
+                updatedAvailability[roomIndex]='vacant';
+                continue;
+            }
+            else{
+                // console.log(userData);
+            
+            
+                if(userData[0].currently_present)
+                {
+                    updatedAvailability[roomIndex]='filled';
+                }
+                else
+                {
+                    updatedAvailability[roomIndex]='filled_not_available'
+                }
+                
+            }
+        //  console.log(roomNumber1+""+hostel_no+updatedAvailability);
+            
+        } catch (error) {
+            console.error('Error fetching user:', error.message);
+            // Handle error appropriately, e.g., show an error message to the user
+            return null;
         }
-        setRoomAvailability(updatedAvailability);
+        setRoomAvailability(updatedAvailability);}
+    }
     };
 
     const renderRooms = (floor) => {

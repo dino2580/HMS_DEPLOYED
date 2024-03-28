@@ -21,6 +21,7 @@ const createAccount = require('../controllers/CreateAccount');
 const getUserDues = require('../controllers/GetUserDues');
 const updateUserDues = require('../controllers/UpdateUserDues');
 const getTransactions = require('../controllers/GetTransaction');
+const getStudentroom = require('../controllers/GetStudentRoom');
 
 
 const router = express.Router();
@@ -42,6 +43,7 @@ router.post('/send',createMessage);
 router.post('/createGroup',createGroup);
 router.post('/userpaid',updateUserPaid);
 router.get('/getgroup',getGroups);
+router.post('/roomNumber',getStudentroom);
 router.post('/formtransaction',formTransaction);
 router.get('/transactions/:user_id',getTransactions);
 router.post('/createaccount',createAccount);
