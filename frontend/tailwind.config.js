@@ -13,7 +13,8 @@ module.exports = {
         '141415':'#141415',
         'back' : 'rgb(147,197,253)',
           face: '#fb7e73',
-          testimonial:'#3f3d56'
+          testimonial:'#3f3d56',
+          admin:'#D8DADD'
         },
       },
       scrollbar: {

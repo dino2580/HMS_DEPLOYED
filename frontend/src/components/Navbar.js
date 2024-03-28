@@ -83,7 +83,7 @@ function Navbar() {
               <FontAwesomeIcon icon={faScroll} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
               Announcements
             </NavLink>
-            <div className="absolute left-0 bottom-0 h-0.5  bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></div>
+            <div className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></div>
           </li>
           <li className="relative group">
             <NavLink

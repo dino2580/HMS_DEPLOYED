@@ -33,6 +33,7 @@ import MessMenu from './components/MessMenu';
 import Transaction from './components/Transaction';
 import TransactionStudent from './components/TransactionStudent';
 
+
 function App() {
   const handleSubmit = async (formData) => {
     // event.preventDefault();
@@ -127,18 +128,23 @@ function App() {
           <Route path="/home" element={<HomePage/>} />
           <Route path="/login" element={<Login handleSubmit={handleSubmit} />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/Student" element={<Student/>}/> 
-          <Route path="/Complaints" element={<Complaints/>}/> 
-          <Route path="/Workers" element={<Workers/>}/> 
-          <Route path="/FeeDetails" element={<FeeDetails/>}/> 
-          <Route path='/rooms' element= {<RoomList/>} ></Route>
-          <Route path='/contact' element={<Contact/> }/>
-          <Route path='/chatgroup' element={<Chat/> }/>
-          {/* <Route path='/chatroom/:group_id' element={<Chat/> }/> */}
-          <Route path='/profile' element={<AdminDashboard/> }/>
-          <Route path='/mess' element={<MessMenu/> }/>
-          <Route path='/transaction' element={<Transaction/> }/>
-          <Route path='/transactionstudent' element={<TransactionStudent/> }/>
+          <Route path="/Student" element={<Student />} />
+          <Route path="/Complaints" element={<Complaints />} />
+          <Route path="/Workers" element={<Workers />} />
+          <Route path="/FeeDetails" element={<FeeDetails />} />
+          <Route path='/rooms' element={<RoomList />} ></Route>
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/chatgroup' element={<Chatgroup />} />
+          <Route path='/chatroom/:group_id' element={<ChatRoom />} />
+          <Route path='/profile' element={<AdminDashboard />} />
+          <Route path="/rules" element={Rules} />
+          <Route path="/guest" element={Guest} />
+          <Route path="/general" element={General} />
+          <Route path="/mess" element={<MessMenu/>} />
+          <Route path="/ragging" element={Ragging} />
+          <Route path="/maintenance" element={Maintenance} />
+          <Route path="/transaction" element={<Transaction/>} />
+          <Route path="/transactionstudent" element={<TransactionStudent/>} />
         </Routes>
         <Footer />
       </Router>

@@ -6,6 +6,7 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollarSign, faExclamationCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import Sidebar from './sidebar';
 
 const AdminDashboard = () => {
   const occupancyData = [
@@ -25,45 +26,14 @@ const AdminDashboard = () => {
   };
 
 return (
-    <div className="bg-gradient-to-br from-gray-800 to-gray-900 min-h-screen p-4">
-      <div className="container mx-auto">
-        <div className="grid grid-cols-5 gap-8">
-          <div className="col-span-1 p-4 rounded-md bg-gray-800">
-            <nav>
-              <ul className="text-white">
-                <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
-                  <FontAwesomeIcon className="mr-2" icon={faChartBar} />
-                  Analytics
-                </li>
-                <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
-                  <Link to="/Student" className="flex items-center text-white">
-                    <FontAwesomeIcon className="mr-2" icon={faUsers} />
-                    Students
-                  </Link>
-                </li>
-                <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
-                  <Link to="/Complaints" className="flex items-center text-white">
-                    <FontAwesomeIcon className="mr-2" icon={faSadTear} />
-                    Complaints
-                  </Link>
-                </li>
-                <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
-                  <Link to="/FeeDetails" className="flex items-center text-white">
-                    <FontAwesomeIcon className="mr-2" icon={faFileAlt} />
-                    Fee Details
-                  </Link>
-                </li>
-                <li className="py-2 px-4 hover:bg-gray-700 cursor-pointer transition duration-300 rounded-md">
-                  <Link to="/Workers" className="flex items-center text-white">
-                    <FontAwesomeIcon className="mr-2" icon={faUsersCog} />
-                    Workers Details
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          </div>
+  <div className="min-h-screen px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
+  <div className="container mx-auto">
+    <div className="flex flex-col md:flex-row justify-center items-start gap-8">
+          
+            <Sidebar/>
+          
 
-          <div className="col-span-4 bg-gray-800 p-4 rounded-md">
+          <div className="col-span-3 bg-gray-800 p-4 rounded-md">
             <div className='bg-gray-900 p-6 m-6 rounded-md'>
               <h2 className="text-lg font-bold mb-4 text-white">Occupancy</h2>
               <div className="flex justify-evenly ">
