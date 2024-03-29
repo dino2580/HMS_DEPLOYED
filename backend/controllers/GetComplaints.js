@@ -22,5 +22,25 @@ const getComplaint = async (req, res) => {
         return res.status(500).json({ error: "Internal Server Error" });
     }
 };
+const getAllComplaint = async (req, res) => {
+    try {
+        const { hostel_no } = req.body;
+        console.log(hostel_no);
+        let complaints;
+        if(hostel_no){
+            complaints = await Complaints.findOne({hostel_no:hostel_no});
+        }else{
+            complaints = await Complaints.find();
+        }
+        // Assuming createdAt is a field in the Complaints schema
+        complaints.sort((a, b) => a.createdAt - b.createdAt);
 
-module.exports = getComplaint;
+        console.log(complaints);
+        res.json(complaints);
+    } catch (error) {
+        console.error("Error in getComplaint:", error.message);
+        return res.status(500).json({ error: "Internal Server Error" });
+    }
+};
+
+module.exports = {getComplaint,getAllComplaint};

@@ -5,7 +5,7 @@ import Dashboard from './components/Dashboard';
 import Announcement from './components/Announcement';
 import SignUp from "./components/Signuppage";
 // import Signup from './components/Signup';
-import Home from './components/Home';
+// import Home from './components/Home';
 import Login from './components/Loginpage';
 // import SignUp from './components/SignUp';
 import RoomList from './components/RoomList';
@@ -32,6 +32,11 @@ import Chat from './components/chat/Chat';
 import MessMenu from './components/MessMenu';
 import Transaction from './components/Transaction';
 import TransactionStudent from './components/TransactionStudent';
+import Studentdasboard from './components/studentdashboard';
+import Complaintsdashboard from './components/Complaintsdashboard';
+import FeeDetailsdashboard from './components/FeeDetailsdashboard';
+import Workersdashboard from './components/Workersdasboard';
+import Transactiondashboard from './components/Transactiondashboard';
 
 
 function App() {
@@ -88,19 +93,25 @@ function App() {
           localStorage.setItem("cookie", jwtCookie);
           localStorage.setItem("Email", payload.email);
           localStorage.setItem("admin", payload.admin);
+          localStorage.setItem("superadmin", payload.super_admin);
           localStorage.setItem("hostel_no", payload.hostel_no);
           localStorage.setItem("userId", payload.userId);
           localStorage.setItem("full_name", payload.full_name);
           console.log(localStorage.getItem("admin"));
           console.log(localStorage.getItem("hostel_no"));
           const isAdmin = localStorage.getItem("admin") === "true";
-
-          if (isAdmin) {
+          const isSuperAdmin = localStorage.getItem("superadmin") === "true";
+          const hostel_no = localStorage.getItem("hostel_no");
+          console.log(isSuperAdmin)
+          if (isSuperAdmin) {
             // Redirect to the admin dashboard
-            window.location.href = "/dashboard";
-          } else {
+            window.location.href = "/admindashboard";
+          } else if(isAdmin) {
             // Redirect to the user dashboard
-            window.location.href = "/announcement";
+            window.location.href = `/admindashboard/${hostel_no}`;
+          }else{
+            window.location.href = "/";
+
           }
         } else {
           console.log("JWT cookie not found");
@@ -124,19 +135,17 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/announcement" element={<Announcement />} />
-          {/* <Route path="/profile" element={<SignUpForm />} /> */}
-          <Route path="/home" element={<HomePage/>} />
           <Route path="/login" element={<Login handleSubmit={handleSubmit} />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/Student" element={<Student />} />
-          <Route path="/Complaints" element={<Complaints />} />
-          <Route path="/Workers" element={<Workers />} />
-          <Route path="/FeeDetails" element={<FeeDetails />} />
+          <Route path="/admindashboard/Student" element={<Student />} />
+          <Route path="/admindashboard/Complaints" element={<Complaints />} />
+          <Route path="/admindashboard/Workers" element={<Workers />} />
+          <Route path="/admindashboard/FeeDetails" element={<FeeDetails />} />
           <Route path='/rooms' element={<RoomList />} ></Route>
           <Route path='/contact' element={<Contact />} />
           <Route path='/chatgroup' element={<Chat />} />
           <Route path='/chatroom/:group_id' element={<ChatRoom />} />
-          <Route path='/profile' element={<AdminDashboard />} />
+          <Route path='/admindashboard' element={<AdminDashboard />} />
           <Route path="/rules" element={<Rules/>} />
           <Route path="/guest" element={<Guest/>} />
           <Route path="/general" element={<General/>} />
@@ -144,7 +153,15 @@ function App() {
           <Route path="/ragging" element={<Ragging/>} />
           <Route path="/maintenance" element={<Maintenance/>} />
           <Route path='/transactionstudent' element={<TransactionStudent/> }/>
-          <Route path='/transaction' element={<Transaction/> }/>
+          <Route path='/admindashboard/transaction' element={<Transaction/> }/>
+          <Route path='/admindashboard/:hostel_no' element={<Dashboard/> }/>
+          {/* //dashboard */}
+          <Route path="/admindashboard/:hostel_no/students" element={<Studentdasboard/>} />
+          <Route path="/admindashboard/:hostel_no/Complaints" element={<Complaintsdashboard/>} />
+          <Route path="/admindashboard/:hostel_no/Workers" element={<Workersdashboard />} />
+          <Route path="/admindashboard/:hostel_no/FeeDetails" element={<FeeDetailsdashboard/>} />
+          <Route path="/admindashboard/:hostel_no/transaction" element={<Transactiondashboard/>} />
+          
         </Routes>
         <Footer />
       </Router>

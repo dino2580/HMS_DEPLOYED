@@ -15,6 +15,7 @@ import { Link, NavLink } from "react-router-dom";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const isAdmin = localStorage.getItem("admin") === "true";
+  const isSuperAdmin = localStorage.getItem("superadmin") === "true";
   const isCookie = localStorage.getItem("cookie");
 
   const toggleMenu = () => {
@@ -24,10 +25,10 @@ function Navbar() {
     <nav className=" bg-5522a3 p-6 shadow-lg bg-gradient-to-r from-5522a3 to-indigo-600" >
       <div className="navbar-items max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center">
-          <a href="#" className="text-white text-lg font-bold">
+          <a href="/" className="text-white flex text-lg font-bold">
             Logo
-          </a>
           <p className="ml-2 text-white text-lg font-bold"> HMS</p>
+          </a>
         </div>
         <div className="md:hidden">
           <button onClick={toggleMenu} className="text-white">
@@ -49,10 +50,11 @@ function Navbar() {
             isOpen ? "block" : "hidden"
           } md:justify-evenly md:space-x-10 md:items-center`}
         >
-          {isAdmin && (
+          
+          {isSuperAdmin && (
             <li className="relative group">
               <NavLink
-                to="/dashboard"
+                to="/admindashboard"
                 activeClassName="text-indigo-600"
                 className="text-white  "
               >
@@ -63,18 +65,8 @@ function Navbar() {
               <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
             </li>
           )}
-          <li className="relative group">
-            <NavLink
-              to="/rooms"
-              activeClassName="text-indigo-600"
-              className="text-white "
-            >
-              <FontAwesomeIcon icon={faBed} className="mr-1 bg-white text-purple-600 p-1 text-sm rounded-md" />
-              Rooms
-            </NavLink>
-            <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
-          </li>
-          <li className="relative group">
+          
+          {isCookie&&<li className="relative group">
             <NavLink
               to="/announcement"
               activeClassName="text-indigo-600"
@@ -84,29 +76,7 @@ function Navbar() {
               Announcements
             </NavLink>
             <div className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></div>
-          </li>
-          <li className="relative group">
-            <NavLink
-              to="/home"
-              activeClassName="text-indigo-600"
-              className="text-white "
-            >
-              <FontAwesomeIcon icon={faAddressBook} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
-              Contact
-            </NavLink>
-            <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
-          </li>
-          <li className="relative group">
-            <NavLink
-              to="/profile"
-              activeClassName="text-indigo-600"
-              className="text-white  "
-            >
-              <FontAwesomeIcon icon={faUser} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
-              Profile
-            </NavLink>
-            <span className="absolute left-0 bottom-0 h-0.5  bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
-          </li>
+          </li>}
           <li className="relative group">
             <NavLink
               to="/mess"
@@ -118,6 +88,51 @@ function Navbar() {
             </NavLink>
             <span className="absolute left-0 bottom-0 h-0.5  bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
           </li>
+          {isAdmin &&<li className="relative group">
+            <NavLink
+              to="/rooms"
+              activeClassName="text-indigo-600"
+              className="text-white "
+            >
+              <FontAwesomeIcon icon={faBed} className="mr-1 bg-white text-purple-600 p-1 text-sm rounded-md" />
+              Rooms
+            </NavLink>
+            <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
+          </li>}
+          {!isSuperAdmin&&<li className="relative group">
+            <NavLink
+              to="/home"
+              activeClassName="text-indigo-600"
+              className="text-white "
+            >
+              <FontAwesomeIcon icon={faAddressBook} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
+              Contact Us
+            </NavLink>
+            <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
+          </li>}
+          
+          {!isSuperAdmin&&<li className="relative group">
+            <NavLink
+              to="/aboutus"
+              activeClassName="text-indigo-600"
+              className="text-white  "
+            >
+              <FontAwesomeIcon icon={faUser} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
+              About Us
+            </NavLink>
+            <span className="absolute left-0 bottom-0 h-0.5  bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
+          </li>}
+          {isCookie&&<li className="relative group">
+            <NavLink
+              to="/profile"
+              activeClassName="text-indigo-600"
+              className="text-white  "
+            >
+              <FontAwesomeIcon icon={faUser} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
+              Profile
+            </NavLink>
+            <span className="absolute left-0 bottom-0 h-0.5  bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
+          </li>}
           {!isCookie && (
             <li className="relative group">
               <NavLink

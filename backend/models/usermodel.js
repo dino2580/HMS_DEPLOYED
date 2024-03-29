@@ -44,6 +44,11 @@ const userSchema = new mongoose.Schema({
         type:Boolean,
         default:false
     },
+    super_admin:
+    {
+        type:Boolean,
+        default:false
+    },
    room_number:
    {
     type:String,

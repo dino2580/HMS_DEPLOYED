@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartBar, faUsers, faSadTear, faFileAlt, faUsersCog, faSearch, faEdit } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Sidebar from './sidebar';
+import Sidebardashboard from './sidebardashboard';
 
-export default function Complaints() {
+export default function Complaintsdashboard() {
   const [complaints, setComplaints] = useState([]);
-  const hostel_no = localStorage.getItem('hostel_no');
+  // const hostel_no = localStorage.getItem('hostel_no');
+  const {hostel_no}=useParams();
+
 
   const getComplaints = async () => {
     try {
@@ -37,7 +40,7 @@ export default function Complaints() {
     <div className="min-h-screen px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-center items-start gap-8">
-          <Sidebar />
+          <Sidebardashboard hostel_no={hostel_no} />
           <div className="w-full md:w-3/4 mt-4 md:mt-0">
             <div className="px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
               <div className="max-w-full">
@@ -64,7 +67,7 @@ export default function Complaints() {
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-200">
-                          {complaints.map((complaint, index) => (
+                          {complaints.filter((complaint)=>complaint.hostel_no==hostel_no). map((complaint, index) => (
                             <TableRow
                               key={index}
                               id={index + 1}

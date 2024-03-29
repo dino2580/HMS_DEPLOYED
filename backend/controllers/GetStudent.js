@@ -3,19 +3,10 @@ const User = require("../models/usermodel");
 const getStudent = async (req, res) => {
     try {
         const { hostel_no } = req.params;
-        console.log(hostel_no);
+        console.log("hostel_no");
         // Fetch the latest 10 announcements for the given hostel
         var students;
-        if(hostel_no!=0)
-        {
-         students = await User.find({ 
-            hostel_no
-            });
-
-        }
-        else{
-             students=await User.find();
-        }
+         students = await User.find();
         students.sort((a, b) => {
             
             return a.roll_no - b.roll_no;

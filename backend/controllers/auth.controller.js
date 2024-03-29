@@ -59,6 +59,7 @@ const login = async (req, res) => {
         const hostel_no=user.hostel_no;
         const userId=user._id;
         const full_name=user.full_name;
+        const super_admin=user.super_admin;
         // console.log(user.hostel_no);
 
     
@@ -70,8 +71,10 @@ const login = async (req, res) => {
         if (!hashedPassword) {
             return res.status(401).json({ err: "Password is Incorrect" });
         }
-        if(user.admin) generateWebToken({email,admin:true,hostel_no,userId,full_name},res);
-        else generateWebToken({email,admin:false,hostel_no,userId,full_name},res);
+        console.log("super_admin"+super_admin);
+        if(user.super_admin) generateWebToken({email,super_admin:true,admin:true,hostel_no,userId,full_name},res);
+        else if(user.admin) generateWebToken({email,super_admin:false,admin:true,hostel_no,userId,full_name},res)
+        else generateWebToken({email,admin:false,super_admin:false,hostel_no,userId,full_name},res);
         return res.status(201).json("Successful login");
     } catch (error) {
         console.error("Error in login:", error);

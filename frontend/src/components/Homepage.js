@@ -13,6 +13,7 @@ import './Homepage.css';
 import Testimonial from './Testimonial';
 
 const HomePage = () => {
+  const isCookie=localStorage.getItem("cookie");
   const slides = [
     {
       url: "/rooms.jpg",
@@ -69,15 +70,15 @@ const HomePage = () => {
             <p class="text-lg md:text-xl text-gray-800 mb-6 leading-relaxed">
               Where Convenience and Comfort Define Your Hostel Experience
             </p>
-            <div class="flex justify-center md:justify-start space-x-4">
+            {!isCookie && <div class="flex justify-center md:justify-start space-x-4">
               <button class="bg-white text-indigo-600 py-3 px-8 rounded-full hover:bg-indigo-600 hover:text-white transition-colors duration-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transform hover:scale-105">
                 Login now
               </button>
               <button class="bg-white ml-2 text-indigo-600 py-3 px-8 rounded-full hover:bg-indigo-600 hover:text-white transition-colors duration-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transform hover:scale-105">
                 Signup now
               </button>
-            </div>
-            <div className='absolute bottom-0 left-0 h-1/5 w-1/5 animate-bounce'>
+            </div>}
+            <div className='absolute bottom-0 transition duration-100 ease-in-out left-0 h-1 w-1/5 animate-bounce'>
               <img src="/login3.svg" alt="" />
             </div>
           </div>

@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartBar, faUsers, faSadTear, faFileAlt, faUsersCog, faMoneyBill } from "@fortawesome/free-solid-svg-icons";
 
-function Sidebar() {
+function Sidebardashboard({hostel_no}) {
   const location = useLocation();
   const [activeLink, setActiveLink] = useState(location.pathname);
 
@@ -20,62 +20,62 @@ function Sidebar() {
           }`}
           onClick={() => handleSetActiveLink("/admindashboard")}
         >
-          <Link to="/admindashboard" className="flex items-center text-black">
+          <Link to={`/admindashboard/${hostel_no}`} className="flex items-center text-black">
           <FontAwesomeIcon className="mr-2" icon={faChartBar} />
             Analytics
           </Link>
         </li>
         <li
           className={`py-2 px-4 hover:bg-blue-400 cursor-pointer transition duration-300 rounded-md ${
-            activeLink === "/admindashboard/Student" && "bg-blue-400"
+            activeLink === "/Student" && "bg-blue-400"
           }`}
-          onClick={() => handleSetActiveLink("/admindashboard/Student")}
+          onClick={() => handleSetActiveLink("/Student")}
         >
-          <Link to="/admindashboard/Student" className="flex items-center text-black">
+          <Link to={`/admindashboard/${hostel_no}/students`} className="flex items-center text-black">
             <FontAwesomeIcon className="mr-2" icon={faUsers} />
             Students
           </Link>
         </li>
         <li
           className={`py-2 px-4 hover:bg-blue-400 cursor-pointer transition duration-300 rounded-md ${
-            activeLink === "/admindashboard/Complaints" && "bg-blue-400"
+            activeLink === "/Complaints" && "bg-blue-400"
           }`}
-          onClick={() => handleSetActiveLink("/admindashboard/Complaints")}
+          onClick={() => handleSetActiveLink("/Complaints")}
         >
-          <Link to="/admindashboard/Complaints" className="flex items-center text-black">
+          <Link to={`/admindashboard/${hostel_no}/complaints`} className="flex items-center text-black">
             <FontAwesomeIcon className="mr-2" icon={faSadTear} />
             Complaints
           </Link>
         </li>
         <li
           className={`py-2 px-4 hover:bg-blue-400 cursor-pointer transition duration-300 rounded-md ${
-            activeLink === "/admindashboard/FeeDetails" && "bg-blue-400"
+            activeLink === "/FeeDetails" && "bg-blue-400"
           }`}
-          onClick={() => handleSetActiveLink("/admindashboard/FeeDetails")}
+          onClick={() => handleSetActiveLink("/FeeDetails")}
         >
-          <Link to="/admindashboard/FeeDetails" className="flex items-center text-black active">
+          <Link to={`/admindashboard/${hostel_no}/feedetails`} className="flex items-center text-black active">
             <FontAwesomeIcon className="mr-2" icon={faFileAlt} />
             Fee Details
           </Link>
         </li>
         <li
           className={`py-2 px-4 hover:bg-blue-400 cursor-pointer transition duration-300 rounded-md ${
-            activeLink === "/admindashboard/transaction" && "bg-blue-400"
+            activeLink === "/transaction" && "bg-blue-400"
           }`}
-          onClick={() => handleSetActiveLink("/admindashboard/transaction")}
+          onClick={() => handleSetActiveLink("/transaction")}
         >
-          <Link to="/admindashboard/transaction" className="flex items-center text-black active">
+          <Link to={`/admindashboard/${hostel_no}/transaction`} className="flex items-center text-black active">
             <FontAwesomeIcon className="mr-2" icon={faMoneyBill} />
             Transaction
           </Link>
         </li>
         <li
           className={`py-2 px-4 hover:bg-blue-400 cursor-pointer transition duration-300 rounded-md ${
-            activeLink === "/admindashboard/Workers" && "bg-blue-400"
+            activeLink === "/Workers" && "bg-blue-400"
           }`}
-          onClick={() => handleSetActiveLink("/admindashboard/Workers")}
+          onClick={() => handleSetActiveLink("/Workers")}
         >
-          <Link to="/admindashboard/Workers" className="flex items-center text-black">
+          <Link to={`/admindashboard/${hostel_no}/workers`} className="flex items-center text-black">
             <FontAwesomeIcon className="mr-2" icon={faUsersCog} />
             Workers Details
           </Link>
@@ -85,4 +85,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default Sidebardashboard;

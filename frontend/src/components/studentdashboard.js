@@ -9,11 +9,13 @@ import {
   faSearch,
   faEdit,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Sidebar from "./sidebar";
+import Sidebardashboard from "./sidebardashboard";
 
-export default function Student() {
+export default function Studentdasboard() {
   const [studentsData, setStudentsData] = useState([]);
+  const {hostel_no}=useParams();
 
   const fetchStudent = async () => {
     try {
@@ -47,8 +49,8 @@ export default function Student() {
     <div className="min-h-screen px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-center items-start gap-8">
-          <Sidebar />
-
+          <Sidebardashboard hostel_no={hostel_no} />
+this is hostel specific dashboard
           <div className="w-full md:w-3/4 mt-8 md:mt-0">
             <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-6">
               <div className="max-w-full">
@@ -84,7 +86,7 @@ export default function Student() {
                         </thead>
                         <tbody className="divide-y divide-gray-200">
                           {studentsData
-                            .filter((student) => student.hostel_no !== "0") // Filter students whose hostel number is not zero
+                            .filter((student) => student.hostel_no === `${hostel_no}`) // Filter students whose hostel number is not zero
                             .map((student, index) => (
                               <TableRow
                                 key={index}
