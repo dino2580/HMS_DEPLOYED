@@ -103,37 +103,12 @@ function Signup() {
                 className="w-full px-3 py-2 bg-slate-200 rounded-md focus:outline-none"
               />
             </div>
-            <div>
-              <label htmlFor="password" className="block text-gray-700 font-bold mb-1">
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={handlePasswordChange}
-                required
-                className="w-full px-3 py-2 bg-slate-200 rounded-md focus:outline-none"
-              />
-            </div>
-            <div>
-              <label htmlFor="confirmPassword" className="block text-gray-700 font-bold mb-2">
-                Confirm Password
-              </label>
-              <input
-                type="password"
-                id="confirmPassword"
-                value={confirm_password}
-                onChange={handleConfirmPasswordChange}
-                required
-                className="w-full px-3 py-2 bg-slate-200 rounded-md focus:outline-none"
-              />
-            </div>
+  
             <button
               type="submit"
               className="w-full mx-auto py-2 px-4 bg-blue-600 text-white font-bold rounded-md hover:bg-blue-700 transition duration-300"
             >
-              Sign Up
+              Generate OTP
             </button>
             <div>
               <p className='text-center text-l'>Already have an account? <Link className="text-blue-600 hover:underline" to="/login">Login</Link></p>

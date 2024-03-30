@@ -37,7 +37,8 @@ import Complaintsdashboard from './components/Complaintsdashboard';
 import FeeDetailsdashboard from './components/FeeDetailsdashboard';
 import Workersdashboard from './components/Workersdasboard';
 import Transactiondashboard from './components/Transactiondashboard';
-
+import Signup2 from './components/signuppage2';
+import Signup3 from './components/signuppage3';
 
 function App() {
   const handleSubmit = async (formData) => {
@@ -162,7 +163,8 @@ function App() {
           <Route path="/admindashboard/:hostel_no/Workers" element={<Workersdashboard />} />
           <Route path="/admindashboard/:hostel_no/FeeDetails" element={<FeeDetailsdashboard/>} />
           <Route path="/admindashboard/:hostel_no/transaction" element={<Transactiondashboard/>} />
-          
+          <Route path = "/signuppage2" element = {<Signup2/>}/>
+          <Route path = "/signuppage3" element = {<Signup3/>}/>
         </Routes>
         <Footer />
       </Router>
