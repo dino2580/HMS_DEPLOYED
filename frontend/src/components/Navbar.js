@@ -191,9 +191,14 @@ function Navbar() {
                     );
 
                     if (response.ok) {
-                      localStorage.setItem("admin", false);
-                      localStorage.setItem("Email", "");
-                      localStorage.setItem("cookie", "");
+                      // localStorage.setItem("admin", false);
+                      // localStorage.setItem("Email", "");
+                      // localStorage.setItem("cookie","");
+                      // localStorage.setItem("userId","");
+                      // localStorage.setItem("full_name","");
+                      // localStorage.setItem("hostel_no","");
+                      // localStorage.setItem("superadmin",false);
+                      localStorage.clear();
                       console.log("Logout successful");
                       window.location.href = "/login";
                       // Optionally, redirect the user to the login page or perform any other action after logout

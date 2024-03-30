@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import { BsFileCheck } from 'react-icons/bs';
 import { Link } from "react-router-dom";
+import MessageAlert from './statusmessage';
 
 function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [name, setName] = useState('');
+  const [confirm_password, setConfirm_password] = useState('');
+  const [full_name, setFull_name] = useState('');
+  const [signupSuccess, setSignupSuccess] = useState(false);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
 
   const handleNameChange = (e) => {
-    setName(e.target.value);
+    setFull_name(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
@@ -20,17 +23,52 @@ function Signup() {
   };
 
   const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value);
+    setConfirm_password(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
-    console.log('Confirm Password:', confirmPassword);
+    const response = await fetch("http://localhost:5000/api/auth/signup", {
+      method: "POST",
+      body: JSON.stringify({ email, full_name, password }), // Convert data to JSON string
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  
+    if (response.ok) {
+      setSignupSuccess(true);
+    } else {
+      setSignupSuccess(false); // Reset signup success state if response is not OK
+    }
+  
+    console.log(signupSuccess);
   };
+  
+
+  
 
   return (
+    <div>
+     {signupSuccess && (
+  <MessageAlert
+    message="Signup successful! You can now login"
+    type="success"
+    icon={
+      <svg
+        className="h-6 w-6 inline-block mr-2 text-green-500"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+      </svg>
+    }
+    duration={5000} // Optional: auto-dismiss after 5 seconds
+  />
+)}
+
     <div> 
       <div className="bg-white shadow-md mx-auto max-w-fit flex items-center justify-center m-10" style={{borderRadius:'50px'}}>
         <div className='flex items-center justify-center max-w-[65vw]'>
@@ -46,7 +84,7 @@ function Signup() {
               <input
                 type="text"
                 id="name"
-                value={name}
+                value={full_name}
                 onChange={handleNameChange}
                 required
                 className="w-full px-3 py-2 bg-slate-200 rounded-md focus:outline-none"
@@ -85,7 +123,7 @@ function Signup() {
               <input
                 type="password"
                 id="confirmPassword"
-                value={confirmPassword}
+                value={confirm_password}
                 onChange={handleConfirmPasswordChange}
                 required
                 className="w-full px-3 py-2 bg-slate-200 rounded-md focus:outline-none"
@@ -148,6 +186,7 @@ function Signup() {
           
         </div>
       </div>
+    </div>
     </div>
   );
 }

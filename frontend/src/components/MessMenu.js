@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import NavRules from "./NavRules";
 
 const menuData = [
   {
@@ -128,7 +129,8 @@ export default function MessMenu() {
   };
 
   return (
-    <div className="bg-back relative">
+    <div className="bg-back flex relative">
+      <NavRules/>
       <div className="absolute top-4 right-4 text-blue-800 font-bold">
         <span className="text-lg">
           {currentTime.toLocaleString("en-US", {

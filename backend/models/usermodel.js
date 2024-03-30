@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     roll_no: {
-        type: Number,
+        type: String,
         required: true,
         unique: true
     },
@@ -23,8 +23,7 @@ const userSchema = new mongoose.Schema({
     },
     gender: {
         type: String,
-        required: true,
-        enum: ["M", "F"]
+        default:"M",
     },
     date_of_joining: {
         type: Date,

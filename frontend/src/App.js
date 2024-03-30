@@ -150,6 +150,7 @@ function App() {
           <Route path="/guest" element={<Guest/>} />
           <Route path="/general" element={<General/>} />
           <Route path="/mess" element={<Mess/>} />
+          <Route path="/messmenu" element={<MessMenu/>} />
           <Route path="/ragging" element={<Ragging/>} />
           <Route path="/maintenance" element={<Maintenance/>} />
           <Route path='/transactionstudent' element={<TransactionStudent/> }/>

@@ -2,45 +2,57 @@ bcrypt =require("bcrypt") ;
 
 const User = require('../models/usermodel.js');
 const generateWebToken = require("../utils/generateToken.js");
+const { sendSignupEmailNotification } = require("./Nodemailer.js");
 
-
+function generateOTP() {
+    return Math.floor(100000 + Math.random() * 900000); // Generate 6-digit OTP
+  }
+function emailVerification(){
+    
+}
 const signUp = async (req, res) => {
     console.log("Inside Signup");
     try {
-        const { full_name, roll_no, email, password, confirm_password, gender, date_of_joining } = req.body;
-        console.log(password);
-        console.log(confirm_password);
-        if (password !== confirm_password) {
-            return res.status(400).json({ err: "Passwords don't match" });
-        }
-        if (password.length < 8) {
-            return res.status(403).json({ err: "Password length must be greater than 8" });
-        }
+        const { full_name, email, password} = req.body;
+        let roll_no=email;
+        roll_no=roll_no.split("@")[0]
+        const date_of_joining = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        console.log(roll_no);
+        console.log(email);
+        console.log(roll_no);
         const existingUser = await User.findOne({ roll_no });
         const existingEmail = await User.findOne({ email });
         if (existingUser) {
-            return res.status(400).json({ err: "Roll number already exists" });
+            return res.status(409).json({ err: "Roll number already exists" });
         }
         if (existingEmail) {
-            return res.status(401).json({ err: "Email already exists" });
+            return res.status(409).json({ err: "Email already exists" });
         }
+        //verify whether email exist by otp generation
+        emailVerification(email);
         const salt = await bcrypt.genSalt(5);
         const hashedPassword = await bcrypt.hash(password, salt);
         
-        const profilePic = gender === "M" ? `https://avatar.iran.liara.run/public/boy?username=${roll_no}` : `https://avatar.iran.liara.run/public/girl?username=${roll_no}`;
+        const profilePic =`https://avatar.iran.liara.run/public/boy?username=${roll_no}`;
 
         const newUser = new User({
             full_name,
             roll_no,
             email,
             password: hashedPassword,
-            gender,
             date_of_joining,
             profile_pic: profilePic
         });
          
-        await newUser.save();
-        
+        const user=await newUser.save();
+        if(user){
+            sendSignupEmailNotification(user.full_name,user.email);
+        }
+        // console.log(user)
         return res.status(201).json({
             _id: newUser._id
         });
@@ -49,6 +61,7 @@ const signUp = async (req, res) => {
         res.status(500).json({ err: "Signup error" });
     }
 };
+
 
 const login = async (req, res) => {
     try {
