@@ -1,19 +1,22 @@
 import React, { useState, useRef } from 'react';
+import { NavLink } from 'react-router-dom';
 
-function Signup2() {
-  const [otp, setOtp] = useState(['', '', '', '']);
+function Signup2({ email, setStep,full_name,generateOtp}) {
+  const [otp, setOtp] = useState(['', '', '', '', '', '']); // Updated to 6 digits
   const inputRefs = useRef([]);
-
-    const handleChange = (index, value) => {
-        if (/^[0-9]*$/.test(value) && value.length <= 1) {
-          const newOtp = [...otp];
-          newOtp[index] = value;
-          setOtp(newOtp);
-          if (value && index < otp.length - 1) {
-            inputRefs.current[index + 1].focus();
-          }
-        }
-      };
+  const resendOtp=()=>{
+    generateOtp(email,full_name);
+  }
+  const handleChange = (index, value) => {
+    if (/^[0-9]*$/.test(value) && value.length <= 1) {
+      const newOtp = [...otp];
+      newOtp[index] = value;
+      setOtp(newOtp);
+      if (value && index < otp.length - 1) {
+        inputRefs.current[index + 1].focus();
+      }
+    }
+  };
 
   const handleKeyDown = (event, index) => {
     if (event.key === 'Backspace' && !otp[index] && index > 0) {
@@ -21,13 +24,21 @@ function Signup2() {
     }
   };
 
-  const handleVerify = () => {
+  const handleVerify = async (e) => {
+    e.preventDefault();
     const enteredOtp = otp.join('');
-
-
-    //baaki tera kaam
-
     console.log('Entered OTP:', enteredOtp);
+    const response = await fetch("http://localhost:5000/api/auth/otpcheck", {
+      method: "POST",
+      body: JSON.stringify({ email, otp }), // Convert data to JSON string
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      // signup page 2 should be visible now
+      setStep(3);
+    }
   };
 
   return (
@@ -42,24 +53,24 @@ function Signup2() {
               <label htmlFor="otp" className="block text-gray-700 font-bold mb-2 text-xl">
                 Enter OTP:
               </label>
-              <div className='text-sm mb-2'> We have sent an OTP to your email</div>
+              <div className='text-sm mb-2'> We have sent a 6-digit OTP to your email</div> {/* Updated message */}
               <div className="flex justify-center">
                 {otp.map((digit, index) => (
                   <input
                     key={index}
-                    type="text" 
+                    type="text"
                     value={digit}
                     onChange={(e) => handleChange(index, e.target.value)}
                     onKeyDown={(e) => handleKeyDown(e, index)}
                     ref={(ref) => (inputRefs.current[index] = ref)}
                     maxLength={1}
-                    style={{ 
-                      width: '3rem', 
-                      height: '3rem', 
-                      margin: '0 0.5rem', 
-                      border: '1px solid #ccc', 
-                      borderRadius: '5px', 
-                      textAlign: 'center', 
+                    style={{
+                      width: '3rem',
+                      height: '3rem',
+                      margin: '0 0.5rem',
+                      border: '1px solid #ccc',
+                      borderRadius: '5px',
+                      textAlign: 'center',
                       margin: '0.7rem',
                       outline: 'none',
                       cursor: 'text'
@@ -75,6 +86,7 @@ function Signup2() {
             >
               Verify
             </button>
+            <NavLink onClick={resendOtp}>Resend Otp</NavLink>
           </form>
         </div>
       </div>

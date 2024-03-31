@@ -111,6 +111,7 @@ const sendSignupEmailNotification = (full_name,email,) => {
     });
 };
 const sendVerificationEmail = (email, otp) => {
+   
     // Email content
     const message = `<!DOCTYPE html>
     <html lang="en">
@@ -193,9 +194,11 @@ const sendVerificationEmail = (email, otp) => {
     // Send mail
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.log('Error sending email:', error);
+            console.log('Error sending email:1', error);
+ 
         } else {
             console.log('Email sent:', info.response);
+
         }
     });
 };
@@ -204,4 +207,4 @@ const sendVerificationEmail = (email, otp) => {
 // const recipientEmail = 'recipient@example.com';
 // const message = 'Hello, This is a notification email!';
 // sendEmailNotification(recipientEmail, message);
-module.exports={sendSignupEmailNotification};
+module.exports={sendSignupEmailNotification,sendVerificationEmail};

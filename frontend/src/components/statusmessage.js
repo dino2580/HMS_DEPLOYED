@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 
 function MessageAlert({ message, type, icon, duration = 5000 }) {
   const [showAlert, setShowAlert] = useState(true);
@@ -20,7 +21,7 @@ function MessageAlert({ message, type, icon, duration = 5000 }) {
       >
         <span className="block sm:inline">
           {icon && <span className="inline-block mr-2">{icon}</span>}
-          {message}
+          <span dangerouslySetInnerHTML={{ __html: message }} />
         </span>
         <span className="absolute top-0 bottom-0 right-0 px-4 py-3" onClick={() => setShowAlert(false)}>
           <svg className={`fill-current h-6 w-6 text-${type === 'success' ? 'black' : 'black'}-500`} role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

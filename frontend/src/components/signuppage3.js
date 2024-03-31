@@ -1,14 +1,24 @@
 import React, { useState,useEffect } from 'react';
 import { BsFileCheck } from 'react-icons/bs';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MessageAlert from './statusmessage';
+// import { useNavigate } from 'react-router-dom';
 
-function Signup3() {
+function Signup3({email}) {
+  const navigate = useNavigate();
   const [password, setPassword] = useState('');
   const [confirm_password, setConfirm_password] = useState('');
   const [signupSuccess, setSignupSuccess] = useState(false);
 
- 
+  useEffect(() => {
+    if (signupSuccess) {
+      const timeoutId = setTimeout(() => {
+        navigate('/login'); // Use navigate instead of useNavigate
+      }, 3000); // Delay of 3 seconds
+      
+      return () => clearTimeout(timeoutId);
+    }
+  }, [signupSuccess, navigate]);
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
@@ -21,7 +31,7 @@ function Signup3() {
     e.preventDefault();
     const response = await fetch("http://localhost:5000/api/auth/signup", {
       method: "POST",
-      body: JSON.stringify({  password }), // Convert data to JSON string
+      body: JSON.stringify({email,password}), // Convert data to JSON string
       headers: {
         'Content-Type': 'application/json'
       }
@@ -29,6 +39,8 @@ function Signup3() {
   
     if (response.ok) {
       setSignupSuccess(true);
+      // useNavigate("/login")
+
     } else {
       setSignupSuccess(false); // Reset signup success state if response is not OK
     }
@@ -43,7 +55,7 @@ function Signup3() {
     <div>
      {signupSuccess && (
   <MessageAlert
-    message="Signup successful! You can now login"
+    message={`Signup successful! You can  <a href="/login">login here</a>.`}
     type="success"
     icon={
       <svg
@@ -53,6 +65,7 @@ function Signup3() {
         viewBox="0 0 24 24"
         stroke="currentColor"
       >
+        
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
       </svg>
     }
