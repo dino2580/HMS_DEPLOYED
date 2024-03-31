@@ -39,6 +39,7 @@ import Workersdashboard from './components/Workersdasboard';
 import Transactiondashboard from './components/Transactiondashboard';
 import Signup2 from './components/signuppage2';
 import Signup3 from './components/signuppage3';
+import Forgotpassword from './components/forgotpassword';
 
 function App() {
   const handleSubmit = async (formData) => {
@@ -165,6 +166,7 @@ function App() {
           <Route path="/admindashboard/:hostel_no/transaction" element={<Transactiondashboard/>} />
           <Route path = "/signuppage2" element = {<Signup2/>}/>
           <Route path = "/signuppage3" element = {<Signup3/>}/>
+          <Route path = "/forgotpassword" element = {<Forgotpassword/>}/>
         </Routes>
         <Footer />
       </Router>

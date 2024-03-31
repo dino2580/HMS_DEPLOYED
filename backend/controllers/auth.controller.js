@@ -6,8 +6,29 @@ const generateWebToken = require("../utils/generateToken.js");
 const {
   sendSignupEmailNotification,
   sendVerificationEmail,
+  sendPasswordResetEmail,
 } = require("./Nodemailer.js");
+const forgotpassword = async (req, res) => {
+    const { email } = req.body;
+    console.log(email);
+    const user = await User.findOne({ email });
+    
+    if (user) {
+        // Generate the password reset token
+        const fptoken = jwt.sign({ email }, secretKey, { expiresIn: '5m' });
 
+        // Send the password reset email
+        try {
+            await sendPasswordResetEmail(email, fptoken);
+            return res.status(200).json({ message: "Password reset email sent successfully." });
+        } catch (error) {
+            console.error("Error sending password reset email:", error);
+            return res.status(500).json({ error: "Failed to send password reset email." });
+        }
+    } else {
+        return res.status(404).json({ error: "User with the provided email not found." });
+    }
+};
 function generateOTP() {
   return Math.floor(100000 + Math.random() * 900000); // Generate 6-digit OTP
 }
@@ -226,4 +247,4 @@ const logout = async (req, res) => {
   }
 };
 
-module.exports = { signUp, login, logout, emailVerification, otpcheck };
+module.exports = { signUp, login, logout, emailVerification, otpcheck,forgotpassword };

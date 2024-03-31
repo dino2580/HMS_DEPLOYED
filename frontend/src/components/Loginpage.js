@@ -55,9 +55,7 @@ function Login({handleSubmit}) {
                 required
                 className="w-full px-3 py-2 bg-slate-200 rounded-md focus:outline-none"
                 />
-                <a href="#" className="text-sm text-blue-600 hover:text-blue-800 mt-2 block">
-                Forgot Password?
-                </a>
+                <NavLink className="text-sm text-blue-600 hover:text-blue-800 mt-2 block" to={"/forgotpassword"}>Forgot Password?</NavLink>
             </div>
             <button
                 type="submit"
