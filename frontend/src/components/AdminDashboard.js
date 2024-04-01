@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDollarSign, faExclamationCircle, faCheckCircle,faBed } from '@fortawesome/free-solid-svg-icons';
+import { faDollarSign, faExclamationCircle, faCheckCircle,faBed,faIndianRupee } from '@fortawesome/free-solid-svg-icons';
 import Sidebar from './sidebar';
 import { NavLink,Link } from 'react-router-dom';
 
@@ -94,25 +94,36 @@ console.log('Occupancy Data:', occupancyData);
   };
 
 return (
-  <div className="min-h-screen px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
-  <div className="container mx-auto">
-    <div className="flex flex-col md:flex-row justify-center items-start gap-8">
+  <div className="h-100vh p-4 bg-back">
+      <div className="container mx-auto">
+        <div className="flex justify-center items-start gap-8 mt-2">
           
             <Sidebar/>
           
 
-          <div className="col-span-3 bg-gray-800 p-4 rounded-md">
-          <div className="flex justify-evenly">
+           <div className="w-full md:w-5/6 bg-white p-8 rounded-xl bg-opacity-60">
+           <div className="flex justify-center">
+              <h1 className="text-black text-2xl font-bold item-center mb-4 mt-0">
+                Welcome Sir !!
+              </h1>
+            </div>
+           <div className="bg-white p-4 rounded-xl">
+           <h2 className="text-black text-xl font-semibold item-center mb-4 mt-0">
+                Hostels Occupancy Analysis
+              </h2>
+           <div className="grid grid-cols-3 md:grid-cols-3 gap-6 cursor-pointer">
   {occupancyData.map((hostel) => (
-    <div key={hostel.id} className="flex">
-      <NavLink
+    <div key={hostel.id} className='bg-admin p-6 rounded-lg hover:shadow-2xl hover:bg-teal-300 transition ease-in-out duration-800 flex flex-col'>
+      <NavLink  
         to={`/admindashboard/${hostel.hostel_no}`} // Include the id parameter in the URL
         activeClassName="text-indigo-600"
         className="text-white flex flex-col items-center justify-center"
       >
-        <div className="text-center">
+       
+        
+        
           <div className="mb-2">
-            <p className="text-white">{hostel.name}</p>
+            <p className="text-black font-semibold">{hostel.name}</p>
           </div>
           <div className="w-32 h-32 "> {/* Increased size */}
             <CircularProgressbar
@@ -120,7 +131,7 @@ return (
               text={`${hostel.percentage}%`}
               styles={buildStyles({
                 pathColor: getColorForPercentage(hostel.percentage),
-                textColor: 'white',
+                textColor: 'black',
                 trailColor: '#333',
                 strokeWidth: 10, // Increased from 4 to 10
               })}
@@ -128,66 +139,77 @@ return (
             />
           </div>
           <div className="mb-2">
-            <p className="text-white text-bold">{hostel.hostel_no}</p>
+            <p className="text-black text-bold">{hostel.hostel_no}</p>
           </div>
-        </div>
+        
+        
+       
       </NavLink>
     </div>
   ))}
+  </div>
 </div>
 
-
-<div className="m-6 bg-gray-900 p-6 rounded-md"> 
-              <h2 className="text-lg font-bold mb-4 text-white">Fees Collection</h2>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="w-48 h-48"> {/* Increased size */}
-                  <CircularProgressbar
-                    value={50}
-                    text={'50%'}
-                    styles={buildStyles({
-                      pathColor: '#fde047',
-                      textColor: 'white',
-                      trailColor: '#e53e3e',
-                      strokeWidth: 8, // Increased from 4 to 10
-                    })}
-                    strokeWidth={8} // Increased from 5 to 10
-                  />
+<div className="mt-4 bg-white rounded-xl p-4 ">
+              <h2 className="text-xl text-black font-semibold mb-4">
+                Fee Details
+              </h2>
+              <h3 className="text-lg font-semibold mb-2  px-12 text-black">Collected Fee</h3>
+              <div className="flex items-center space-x-40 px-7">
+                {/* Expected Fee */}
+                
+                <div className="w-32 h-32 relative">
+                <CircularProgressbar
+          value={50}
+          text={'50%'}
+          styles={buildStyles({
+            pathColor: '#fde047',
+            textColor: 'black',
+            trailColor: '#e53e3e',
+            strokeWidth: 8,
+          })}
+          strokeWidth={8}
+        />
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <i className="fas fa-coins fa-lg text-yellow-500"></i>
+                  </div>
                 </div>
-                <div className="text-white">
-                  <div className="flex items-center mb-2">
-                    <FontAwesomeIcon icon={faDollarSign} className="mr-2" />
-                    <span>Expected</span>
-                    <FontAwesomeIcon icon={faCheckCircle} className="ml-2 text-green-500" />
+                {/* Fee Details */}
+                <div className="flex space-x-8">
+                  <div className="flex flex-col bg-blue-300 px-4 py-2 rounded-xl hover:shadow-2xl hover:bg-teal-300 transition ease-in-out duration-800">
+                    <h3 className="text-lg text-black font-semibold mb-2">
+                    <FontAwesomeIcon icon={faIndianRupee} className="mr-2" />
+                      Expected Fee
+                    </h3>
+                    <p className="text-center">55000</p>
                   </div>
-                  <p>₹ 52,00,000</p>
-                  <div className="flex items-center mb-2">
-                    <FontAwesomeIcon icon={faDollarSign} className="mr-2" />
-                    <span>Remaining</span>
-                    <FontAwesomeIcon icon={faCheckCircle} className="ml-2 text-green-500" />
+                  <div className="flex flex-col bg-green-300 px-4 py-2 rounded-xl hover:shadow-2xl hover:bg-teal-300 transition ease-in-out duration-800">
+                 
+                    <h3 className="text-lg text-black font-semibold mb-2">
+                    <FontAwesomeIcon icon={faIndianRupee} className="mr-2" />
+                      Collected Fee
+                    </h3>
+                    <p className="text-center">3000</p>
                   </div>
-                  <p>₹ 15,60,000</p>
-                  <div className="flex items-center mb-2">
-                    <FontAwesomeIcon icon={faDollarSign} className="mr-2" />
-                    <span>Collected</span>
-                    <FontAwesomeIcon icon={faCheckCircle} className="ml-2 text-green-500" />
+                  <div className="flex flex-col bg-red-400 px-4 py-2 rounded-xl hover:shadow-2xl hover:bg-teal-300 transition ease-in-out duration-800">
+                    <h3 className="text-lg text-black font-semibold mb-2">
+                    <FontAwesomeIcon icon={faIndianRupee} className="mr-2" />
+                      Remaining Fee
+                    </h3>
+                    <p className="text-center">52000</p>
                   </div>
-                  <p>₹ 26,00,000</p>
-                  <div className="flex items-center">
-                    <FontAwesomeIcon icon={faDollarSign} className="mr-2" />
-                    <span>Overdue</span>
-                    <FontAwesomeIcon icon={faExclamationCircle} className="ml-2 text-red-500" />
-                  </div>
-                  <p>₹ 10,40,000</p>
                 </div>
               </div>
-            </div>
+              </div>
 
-            <div className="m-6 p-6 bg-gray-900 rounded-md">
-  <h2 className="text-lg font-bold mb-4 text-white">Complaints</h2>
+              <div className="mt-4 bg-white rounded-xl p-4 ">
+              <h2 className="text-xl text-black font-semibold mb-4">
+                Complaints
+              </h2>
   <div className="flex items-center">
     <div className="h-12" style={{ width: `${(total / 100) * 48}%`, backgroundColor: '#4fd1c5', borderTopLeftRadius: '0.375rem', borderBottomLeftRadius: '0.375rem' }}></div>
     <div className="h-12" style={{ width: `${(solved / 100) * 48}%`, backgroundColor: '#fde047' }}></div>
-    <div className="ml-4 text-white">
+    <div className="ml-4 text-black">
       <div className='flex justify-evenly'>
         <div className='bg-black p-2 m-2 rounded-md' style={{ height: `${(total / 200) * 40}rem` }}>
           <p>Total Complaints</p>
@@ -207,6 +229,7 @@ return (
 </div>
 
 
+          
           </div>
         </div>
       </div>

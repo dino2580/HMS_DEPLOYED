@@ -86,7 +86,6 @@ function App() {
             const payloadObj = JSON.parse(decodedPayload);
             return payloadObj;
           };
-
           // Example usage:
           const payload = extractValuesFromJWT(jwtToken);
 
