@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "./sidebar";
 
 function Transaction() {
@@ -33,14 +33,44 @@ function Transaction() {
     updatedEntries[index].isVerified = false;
     setEntries(updatedEntries);
   };
+  
+  useEffect(() => {
+    // Define an async function to fetch transactions
+    const fetchTransactions = async () => {
+      try {
+        const response = await fetch("YOUR_GET_API_ENDPOINT");
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data)
+          setEntries(data); // Update the entries state with fetched data
+          setTotalTransactions(data.length); // Update total transactions count
+          // Calculate and update total collection and expected collection if needed
+        } else {
+          throw new Error("Failed to fetch transactions");
+        }
+      } catch (error) {
+        console.error("Error fetching transactions:", error);
+      }
+    };
+
+    // Call the fetchTransactions function when component mounts
+    fetchTransactions();
+
+    // Cleanup function (optional)
+    return () => {
+      // Any cleanup code if needed
+    };
+  }, []); 
 
   return (
     <div className="min-h-screen px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
       <div className="container mx-auto flex">
         <Sidebar />
+        
         <div className="flex-1">
           <h1 className="text-3xl font-bold leading-none text-center text-blue-800 dark:text-blue-800 my-5">Transactions</h1>
           <div className="m-4 flex justify-end">
+            
             <input
               type="text"
               placeholder="Search by Transaction ID"

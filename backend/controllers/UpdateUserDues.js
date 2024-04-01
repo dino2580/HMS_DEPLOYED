@@ -1,4 +1,5 @@
 const accounts = require("../models/Accounts");
+const hostelaccounts = require("../models/HostelAccount");
 // const accountSchema = require("../models/Accounts");
 
 
@@ -17,6 +18,21 @@ const updateUserDues=async(req, res) =>{
     if (!account || account.length === 0) {
       return res.status(404).json({ error: 'No accounts found for the specified hostel' });
     }
+    let hostelAccount = await hostelaccounts.findOne({ hostel_no });
+
+    // If HostelAccount doesn't exist, create a new one
+    if (!hostelAccount) {
+      hostelAccount = new hostelaccounts({
+        hostel_no,
+        hostel_dues:amount
+      });
+    } else {
+      // If HostelAccount exists, update its dues
+      hostelAccount.hostel_dues += hostelAccount.no_of_student*amount;
+    }
+
+    // Save the updated or new HostelAccount
+    await hostelAccount.save();
 
     // Update user dues for each account
     await Promise.all(account.map(async (account1) => {

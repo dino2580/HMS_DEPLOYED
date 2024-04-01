@@ -20,8 +20,8 @@ const paymentsSchema = new mongoose.Schema({
    },
    status:
    {
-    type:Boolean,
-    default:false
+    type:String,
+    default:"Not Verified"
    },
     
 },{ timestamps: true });

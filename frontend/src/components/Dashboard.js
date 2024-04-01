@@ -20,6 +20,8 @@ function Dashboard() {
   const [showComponent, setShowComponent] = useState(false);
   const [hostelData, setHostelData] = useState([]);
   const [complaints, setComplaints] = useState([]);
+  const [collectedFee, setTotalCollection] = useState(30);
+  const [expectedFee, setExpectedCollection] = useState(30);
 
   useEffect(() => {
     const fetchHostelData = async () => {
@@ -44,6 +46,19 @@ function Dashboard() {
       }
     };
 
+    const fetchCollection=async()=>
+    {
+      
+      const response = await fetch(`http://localhost:5000/api/auth/gethostelaccount/${hostel_no}`);
+      if(response.ok)
+      {
+        const data=await response.json();
+        // console.log(data);
+        setTotalCollection(data.hostel_paid);
+        setExpectedCollection(data.hostel_dues);
+      }
+  
+    }
     const fetchComplaints = async () => {
       try {
         const response = await fetch("http://localhost:5000/api/auth/getcomplaint", {
@@ -67,6 +82,7 @@ function Dashboard() {
 
     fetchHostelData();
     fetchComplaints();
+    fetchCollection();
   }, [hostel_no]);
 
   const calculateComplaintStats = (complaints) => {
@@ -262,10 +278,10 @@ console.log('Occupancy Data:', occupancyData);
                 <div className="w-32 h-32 relative">
                   <CircularProgressbar
                     value={
-                      (hostelData.collectedFee / hostelData.expectedFee) * 100
+                      (collectedFee /expectedFee) * 100
                     }
                     text={`${Math.floor(
-                      (hostelData.collectedFee / hostelData.expectedFee) * 100
+                      (collectedFee / expectedFee) * 100
                     )}%`}
                     styles={buildStyles({
                       pathColor: "#fde047",
@@ -285,19 +301,19 @@ console.log('Occupancy Data:', occupancyData);
                     <h3 className="text-lg text-black font-semibold mb-2">
                       Expected Fee
                     </h3>
-                    <p className="text-center">{hostelData.expectedFee}</p>
+                    <p className="text-center">{expectedFee}</p>
                   </div>
                   <div className="flex flex-col bg-green-300 px-4 py-2 rounded-xl hover:shadow-2xl hover:bg-teal-300 transition ease-in-out duration-800">
                     <h3 className="text-lg text-black font-semibold mb-2">
                       Collected Fee
                     </h3>
-                    <p className="text-center">{hostelData.collectedFee}</p>
+                    <p className="text-center">{collectedFee}</p>
                   </div>
                   <div className="flex flex-col bg-red-400 px-4 py-2 rounded-xl hover:shadow-2xl hover:bg-teal-300 transition ease-in-out duration-800">
                     <h3 className="text-lg text-black font-semibold mb-2">
                       Remaining Fee
                     </h3>
-                    <p className="text-center">{hostelData.remainingFee}</p>
+                    <p className="text-center">{expectedFee-collectedFee}</p>
                   </div>
                 </div>
               </div>

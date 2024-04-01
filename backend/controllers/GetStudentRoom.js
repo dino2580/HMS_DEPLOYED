@@ -3,7 +3,7 @@ const User = require("../models/usermodel");
 const getStudentroom = async (req, res) => {
     try {
         const { room_number, hostel_no } = req.body; // Use req.query to access URL parameters
-        // console.log(room_number+" "+hostel_no);
+        //  console.log(room_number+" "+hostel_no);
         // Check if hostel_no is 0
         if (hostel_no === "0") {
             // If hostel_no is 0, return an empty array since no hostel is specified

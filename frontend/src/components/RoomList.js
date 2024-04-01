@@ -7,6 +7,7 @@ function RoomList() {
     const [roomAvailability, setRoomAvailability] = useState(Array(roomsPerFloor * 6).fill('vacant'));
     const hostel_no=localStorage.getItem('hostel_no');
     useEffect(() => {
+        console.log(hostel_no);
         updateRoomAvailability();
     }, []);
     const updateRoomAvailability = async() => {
@@ -58,7 +59,7 @@ function RoomList() {
                 }
                 
             }
-        //  console.log(roomNumber1+""+hostel_no+updatedAvailability);
+        console.log(roomNumber1+""+hostel_no+updatedAvailability);
             
         } catch (error) {
             console.error('Error fetching user:', error.message);

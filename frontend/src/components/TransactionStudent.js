@@ -372,7 +372,7 @@ function TransactionStudent() {
                       {transaction.createdAt}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      {transaction.status ? "Verified" : "Not Verified"}
+                      {transaction.status}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       {user.room_number}

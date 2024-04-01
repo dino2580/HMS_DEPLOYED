@@ -1,48 +1,140 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "./sidebar";
 import { useParams } from "react-router-dom";
 import Sidebardashboard from "./sidebardashboard";
 
 function Transactiondashboard() {
-  const {hostel_no}=useParams();
-  const [entries, setEntries] = useState([
-    {
-      T_id: 12345678,
-      name: "Ramakant Sharma",
-      amount: 156000,
-      date: "12-Feb-2023",
-      remark: "Fees",
-      room: 112,
-      contactNo: "5234564545",
-    },
-    // Add more entries as needed
-  ]);
+  const { hostel_no } = useParams();
+  const [entries, setEntries] = useState([]);
 
   const [totalTransactions, setTotalTransactions] = useState(entries.length);
   const [totalCollection, setTotalCollection] = useState(30);
   const [expectedCollection, setExpectedCollection] = useState(30);
   const [searchTxId, setSearchTxId] = useState("");
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:5000/api/auth/gettransactionshostel/${hostel_no}`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          const { transactions, users } = data;
 
-  const handleVerify = (index) => {
-    const updatedEntries = [...entries];
-    updatedEntries[index].isVerified = true;
-    updatedEntries[index].isDeleted = false;
-    setEntries(updatedEntries);
-  };
+          // Map transactions with user details
+          const entriesWithUsers = transactions.map((transaction) => {
+            // Find the corresponding user details for the transaction
+            const user = users.find((user) => user._id === transaction.user_id);
+            // Assuming the user details contain the full name, room number, and email
+            return {
+              T_id: transaction.T_id,
+              name: user.full_name,
+              amount: transaction.amount,
+              date: transaction.createdAt,
+              remark: transaction.status,
+              room: user.room_number,
+              contact_email: user.email,
+            };
+          });
+          // console.log(data.users);
+          
+          // Map transactions with user details
+          // console.log(entriesWithUsers);
+          setEntries(entriesWithUsers);
+          setTotalTransactions(data.transactions.length);
+          // Calculate total collection and expected collection if needed
+        } else {
+          throw new Error("Failed to fetch transactions");
+        }
+      } catch (error) {
+        console.error("Error fetching transactions:", error);
+      }
+    };
 
-  const handleDelete = (index) => {
-    const updatedEntries = [...entries];
-    updatedEntries[index].isDeleted = true;
-    updatedEntries[index].isVerified = false;
-    setEntries(updatedEntries);
+    fetchTransactions();
+    fetchCollection();
+  }, [hostel_no]);
+  const fetchCollection=async()=>
+  {
+    
+    const response = await fetch(`http://localhost:5000/api/auth/gethostelaccount/${hostel_no}`);
+    if(response.ok)
+    {
+      const data=await response.json();
+      console.log(data);
+      setTotalCollection(data.hostel_paid);
+      setExpectedCollection(data.hostel_dues);
+    }
+
+  }
+  const handleVerify = async (index) => {
+    try {
+      const updatedEntries = [...entries];
+      updatedEntries[index].remark = 'Verified';
+      
+      setEntries(updatedEntries);
+  
+      const transactionId = entries[index].T_id;
+      const status = 'Verified'; // Assuming 'deleted' is the status to be sent
+      // console.log(transactionId);
+      const response = await fetch('http://localhost:5000/api/auth/updatetransactionstatus', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ T_id: transactionId, status }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to update transaction status');
+      }
+  
+      // Transaction status updated successfully
+    } catch (error) {
+      console.error('Error updating transaction status:', error);
+    }
+    fetchCollection()
   };
+  
+
+  const handleDelete = async (index) => {
+    try {
+      const updatedEntries = [...entries];
+      updatedEntries[index].remark = 'Failed';
+      
+      setEntries(updatedEntries);
+  
+      const transactionId = entries[index].T_id;
+      const status = 'Failed'; // Assuming 'deleted' is the status to be sent
+  
+      const response = await fetch('http://localhost:5000/api/auth/updatetransactionstatus', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ T_id: transactionId, status }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to update transaction status');
+      }
+  
+      // Transaction status updated successfully
+    } catch (error) {
+      console.error('Error updating transaction status:', error);
+    }
+    fetchCollection();
+  };
+  
 
   return (
     <div className="min-h-screen px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
       <div className="container mx-auto flex">
-        <Sidebardashboard hostel_no={hostel_no}/>
+        <Sidebardashboard hostel_no={hostel_no} />
         <div className="flex-1">
-          <h1 className="text-3xl font-bold leading-none text-center text-blue-800 dark:text-blue-800 my-5">Transactions</h1>
+          <h1 className="text-3xl font-bold leading-none text-center text-blue-800 dark:text-blue-800 my-5">
+            Transactions
+          </h1>
           <div className="m-4 flex justify-end">
             <input
               type="text"
@@ -77,7 +169,7 @@ function Transactiondashboard() {
                         Room
                       </th>
                       <th className="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider">
-                        Contact No.
+                        Contact Email.
                       </th>
                       <th className="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider">
                         Actions
@@ -86,18 +178,39 @@ function Transactiondashboard() {
                   </thead>
                   <tbody className="bg-slate-100 divide-y divide-gray-200">
                     {entries.map((entry, index) => (
-                      <tr key={index} className={`${
-                        entry.isVerified ? "bg-green-200" : entry.isDeleted ? "bg-red-200" : ""
-                      } shadow-lg`}>
-                        <td className="px-6 py-4 whitespace-nowrap">{entry.T_id}</td>
-                        <td className="px-6 py-4 whitespace-nowrap">{entry.name}</td>
-                        <td className="px-6 py-4 whitespace-nowrap">₹{entry.amount}</td>
-                        <td className="px-6 py-4 whitespace-nowrap">{entry.date}</td>
-                        <td className="px-6 py-4 whitespace-nowrap">{entry.remark}</td>
-                        <td className="px-6 py-4 whitespace-nowrap">{entry.room}</td>
-                        <td className="px-6 py-4 whitespace-nowrap">{entry.contactNo}</td>
+                      <tr
+                        key={index}
+                        className={`${
+                          entry.remark=='Verified'
+                            ? "bg-green-200"
+                            : entry.remark=='Failed'
+                            ? "bg-red-200"
+                            : ""
+                        } shadow-lg`}
+                      >
                         <td className="px-6 py-4 whitespace-nowrap">
-                          {!entry.isVerified && !entry.isDeleted && (
+                          {entry.T_id}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {entry.name}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          ₹{entry.amount}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {entry.date}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {entry.remark}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {entry.room}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {entry.contact_email}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          { (
                             <>
                               <svg
                                 onClick={() => handleVerify(index)}
@@ -105,7 +218,11 @@ function Transactiondashboard() {
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                               >
-                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                <path
+                                  fillRule="evenodd"
+                                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                  clipRule="evenodd"
+                                />
                               </svg>
                               <svg
                                 onClick={() => handleDelete(index)}
@@ -113,7 +230,11 @@ function Transactiondashboard() {
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                               >
-                                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                                <path
+                                  fillRule="evenodd"
+                                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                  clipRule="evenodd"
+                                />
                               </svg>
                             </>
                           )}

@@ -15,7 +15,7 @@ const getComplaint = async (req, res) => {
         // Assuming createdAt is a field in the Complaints schema
         complaints.sort((a, b) => a.createdAt - b.createdAt);
 
-        console.log(complaints);
+        // console.log(complaints);
         res.json(complaints);
     } catch (error) {
         console.error("Error in getComplaint:", error.message);

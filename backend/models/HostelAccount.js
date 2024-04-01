@@ -19,7 +19,7 @@ const hostelaccountSchema = new mongoose.Schema({
    no_of_student:
    {
     type:Number,
-    default:0
+    default:1
    }
    
 });
