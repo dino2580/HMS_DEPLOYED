@@ -157,7 +157,7 @@ export default function ChatContainer({ currentChat }) {
               </div>
               {message.user_id && message.user_id._id === currentUser &&<div className={`w-10 h-10 items-center ml-2 `}>
               <img
-              src="https://avatar.iran.liara.run/public/boy?username=1"
+              src={message.user_id.profile_pic}
               alt="User Avatar"
               className="w-full h-full "
             />
