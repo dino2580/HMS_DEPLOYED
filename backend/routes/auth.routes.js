@@ -1,5 +1,5 @@
 const express = require('express');
-const { signUp, login, logout, emailVerification, otpcheck, forgotpassword } = require('../controllers/auth.controller');
+const { signUp, login, logout, emailVerification, otpcheck, forgotpassword, ResetPassword } = require('../controllers/auth.controller');
 const Complaint = require('./complaintRoute');
 const menu = require('../controllers/Messmenu');
 const { getMenu } = require('../controllers/GetMenu');
@@ -28,6 +28,7 @@ const getStudentroom = require('../controllers/GetStudentRoom');
 
 const router = express.Router();
 router.post("/emailverification", emailVerification);
+router.post("/reset-password", ResetPassword);
 router.post("/otpcheck", otpcheck);
 router.post("/signup",signUp);
 router.post("/forgotpassword",forgotpassword);
