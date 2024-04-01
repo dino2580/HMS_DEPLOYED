@@ -63,8 +63,9 @@ function Transaction() {
   }, []); 
 
   return (
-    <div className="min-h-screen px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
-      <div className="container mx-auto flex">
+    <div className="h-100vh p-4 bg-back">
+    <div className="container mx-auto">
+      <div className="flex justify-center items-start gap-8 mt-2">
         <Sidebar />
         
         <div className="flex-1">
@@ -166,6 +167,7 @@ function Transaction() {
               <p className="text-4xl font-bold mr-4">₹{expectedCollection}</p>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>

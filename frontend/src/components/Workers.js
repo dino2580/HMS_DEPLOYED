@@ -33,29 +33,36 @@ export default function Workers() {
   };
 
   return (
-    <div className="min-h-screen px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
+    <div className="h-100vh p-4 bg-back">
     <div className="container mx-auto">
-      <div className="flex flex-col md:flex-row justify-center items-start gap-8">
-       <Sidebar/>
+      <div className="flex justify-center items-start gap-8 mt-2">
+        <Sidebar />
 
           <div className="w-full md:w-3/4 mt-8 md:mt-0">
-            <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-6">
+          <div className="bg-white p-8 rounded-xl bg-opacity-60">
               <div className="max-w-full">
                 <div className="grid gap-6 md:gap-12">
                   <div className="space-y-4">
                     <div className="text-center">
-                      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl text-white dark:text-gray-100">
+                      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl text-black ">
                         Workers Information
                       </h1>
                     </div>
-                    <div className="relative w-full">
-                      <FontAwesomeIcon icon={faSearch} className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
-                      <input className="pl-8 w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white dark:bg-gray-900 dark:text-gray-100" placeholder="Search..." type="search" />
+                    <div className="relative w-full sm:w-64">
+                      <FontAwesomeIcon
+                        icon={faSearch}
+                        className="absolute left-2.5 top-2.5 h-4 w-4 text-blue-500 "
+                      />
+                      <input
+                        className="pl-8 w-full border border-blue-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white dark:bg-gray-900 dark:text-gray-100 bg-opacity-"
+                        placeholder="Search..."
+                        type="search"
+                      />
                     </div>
                     <div className="overflow-x-auto">
                       <table className="w-full border border-gray-200 rounded-md overflow-hidden">
-                        <thead className="bg-gray-50 dark:bg-gray-800">
-                          <tr className="text-gray-400">
+                        <thead className="bg-teal-300 ">
+                          <tr className="text-black">
                             <th className="py-2 px-4 text-center">Index</th>
                             <th className="py-2 px-4 text-center">Name</th>
                             <th className="py-2 px-4 text-center">Email</th>
@@ -63,7 +70,7 @@ export default function Workers() {
                             <th className="py-2 px-4 text-center">Post</th>
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-gray-200">
+                        <tbody className="divide-y ">
                           {workers.map((worker, index) => (
                             <TableRow key={index} index={index + 1} {...worker} />
                           ))}
@@ -83,7 +90,7 @@ export default function Workers() {
 
 function TableRow({ index, w_name, w_email, contact_no, w_post }) {
   return (
-    <tr className="text-gray-200 bg-gray-800 rounded-lg my-4 md:table-row flex flex-col md:flex-row">
+    <tr className="text-gray-200 bg-gray-800 rounded-lg my-4">
       <td className="py-4 px-4 text-center rounded-l-lg md:rounded-none">{index}</td>
       <td className="py-4 px-4 text-center">{w_name}</td>
       <td className="py-4 px-4 text-center">{w_email}</td>

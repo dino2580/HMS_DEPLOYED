@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faXTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { NavLink } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-10 px-4 sm:px-10">
@@ -13,19 +14,19 @@ const Footer = () => {
           <div className="mb-6 md:mb-0">
             <h4 className="text-lg font-bold mb-4">Quick Links</h4>
             <ul className="list-none">
-              <li className="mb-2"><a href="#" className="text-gray-400 hover:text-white">Home</a></li>
-              <li className="mb-2"><a href="#" className="text-gray-400 hover:text-white">Rooms</a></li>
-              <li className="mb-2"><a href="#" className="text-gray-400 hover:text-white">Announcements</a></li>
-              <li className="mb-2"><a href="#" className="text-gray-400 hover:text-white">Rules & Regulations</a></li>
-              <li className="mb-2"><a href="#" className="text-gray-400 hover:text-white">Contact Us</a></li>
+              <li className="mb-2"><NavLink to={"/"} className="text-gray-400 hover:text-white">Home</NavLink></li>
+              <li className="mb-2"><NavLink to={"/rooms"} className="text-gray-400 hover:text-white">Rooms</NavLink></li>
+              <li className="mb-2"><NavLink to={"/announcement"} className="text-gray-400 hover:text-white">Announcements</NavLink></li>
+              <li className="mb-2"><NavLink to={"/rules"} className="text-gray-400 hover:text-white">Rules & Regulations</NavLink></li>
+              <li className="mb-2"><NavLink to={""} className="text-gray-400 hover:text-white">Contact Us</NavLink></li>
             </ul>
           </div>
           <div>
             <h4 className="text-lg font-bold mb-4">Connect With Us</h4>
             <ul className="list-none flex">
-              <li className="mr-4"><a href="#" className="text-gray-400 hover:text-white"><FontAwesomeIcon icon={faFacebook} /></a></li>
-              <li className="mr-4"><a href="#" className="text-gray-400 hover:text-white"><FontAwesomeIcon icon={faXTwitter} /></a></li>
-              <li className="mr-4"><a href="#" className="text-gray-400 hover:text-white"><FontAwesomeIcon icon={faInstagram} /></a></li>
+              <li className="mr-4"><NavLink href="#" className="text-gray-400 hover:text-white"><FontAwesomeIcon icon={faFacebook} /></NavLink></li>
+              <li className="mr-4"><NavLink href="#" className="text-gray-400 hover:text-white"><FontAwesomeIcon icon={faXTwitter} /></NavLink></li>
+              <li className="mr-4"><NavLink href="#" className="text-gray-400 hover:text-white"><FontAwesomeIcon icon={faInstagram} /></NavLink></li>
               <li><a href="#" className="text-gray-400 hover:text-white"><FontAwesomeIcon icon={faLinkedin} /></a></li>
             </ul>
           </div>
