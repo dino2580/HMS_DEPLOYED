@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const Schema = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
     full_name: {
@@ -18,8 +18,7 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
-        
+        required: true
     },
     gender: {
         type: String,
@@ -33,34 +32,30 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: ""
     },
-    currently_present:
-    {
+    currently_present: {
         type:Boolean,
         default:true
     },
-    admin:
-    {
+    admin: {
         type:Boolean,
         default:false
     },
-    super_admin:
-    {
+    super_admin: {
         type:Boolean,
         default:false
     },
-   room_number:
-   {
-    type:String,
-    default:""
-   },
-   hostel_no:
-   {
-    type:String,
-    default:"0"
-   },
-   
-
-   
+    room_number: {
+        type:String,
+        default:""
+    },
+    groups: [{
+        type: Schema.Types.ObjectId,
+        ref: 'GroupModel' // Referring to the Group model
+    }],
+    hostel_no: {
+        type:String,
+        default:"0"
+    }
 });
 
 const User = mongoose.model("User", userSchema);
