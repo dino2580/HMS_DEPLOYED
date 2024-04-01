@@ -127,7 +127,7 @@ export default function Contacts({ changeChat }) {
                 <div key={group._id} className="flex items-center justify-between py-4 px-6 border-b border-gray-200">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12">
-                      <img src="" alt="" className="w-full h-full rounded-full" />
+                      <img src={`https://avatar.iran.liara.run/public/${group.group_id}`} alt="" className="w-full h-full rounded-full" />
                     </div>
                     <h3 className="text-black">{group.group_name}</h3>
                   </div>
