@@ -11,6 +11,8 @@ import {
   faUtensils,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, NavLink } from "react-router-dom";
+import Logo from "./logo";
+import ProfileDropdown from "./ProfileDropdown";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,16 +20,23 @@ function Navbar() {
   const isSuperAdmin = localStorage.getItem("superadmin") === "true";
   const isCookie = localStorage.getItem("cookie");
 
+  const scrollToContacts = () => {
+    const contactsSection = document.getElementById("universal1");
+    if (contactsSection) {
+      contactsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
   return (
     <nav className=" bg-5522a3 p-6 shadow-lg bg-gradient-to-r from-5522a3 to-indigo-600" >
       <div className="navbar-items max-w-7xl mx-auto flex justify-between items-center">
-        <div className="flex items-center">
+        <div className="flex ">
           <a href="/" className="text-white flex text-lg font-bold">
-            Logo
-          <p className="ml-2 text-white text-lg font-bold"> HMS</p>
+            <Logo/>
+          <p className="ml-2 mt-4 text-white text-lg font-bold"> HMS</p>
           </a>
         </div>
         <div className="md:hidden">
@@ -100,10 +109,11 @@ function Navbar() {
             <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
           </li>}
           {!isSuperAdmin&&<li className="relative group">
-            <NavLink
-              to="/home"
+            <NavLink 
+              
               activeClassName="text-indigo-600"
               className="text-white "
+              onClick={scrollToContacts}
             >
               <FontAwesomeIcon icon={faAddressBook} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
               Contact Us
@@ -119,17 +129,6 @@ function Navbar() {
             >
               <FontAwesomeIcon icon={faUser} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
               About Us
-            </NavLink>
-            <span className="absolute left-0 bottom-0 h-0.5  bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
-          </li>}
-          {isCookie&&<li className="relative group">
-            <NavLink
-              to="/profile"
-              activeClassName="text-indigo-600"
-              className="text-white  "
-            >
-              <FontAwesomeIcon icon={faUser} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
-              Profile
             </NavLink>
             <span className="absolute left-0 bottom-0 h-0.5  bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
           </li>}
@@ -174,49 +173,11 @@ function Navbar() {
               <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
             </li>
           )}
-          {isCookie && (
-            <li className="relative group">
-              <label
-                htmlFor="hey"
-                activeClassName="text-indigo-600"
-                className="text-white "
-                onClick={async () => {
-                  try {
-                    const response = await fetch(
-                      "http://localhost:5000/api/auth/logout",
-                      {
-                        method: "POST", // Or 'GET', 'PUT', 'DELETE', etc. depending on your server setup
-                        credentials: "include", // Include cookies in the request
-                      }
-                    );
-
-                    if (response.ok) {
-                      // localStorage.setItem("admin", false);
-                      // localStorage.setItem("Email", "");
-                      // localStorage.setItem("cookie","");
-                      // localStorage.setItem("userId","");
-                      // localStorage.setItem("full_name","");
-                      // localStorage.setItem("hostel_no","");
-                      // localStorage.setItem("superadmin",false);
-                      localStorage.clear();
-                      console.log("Logout successful");
-                      window.location.href = "/login";
-                      // Optionally, redirect the user to the login page or perform any other action after logout
-                    } else {
-                      console.error("Logout failed:", response.statusText);
-                      // Handle unsuccessful logout (display error message, etc.)
-                    }
-                  } catch (error) {
-                    console.error("Error logging out:", error);
-                    // Handle error as needed
-                  }
-                }}
-              >
-                logout
-              </label>
-              <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
-            </li>
-          )}
+          
+      {isCookie&&<li className="relative group">
+          <ProfileDropdown />
+        <span className="absolute left-0 bottom-0 h-0.5  bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
+      </li>}
         </ul>
       </div>
     </nav>

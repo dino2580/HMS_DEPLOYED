@@ -1,5 +1,5 @@
 const express = require('express');
-const { signUp, login, logout, emailVerification, otpcheck, forgotpassword, ResetPassword } = require('../controllers/auth.controller');
+const { signUp, login, logout, emailVerification, otpcheck, forgotpassword, ResetPassword, uploadProfile, fetchUserProfile } = require('../controllers/auth.controller');
 const Complaint = require('./complaintRoute');
 const menu = require('../controllers/Messmenu');
 const { getMenu } = require('../controllers/GetMenu');
@@ -11,7 +11,7 @@ const updateStudent = require('../controllers/UpdateStudent');
 const createMessage = require('../controllers/SendMessage');
 const getGroupMessage = require('../controllers/GetGroupMessage');
 const createGroup = require('../controllers/CreateGroup');
-const getGroups = require('../controllers/GetGroup');
+const {getGroups, getusergroup} = require('../controllers/GetGroup');
 const getComplaint = require('../controllers/GetComplaints');
 const createWorker = require('../controllers/CreateWorker');
 const getWorker = require('../controllers/GetWorkers');
@@ -25,11 +25,21 @@ const getTransactionshostel = require('../controllers/GetTransactionHostel');
 const updateTransactionStatus = require('../controllers/ChangeStatusTransaction');
 const getHostelAccount = require('../controllers/GetHostelAccount');
 const getStudentroom = require('../controllers/GetStudentRoom');
+const joinGroup = require('../controllers/JoinGroup');
+const { uploadMiddleware } = require('../controllers/uploadMiddleware');
+
+const multer = require("multer");
+// const { uploadMiddleware } = require("../controllers/uploadMiddleware");
+const upload = multer({ storage: multer.memoryStorage() });
 
 const router = express.Router();
 router.post("/emailverification", emailVerification);
 router.post("/reset-password", ResetPassword);
 router.post("/otpcheck", otpcheck);
+router.post("/profileupload", upload.single("profile"), uploadMiddleware,uploadProfile)
+
+router.get("/profile/:userId", fetchUserProfile);
+
 router.post("/signup",signUp);
 router.post("/forgotpassword",forgotpassword);
 router.post("/login", login);
@@ -50,6 +60,8 @@ router.post('/send', createMessage);
 router.post('/createGroup', createGroup);
 router.post('/userpaid', updateUserPaid);
 router.get('/getgroup', getGroups);
+router.get('/getusergroups/:user_id', getusergroup);
+router.post('/joingroup',joinGroup);
 router.post('/formtransaction', formTransaction);
 router.post('/updatetransactionstatus',updateTransactionStatus);
 router.get('/gettransactionshostel/:hostel_no', getTransactionshostel);
