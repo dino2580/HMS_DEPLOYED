@@ -1,5 +1,5 @@
 bcrypt = require("bcrypt");
-
+secretKey="CRHqvVp7ImQa1ZI"
 const OtpVerification = require("../models/OtpVerification.js");
 const User = require("../models/usermodel.js");
 const generateWebToken = require("../utils/generateToken.js");
@@ -8,6 +8,37 @@ const {
   sendVerificationEmail,
   sendPasswordResetEmail,
 } = require("./Nodemailer.js");
+const ResetPassword=async(req,res)=>{
+    const { token, password } = req.body;
+    // console.log("token"+token)
+
+    try {
+        // Verify the token
+        const decoded = jwt.verify(token, secretKey);
+        const userEmail = decoded.email;
+    console.log("token"+userEmail)
+
+
+        // Find the user by email
+        const user = await User.findOne({ email: userEmail });
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Update user's password
+        const salt = await bcrypt.genSalt(5);
+    const hashedPassword = await bcrypt.hash(password, salt);
+        user.password = hashedPassword;
+        await user.save();
+
+        // Password updated successfully
+        return res.status(200).json({ message: 'Password updated successfully' });
+    } catch (error) {
+        console.error(error.message);
+        return res.status(500).json({ message: 'Server Error' });
+    }
+}
 const forgotpassword = async (req, res) => {
     const { email } = req.body;
     console.log(email);
@@ -19,7 +50,7 @@ const forgotpassword = async (req, res) => {
 
         // Send the password reset email
         try {
-            await sendPasswordResetEmail(email, fptoken);
+            await sendPasswordResetEmail(email, fptoken,user.full_name);
             return res.status(200).json({ message: "Password reset email sent successfully." });
         } catch (error) {
             console.error("Error sending password reset email:", error);
@@ -247,4 +278,4 @@ const logout = async (req, res) => {
   }
 };
 
-module.exports = { signUp, login, logout, emailVerification, otpcheck,forgotpassword };
+module.exports = { ResetPassword,signUp, login, logout, emailVerification, otpcheck,forgotpassword };

@@ -40,6 +40,8 @@ import Transactiondashboard from './components/Transactiondashboard';
 import Signup2 from './components/signuppage2';
 import Signup3 from './components/signuppage3';
 import Forgotpassword from './components/forgotpassword';
+import ResetPassword from './components/Resetpassword';
+import ResetPassword1 from './components/Resetpassword';
 
 function App() {
   const handleSubmit = async (formData) => {
@@ -166,6 +168,7 @@ function App() {
           <Route path = "/signuppage2" element = {<Signup2/>}/>
           <Route path = "/signuppage3" element = {<Signup3/>}/>
           <Route path = "/forgotpassword" element = {<Forgotpassword/>}/>
+          <Route path = "/reset-password" element = {<ResetPassword1/>}/>
         </Routes>
         <Footer />
       </Router>
