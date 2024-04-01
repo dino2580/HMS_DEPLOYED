@@ -10,54 +10,64 @@ function RoomList() {
         console.log(hostel_no);
         updateRoomAvailability();
     }, []);
-    const updateRoomAvailability = async () => {
-        const updatedAvailability = [...roomAvailability]; // Create a copy of the current state
-    
-        for (let floor = 4; floor < 6; floor++) {
-            for (let roomNumber = 1; roomNumber <= roomsPerFloor; roomNumber++) {
-                const roomIndex = roomNumber + (roomsPerFloor * (floor - 1)) - 1;
-                const roomStatus = updatedAvailability[roomIndex]; // Use the updated availability array
-    
-                try {
-                    let roomNumber1;
-                    if (roomNumber < 10) roomNumber1 = "A" + floor + "0" + roomNumber;
-                    else roomNumber1 = "A" + floor + roomNumber;
-    
-                    const response = await fetch('http://localhost:5000/api/auth/roomNumber', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            // Add any additional headers if required
-                        },
-                        body: JSON.stringify({ room_number: roomNumber1, hostel_no: hostel_no }), // Send room_no and hostel_no in the request body
-                        // You can add other options like credentials, etc., if needed
-                    });
-    
-                    if (!response.ok) {
-                        continue;
-                    }
-    
-                    const userData = await response.json();
-                    
-                    if (userData.length === 0) {
-                        updatedAvailability[roomIndex] = 'vacant';
-                    } else {
-                        if (userData[0].currently_present) {
-                            updatedAvailability[roomIndex] = 'filled';
-                        } else {
-                            updatedAvailability[roomIndex] = 'filled_not_available';
-                        }
-                    }
-    
-                } catch (error) {
-                    console.error('Error fetching user:', error.message);
-                    // Handle error appropriately, e.g., show an error message to the user
-                    return null;
-                }
+    const updateRoomAvailability = async() => {
+        for(let floor=4;floor<6;floor++)
+        {
+        for (let roomNumber = 1; roomNumber <= roomsPerFloor; roomNumber++) {
+        const roomIndex = roomNumber + (roomsPerFloor * (floor - 1)) - 1;
+        const roomStatus = roomAvailability[roomIndex];
+        const updatedAvailability = [...roomAvailability];
+        try {
+            let roomNumber1 ; 
+            if(roomNumber<10)roomNumber1="A"+floor+"0"+roomNumber;
+            else roomNumber1="A"+floor+roomNumber;
+             // Example hostel number
+            
+            const response = await fetch('http://localhost:5000/api/auth/roomNumber', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Add any additional headers if required
+                },
+                body: JSON.stringify({ room_number: roomNumber1, hostel_no: hostel_no }), // Send room_no and hostel_no in the request body
+                // You can add other options like credentials, etc., if needed
+            });
+            
+            if (!response.ok) {
+                
+                continue;
             }
+            
+            const userData = await response.json();
+            // console.log(userData)
+            if(userData.length==0)
+            {
+                updatedAvailability[roomIndex]='vacant';
+                continue;
+            }
+            else{
+                // console.log(userData);
+            
+            
+                if(userData[0].currently_present)
+                {
+                    updatedAvailability[roomIndex]='filled';
+                }
+                else
+                {
+                    updatedAvailability[roomIndex]='filled_not_available'
+                }
+                
+            }
+        console.log(roomNumber1+""+hostel_no+updatedAvailability);
+            
+        } catch (error) {
+            console.error('Error fetching user:', error.message);
+            // Handle error appropriately, e.g., show an error message to the user
+            return null;
         }
-    
-        setRoomAvailability(updatedAvailability); // Update the state after all rooms have been processed
+        setRoomAvailability(updatedAvailability);}
+    }
     };
     
     const renderRooms = (floor) => {

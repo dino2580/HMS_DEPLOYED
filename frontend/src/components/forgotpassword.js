@@ -26,7 +26,7 @@ function Forgotpassword() {
       },
     });
     if(response.ok){
-      //signup page 2 shoulbe visible now
+    
       setSignupSuccess(true)
       setStep(2);
     }
@@ -172,6 +172,62 @@ function Forgotpassword() {
                     </button>
                   </div>
                 </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>}
+      {/* //step2 */}
+      {step==2&&<div>
+        {signupSuccess && (
+          <MessageAlert
+            message="Enter your Otp sended to your domain Id"
+            type="success"
+            icon={
+              <svg
+                className="h-6 w-6 inline-block mr-2 text-green-500"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            }
+            duration={5000} // Optional: auto-dismiss after 5 seconds
+          />
+        )}
+
+        <div>
+          <div
+            className="bg-white shadow-md mx-auto max-w-fit flex items-center justify-center m-10"
+            style={{ borderRadius: "50px" }}
+          >
+            <div className="flex items-center justify-center max-w-[65vw]">
+              <div className="flex items-center justify-center hidden xl:block">
+                <img
+                  src="/signupimg2.jpg"
+                  alt="signupimg"
+                  className="mx-auto w-[130vw]"
+                  style={{
+                    borderBottomLeftRadius: "50px",
+                    borderTopLeftRadius: "50px",
+                  }}
+                />
+              </div>
+              <form
+                className="space-y-3 px-8 flex flex-col w-[90vw]"
+              >
+               
+                
+                
+
+                <h1>Email sended</h1>
               </form>
             </div>
           </div>

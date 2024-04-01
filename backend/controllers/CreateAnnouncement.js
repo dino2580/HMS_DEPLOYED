@@ -1,6 +1,5 @@
 const Announcement = require("../models/Announcementsmodel");
 const {Counter,getNextSequenceValue} = require('../models/counterModel.js');
-
 const createAnnouncement = async (req, res) => {
     try {
         const { announcement_id,user_name,title,announcement_message,hostel_no} = req.body;

@@ -40,6 +40,10 @@ import Transactiondashboard from './components/Transactiondashboard';
 import Signup2 from './components/signuppage2';
 import Signup3 from './components/signuppage3';
 import Forgotpassword from './components/forgotpassword';
+import ResetPassword from './components/Resetpassword';
+import ResetPassword1 from './components/Resetpassword';
+import ProfileDropdown from './components/ProfileDropdown';
+
 
 function App() {
   const handleSubmit = async (formData) => {
@@ -84,7 +88,6 @@ function App() {
             const payloadObj = JSON.parse(decodedPayload);
             return payloadObj;
           };
-
           // Example usage:
           const payload = extractValuesFromJWT(jwtToken);
 
@@ -167,6 +170,9 @@ function App() {
           <Route path = "/signuppage2" element = {<Signup2/>}/>
           <Route path = "/signuppage3" element = {<Signup3/>}/>
           <Route path = "/forgotpassword" element = {<Forgotpassword/>}/>
+          <Route path = "/reset-password" element = {<ResetPassword1/>}/>
+          <Route path="/profiledropdown" element={<ProfileDropdown/>} />
+          
         </Routes>
         <Footer />
       </Router>

@@ -202,16 +202,17 @@ const sendVerificationEmail = (email, otp) => {
         }
     });
 };
-const sendPasswordResetEmail = (email, token) => {
+const sendPasswordResetEmail = (email, token,full_name) => {
     // Define the base URL of your application where the password reset page is hosted
-    const baseUrl = 'http://localhost:5000/reset-password'; // Replace 'example.com' with your actual domain
+    const baseUrl = 'http://localhost:3000/reset-password'; // Replace 'example.com' with your actual domain
 
     // Generate the password reset link with the token embedded in the URL
     const resetLink = `${baseUrl}?token=${token}`;
 
     // Email content
-    const message = `<!DOCTYPE html>
+    const message=`<!DOCTYPE html>
     <html lang="en">
+    
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -242,12 +243,31 @@ const sendPasswordResetEmail = (email, token) => {
                 line-height: 1.5;
             }
     
-            .token {
+            ul {
+                color: #666666;
+            }
+    
+            li {
+                margin-bottom: 10px;
+            }
+    
+            .button {
+                display: inline-block;
+                background-color: #4CAF50;
+                border: none;
+                color: white;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
                 margin-top: 20px;
-                padding: 10px;
-                background-color: #f0f0f0;
+                cursor: pointer;
                 border-radius: 5px;
-                font-size: 18px;
+            }
+    
+            .button:hover {
+                background-color: #45a049;
             }
     
             .footer {
@@ -266,20 +286,22 @@ const sendPasswordResetEmail = (email, token) => {
             }
         </style>
     </head>
+    
     <body>
     
         <div class="container">
             <h1>Password Reset</h1>
-            <p>Dear User!!,</p>
-            <p>We received a request to reset your password. If you made this request, please click the following link to reset your password:</p>
-            <a href="${resetLink}" class="token">${resetLink}</a>
+            <p>Dear ${full_name},</p>
+            <p>We received a request to reset your password. If you made this request, please click the button below to reset your password:</p>
+            <a href="${resetLink}" class="button">ResetPassword</a>
             <p>If you didn't request this password reset, you can safely ignore this email.</p>
-            <p class="footer">Best regards,<br>The HMS Team<br><a href="#">Visit our website</a></p>
+            <p class="footer">Best regards,<br>The Hms Team<br><a href="http://localhost:3000/">Visit our website</a></p>
         </div>
     
     </body>
+    
     </html>
-    `;
+    `
 
     const mailOptions = {
         from: 'hms.nitkkr@gmail.com', // Sender address

@@ -11,7 +11,7 @@ const getGroupMessage = async (req, res) => {
         const GroupChat=await GroupModel.find({group_id:group_id}).populate("messages"); 
         // console.log(GroupChat)\\
 
-    const populatedMessages = await MessageModel.find( {group_id} ).populate('user_id' , 'full_name');
+    const populatedMessages = await MessageModel.find( {group_id} ).populate('user_id' , 'full_name profile_pic');
         // console.log(GroupChat);
          //const populatedMessages = await MessageModel.populate(GroupChat.messages, { path: 'user_id' });
         GroupChat[0].messages=populatedMessages;
