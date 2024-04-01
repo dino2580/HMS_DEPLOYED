@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
@@ -37,18 +37,22 @@ import Complaintsdashboard from './components/Complaintsdashboard';
 import FeeDetailsdashboard from './components/FeeDetailsdashboard';
 import Workersdashboard from './components/Workersdasboard';
 import Transactiondashboard from './components/Transactiondashboard';
-<<<<<<< Updated upstream
 import Signup2 from './components/signuppage2';
 import Signup3 from './components/signuppage3';
 import Forgotpassword from './components/forgotpassword';
 import ResetPassword from './components/Resetpassword';
 import ResetPassword1 from './components/Resetpassword';
-=======
 import ProfileDropdown from './components/ProfileDropdown';
 
->>>>>>> Stashed changes
+
 
 function App() {
+  const contactsSectionRef = useRef(null);
+  const scrollToContacts = () => {
+    if (contactsSectionRef.current) {
+      contactsSectionRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   const handleSubmit = async (formData) => {
     // event.preventDefault();
     const { email, password } = formData;
@@ -137,10 +141,10 @@ function App() {
   return (
     <div>
       <Router>
-        <Navbar />
+        <Navbar scrollToContacts={scrollToContacts} />
           
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage contactsSectionRef={contactsSectionRef}/>} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/announcement" element={<Announcement />} />
           <Route path="/login" element={<Login handleSubmit={handleSubmit} />} />
@@ -164,21 +168,17 @@ function App() {
           <Route path='/transactionstudent' element={<TransactionStudent/> }/>
           <Route path='/admindashboard/transaction' element={<Transaction/> }/>
           <Route path='/admindashboard/:hostel_no' element={<Dashboard/> }/>
-          {/* //dashboard */}
           <Route path="/admindashboard/:hostel_no/students" element={<Studentdasboard/>} />
           <Route path="/admindashboard/:hostel_no/Complaints" element={<Complaintsdashboard/>} />
           <Route path="/admindashboard/:hostel_no/Workers" element={<Workersdashboard />} />
           <Route path="/admindashboard/:hostel_no/FeeDetails" element={<FeeDetailsdashboard/>} />
           <Route path="/admindashboard/:hostel_no/transaction" element={<Transactiondashboard/>} />
-<<<<<<< Updated upstream
           <Route path = "/signuppage2" element = {<Signup2/>}/>
           <Route path = "/signuppage3" element = {<Signup3/>}/>
           <Route path = "/forgotpassword" element = {<Forgotpassword/>}/>
           <Route path = "/reset-password" element = {<ResetPassword1/>}/>
-=======
           <Route path="/profiledropdown" element={<ProfileDropdown/>} />
           
->>>>>>> Stashed changes
         </Routes>
         <Footer />
       </Router>

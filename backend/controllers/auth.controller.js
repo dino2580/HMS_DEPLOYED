@@ -8,6 +8,46 @@ const {
   sendVerificationEmail,
   sendPasswordResetEmail,
 } = require("./Nodemailer.js");
+
+const fetchUserProfile = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    console.log("g"+userId);
+
+    // Fetch user profile details from your database or any other source
+    const userProfile = await User.findOne({ _id:userId });
+
+    if (!userProfile) {
+      return res.status(404).json({ message: "User profile not found" });
+    }
+
+    // Return the user profile details
+    res.status(200).json(userProfile);
+  } catch (error) {
+    console.error("Error fetching user profile:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+
+const uploadProfile = async (req, res) => {
+  try {
+    const _id = req.user_id;
+    const profile_pic = req.fileDownloadURL; // Assuming req.fileDownloadURL holds the URL of the uploaded file
+    const user = await User.findOne({ _id });
+    if (user) {
+      user.profile_pic = profile_pic;
+      await user.save(); // Save the updated user object
+      res.status(200).json({ success: true, message: "Profile picture updated successfully",profile_pic:profile_pic});
+    } else {
+      res.status(404).json({ success: false, message: "User not found" });
+    }
+  } catch (error) {
+    console.error("Error updating profile picture:", error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+};
+
 const ResetPassword=async(req,res)=>{
     const { token, password } = req.body;
     // console.log("token"+token)
@@ -278,4 +318,4 @@ const logout = async (req, res) => {
   }
 };
 
-module.exports = { ResetPassword,signUp, login, logout, emailVerification, otpcheck,forgotpassword };
+module.exports = {fetchUserProfile, uploadProfile,ResetPassword,signUp, login, logout, emailVerification, otpcheck,forgotpassword };
