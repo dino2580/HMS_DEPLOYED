@@ -303,8 +303,8 @@ const HomePage = ({contactsSectionRef}) => {
         <h1 class="text-4xl font-bold text-black text-center h-full bg-indigo-400 pt-4"><span className='relative bg-left-bottom bg-[length:0%_3px] bg-gradient-to-r from-gray-700 to to-gray-700 hover:bg-[length:100%_3px] bg-no-repeat transition-all duration-500 ease-in-out' >Contact us</span></h1>
 
 
-        <div id="universal1" class="flex justify-center items-center bg-indigo-400 min-h-screen group">
-          <div class="flex flex-wrap justify-center items-center w-full md:w-5/6 lg:w-4/5 xl:w-3/4 shadow-lg bg-white rounded-lg  relative">
+        <div id="universal1" class="flex justify-center items-center bg-indigo-400 min-h-screen group ">
+          <div class="flex flex-wrap justify-center items-center w-full md:w-5/6 lg:w-4/5 xl:w-3/4 shadow-lg bg-white rounded-lg  relative mt-3 mb-2">
             {/* <!-- Overlay Heading --> */}
             {/* <!-- Image Section --> */}
             <div class="w-full md:w-1/2 p-4">
