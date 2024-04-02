@@ -37,16 +37,13 @@ import Complaintsdashboard from './components/Complaintsdashboard';
 import FeeDetailsdashboard from './components/FeeDetailsdashboard';
 import Workersdashboard from './components/Workersdasboard';
 import Transactiondashboard from './components/Transactiondashboard';
-<<<<<<< Updated upstream
 import Signup2 from './components/signuppage2';
 import Signup3 from './components/signuppage3';
 import Forgotpassword from './components/forgotpassword';
 import ResetPassword from './components/Resetpassword';
 import ResetPassword1 from './components/Resetpassword';
-=======
 import ProfileDropdown from './components/ProfileDropdown';
 
->>>>>>> Stashed changes
 
 function App() {
   const handleSubmit = async (formData) => {
@@ -170,15 +167,12 @@ function App() {
           <Route path="/admindashboard/:hostel_no/Workers" element={<Workersdashboard />} />
           <Route path="/admindashboard/:hostel_no/FeeDetails" element={<FeeDetailsdashboard/>} />
           <Route path="/admindashboard/:hostel_no/transaction" element={<Transactiondashboard/>} />
-<<<<<<< Updated upstream
           <Route path = "/signuppage2" element = {<Signup2/>}/>
           <Route path = "/signuppage3" element = {<Signup3/>}/>
           <Route path = "/forgotpassword" element = {<Forgotpassword/>}/>
           <Route path = "/reset-password" element = {<ResetPassword1/>}/>
-=======
           <Route path="/profiledropdown" element={<ProfileDropdown/>} />
           
->>>>>>> Stashed changes
         </Routes>
         <Footer />
       </Router>
