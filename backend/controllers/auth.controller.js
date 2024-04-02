@@ -1,5 +1,6 @@
 bcrypt = require("bcrypt");
 secretKey="CRHqvVp7ImQa1ZI"
+const accounts = require("../models/Accounts.js");
 const OtpVerification = require("../models/OtpVerification.js");
 const User = require("../models/usermodel.js");
 const generateWebToken = require("../utils/generateToken.js");
@@ -148,6 +149,7 @@ const emailVerification = async (req, res) => {
           });
           await newOtp.save();
         }
+      
 
         return res.status(200).json({ msg: "OTP sent successfully" });
       } catch (error) {
@@ -232,19 +234,33 @@ const signUp = async (req, res) => {
       profile_pic: profilePic,
     });
 
+   
+   
+    console.log("heellp");
+    const id=newUser._id;
+    const user_id=id.toString();
+    console.log(user_id);
+    const account=new accounts(
+      {
+        user_id:user_id
+      }
+    )
+    await account.save(); 
     const user = await newUser.save();
     if (user) {
       sendSignupEmailNotification(user.full_name, user.email);
     }
-
     return res.status(201).json({
       _id: newUser._id,
       msg: "Signed up successfully",
     });
+
+
   } catch (error) {
     console.error("Error in signup:", error);
     res.status(500).json({ err: "Signup error" });
   }
+
 };
 
 const login = async (req, res) => {
