@@ -6,6 +6,7 @@ const getUserDues=async(req, res) =>{
     // Get the roll number from the URL query parameters
     const {user_id}=req.params;
     // Check if the roll number is provided
+    
     if (!user_id) {
       throw new Error('User_id is missing from URL parameters');
     }

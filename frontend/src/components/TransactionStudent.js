@@ -19,46 +19,7 @@ function TransactionStudent() {
     room: "",
     contactNo: "",
   });
-  const handlePhonePePayment = async () => {
-    try {
-      setLoading(true);
-      await fetchUserDues();
-      const user_id = localStorage.getItem('userId');
-      const hostel_no = localStorage.getItem('hostel_no');
-      const { nonce } = await instance.requestPaymentMethod();
-      
-      // Example URL for PhonePe payment endpoint (replace with actual endpoint)
-      const phonePePaymentURL = 'https://example.com/phonepe/payment';
 
-      const response = await fetch(phonePePaymentURL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          user_id,
-          nonce,
-          amount,
-          hostel_no,
-          paymentMethod: 'phonepe' // Indicate PhonePe as the payment method
-        })
-      });
-      
-      const data = response.json();
-      
-      if (response.ok) {
-        alert("Payment Successful");
-        console.log('Payment response:', data);
-      } else {
-        console.error('Failed to process payment:', data.error);
-      }
-    } catch (error) {
-      console.error('Error processing payment:', error);
-    } finally {
-      setLoading(false);
-      setShowPaymentForm(false);
-    }
-  };
 
   const handlePayment = async () => {
     try {
@@ -83,6 +44,7 @@ function TransactionStudent() {
       const data = response;
 
       alert("Payment Successful");
+
       console.log('Payment response:', data);
     } catch (error) {
       console.error('Error processing payment:', error);
@@ -162,11 +124,7 @@ function TransactionStudent() {
     }
   };
 
-  const launchUPI = () => {
-    const upiLink = 'upi://pay?pa=sanidhya.4@paytm&pn=PaytmUser&mc=0000&mode=02&purpose=00&orgid=159761&cust=1483872887';
-    window.location.href = upiLink;
-  };
-
+  
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
@@ -199,12 +157,7 @@ function TransactionStudent() {
     <div className="flex flex-col bg-back">
       <div className="flex flex-col bg-back">
       {/* Your existing JSX */}
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline mt-4 mr-4"
-        onClick={handlePhonePePayment} // Add this onClick handler to the PhonePe payment button
-      >
-        Pay with PhonePe
-      </button>
+
       {/* Your existing JSX */}
     </div>
       <div className="flex justify-center m-4">
@@ -217,7 +170,7 @@ function TransactionStudent() {
           <h3>Fees To Pay</h3>
           <p className="text-4xl font-bold mr-4">₹{amount}</p>
         </div>
-        <button onClick={launchUPI}>Click here to initiate payment</button>
+        
       </div>
       <div className="flex justify-center">
         <button
