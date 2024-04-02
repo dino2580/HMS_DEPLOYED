@@ -4,7 +4,8 @@ const accounts = require("../models/Accounts");
 const getUserDues=async(req, res) =>{
   try {
     const {user_id}=req.params;
-    console.log(user_id)
+    // Check if the roll number is provided
+    
     if (!user_id) {
       throw new Error('User_id is missing from URL parameters');
     }

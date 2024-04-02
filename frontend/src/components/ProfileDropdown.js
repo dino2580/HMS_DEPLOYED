@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
+import ComplaintForm from "./ComplaintForm";
 
 function ProfileDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const [profilePicture, setProfilePicture] = useState(null);
   const [profileDetails, setProfileDetails] = useState(null);
+  const [showComponent, setShowComponent] = useState(false);
   const userId = localStorage.getItem("userId");
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+  };
+  const toggleComplaintForm = () => {
+    setShowComponent(!showComponent);
   };
 
   const handleProfilePictureUpload = async (event) => {
@@ -73,7 +78,7 @@ function ProfileDropdown() {
           </svg>
         )}
         {profileDetails && (
-          <span className="hidden md:inline-block text-white-600">
+          <span className="hidden md:inline-block text-white">
             {profileDetails.full_name}
           </span>
         )}
@@ -117,8 +122,8 @@ function ProfileDropdown() {
             <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               Profile
             </button>
-            <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-              Settings
+            <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"  onClick={toggleComplaintForm}>
+                Add Complaints
             </button>
             <button
               onClick={async () => {
@@ -148,6 +153,7 @@ function ProfileDropdown() {
           </div>
         </div>
       )}
+      {showComponent && <ComplaintForm />}
     </div>
   );
 }

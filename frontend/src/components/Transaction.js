@@ -369,8 +369,8 @@ function TableRow({ entry, index, handleVerify, handleDelete }) {
       <td className="py-4 px-4 text-center">
       {entry.remark === "Verified" ? (
           <span className="text-green-500">Verified</span>
-        ) : entry.remark==="not Verified" ? (
-          <span className="text-white"> Not Verified</span>
+        ) : entry.remark==="Not Verified" ? (
+          <span className="text-black"> Not Verified</span>
         ) : entry.remark === "Failed" ? (
           <span className="text-red-500">Failed</span>
         ) : (

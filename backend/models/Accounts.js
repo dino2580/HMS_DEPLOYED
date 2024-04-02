@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const accountSchema = new mongoose.Schema({
     user_id: {
-        type: "String",
+        type: String,
         required: true,
         unique: true
     },
