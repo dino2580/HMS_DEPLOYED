@@ -272,7 +272,7 @@ function TransactionStudent() {
     </div>
   </div>
 )}
-      <h1 className="text-3xl font-bold leading-none text-center text-blue-800 dark:text-blue-800 my-5">
+      <h1 className="text-3xl font-bold leading-none text-center text-blue-800  my-5">
         Transactions
       </h1>
       <div className="overflow-x-auto">
