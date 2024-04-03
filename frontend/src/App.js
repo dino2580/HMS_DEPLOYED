@@ -204,6 +204,7 @@ function App() {
           <Route path="/forgotpassword" element={<Forgotpassword />} />
           <Route path="/reset-password" element={<ResetPassword1 />} />
           <Route path="/profiledropdown" element={<ProfileDropdown />} />
+          <Route path="/payment" element={<TransactionStudent />} />
         </Routes>
         <Footer />
       </Router>

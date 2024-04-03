@@ -5,6 +5,9 @@ import { Link, NavLink } from "react-router-dom";
 function MyLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [check, setcheck] =useState("false");
+  const [checkemail, setcheckemail] = useState("false");
+  const [error , seterror]=useState("false");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -17,6 +20,7 @@ function MyLogin() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Here, you would typically send the email and password to a server for authentication
+
     console.log('Email:', email);
     console.log('Password:', password);
   };

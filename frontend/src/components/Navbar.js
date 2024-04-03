@@ -31,7 +31,7 @@ function Navbar() {
     setIsOpen(!isOpen);
   };
   return (
-    <nav className=" bg-5522a3 p-6 shadow-lg bg-gradient-to-r from-5522a3 to-indigo-600" >
+    <nav className=" bg-5522a3 p-3 shadow-lg bg-gradient-to-r from-5522a3 to-indigo-600" >
       <div className="navbar-items max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex ">
           <a href="/" className="text-white flex text-lg font-bold">

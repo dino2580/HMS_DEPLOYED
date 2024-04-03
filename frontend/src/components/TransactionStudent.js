@@ -179,6 +179,8 @@ function TransactionStudent() {
         >
           Pay Fees
         </button>
+        
+        
         <button
           className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline mt-4"
           onClick={handleAlreadyPaid}
@@ -189,6 +191,12 @@ function TransactionStudent() {
       {showPaymentForm2 && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-8 shadow-lg">
+          <button
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+              onClick={() => setShowPaymentForm2(false)}
+            >
+              &times;
+            </button>
             <h2 className="text-2xl font-bold mb-4">Pay Fees</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
@@ -208,6 +216,8 @@ function TransactionStudent() {
                   required
                 />
               </div>
+             
+           
               <button
                 type="submit"
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -219,43 +229,49 @@ function TransactionStudent() {
         </div>
       )}
       {showPaymentForm && (
-        <div className="fixed inset-0 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-8 shadow-lg">
-            <h2 className="text-2xl font-bold mb-4">Pay Fees</h2>
-            <form onSubmit={handleSubmit}>
-              {/* Drop-in UI component */}
-              {clientToken && (
-                <div className="pay-drop-in-container">
-                  <DropIn
-                    options={{
-                      authorization: clientToken,
-                      paypal: {
-                        flow: 'vault'
-                      }
-                    }}
-                    onInstance={(instance) => setInstance(instance)}
-                  />
-                </div>
-              )}
-              <button
-                type="button"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 mr-2"
-                disabled={loading}
-                onClick={handlePayment}
-              >
-                Make Payment
-              </button>
-              <button
-                type="submit"
-                className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4"
-                disabled={loading}
-              >
-                Submit
-              </button>
-            </form>
+  <div className="fixed inset-0 flex items-center justify-center z-50">
+    <div className="bg-white rounded-lg p-8 shadow-lg relative">
+      <button
+        className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+        onClick={() => setShowPaymentForm(false)}
+      >
+        &times;
+      </button>
+      <h2 className="text-2xl font-bold mb-4">Pay Fees</h2>
+      <form onSubmit={handleSubmit}>
+        {/* Drop-in UI component */}
+        {clientToken && (
+          <div className="pay-drop-in-container">
+            <DropIn
+              options={{
+                authorization: clientToken,
+                paypal: {
+                  flow: 'vault'
+                }
+              }}
+              onInstance={(instance) => setInstance(instance)}
+            />
           </div>
-        </div>
-      )}
+        )}
+        <button
+          type="button"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 mr-2"
+          disabled={loading}
+          onClick={handlePayment}
+        >
+          Make Payment
+        </button>
+        <button
+          type="submit"
+          className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4"
+          disabled={loading}
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+)}
       <h1 className="text-3xl font-bold leading-none text-center text-blue-800 dark:text-blue-800 my-5">
         Transactions
       </h1>

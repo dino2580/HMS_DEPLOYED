@@ -126,12 +126,15 @@
 
 
 import React, { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const ComplaintForm = () => {
   const [name, setName] = useState("");
   const [rollNo, setRollNo] = useState("");
   const [complaintType, setComplaintType] = useState("");
   const [message, setMessage] = useState("");
+  const [showForm, setShowForm] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -142,9 +145,17 @@ const ComplaintForm = () => {
     console.log('Message:', message);
   };
 
+  const handleCloseForm = () => {
+    setShowForm(false);
+  };
+
+  if (!showForm) {
+    return null; // Do not render anything if showForm is false
+  }
+
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50 ">
-      <div className="flex overflow-hidden" style={{borderRadius: '50px'}}>
+    <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
+      <div className="flex overflow-hidden" style={{ borderRadius: '50px' }}>
         <div className="flex items-center justify-center hidden xl:block flex-grow">
           <img
             src="/complaintimg.jpg"
@@ -156,7 +167,13 @@ const ComplaintForm = () => {
             }}
           />
         </div>
-        <div className="w-[25vw] bg-white shadow-md p-6 flex-grow">
+        <div className="w-[25vw] bg-white shadow-md p-6 flex-grow relative">
+          <button
+            className="absolute top-2 right-6 text-black "
+            onClick={handleCloseForm}
+          >
+            <FontAwesomeIcon icon={faTimes} />
+          </button>
           <h2 className="text-2xl font-bold mb-4">Submit Complaint</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
