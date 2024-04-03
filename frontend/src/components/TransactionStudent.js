@@ -88,6 +88,27 @@ function TransactionStudent() {
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  const fetchTransactions = async () => {
+    try {
+      const userId = localStorage.getItem('userId'); // Assuming you store the userId in localStorage
+      const response = await fetch(`http://localhost:5000/api/auth/transactions/${userId}`);
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch transactions');
+      }
+
+      const data = await response.json();
+      const {transactions,user}=data;
+      console.log(transactions); 
+      setEntries(transactions);
+      setUser(user);
+      console.log(entries)
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching transactions:', error.message);
+      setLoading(false);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -136,27 +157,7 @@ function TransactionStudent() {
 
   
   useEffect(() => {
-    const fetchTransactions = async () => {
-      try {
-        const userId = localStorage.getItem('userId'); // Assuming you store the userId in localStorage
-        const response = await fetch(`http://localhost:5000/api/auth/transactions/${userId}`);
-        
-        if (!response.ok) {
-          throw new Error('Failed to fetch transactions');
-        }
-
-        const data = await response.json();
-        const {transactions,user}=data;
-        console.log(transactions); 
-        setEntries(transactions);
-        setUser(user);
-        console.log(entries)
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching transactions:', error.message);
-        setLoading(false);
-      }
-    };
+   
 
     fetchTransactions();
     fetchUserDues();
