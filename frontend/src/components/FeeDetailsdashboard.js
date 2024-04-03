@@ -10,6 +10,22 @@ import Sidebardashboard from './sidebardashboard';
 export default function FeeDetailsdashboard() {
   const {hostel_no}=useParams();
   const [students, setStudents] = useState([]);
+  const [showInputBox, setShowInputBox] = useState(false);
+  const [dueInput, setDueInput] = useState("");
+  const handleAddDueClick = () => {
+    setShowInputBox(true);
+  };
+
+  const handleDueInputChange = (e) => {
+    setDueInput(e.target.value);
+  };
+
+  const handleSubmitDue = () => {
+    // Handle submit due logic here
+    console.log("Submitted due:", dueInput);
+    setDueInput("");
+    setShowInputBox(false);
+  };
 
   useEffect(() => {
     const fetchStudentsAccounts = async () => {
@@ -89,6 +105,29 @@ export default function FeeDetailsdashboard() {
                   </div>
                 </div>
               </div>
+              <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2"
+          onClick={handleAddDueClick}
+        >
+          Add Due
+        </button>
+        {showInputBox && (
+        <div className="mt-4">
+          <input
+            type="text"
+            placeholder="Enter due amount"
+            value={dueInput}
+            onChange={handleDueInputChange}
+            className="border border-gray-400 p-2 rounded"
+          />
+          <button
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2"
+            onClick={handleSubmitDue}
+          >
+            Submit
+          </button>
+        </div>
+      )}
             </div>
           </div>
         </div>

@@ -21,6 +21,23 @@ function Dashboard() {
   const [complaints, setComplaints] = useState([]);
   const [collectedFee, setTotalCollection] = useState(30);
   const [expectedFee, setExpectedCollection] = useState(30);
+  const [showInputBox, setShowInputBox] = useState(false);
+  const [dueInput, setDueInput] = useState("");
+
+  const handleAddDueClick = () => {
+    setShowInputBox(true);
+  };
+
+  const handleDueInputChange = (e) => {
+    setDueInput(e.target.value);
+  };
+
+  const handleSubmitDue = () => {
+    // Handle submit due logic here
+    console.log("Submitted due:", dueInput);
+    setDueInput("");
+    setShowInputBox(false);
+  };
 
   useEffect(() => {
     const fetchHostelData = async () => {
@@ -141,6 +158,7 @@ console.log('Occupancy Data:', occupancyData);
       <div className="container mx-auto">
         <div className="flex justify-center items-start gap-8 mt-2">
           <Sidebardashboard hostel_no={hostel_no}/>
+         
           <div className="w-full md:w-5/6 bg-white p-8 rounded-xl bg-opacity-60">
             <div className="flex justify-center">
               <h1 className="text-black text-2xl font-bold item-center mb-4 mt-0">
@@ -314,8 +332,35 @@ console.log('Occupancy Data:', occupancyData);
                   </div>
                 </div>
               </div>
+              <div className="mt-4 flex justify-end">
+                </div>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={handleAddDueClick}
+        >
+          Add Due
+        </button>
+        {showInputBox && (
+        <div className="mt-4">
+          <input
+            type="text"
+            placeholder="Enter due amount"
+            value={dueInput}
+            onChange={handleDueInputChange}
+            className="border border-gray-400 p-2 rounded"
+          />
+          <button
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2"
+            onClick={handleSubmitDue}
+          >
+            Submit
+          </button>
+        </div>
+      )}
+
               
             </div>
+           
           </div>
         </div>
         
