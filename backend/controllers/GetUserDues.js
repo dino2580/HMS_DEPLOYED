@@ -1,5 +1,5 @@
 const accounts = require("../models/Accounts");
-
+const User = require("../models/usermodel");
 
 const getUserDues=async(req, res) =>{
   try {
@@ -12,9 +12,17 @@ const getUserDues=async(req, res) =>{
     // console.log(user_id);
     // Query the database to get user dues and paid information based on roll number
     const account = await accounts.findOne({user_id} ); // Assuming roll number is a unique identifier
+    // console.log(account);
 
     if (!account) {
-      throw new Error('User not found');
+      const user=User.findOne({_id:user_id});
+
+      const newAccount =await accounts({
+        user_id,
+        hostel_no:user.hostel_no,
+      })
+      newAccount.save();
+      res.json({user_dues:0,user_paid:0});
     }
 
     // Extract user dues and paid information from the account object

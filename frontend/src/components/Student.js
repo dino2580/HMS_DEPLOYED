@@ -52,7 +52,7 @@ export default function Student() {
       const response = await fetch(
         `http://localhost:5000/api/auth/updatestudent/${id}`,
         {
-          method: "PUT",
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
