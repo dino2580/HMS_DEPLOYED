@@ -99,76 +99,68 @@ export default function ChatContainer({ currentChat }) {
     };
   }, [group_id]);
 
-  return (
-    <div
-      className="flex flex-col"
-      style={{ height: "91.05vh", overflowX: "hidden" }}
-    >
-      <div className="flex justify-between items-center px-8 py-4 bg-indigo-600">
-        <div className="flex items-center space-x-4">
-          <div className="w-12 h-12">
-            <img
-              src={`https://avatar.iran.liara.run/public/${currentChat.group_id}`}
-              alt="User Avatar"
-              className="w-full h-full"
-            />
-          </div>
-          <div>
-            <h3 className="text-white">{currentChat.group_name}</h3>
+    return (
+      <div className="flex flex-col relative h-[100vh]" style={{overflowX: "hidden" }}>
+        <div className="flex justify-between items-center px-8 py-4 bg-indigo-600">
+          <div className="flex items-center space-x-4">
+            <div className="w-12 h-12">
+              <img
+                src={`https://avatar.iran.liara.run/public/${currentChat.group_id}`}
+                alt="User Avatar"
+                className="w-full h-full"
+              />
+            </div>
+            <div>
+              <h3 className="text-white">{currentChat.group_name}</h3>
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        id="chats"
-        style={{ scrollbarWidth: "none" }}
-        className="flex-grow overflow-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800"
-      >
-        <div className="px-8 py-4 flex flex-col gap-4" >
-          {chatMessages.map((message, index) => (
-            
-            <div
-              key={uuidv4()}
-              className={`flex ${message.user_id && message.user_id._id === currentUser
+        <div id="chats" style={{ scrollbarWidth: "none" }} className="flex-grow overflow-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800  h-screen">
+          <div className="px-8 py-4 flex flex-col gap-4">
+            {chatMessages.map((message, index) => (
+              <div
+                key={uuidv4()}
+                className={`flex relative ${message.user_id && message.user_id._id === currentUser
                   ? "justify-end"
                   : "justify-start"
-                }`}
-            >
-               {message.user_id && message.user_id._id !== currentUser &&<div className={`w-10 h-10 items-end mr-2 `}>
-              <img
-              src={message.user_id.profile_pic}
-              alt="User Avatar"
-              className="w-full h-full "
-            />
-              </div>}
-              <div
-                className={`max-w-2/5 overflow-hidden rounded-lg py-4 px-6 ${message.user_id && message.user_id._id === currentUser
-                    ? "bg-indigo-500 text-white self"
-                    : "bg-slate-200 text-black other"
                   }`}
               >
-               
-                {message.user_id && message.user_id._id !== currentUser ? (
-                  <div className=" text-white self">
-                    <span className={`text-sm text-start ${getRandomColor()} font-bold`}>{message.user_id.full_name}</span>
-                  </div>
-                ) : null}
-
-                <p className="text-md">{message.message}</p>
+                {message.user_id && message.user_id._id !== currentUser && <div className={`w-10 h-10 items-end mr-2 `}>
+                  <img
+                    src={message.user_id.profile_pic}
+                    alt="User Avatar"
+                    className="w-full h-full "
+                  />
+                </div>}
+                <div
+                  className={`max-w-2/5 overflow-hidden rounded-lg py-4 px-6 ${message.user_id && message.user_id._id === currentUser
+                    ? "bg-indigo-500 text-white self"
+                    : "bg-slate-200 text-black other"
+                    }`}
+                >
+                  {message.user_id && message.user_id._id !== currentUser ? (
+                    <div className=" text-white self">
+                      <span className={`text-sm text-start ${getRandomColor()} font-bold`}>{message.user_id.full_name}</span>
+                    </div>
+                  ) : null}
+                  <p className="text-md">{message.message}</p>
+                </div>
+                {message.user_id && message.user_id._id === currentUser && <div className={`w-10 h-10 items-center ml-2 `}>
+                  <img
+                    src={message.user_id.profile_pic}
+                    alt="User Avatar"
+                    className="w-full h-full "
+                  />
+                </div>}
               </div>
-              {message.user_id && message.user_id._id === currentUser &&<div className={`w-10 h-10 items-center ml-2 `}>
-              <img
-              src={message.user_id.profile_pic}
-              alt="User Avatar"
-              className="w-full h-full "
-            />
-              </div>}
-            </div>
-          ))}
+            ))}
+            <div ref={scrollRef}></div>
+          </div>
           
-          <div ref={scrollRef}></div>
         </div>
+        <div className="w-full">
+            <ChatInput handleSendMsg={handleMessageSend} />
+          </div>
       </div>
-      <ChatInput handleSendMsg={handleMessageSend} />
-    </div>
-  );
-}
+    );
+                  }    

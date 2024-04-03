@@ -38,53 +38,42 @@ export default function Contacts({ changeChat }) {
   };
 
   useEffect(() => {
-    
     fetchData();
   }, []);
-  // console.log(groups)
-  // console.log(userGroups)
-  console.log(notJoinedUserGroups)
 
-  const changeCurrentChat = (index,group, e) => {
+  const changeCurrentChat = (index, group, e) => {
     e.preventDefault();
     setCurrentSelected(index);
     changeChat(group);
   };
 
-  const handleJoin = async(group_id) => {
-    const user_id = localStorage.getItem('userId'); // Assuming you retrieve user_id from localStorage
-   
-    
+  const handleJoin = async (group_id) => {
+    const user_id = localStorage.getItem('userId');
+
     // Define the data you want to send in the request body
     const data = {
-        user_id: user_id,
-        group_id: group_id
+      user_id: user_id,
+      group_id: group_id
     };
 
     // Make a POST request to the server
-    try{
-    const response=await fetch('http://localhost:5000/api/auth/joingroup', {
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/joingroup', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            // Add any additional headers if required
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data), // Convert data to JSON string
-    })
-   
-    fetchData();
-    
-  }
-  catch(error)
-  {
-    console.log(error);
-  }
-};
+        body: JSON.stringify(data),
+      });
+      fetchData();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  const handleShowMore=()=>
-  {
+  const handleShowMore = () => {
     setIsJoin(false);
-  }
+  };
 
   return (
     <div className=" ">
@@ -131,13 +120,12 @@ export default function Contacts({ changeChat }) {
                     </div>
                     <h3 className="text-black">{group.group_name}</h3>
                   </div>
-                  <button className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600" onClick={(e) => { handleJoin(group.group_id)}}>Join Now</button>
+                  <button className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600" onClick={(e) => { handleJoin(group._id) }}>Join Now</button>
                 </div>
               ))}
             </div>
           )}
         </div>
-
       </div>
     </div>
   );

@@ -47,7 +47,7 @@ export default function Chat() {
     <div className=" h-91 flex justify-center items-center bg-slate-300">
       <div className="container h-full w-full bg-opacity-6 grid grid-cols-1 md:grid-cols-4" style={{backgroundImage: 'url("https://cdn.wallpapersafari.com/27/32/jt4AoG.jpg")'}}>
         
-        <div className="md:col-span-1">
+        <div className="md:col-span-1 ">
           <Contacts contacts={contacts} changeChat={handleChatChange} />
         </div>
         <div className="md:col-span-3">
