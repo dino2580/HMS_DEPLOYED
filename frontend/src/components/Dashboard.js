@@ -334,29 +334,7 @@ console.log('Occupancy Data:', occupancyData);
               </div>
               <div className="mt-4 flex justify-end">
                 </div>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={handleAddDueClick}
-        >
-          Add Due
-        </button>
-        {showInputBox && (
-        <div className="mt-4">
-          <input
-            type="text"
-            placeholder="Enter due amount"
-            value={dueInput}
-            onChange={handleDueInputChange}
-            className="border border-gray-400 p-2 rounded"
-          />
-          <button
-            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2"
-            onClick={handleSubmitDue}
-          >
-            Submit
-          </button>
-        </div>
-      )}
+       
 
               
             </div>
