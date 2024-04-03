@@ -26,7 +26,7 @@ export default function ChatInput({ handleSendMsg }) {
   };
 
   return (
-    <div className="bg-indigo-700 px-8 py-4 flex items-center mb-2 mx-2 rounded-md">
+    <div className="bg-indigo-700 px-8 py-4 mb-1 flex items-center mx-2 rounded-md">
       <div className="relative">
         <BsEmojiSmileFill
           onClick={handleEmojiPickerhideShow}

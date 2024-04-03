@@ -69,7 +69,7 @@ function RoomList() {
         setRoomAvailability(updatedAvailability);}
     }
     };
-
+    
     const renderRooms = (floor) => {
         const rooms = [];
         for (let roomNumber = 1; roomNumber <= roomsPerFloor; roomNumber++) {

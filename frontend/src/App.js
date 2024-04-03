@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
@@ -46,6 +46,12 @@ import ProfileDropdown from './components/ProfileDropdown';
 
 
 function App() {
+  const contactsSectionRef = useRef(null);
+  const scrollToContacts = () => {
+    if (contactsSectionRef.current) {
+      contactsSectionRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   const handleSubmit = async (formData) => {
     // event.preventDefault();
     const { email, password } = formData;
@@ -134,10 +140,10 @@ function App() {
   return (
     <div>
       <Router>
-        <Navbar />
+        <Navbar scrollToContacts={scrollToContacts} />
           
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage contactsSectionRef={contactsSectionRef}/>} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/announcement" element={<Announcement />} />
           <Route path="/login" element={<Login handleSubmit={handleSubmit} />} />
@@ -161,7 +167,6 @@ function App() {
           <Route path='/transactionstudent' element={<TransactionStudent/> }/>
           <Route path='/admindashboard/transaction' element={<Transaction/> }/>
           <Route path='/admindashboard/:hostel_no' element={<Dashboard/> }/>
-          {/* //dashboard */}
           <Route path="/admindashboard/:hostel_no/students" element={<Studentdasboard/>} />
           <Route path="/admindashboard/:hostel_no/Complaints" element={<Complaintsdashboard/>} />
           <Route path="/admindashboard/:hostel_no/Workers" element={<Workersdashboard />} />
