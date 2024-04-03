@@ -41,16 +41,21 @@ function TransactionStudent() {
           hostel_no
         })
       });
+      if(response.ok)
+      {
       const data = response;
 
       alert("Payment Successful");
+      setLoading(false);
+      setShowPaymentForm(false);
+      fetchUserDues();
+      }
 
-      console.log('Payment response:', data);
+      // console.log('Payment response:', data);
     } catch (error) {
       console.error('Error processing payment:', error);
     } finally {
-      setLoading(false);
-      setShowPaymentForm(false);
+      
     }
   };
 
@@ -100,17 +105,20 @@ function TransactionStudent() {
       });
   
       if (response.ok) {
-        console.log('Payment submitted successfully');
+        alert('Payment submitted successfully');
+        setShowPaymentForm(false);
+      setFormData({
+        T_id: ""
+      });
+      fetchUserDues();
+
       } else {
         console.error('Failed to submit payment');
       }
     } catch (error) {
       console.error('Error submitting payment:', error);
     } finally {
-      setShowPaymentForm(false);
-      setFormData({
-        T_id: ""
-      });
+      
     }
   };
 
@@ -272,7 +280,7 @@ function TransactionStudent() {
     </div>
   </div>
 )}
-      <h1 className="text-3xl font-bold leading-none text-center text-blue-800 dark:text-blue-800 my-5">
+      <h1 className="text-3xl font-bold leading-none text-center text-blue-800  my-5">
         Transactions
       </h1>
       <div className="overflow-x-auto">

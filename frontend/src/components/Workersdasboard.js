@@ -56,14 +56,14 @@ export default function Workersdashboard() {
                         className="absolute left-2.5 top-2.5 h-4 w-4 text-blue-500 "
                       />
                       <input
-                        className="pl-8 w-full border border-blue-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white dark:bg-gray-900 dark:text-gray-100 bg-opacity-"
+                        className="pl-8 w-full border border-blue-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white  bg-opacity-"
                         placeholder="Search..."
                         type="search"
                       />
                     </div>
                     <div className="overflow-x-auto">
                       <table className="w-full border border-gray-200 rounded-md overflow-hidden">
-                        <thead className="bg-teal-300 dark:bg-gray-800">
+                        <thead className="bg-teal-300 ">
                           <tr className="text-black">
                             <th className="py-2 px-4 text-center">Sr.No.</th>
                             <th className="py-2 px-4 text-center">Name</th>

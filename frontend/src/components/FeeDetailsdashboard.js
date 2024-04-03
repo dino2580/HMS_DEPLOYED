@@ -1,8 +1,10 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartBar, faUsers, faSadTear, faFileAlt, faUsersCog, faSearch, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { Link, useParams } from 'react-router-dom';
 import Sidebar from './sidebar';
+
+
 import Sidebardashboard from './sidebardashboard';
 
 export default function FeeDetailsdashboard() {
@@ -12,12 +14,17 @@ export default function FeeDetailsdashboard() {
   useEffect(() => {
     const fetchStudentsAccounts = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/auth/getStudentsAccounts/${hostel_no}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch students');
-        }
+        const response = await fetch(`http://localhost:5000/api/auth/getstudentsaccounts/${hostel_no}`);
+       if(response.ok)
+       {
         const data = await response.json();
+        console.log(data);
         setStudents(data);
+       }
+       else
+       {
+        console.log("resonse");
+       }
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -49,7 +56,7 @@ export default function FeeDetailsdashboard() {
                         className="absolute left-2.5 top-2.5 h-4 w-4 text-blue-500 "
                       />
                       <input
-                        className="pl-8 w-full border border-blue-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white dark:bg-gray-900 dark:text-gray-100 bg-opacity-"
+                        className="pl-8 w-full border border-blue-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white bg-opacity-"
                         placeholder="Search..."
                         type="search"
                       />
@@ -60,7 +67,7 @@ export default function FeeDetailsdashboard() {
                           <tr className="text-black">
                             <th className="py-2 px-4 text-center">Sr.No.</th>
                             <th className="py-2 px-4 text-center">Name</th>
-                            <th className="py-2 px-4 text-center">Total Bill</th>
+                            <th className="py-2 px-4 text-center">Total Paid</th>
                             <th className="py-2 px-4 text-center">Remaining</th>
                             <th className="py-2 px-4 text-center">Status</th>
                           </tr>
@@ -70,9 +77,9 @@ export default function FeeDetailsdashboard() {
                             <TableRow
                               key={index}
                               id={index + 1}
-                              name={student.name}
-                              TotalBill={student.totalPaid}
-                              Remaining={student.totalDues}
+                              name={student.full_name}
+                              TotalPaid={student.user_paid}
+                              Remaining={student.user_dues}
                               Status={student.status}
                             />
                           ))}
@@ -98,7 +105,7 @@ function TableRow({ id, name, TotalPaid, Remaining, Status }) {
       <td className="py-4 px-4 text-center">{TotalPaid}</td>
       <td className="py-4 px-4 text-center">{Remaining}</td>
       <td className="py-4 px-4 text-center rounded-r-lg md:rounded-none">
-      {Status === "pending" ? (
+      {Remaining!=0 ? (
       <span className="text-red-500">Pending</span>
     ) : (
       <span className="text-green-500">Paid</span>

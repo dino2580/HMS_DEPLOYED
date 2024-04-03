@@ -44,7 +44,7 @@ export default function Complaints() {
                 <div className="grid gap-6 md:gap-12">
                   <div className="space-y-4">
                     <div className="text-center">
-                      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl text-black dark:text-gray-100">
+                      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl text-black ">
                         Total Complaints
                       </h1>
                     </div>
@@ -54,14 +54,14 @@ export default function Complaints() {
                         className="absolute left-2.5 top-2.5 h-4 w-4 text-blue-500 "
                       />
                       <input
-                        className="pl-8 w-full border border-blue-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white dark:bg-gray-900 dark:text-gray-100 bg-opacity-"
+                        className="pl-8 w-full border border-blue-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white bg-opacity-"
                         placeholder="Search..."
                         type="search"
                       />
                     </div>
                     <div>
                     <table className="w-full border border-gray-200 rounded-md overflow-hidden">
-                        <thead className="bg-teal-300 dark:bg-gray-800">
+                        <thead className="bg-teal-300 ">
                           <tr className="text-black">
                             <th className="py-2 px-4 text-center">Sr.No.</th>
                             <th className="py-2 px-4">Type</th>

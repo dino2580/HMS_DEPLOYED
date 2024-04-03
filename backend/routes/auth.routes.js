@@ -29,6 +29,7 @@ const joinGroup = require('../controllers/JoinGroup');
 const { uploadMiddleware } = require('../controllers/uploadMiddleware');
 
 const multer = require("multer");
+const getStudentsAccounts = require('../controllers/GetStudentsAccounts');
 // const { uploadMiddleware } = require("../controllers/uploadMiddleware");
 const upload = multer({ storage: multer.memoryStorage() });
 
@@ -61,6 +62,7 @@ router.post('/createGroup', createGroup);
 router.post('/userpaid', updateUserPaid);
 router.get('/getgroup', getGroups);
 router.get('/getusergroups/:user_id', getusergroup);
+router.get('/getstudentsaccounts/:hostel_no',getStudentsAccounts);
 router.post('/joingroup',joinGroup);
 router.post('/formtransaction', formTransaction);
 router.post('/updatetransactionstatus',updateTransactionStatus);
