@@ -270,7 +270,7 @@ function Transaction() {
 <div className="h-100vh p-4 bg-back">
       <div className="container mx-auto">
         <div className="flex justify-center items-start gap-8 mt-2">
-        <Sidebardashboard/>
+        <Sidebar/>
 
           <div className="w-full md:w-3/4 mt-8 md:mt-0">
             <div className="bg-white p-8 rounded-xl bg-opacity-60">

@@ -124,7 +124,7 @@ export default function Student() {
                     </div>
                     <div className="overflow-x-auto">
                       <table className="w-full border border-gray-200 rounded-md overflow-hidden">
-                        <thead className="bg-best dark:bg-gray-800">
+                        <thead className="bg-best ">
                           <tr className="text-black">
                             <th className="py-2 px-4 text-center ">Sr.No.</th>
                             <th className="py-2 px-4">Name</th>
@@ -149,6 +149,8 @@ export default function Student() {
                                 Room={student.room_number}
                                 hostel_no={student.hostel_no}
                                 handleDataUpdate={handleDataUpdate}
+                                userId={student._id}
+                                fetchStudent={fetchStudent}
                               />
                             ))}
                         </tbody>
@@ -173,6 +175,8 @@ function TableRow({
   Room,
   hostel_no,
   handleDataUpdate,
+  userId,
+  fetchStudent
 }) {
   // ...
   const [editingRowId, setEditingRowId] = useState(null);
@@ -182,13 +186,13 @@ function TableRow({
 
   const handleEditClick = () => {
     setEditingRowId(id);
-    setEditingData({ name, email, Roll, Room, hostel_no });
+    setEditingData({ name, email, Roll, Room, hostel_no,userId });
   };
-
   const handleSaveClick = async () => {
     try {
+      console.log("kjsd"+name+ email+ Roll+ Room+"id"+userId)
       const response = await fetch(
-        `http://localhost:5000/api/auth/updatestudent/${id}`,
+        `http://localhost:5000/api/auth/updatestudent`,
         {
           method: "PUT",
           headers: {
@@ -205,6 +209,8 @@ function TableRow({
         setEditingData({});
         // Call a function in the parent component to update the studentsData state
         handleDataUpdate(id, updatedData);
+        fetchStudent()
+
       } else {
         console.error(response.statusText);
       }

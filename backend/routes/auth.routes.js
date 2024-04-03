@@ -53,7 +53,7 @@ router.post("/addhostel", addHostel);
 router.post("/createworker", createWorker);
 router.post("/getworker", getWorker);
 router.get("/getallstudent", getStudent);
-router.post("/updateStudent", updateStudent);
+router.put("/updateStudent", updateStudent);
 router.post("/createannouncement", createAnnouncement);
 router.post('/getannouncements', getAnnouncements);
 router.post('/send', createMessage);
