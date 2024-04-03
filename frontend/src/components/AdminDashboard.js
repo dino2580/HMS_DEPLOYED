@@ -17,6 +17,7 @@ const AdminDashboard = () => {
   const [complaints, setComplaints] = useState([]);
   const [feePaid,setFeePaid]=useState(5000);
   const [feeExpected,setFeeExpected]=useState(55000);
+ 
 
   useEffect(() => {
     const fetchAllHostels = async () => {
@@ -52,7 +53,7 @@ const AdminDashboard = () => {
         console.error("Error fetching complaints:", error);
       }
     };
-    
+
 
     fetchAllComplaints();
 

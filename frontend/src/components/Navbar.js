@@ -19,6 +19,7 @@ function Navbar() {
   const isAdmin = localStorage.getItem("admin") === "true";
   const isSuperAdmin = localStorage.getItem("superadmin") === "true";
   const isCookie = localStorage.getItem("cookie");
+  const hostel_no=localStorage.getItem('hostel_no');
 
   const scrollToContacts = () => {
     const contactsSection = document.getElementById("universal1");
@@ -69,12 +70,26 @@ function Navbar() {
               >
                 <FontAwesomeIcon icon={faChartLine} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
 
-                adminDashboard
+                AdminDashboard
               </NavLink>
               <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
             </li>
           )}
           
+          {isAdmin && (
+            <li className="relative group">
+              <NavLink
+                to={`/admindashboard/${hostel_no}`}
+                activeClassName="text-indigo-600"
+                className="text-white  "
+              >
+                <FontAwesomeIcon icon={faChartLine} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
+
+                Dashboard
+              </NavLink>
+              <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
+            </li>
+          )}
           {isCookie&&<li className="relative group">
             <NavLink
               to="/announcement"
@@ -168,7 +183,7 @@ function Navbar() {
                 className="text-white"
               >
                 <FontAwesomeIcon icon={faSignIn} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
-                chats
+                Chats
               </NavLink>
               <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
             </li>

@@ -339,7 +339,7 @@ function TransactionStudent() {
                       ₹{transaction.amount}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      {transaction.createdAt}
+                      {new Date(transaction.createdAt).toLocaleDateString()}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       {transaction.status}

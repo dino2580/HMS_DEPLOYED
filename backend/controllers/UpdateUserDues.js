@@ -11,6 +11,7 @@ console.log(req.body.amount)
     if (!hostel_no || !amount) {
       return res.status(400).json({ error: 'Hostel mame or amount is missing from the request' });
     }
+    
 
     // Find all user accounts belonging to the specified hostel
     const account = await accounts.find({ hostel_no });
