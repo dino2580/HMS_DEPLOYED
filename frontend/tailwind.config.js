@@ -14,7 +14,8 @@ module.exports = {
         'back' : 'rgb(147,197,253)',
           face: '#fb7e73',
           testimonial:'#3f3d56',
-          admin:'#D8DADD'
+          admin:'#D8DADD',
+          best:'#5eead4'
         },
       },
       scrollbar: {
