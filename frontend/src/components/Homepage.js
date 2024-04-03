@@ -89,9 +89,9 @@ const HomePage = ({contactsSectionRef}) => {
  
             </div>
           </div>
-          <div className="md:w-1/2 relative mr-4">
-            <div className="parallax-container h-full overflow-hidden shadow-xl relative">
-              <img className="w-full rounded-md transition duration-300 ease-in-out transform  hover:grayscale-0 hover: " src="/hero.png" alt="Hostel Image" />
+          <div className="md:w-1/2 relative mr-4 z-0">
+            <div className="parallax-container h-full overflow-hidden shadow-xl relative z-0">
+              <img className="w-full rounded-md transition duration-300 ease-in-out transform  hover:grayscale-0 z-0" src="/hero.png" alt="Hostel Image" />
             </div>
           </div>
 
