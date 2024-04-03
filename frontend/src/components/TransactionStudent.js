@@ -49,6 +49,7 @@ function TransactionStudent() {
       setLoading(false);
       setShowPaymentForm(false);
       fetchUserDues();
+      fetchTransactions();
       }
 
       // console.log('Payment response:', data);
@@ -106,11 +107,12 @@ function TransactionStudent() {
   
       if (response.ok) {
         alert('Payment submitted successfully');
-        setShowPaymentForm(false);
+        setShowPaymentForm2(false);
       setFormData({
         T_id: ""
       });
       fetchUserDues();
+      fetchTransactions();
 
       } else {
         console.error('Failed to submit payment');
