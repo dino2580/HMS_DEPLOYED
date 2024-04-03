@@ -20,31 +20,52 @@ export default function FeeDetailsdashboard() {
     setDueInput(e.target.value);
   };
 
-  const handleSubmitDue = () => {
+  const handleSubmitDue = async() => {
     // Handle submit due logic here
-    console.log("Submitted due:", dueInput);
+    // console.log("Submitted due:", dueInput);
+    const amountNumber = parseFloat(dueInput);
+
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/updateuserdues', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ hostel_no: hostel_no, amount: amountNumber })
+      });
+
+      if (response.ok) {
+        console.log('User dues updated successfully');
+        // Optionally, you can reset the form fields here
+      } else {
+        console.error('Failed to update user dues');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
     setDueInput("");
     setShowInputBox(false);
+    fetchStudentsAccounts();
   };
-
+  const fetchStudentsAccounts = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/auth/getstudentsaccounts/${hostel_no}`);
+     if(response.ok)
+     {
+      const data = await response.json();
+      console.log(data);
+      setStudents(data);
+     }
+     else
+     {
+      console.log("resonse");
+     }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
   useEffect(() => {
-    const fetchStudentsAccounts = async () => {
-      try {
-        const response = await fetch(`http://localhost:5000/api/auth/getstudentsaccounts/${hostel_no}`);
-       if(response.ok)
-       {
-        const data = await response.json();
-        console.log(data);
-        setStudents(data);
-       }
-       else
-       {
-        console.log("resonse");
-       }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+   
 
     fetchStudentsAccounts();
   }, [hostel_no]);
