@@ -97,7 +97,7 @@ export default function Contacts({ changeChat }) {
           />
           <h3 className="text-white uppercase">snappy</h3>
         </div>
-        <div className="overflow-auto max-h-[78vh] scrollbar-thin scrollbar-thumb-white scrollbar-track-transparent scrollbar-hidden bg-white">
+        <div className="overflow-auto max-h-[78vh] scrollbar-thin scrollbar-thumb-white  bg-white">
           {userGroups.map((group, index) => (
             <div
               key={group._id}
@@ -121,7 +121,7 @@ export default function Contacts({ changeChat }) {
               <span>Show Not Joined Groups</span>
             </button>
           ) : (
-            <div className="overflow-auto max-h-[78vh] scrollbar-thin scrollbar-thumb-white scrollbar-track-transparent scrollbar-hidden bg-white rounded-lg border border-gray-300 shadow-md">
+            <div className="overflow-auto max-h-[78vh] scrollbar-thin scrollbar-thumb-white  bg-white rounded-lg border border-gray-300 shadow-md">
               <p className="px-4 py-2 text-gray-700 font-semibold">Not Joined Groups</p>
               {notJoinedUserGroups.map((group, index) => (
                 <div key={group._id} className="flex items-center justify-between py-4 px-6 border-b border-gray-200">

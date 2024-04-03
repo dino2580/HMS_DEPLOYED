@@ -57,7 +57,7 @@ function ProfileDropdown() {
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative z-10">
       <button
         onClick={toggleDropdown}
         className="flex items-center text-gray-700 hover:text-gray-900 focus:outline-none"
