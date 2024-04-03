@@ -107,17 +107,17 @@ export default function Student() {
                 <div className="grid gap-6 md:gap-12">
                   <div className="space-y-4">
                     <div className="text-center">
-                      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl text-black dark:text-black-100">
+                      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl text-black ">
                         Student Information
                       </h1>
                     </div>
                     <div className="relative w-full sm:w-64">
                       <FontAwesomeIcon
                         icon={faSearch}
-                        className="absolute left-2.5 top-2.5 h-4 w-4 text-blue-500 dark:text-blue-400"
+                        className="absolute left-2.5 top-2.5 h-4 w-4 text-blue-500 "
                       />
                       <input
-                        className="pl-8 w-full border border-blue-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white dark:bg-gray-900 dark:text-gray-100 bg-opacity-"
+                        className="pl-8 w-full border border-blue-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white  bg-opacity-"
                         placeholder="Search..."
                         type="search"
                       />

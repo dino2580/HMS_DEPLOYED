@@ -130,143 +130,7 @@ function Transaction() {
   
 
   return (
-//     <div className="min-h-screen px-4 py-6 md:px-6 xl:py-12 2xl:py-16 bg-gradient-to-br from-gray-800 to-gray-900">
-//       <div className="container mx-auto flex">
-//         <Sidebardashboard hostel_no={hostel_no} />
-//         <div className="flex-1">
-//           <h1 className="text-3xl font-bold leading-none text-center text-blue-800 dark:text-blue-800 my-5">
-//             Transactions
-//           </h1>
-//           <div className="m-4 flex justify-end">
-//             <input
-//               type="text"
-//               placeholder="Search by Transaction ID"
-//               value={searchTxId}
-//               onChange={(e) => setSearchTxId(e.target.value)}
-//               className="bg-gray-100 placeholder-black border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 mr-4"
-//             />
-//           </div>
-//           <div className="overflow-x-auto">
-//             <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-//               <div className="shadow-lg overflow-hidden border-b border-gray-200 sm:rounded-lg">
-//                 <table className="min-w-full divide-y divide-gray-200">
-//                   <thead className="bg-gray-100/70">
-//                     <tr>
-//                       <th className="px-6 py-3 text-left text-black text-sm font-medium uppercase tracking-wider">
-//                         Transaction ID
-//                       </th>
-//                       <th className="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider">
-//                         Name
-//                       </th>
-//                       <th className="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider">
-//                         Amount
-//                       </th>
-//                       <th className="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider">
-//                         Date
-//                       </th>
-//                       <th className="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider">
-//                         Status
-//                       </th>
-//                       <th className="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider">
-//                         Room
-//                       </th>
-//                       <th className="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider">
-//                         Contact Email.
-//                       </th>
-//                       <th className="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider">
-//                         Actions
-//                       </th>
-//                     </tr>
-//                   </thead>
-//                   <tbody className="bg-slate-100 divide-y divide-gray-200">
-//                     {entries.map((entry, index) => (
-//                       <tr
-//                         key={index}
-//                         className={`${
-//                           entry.remark=='Verified'
-//                             ? "bg-green-200"
-//                             : entry.remark=='Failed'
-//                             ? "bg-red-200"
-//                             : ""
-//                         } shadow-lg`}
-//                       >
-//                         <td className="px-6 py-4 whitespace-nowrap">
-//                           {entry.T_id}
-//                         </td>
-//                         <td className="px-6 py-4 whitespace-nowrap">
-//                           {entry.name}
-//                         </td>
-//                         <td className="px-6 py-4 whitespace-nowrap">
-//                           ₹{entry.amount}
-//                         </td>
-//                         <td className="px-6 py-4 whitespace-nowrap">
-//                           {entry.date}
-//                         </td>
-//                         <td className="px-6 py-4 whitespace-nowrap">
-//                           {entry.remark}
-//                         </td>
-//                         <td className="px-6 py-4 whitespace-nowrap">
-//                           {entry.room}
-//                         </td>
-//                         <td className="px-6 py-4 whitespace-nowrap">
-//                           {entry.contact_email}
-//                         </td>
-//                         <td className="px-6 py-4 whitespace-nowrap">
-//                           { (
-//                             <>
-//                               <svg
-//                                 onClick={() => handleVerify(index)}
-//                                 className="inline-block h-6 w-6 text-green-500 hover:text-green-700 cursor-pointer"
-//                                 viewBox="0 0 20 20"
-//                                 fill="currentColor"
-//                               >
-//                                 <path
-//                                   fillRule="evenodd"
-//                                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-//                                   clipRule="evenodd"
-//                                 />
-//                               </svg>
-//                               <svg
-//                                 onClick={() => handleDelete(index)}
-//                                 className="inline-block h-6 w-6 text-red-500 hover:text-red-700 cursor-pointer ml-2"
-//                                 viewBox="0 0 20 20"
-//                                 fill="currentColor"
-//                               >
-//                                 <path
-//                                   fillRule="evenodd"
-//                                   d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-//                                   clipRule="evenodd"
-//                                 />
-//                               </svg>
-//                             </>
-//                           )}
-//                         </td>
-//                       </tr>
-//                     ))}
-//                   </tbody>
-//                 </table>
-//               </div>
-//             </div>
-//           </div>
-//           <div className="flex justify-center m-4">
-//             <div className="m-5 bg-teal-300 hover:bg-teal-400 transition duration-300 text-teal-800 rounded-md p-4 flex flex-col">
-//               <h3>Total Transactions</h3>
-//               <p className="text-4xl font-bold mr-4">{totalTransactions}</p>
-//             </div>
-//             <div className="m-5 bg-yellow-300 hover:bg-yellow-400 transition duration-300 text-blue-800 rounded-md p-4 flex flex-col">
-//               <h3>Total Collection</h3>
-//               <p className="text-4xl font-bold mr-4">₹{totalCollection}</p>
-//             </div>
-//             <div className="m-5 bg-orange-300 hover:bg-orange-400 transition duration-300 text-orange-800 rounded-md p-4 flex flex-col">
-//               <h3>Expected Collection</h3>
-//               <p className="text-4xl font-bold mr-4">₹{expectedCollection}</p>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
+
 <div className="h-100vh p-4 bg-back">
       <div className="container mx-auto">
         <div className="flex justify-center items-start gap-8 mt-2">
@@ -278,17 +142,17 @@ function Transaction() {
                 <div className="grid gap-6 md:gap-12">
                   <div className="space-y-4">
                     <div className="text-center">
-                      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl text-black dark:text-black-100">
+                      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl text-black ">
                         Transactions
                       </h1>
                     </div>
                     <div className="relative w-full sm:w-64">
                       <FontAwesomeIcon
                         icon={faSearch}
-                        className="absolute left-2.5 top-2.5 h-4 w-4 text-blue-500 dark:text-blue-400"
+                        className="absolute left-2.5 top-2.5 h-4 w-4 text-blue-500 "
                       />
                       <input
-                        className="pl-8 w-full border border-blue-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white dark:bg-gray-900 dark:text-gray-100 bg-opacity-"
+                        className="pl-8 w-full border border-blue-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white  bg-opacity-"
                         placeholder="Search by Transaction ID"
                         type="search"
                         value={searchTxId}
@@ -297,7 +161,7 @@ function Transaction() {
                     </div>
                     <div className="overflow-x-auto">
                       <table className="w-full border border-gray-200 rounded-md overflow-hidden">
-                        <thead className="bg-teal-300 dark:bg-gray-800">
+                        <thead className="bg-teal-300 ">
                           <tr className="text-black">
                             <th className="py-2 px-4 text-center">
                               Transaction ID

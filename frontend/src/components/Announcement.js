@@ -57,27 +57,27 @@ function Announcement() {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col mt-6 gap-2 text-center">
             
-            <h1 className="text-2xl font-bold text-blue-800 dark:text-blue-800 text-center tracking-tighter sm:text-4xl">
+            <h1 className="text-2xl font-bold text-blue-800  text-center tracking-tighter sm:text-4xl">
               Hostel Announcements
             </h1>
           </div>
         </div>
-        <div className="grid gap-4 max-w-lg max-l-lg sm:max-w-lg md:max-w-500 border -black dark:border-black lg:max-w-2xl xl:max-w-3xl 2xl:max-w-4xl mx-auto bg-white p-10 rounded-md overflow-y-scroll h-screen mb-6 scrollbar-hidden">
+        <div className="grid gap-4 max-w-lg max-l-lg sm:max-w-lg md:max-w-500 border -black  lg:max-w-2xl xl:max-w-3xl 2xl:max-w-4xl mx-auto bg-white p-10 rounded-md overflow-y-scroll h-screen mb-6 scrollbar-hidden">
           <div className="mt--1 flex items-center">
-            <h5 className="text-black text-2xl font-bold dark:text-gray-400">
+            <h5 className="text-black text-2xl font-bold ">
             <FontAwesomeIcon
               icon={faBullhorn}
-              className="text-yellow-600 text-2xl dark:text-gray-400 mr-2"
+              className="text-yellow-600 text-2xl  mr-2"
             /> Latest Hostel News
             </h5>
           </div>
           {announcements.slice(0, visibleAnnouncements).map((announcement, index) => (
             <div
               key={index}
-              className="flex border border-5522a3 dark:border-5522a3 bg-gray-200 dark:bg-gray-950 rounded-lg shadow-lg transition-transform duration-300 ease-in-out drop-shadow-md"
+              className="flex border border-5522a3  bg-gray-200  rounded-lg shadow-lg transition-transform duration-300 ease-in-out drop-shadow-md"
             >
-              <div className="flex flex-col justify-center px-4 py-2 bg-gray-300 dark:bg-gray-800 rounded-l-lg">
-                <div className="text-gray-600 dark:text-gray-400">
+              <div className="flex flex-col justify-center px-4 py-2 bg-gray-300  rounded-l-lg">
+                <div className="text-gray-600 ">
                   <div className="text-sm font-bold">
                     {new Date(announcement.createdAt).toLocaleString("en-US", {
                       month: "long",
@@ -90,12 +90,12 @@ function Announcement() {
               </div>
               <div className="flex flex-col gap-4 p-6 flex-1">
                 <div className="flex flex-col gap-2">
-                  <h4 className="text-xl text-gray-500 dark:text-gray-400 font-bold">{announcement.title}</h4>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                  <h4 className="text-xl text-gray-500 font-bold">{announcement.title}</h4>
+                  <p className="text-sm text-gray-500">
                     by {announcement.user_name}
                   </p>
                 </div>
-                <p className="text-base text-gray-500 dark:text-gray-400">
+                <p className="text-base text-gray-500 ">
                   {announcement.announcement_message}
                 </p>
               </div>

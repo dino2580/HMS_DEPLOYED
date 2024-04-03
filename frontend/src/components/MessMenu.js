@@ -21,7 +21,7 @@ const menuData = [
     breakfast: "Poori, Potato Masala, Chutney, Bread, Butter, Jam",
     lunch: "Veg Pulao, Raita, Salad, Pickle",
     dinner: "Chapati, Mutton Curry, Dal, Veg Curry, Rice, Curd",
-    bgColor: "bg-gray-100/50 dark:bg-gray-800/50",
+    bgColor: "bg-gray-100/50 ",
   },
   {
     day: "Thursday",
@@ -34,7 +34,7 @@ const menuData = [
     breakfast: "Dosa, Chutney, Bread, Butter, Jam",
     lunch: "Veg Noodles, Manchurian, Salad, Pickle",
     dinner: "Chapati, Veg Curry, Dal, Chicken Curry, Rice, Curd",
-    bgColor: "bg-gray-100/50 dark:bg-gray-800/50",
+    bgColor: "bg-gray-100/50 ",
   },
   {
     day: "Saturday",
@@ -47,7 +47,7 @@ const menuData = [
     breakfast: "Pongal, Chutney, Bread, Butter, Jam",
     lunch: "Veg Fried Rice, Gobi Manchurian, Salad, Pickle",
     dinner: "Chapati, Chicken Curry, Dal, Veg Curry, Rice, Curd",
-    bgColor: "bg-gray-100/50 dark:bg-gray-800/50",
+    bgColor: "bg-gray-100/50 ",
   },
 ];
 
@@ -142,7 +142,7 @@ export default function MessMenu() {
       </div>
       <div className="mx-auto w-full max-w-3xl px-4">
         <div className="flex flex-col gap-2 py-6">
-          <h1 className="text-3xl font-bold leading-none text-center text-blue-800 dark:text-blue-800">
+          <h1 className="text-3xl font-bold leading-none text-center text-blue-800 ">
             Mess Menu
           </h1>
           <div className="flex justify-end">
@@ -161,11 +161,11 @@ export default function MessMenu() {
             </div>
           )}
           <div className="overflow-auto ">
-          <table className="w-full text-sm border divide-y divide-gray-200 dark:divide-gray-800 shadow-lg rounded-lg">
+          <table className="w-full text-sm border divide-y divide-gray-200  shadow-lg rounded-lg">
 
 
               <thead>
-                <tr className="text-gray-500 bg-gray-100/50 dark:text-gray-400 dark:bg-gray-800/50">
+                <tr className="text-gray-500 bg-gray-100/50 ">
                   <th className="px-4 py-2 first:pl-2 text-black text-md font-bold">Day</th>
                   <th className="px-4 py-2 text-black font-bold">Breakfast</th>
                   <th className="px-4 py-2 text-black font-bold">Lunch</th>
