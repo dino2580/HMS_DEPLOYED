@@ -156,10 +156,11 @@ export default function ChatContainer({ currentChat }) {
             ))}
             <div ref={scrollRef}></div>
           </div>
-          <div className="absolute bottom-0 w-full">
+          
+        </div>
+        <div className="w-full">
             <ChatInput handleSendMsg={handleMessageSend} />
           </div>
-        </div>
       </div>
     );
                   }    

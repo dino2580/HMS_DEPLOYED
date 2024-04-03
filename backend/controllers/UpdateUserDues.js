@@ -2,11 +2,11 @@ const accounts = require("../models/Accounts");
 const hostelaccounts = require("../models/HostelAccount");
 // const accountSchema = require("../models/Accounts");
 
-
 const updateUserDues=async(req, res) =>{
   try {
     const { hostel_no, amount } = req.body; // Assuming hostelId and amount are passed in the request body
-
+console.log(req.body.hostel_no)
+console.log(req.body.amount)
     // Check if hostelId and amount are provided
     if (!hostel_no || !amount) {
       return res.status(400).json({ error: 'Hostel mame or amount is missing from the request' });

@@ -104,7 +104,7 @@ function TableRow({ id, Type, Id, Status, problemDescription,hostel_no }) {
   };
 
   return (
-    <tr className="text-gray-200 bg-gray-800 rounded-lg my-4">
+    <tr className="text-black bg-white rounded-lg my-4">
       <td className="py-4 px-4 text-center rounded-l-lg md:rounded-none">
         {id}
       </td>

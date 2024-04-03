@@ -137,7 +137,7 @@ function Navbar() {
               <NavLink
                 to="/login"
                 activeClassName="text-indigo-600"
-                className="text-white border border-35353F  rounded-full px-2 py-1 flex items-center transition-all duration-200"
+                className="text-white    flex items-center transition-all duration-200"
                 style={{ maxWidth: "40rem" }}
               >
                 <FontAwesomeIcon icon={faSignIn} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
@@ -152,7 +152,7 @@ function Navbar() {
               <NavLink
                 to="/signUp"
                 activeClassName="text-indigo-600"
-                className="text-white border border-35353F  rounded-full px-2 py-1 flex items-center"
+                className="text-white   flex items-center"
               >
                 <FontAwesomeIcon icon={faSignIn} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
                 Signup
@@ -176,7 +176,7 @@ function Navbar() {
           
       {isCookie&&<li className="relative group">
           <ProfileDropdown />
-        <span className="absolute left-0 bottom-0 h-0.5  bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
+        <span className="absolute left-0 bottom-0 h-0.5  bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full  text-white transition-all duration-1000"></span>
       </li>}
         </ul>
       </div>

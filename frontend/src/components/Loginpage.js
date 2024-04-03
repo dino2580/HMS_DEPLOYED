@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from "react-router-dom";
+import MessageAlert from './statusmessage';
 
 
-function Login({handleSubmit}) {
+function Login({handleSubmit,responseMsg}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -24,8 +26,30 @@ function Login({handleSubmit}) {
  
   return (
     <div>
+      {responseMsg && (
+          <MessageAlert
+            message={responseMsg}
+            type="success"
+            icon={
+              <svg
+                className="h-6 w-6 inline-block mr-2 text-green-500"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            }
+            duration={5000} // Optional: auto-dismiss after 5 seconds
+          />
+        )}
       <div className="bg-white shadow-md mx-auto max-w-fit flex items-center justify-center m-10" style={{borderRadius:'50px'}}>
-        
         <div className='flex items-center justify-center max-w-[60vw]' >         
             
             <form onSubmit={handleFormSubmit} className="space-y-4 px-8 flex flex-col w-[90vw]">

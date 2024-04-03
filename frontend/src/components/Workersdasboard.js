@@ -92,7 +92,7 @@ export default function Workersdashboard() {
 
 function TableRow({ index, w_name, w_email, contact_no, w_post }) {
   return (
-    <tr className="text-gray-200 bg-gray-800 rounded-lg my-4 md:table-row flex flex-col md:flex-row">
+    <tr className="text-black bg-white rounded-lg my-4 md:table-row flex flex-col md:flex-row">
       <td className="py-4 px-4 text-center rounded-l-lg md:rounded-none">{index}</td>
       <td className="py-4 px-4 text-center">{w_name}</td>
       <td className="py-4 px-4 text-center">{w_email}</td>

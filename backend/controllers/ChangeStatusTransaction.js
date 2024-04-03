@@ -1,3 +1,4 @@
+const accounts = require('../models/Accounts');
 const hostelaccounts = require('../models/HostelAccount');
 const Payments = require('../models/Paymentsmodel');
 // const Transaction = require('../models/Transaction');
@@ -11,7 +12,7 @@ const updateTransactionStatus = async (req, res) => {
     const currentAmount=transaction.amount;
     const hostel_no=transaction.hostel_no;
     const prev_status=transaction.status;
-    
+    const user_id=transaction.user_id;
     // console.log(transaction);
     let updatedTransaction;
     if(prev_status=='Not Verified'|| prev_status=='Verified')
@@ -28,6 +29,10 @@ const updateTransactionStatus = async (req, res) => {
         // Update the account with the current amount
         hostelAccount.hostel_paid -= currentAmount;
         console.log(hostelAccount.hostel_paid);
+        const userAccount=await accounts.findOne({user_id});
+        userAccount.user_paid-=currentAmount;
+        userAccount.user_dues+=currentAmount;
+        await userAccount.save();
         await hostelAccount.save();
 
 
@@ -51,6 +56,10 @@ const updateTransactionStatus = async (req, res) => {
         // Update the account with the current amount
         hostelAccount.hostel_paid += currentAmount;
         console.log(hostelAccount.hostel_paid);
+        const userAccount=await accounts.findOne({user_id});
+        userAccount.user_paid+=currentAmount;
+        userAccount.user_dues-=currentAmount;
+        await userAccount.save();
         await hostelAccount.save();
 
 

@@ -115,7 +115,7 @@ export default function Studentdasboard() {
 
 function TableRow({ id, name, email, Roll, Room, hostel_no }) {
   return (
-    <tr className="text-gray-200 bg-gray-800 rounded-lg my-4 md:table-row flex flex-col md:flex-row">
+    <tr className="text-black bg-white rounded-lg my-4 md:table-row flex flex-col md:flex-row">
       <td className="py-4 px-4 text-center rounded-l-lg md:rounded-none">
         {id}
       </td>
