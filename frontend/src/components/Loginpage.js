@@ -3,10 +3,10 @@ import { Link, NavLink } from "react-router-dom";
 import MessageAlert from './statusmessage';
 
 
-function Login({handleSubmit,responseMsg}) {
+function Login({handleSubmit,responseMsg,responseType}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -23,13 +23,13 @@ function Login({handleSubmit,responseMsg}) {
     console.log('Password:', password);
     handleSubmit({email,password});
   };
- 
+ console.log("typr"+responseType)
   return (
     <div>
       {responseMsg && (
           <MessageAlert
             message={responseMsg}
-            type="success"
+            type={responseType}
             icon={
               <svg
                 className="h-6 w-6 inline-block mr-2 text-green-500"

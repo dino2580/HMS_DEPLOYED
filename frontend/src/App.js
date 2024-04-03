@@ -47,6 +47,7 @@ import ProfileDropdown from "./components/ProfileDropdown";
 function App() {
   const contactsSectionRef = useRef(null);
   const [responseMsg, setResponseMsg] = useState('');
+  const [responseType, setResponseType] = useState('error');
 
   const scrollToContacts = () => {
     if (contactsSectionRef.current) {
@@ -79,7 +80,7 @@ function App() {
         console.log(text); 
       });
       if (response.ok) {
-
+        setResponseType('success');
         const jwtCookie = document.cookie
           .split("; ")
           .find((row) => row.startsWith("jwt="));
@@ -145,7 +146,7 @@ function App() {
   return (
     <div>
       <Router>
-        <Navbar scrollToContacts={scrollToContacts} />
+        <Navbar scrollToContacts={scrollToContacts}  />
 
         <Routes>
           <Route
@@ -156,7 +157,7 @@ function App() {
           <Route path="/announcement" element={<Announcement />} />
           <Route
             path="/login"
-            element={<Login handleSubmit={handleSubmit} responseMsg={responseMsg}/>}
+            element={<Login handleSubmit={handleSubmit}responseType={responseType} responseMsg={responseMsg}/>}
           />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/admindashboard/Student" element={<Student />} />
