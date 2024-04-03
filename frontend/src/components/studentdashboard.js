@@ -124,7 +124,7 @@ export default function Student() {
                     </div>
                     <div className="overflow-x-auto">
                       <table className="w-full border border-gray-200 rounded-md overflow-hidden">
-                        <thead className="bg-best dark:bg-gray-800">
+                        <thead className="bg-best">
                           <tr className="text-black">
                             <th className="py-2 px-4 text-center ">Sr.No.</th>
                             <th className="py-2 px-4">Name</th>
