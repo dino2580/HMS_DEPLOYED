@@ -8,6 +8,8 @@ import Signup3 from "./signuppage3";
 function Signup() {
   const [email, setEmail] = useState('');
   const [full_name, setFull_name] = useState('');
+  const [responseMsg, setResponseMsg] = useState('');
+  const [type, setType] = useState('error');
   const [step, setStep] = useState(1); // State to manage current step
 
   const [signupSuccess, setSignupSuccess] = useState(false);
@@ -29,19 +31,28 @@ function Signup() {
         "Content-Type": "application/json",
       },
     });
+    
+    response.text().then((text) => {
+      setResponseMsg(text);
+      console.log(text);
+    });
     if(response.ok){
       //signup page 2 shoulbe visible now
-      setSignupSuccess(true)
+      setType('success')
+      response.text().then((text) => {
+        setResponseMsg(text);
+        console.log(text);
+      });
       setStep(2);
     }
   }
   return (
     <div>
     {step==1&&<div>
-        {signupSuccess && (
+        {responseMsg && (
           <MessageAlert
-            message="Enter your Otp sended to your domain Id"
-            type="success"
+            message={responseMsg}
+            type={type}
             icon={
               <svg
                 className="h-6 w-6 inline-block mr-2 text-green-500"
