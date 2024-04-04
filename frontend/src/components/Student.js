@@ -141,6 +141,7 @@ export default function Student() {
                           {studentsData
                             .filter(
                               (student) =>
+                              
                                 student.hostel_no !== "0" &&
                                 (student.full_name
                                   .toLowerCase()
