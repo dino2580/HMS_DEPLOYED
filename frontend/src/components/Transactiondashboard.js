@@ -227,7 +227,7 @@ function TableRow({ entry, index, handleVerify, handleDelete }) {
       <td className="py-4 px-4 text-center rounded-l-lg md:rounded-none">
         {entry.T_id}
       </td>
-      <td className="py-4 px-4 text-center">{entry.name}</td>
+      <td className="py-4 px-2 text-center">{entry.name}</td>
       <td className="py-4 px-4 text-center">₹{entry.amount}</td>
       <td className="py-4 px-4 text-center">{new Date(entry.date).toLocaleDateString()}</td>
       <td className="py-4 px-4 text-center">

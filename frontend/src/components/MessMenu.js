@@ -179,17 +179,20 @@ export default function MessMenu() {
                   <th className="px-4 py-2 last:pr-2 text-black font-bold">
                     Dinner
                   </th>
-                  <th className="px-4 py-2 last:pr-2 text-black font-bold">
+                  {/* <th className="px-4 py-2 last:pr-2 text-black font-bold">
                     Extras
-                  </th>
+                  </th> */}
                 </tr>
               </thead>
               <tbody>
                 {menuData.map((item, index) => (
                   <tr
-                    key={index}
-                    className={index === todayMenuIndex ? "bg-yellow-200" : ""}
-                  >
+                  key={index}
+                  className={`${
+                    index % 2 === 0 ? "bg-back" : "bg-gray-200"
+                  } ${index === todayMenuIndex ? "bg-yellow-200" : ""}`}
+                >
+
                     <td className="font-medium px-4 py-4 first:pl-4 relative">
                       {item.day}
                       {index === todayMenuIndex && (
@@ -201,7 +204,7 @@ export default function MessMenu() {
                     <td className="px-4 py-4">{item.breakfast}</td>
                     <td className="px-4 py-4">{item.lunch}</td>
                     <td className="px-4 py-4 last:pr-4">{item.dinner}</td>
-                    <td className="px-4 py-4 last:pr-4">
+                    {/* <td className="px-4 py-4 last:pr-4">
                       <div>
                         <h6>Lunch:</h6>
                         <p className="inline">{item.lunch_extra}</p>
@@ -210,7 +213,7 @@ export default function MessMenu() {
                         <h6>Dinner:</h6>
                         <p className="inline">{item.dinner_extra}</p>
                       </div>
-                    </td>
+                    </td> */}
                   </tr>
                 ))}
               </tbody>
@@ -221,3 +224,6 @@ export default function MessMenu() {
     </div>
   );
 }
+
+
+
