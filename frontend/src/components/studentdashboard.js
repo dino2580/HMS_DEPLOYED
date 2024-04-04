@@ -132,7 +132,6 @@ export default function Student() {
                             <th className="py-2 px-4">Roll.no</th>
                             <th className="py-2 px-4">Hostel</th>
                             <th className="py-2 px-4">Room.no</th>
-
                             <th className="py-2 px-4">Edit</th>
                           </tr>
                         </thead>

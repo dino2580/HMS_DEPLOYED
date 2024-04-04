@@ -15,6 +15,9 @@ import { NavLink, Link } from "react-router-dom";
 const AdminDashboard = () => {
   const [hostelsData, setHostelsData] = useState([]);
   const [complaints, setComplaints] = useState([]);
+  const [feePaid,setFeePaid]=useState(5000);
+  const [feeExpected,setFeeExpected]=useState(55000);
+ 
 
   useEffect(() => {
     const fetchAllHostels = async () => {
@@ -50,6 +53,7 @@ const AdminDashboard = () => {
         console.error("Error fetching complaints:", error);
       }
     };
+
 
     fetchAllComplaints();
 
@@ -191,21 +195,21 @@ const AdminDashboard = () => {
                       <FontAwesomeIcon icon={faIndianRupee} className="mr-2" />
                       Expected Fee
                     </h3>
-                    <p className="text-center">55000</p>
+                    <p className="text-center">{feeExpected}</p>
                   </div>
                   <div className="flex flex-col bg-green-300 px-4 py-2 rounded-xl hover:shadow-2xl hover:bg-teal-300 transition ease-in-out duration-800">
                     <h3 className="text-lg text-black font-semibold mb-2">
                       <FontAwesomeIcon icon={faIndianRupee} className="mr-2" />
                       Collected Fee
                     </h3>
-                    <p className="text-center">3000</p>
+                    <p className="text-center">{feePaid}</p>
                   </div>
                   <div className="flex flex-col bg-red-400 px-4 py-2 rounded-xl hover:shadow-2xl hover:bg-teal-300 transition ease-in-out duration-800">
                     <h3 className="text-lg text-black font-semibold mb-2">
                       <FontAwesomeIcon icon={faIndianRupee} className="mr-2" />
                       Remaining Fee
                     </h3>
-                    <p className="text-center">52000</p>
+                    <p className="text-center">{feeExpected-feePaid}</p>
                   </div>
                 </div>
               </div>

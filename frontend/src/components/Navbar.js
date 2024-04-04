@@ -9,6 +9,8 @@ import {
   faUser,
   faSignIn,
   faUtensils,
+  faCreditCard,
+  faCreditCardAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "./logo";
@@ -19,6 +21,7 @@ function Navbar() {
   const isAdmin = localStorage.getItem("admin") === "true";
   const isSuperAdmin = localStorage.getItem("superadmin") === "true";
   const isCookie = localStorage.getItem("cookie");
+  const hostel_no=localStorage.getItem('hostel_no');
 
   const scrollToContacts = () => {
     const contactsSection = document.getElementById("universal1");
@@ -69,12 +72,26 @@ function Navbar() {
               >
                 <FontAwesomeIcon icon={faChartLine} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
 
-                adminDashboard
+                AdminDashboard
               </NavLink>
               <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
             </li>
           )}
           
+          {isAdmin && !isSuperAdmin && (
+            <li className="relative group">
+              <NavLink
+                to={`/admindashboard/${hostel_no}`}
+                activeClassName="text-indigo-600"
+                className="text-white  "
+              >
+                <FontAwesomeIcon icon={faChartLine} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
+
+                Dashboard
+              </NavLink>
+              <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
+            </li>
+          )}
           {isCookie&&<li className="relative group">
             <NavLink
               to="/announcement"
@@ -86,7 +103,7 @@ function Navbar() {
             </NavLink>
             <div className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></div>
           </li>}
-          <li className="relative group">
+          {!isSuperAdmin && !isAdmin && isCookie && <li className="relative group">
             <NavLink
               to="/mess"
               activeClassName="text-indigo-600"
@@ -97,6 +114,19 @@ function Navbar() {
             </NavLink>
             <span className="absolute left-0 bottom-0 h-0.5  bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
           </li>
+          }
+          {!isSuperAdmin && !isAdmin && isCookie && <li className="relative group">
+            <NavLink
+              to="/payment"
+              activeClassName="text-indigo-600"
+              className="text-white  "
+            >
+              <FontAwesomeIcon icon={faCreditCardAlt} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
+              Dues
+            </NavLink>
+            <span className="absolute left-0 bottom-0 h-0.5  bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
+          </li>
+          }
           {isAdmin &&<li className="relative group">
             <NavLink
               to="/rooms"
@@ -108,7 +138,7 @@ function Navbar() {
             </NavLink>
             <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
           </li>}
-          {!isSuperAdmin&&<li className="relative group">
+          {/* {!isSuperAdmin&&<li className="relative group">
             <NavLink 
               
               activeClassName="text-indigo-600"
@@ -119,9 +149,9 @@ function Navbar() {
               Contact Us
             </NavLink>
             <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
-          </li>}
+          </li>} */}
           
-          {!isSuperAdmin&&<li className="relative group">
+          {/* {!isSuperAdmin&&<li className="relative group">
             <NavLink
               to="/aboutus"
               activeClassName="text-indigo-600"
@@ -131,7 +161,7 @@ function Navbar() {
               About Us
             </NavLink>
             <span className="absolute left-0 bottom-0 h-0.5  bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
-          </li>}
+          </li>} */}
           {!isCookie && (
             <li className="relative group">
               <NavLink
@@ -168,7 +198,7 @@ function Navbar() {
                 className="text-white"
               >
                 <FontAwesomeIcon icon={faSignIn} className="mr-1 bg-white text-purple-600 text-sm p-1 rounded-md" />
-                chats
+                Chats
               </NavLink>
               <span className="absolute left-0 bottom-0 h-0.5 bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
             </li>

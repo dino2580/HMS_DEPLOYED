@@ -322,18 +322,8 @@ function TransactionStudent() {
                   >
                     Status
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider"
-                  >
-                    Room
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider"
-                  >
-                    Contact No.
-                  </th>
+                  
+                  
                 </tr>
               </thead>
               <tbody className="bg-slate-100 divide-y divide-gray-200">
@@ -349,17 +339,12 @@ function TransactionStudent() {
                       ₹{transaction.amount}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      {transaction.createdAt}
+                      {new Date(transaction.createdAt).toLocaleDateString()}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       {transaction.status}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {user.room_number}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {transaction.contactNo}
-                    </td>
+                    
                   </tr>
                 ))}
               </tbody>
