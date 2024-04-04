@@ -6,7 +6,7 @@ const connectToMongo = require('./db/connect.js');
 const GroupModel = require('./models/GroupModel.js');
 const MessageModel = require('./models/MessageModel.js');
 const auth = require('./routes/auth.routes.js');
-
+require('dotenv').config();
 connectToMongo();
 
 const app = express();

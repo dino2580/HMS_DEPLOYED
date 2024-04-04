@@ -10,6 +10,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "braintree": "^3.23.0",
     "braintree-web-drop-in-react": "^1.2.1",
+    "dotenv": "^16.4.5",
     "emoji-picker-react": "^4.9.2",
     "express": "^4.18.3",
     "mongoose": "^8.2.0",
