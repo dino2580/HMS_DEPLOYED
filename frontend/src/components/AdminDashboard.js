@@ -112,7 +112,7 @@ const AdminDashboard = () => {
 
           <div className="w-full md:w-5/6 bg-white p-8 rounded-xl bg-opacity-60">
             <div className="flex justify-center">
-              <h1 className="text-purple-800 text-2xl font-bold item-center mb-4 mt-0">
+              <h1 className="text-gray-800 text-2xl font-bold item-center mb-4 mt-0">
                 WELCOME TO HMS MANAGING DESK !!
               </h1>
             </div>

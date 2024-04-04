@@ -194,7 +194,7 @@ console.log('Occupancy Data:', occupancyData);
                     
                     
                     <p className="text-md text-black mt-2 mx-auto ">
-                      Occupied rooms:{hostelData.occupied_rooms}
+                      Occupied rooms : {hostelData.occupied_rooms}
                 
                     </p>
                   </div>
@@ -220,9 +220,12 @@ console.log('Occupancy Data:', occupancyData);
                       </div>
                     </div>
                     <p className="text-md text-black mt-2 mx-auto">
-                      Students present:{hostelData.students_present}
+                      Students present : {hostelData.students_present}
                     </p>
                   </div>
+                  
+                  
+                  
                   {/* Additional Quick Insights */}
                   {/* <div className="bg-admin p-6 rounded-lg hover:shadow-2xl hover:bg-teal-300 transition ease-in-out duration-800 flex flex-col">
                     <h2 className="text-xl text-black font-semibold mb-4 mx-auto ">
