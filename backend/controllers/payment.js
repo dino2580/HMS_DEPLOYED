@@ -3,12 +3,18 @@ const accountSchema = require("../models/Accounts");
 const Payments = require("../models/Paymentsmodel");
 const hostelaccounts = require("../models/HostelAccount");
 
+const BRAINTREE_MERCHANT_ID = "zgpjf6x28bbz2pyg";
+const BRAINTREE_PUBLIC_KEY = "f28tghbymy2w7m5d";
+const BRAINTREE_PRIVATE_KEY = "77e19e7418aeb7f9a1db9a4ba2883965";
+// console.log(process.env.BRAINTREE_MERCHANT_ID);
+// console.log(process.env.BRAINTREE_PUBLIC_KEY);
+// console.log(process.env.BRAINTREE_PRIVATE_KEY);
 
 require('dotenv').config();
 const gateway = new braintree.BraintreeGateway({
   environment: braintree.Environment.Sandbox,
   merchantId: process.env.BRAINTREE_MERCHANT_ID,
-  publicKey: process.env.BRAINTREE_PUBLIC_KEY,
+  publicKey:process.env.BRAINTREE_PUBLIC_KEY,
   privateKey: process.env.BRAINTREE_PRIVATE_KEY,
 });
 

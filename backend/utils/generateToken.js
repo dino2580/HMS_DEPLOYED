@@ -1,5 +1,6 @@
 jwt=require("jsonwebtoken")
-secretKey="CRHqvVp7ImQa1ZI"
+require('dotenv').config();
+secretKey=process.env.S_KEY;
 const generateWebToken=({email,admin,super_admin,hostel_no,userId,full_name,present},res)=>
 {
     console.log("super_admin from gentoken"+super_admin);
