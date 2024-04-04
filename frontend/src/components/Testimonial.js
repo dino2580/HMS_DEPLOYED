@@ -6,22 +6,22 @@ const Testimonial = () => {
     const testimonial = [
         {
             url: '/sachin.png',
-            paragraph: ' lorem24Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum corrupti delectus nulla? Dolore beatae modi voluptate quasi, explicabo id molestias, veritatis ea iusto asperiores quia dolor inventore dolores officiis ex.',
+            paragraph: 'Sachin Kedia is a passionate and dedicated developer with a keen eye for detail and a knack for problem-solving. With years of experience in software development, Sachin brings a wealth of expertise to every project he undertakes.',
             name: '-Sachin Kedia'
         },
         {
             url: '/yashraj.png',
-            paragraph: 'lorem24 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum corrupti delectus nulla? Dolore beatae modi voluptate quasi, explicabo id molestias, veritatis ea iusto asperiores quia dolor inventore dolores officiis ex.',
+            paragraph: 'Yashraj Vishnoi is a dynamic and creative developer known for his ingenious problem-solving skills and innovative solutions. With a passion for coding and a drive for excellence, Yashraj consistently delivers high-quality work that exceeds expectations.',
             name: '-Yash Raj Vishnoi'
         },
         {
             url: '/sachin.png',
-            paragraph: 'lorem24 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum corrupti delectus nulla? Dolore beatae modi voluptate quasi, explicabo id molestias, veritatis ea iusto asperiores quia dolor inventore dolores officiis ex.',
+            paragraph: 'Sachin Kedia is a passionate and dedicated developer with a keen eye for detail and a knack for problem-solving. With years of experience in software development, Sachin brings a wealth of expertise to every project he undertakes..',
             name: 'Sachin Kedia3'
         },
         {
             url: '/sachin.png',
-            paragraph: 'lorem24 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum corrupti delectus nulla? Dolore beatae modi voluptate quasi, explicabo id molestias, veritatis ea iusto asperiores quia dolor inventore dolores officiis ex.',
+            paragraph: 'Sachin Kedia is a passionate and dedicated developer with a keen eye for detail and a knack for problem-solving. With years of experience in software development, Sachin brings a wealth of expertise to every project he undertakes.',
             name: 'Sachin Kedia4'
         }
     ];

@@ -84,7 +84,7 @@ export default function Contacts({ changeChat }) {
             alt="logo"
             className="h-12"
           />
-          <h3 className="text-white uppercase">snappy</h3>
+          <h3 className="text-white uppercase ml-4">CHAT it</h3>
         </div>
         <div className="overflow-auto max-h-[78vh] scrollbar-thin scrollbar-thumb-white  bg-white">
           {userGroups.map((group, index) => (

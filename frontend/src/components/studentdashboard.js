@@ -160,9 +160,9 @@ export default function Student() {
                                     .includes(searchQuery.toLowerCase()))
                             )
                             .map((student, index) => (
-                              <TableRow
+                              !student.admin&&<TableRow
                                 key={index}
-                                id={index + 1}
+                                id={index }
                                 name={student.full_name}
                                 email={student.email}
                                 Roll={student.roll_no}
@@ -210,7 +210,7 @@ function TableRow({
   };
   const handleSaveClick = async () => {
     try {
-      console.log("kjsd" + name + email + Roll + Room + "id" + userId);
+      // console.log("kjsd" + name + email + Roll + Room + "id" + userId);
       const response = await fetch(
         `http://localhost:5000/api/auth/updatestudent`,
         {

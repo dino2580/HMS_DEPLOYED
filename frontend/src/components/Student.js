@@ -141,7 +141,6 @@ export default function Student() {
                           {studentsData
                             .filter(
                               (student) =>
-                              
                                 student.hostel_no !== "0" &&
                                 (student.full_name
                                   .toLowerCase()
@@ -159,20 +158,23 @@ export default function Student() {
                                     .toLowerCase()
                                     .includes(searchQuery.toLowerCase()))
                             )
-                            .map((student, index) => (
-                              <TableRow
-                                key={index}
-                                id={index + 1}
-                                name={student.full_name}
-                                email={student.email}
-                                Roll={student.roll_no}
-                                Room={student.room_number}
-                                hostel_no={student.hostel_no}
-                                handleDataUpdate={handleDataUpdate}
-                                userId={student._id}
-                                fetchStudent={fetchStudent}
-                              />
-                            ))}
+                            .map(
+                              (student, index) =>
+                                !student.admin && (
+                                  <TableRow
+                                    key={index}
+                                    id={index}
+                                    name={student.full_name}
+                                    email={student.email}
+                                    Roll={student.roll_no}
+                                    Room={student.room_number}
+                                    hostel_no={student.hostel_no}
+                                    handleDataUpdate={handleDataUpdate}
+                                    userId={student._id}
+                                    fetchStudent={fetchStudent}
+                                  />
+                                )
+                            )}
                         </tbody>
                       </table>
                     </div>
