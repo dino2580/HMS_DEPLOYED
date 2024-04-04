@@ -13,7 +13,7 @@ function RoomList() {
     const updateRoomAvailability = async() => {
         let updatedAvailability = [...roomAvailability]; // Initialize outside the loop
         
-        for (let floor = 4; floor < 6; floor++) {
+        for (let floor = 1; floor < 3; floor++) {
             for (let roomNumber = 1; roomNumber <= roomsPerFloor; roomNumber++) {
                 const roomIndex = roomNumber + (roomsPerFloor * (floor - 1)) - 1;
                 const roomStatus = roomAvailability[roomIndex];
