@@ -8,6 +8,7 @@ import { faSearch, faEdit, faTimes, faCheck } from "@fortawesome/free-solid-svg-
 function Transaction() {
   const hostel_no="H10";
   const [entries, setEntries] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const [totalTransactions, setTotalTransactions] = useState(entries.length);
   const [totalCollection, setTotalCollection] = useState(30);
@@ -17,7 +18,7 @@ function Transaction() {
     const fetchTransactions = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/auth/gettransactionshostel/${hostel_no}`
+          `http://localhost:5000/api/auth/gettransactionshostel`
         );
         if (response.ok) {
           const data = await response.json();
@@ -152,11 +153,11 @@ function Transaction() {
                         className="absolute left-2.5 top-2.5 h-4 w-4 text-blue-500 "
                       />
                       <input
-                        className="pl-8 w-full border border-blue-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white  bg-opacity-"
-                        placeholder="Search by Transaction ID"
+                        className="pl-8 w-full border border-blue-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white   bg-opacity-"
+                        placeholder="Search..."
                         type="search"
-                        value={searchTxId}
-                        onChange={(e) => setSearchTxId(e.target.value)}
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
                       />
                     </div>
                     <div className="overflow-x-auto">
@@ -170,25 +171,33 @@ function Transaction() {
                             <th className="py-2 px-4">Amount</th>
                             <th className="py-2 px-4">Date</th>
                             <th className="py-2 px-4">Status</th>
+                            
               
                             <th className="py-2 px-4">Email.</th>
                             <th className="py-2 px-4">Actions</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y">
-                          {entries
-                            .filter((entry) =>
-                              entry.T_id.toString().includes(searchTxId)
-                            )
-                            .map((entry, index) => (
-                              <TableRow
-                                key={index}
-                                entry={entry}
-                                index={index}
-                                handleVerify={handleVerify}
-                                handleDelete={handleDelete}
-                              />
-                            ))}
+                        {entries
+  .filter(
+    (entry) =>
+      entry.T_id.toString().includes(searchQuery) ||
+      entry.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      entry.amount.toString().includes(searchQuery) ||
+      entry.date.toString().includes(searchQuery) ||
+      entry.remark.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      entry.room.toString().includes(searchQuery) ||
+      entry.contact_email.toLowerCase().includes(searchQuery.toLowerCase())
+  )
+  .map((entry, index) => (
+    <TableRow
+      key={index}
+      entry={entry}
+      index={index}
+      handleVerify={handleVerify}
+      handleDelete={handleDelete}
+    />
+  ))}
                         </tbody>
                       </table>
                     </div>
@@ -227,7 +236,7 @@ function TableRow({ entry, index, handleVerify, handleDelete }) {
       <td className="py-4 px-4 text-center rounded-l-lg md:rounded-none">
         {entry.T_id}
       </td>
-      <td className="py-4 px-4 text-center">{entry.name}</td>
+      <td className="py-4 px-2 text-center">{entry.name}</td>
       <td className="py-4 px-4 text-center">₹{entry.amount}</td>
       <td className="py-4 px-4 text-center">{new Date(entry.date).toLocaleDateString()}</td>
       <td className="py-4 px-4 text-center">

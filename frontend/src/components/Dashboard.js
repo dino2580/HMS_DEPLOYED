@@ -288,6 +288,9 @@ console.log('Occupancy Data:', occupancyData);
               <h2 className="text-xl text-black font-semibold mb-4">
                 Fee Details
               </h2>
+              <h3 className="text-lg font-semibold mb-2  px-12 text-black">
+                Collected Fee
+              </h3>
               <div className="flex items-center space-x-40 px-10">
                 {/* Expected Fee */}
                 <div className="w-32 h-32 relative">
