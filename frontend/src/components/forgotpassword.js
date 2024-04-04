@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BsFileCheck } from "react-icons/bs";
+import { BsFileCheck, BsFillBagCheckFill } from "react-icons/bs";
 import { Link, Navigate } from "react-router-dom";
 import MessageAlert from "./statusmessage";
 
@@ -181,7 +181,7 @@ function Forgotpassword() {
       {step==2&&<div>
         {signupSuccess && (
           <MessageAlert
-            message="Enter your Otp sended to your domain Id"
+            message="Check your inbox, now!!"
             type="success"
             icon={
               <svg
@@ -204,33 +204,25 @@ function Forgotpassword() {
         )}
 
         <div>
-          <div
-            className="bg-white shadow-md mx-auto max-w-fit flex items-center justify-center m-10"
-            style={{ borderRadius: "50px" }}
-          >
-            <div className="flex items-center justify-center max-w-[65vw]">
-              <div className="flex items-center justify-center hidden xl:block">
-                <img
-                  src="/signupimg2.jpg"
-                  alt="signupimg"
-                  className="mx-auto w-[130vw]"
-                  style={{
-                    borderBottomLeftRadius: "50px",
-                    borderTopLeftRadius: "50px",
-                  }}
-                />
-              </div>
-              <form
-                className="space-y-3 px-8 flex flex-col w-[90vw]"
-              >
-               
-                
-                
+        <div className="bg-white shadow-md mx-auto max-w-fit flex items-center justify-center m-10" style={{ borderRadius: "50px" }}>
+  <div className="flex items-center justify-center max-w-[65vw]">
+    <div className="flex items-center justify-center hidden xl:block">
+      <img
+        src="/signupimg2.jpg"
+        alt="signupimg"
+        className="mx-auto w-[130vw]"
+        style={{
+          borderBottomLeftRadius: "50px",
+          borderTopLeftRadius: "50px",
+        }}
+      />
+    </div>
+    <div className="flex items-center justify-center px-8 w-[600vw]">
+      <h1 className="flex text-3xl font-bold text-green-400"><BsFillBagCheckFill/>Email Sended Successfully !!!!</h1>
+    </div>
+  </div>
+</div>
 
-                <h1>Email sended</h1>
-              </form>
-            </div>
-          </div>
         </div>
       </div>}
       </div>
