@@ -127,7 +127,7 @@ function Navbar() {
             <span className="absolute left-0 bottom-0 h-0.5  bg-transparent group-hover:bg-purple-500 w-0 group-hover:w-full transition-all duration-1000"></span>
           </li>
           }
-          {isAdmin &&<li className="relative group">
+          {isAdmin && !isSuperAdmin && <li className="relative group">
             <NavLink
               to="/rooms"
               activeClassName="text-indigo-600"
