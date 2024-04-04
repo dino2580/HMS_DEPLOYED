@@ -114,6 +114,7 @@ function App() {
           localStorage.setItem("hostel_no", payload.hostel_no);
           localStorage.setItem("userId", payload.userId);
           localStorage.setItem("full_name", payload.full_name);
+          localStorage.setItem("currently_present", payload.present);
           console.log(localStorage.getItem("admin"));
           console.log(localStorage.getItem("hostel_no"));
           const isAdmin = localStorage.getItem("admin") === "true";

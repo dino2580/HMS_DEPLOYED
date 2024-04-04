@@ -14,13 +14,13 @@ const handletRebate = async (req, res) => {
         if (user && hostel) {
             console.log("isOnLeave", isOnLeave);
             // Update user's currently_present status based on isOnLeave
-            user.currently_present = !isOnLeave; // Invert the isOnLeave status
+            user.currently_present = isOnLeave; // Set user's currently_present status to isOnLeave
 
             // Update hostel's students_present count based on isOnLeave
-            if (!isOnLeave) {
-                hostel.students_present = hostel.students_present + 1; // If not on leave, increment students_present
+            if (isOnLeave) {
+                hostel.students_present = hostel.students_present + 1; // If on leave, increment students_present
             } else {
-                hostel.students_present = Math.max(hostel.students_present - 1, 0); // If on leave, decrement students_present (ensuring it doesn't go negative)
+                hostel.students_present = Math.max(hostel.students_present - 1, 0); // If not on leave, decrement students_present (ensuring it doesn't go negative)
             }
 
             // Save the updated user and hostel
@@ -28,7 +28,7 @@ const handletRebate = async (req, res) => {
             const updatedHostel = await hostel.save();
 
             // Respond with the updated user
-            res.status(200).json(updatedUser);
+            res.status(200).json(updatedHostel);
         } else {
             res.status(404).json({ error: "Hostel or User not found" });
         }
@@ -37,6 +37,7 @@ const handletRebate = async (req, res) => {
         res.status(500).json({ error: "Error processing rebate" });
     }
 }
+ 
 
 const getMenu = async (req, res) => {
     try {

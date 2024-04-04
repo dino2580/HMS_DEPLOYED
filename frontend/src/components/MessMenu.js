@@ -5,10 +5,13 @@ export default function MessMenu() {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [menuData, setMenuData] = useState([]);
   const [todayMenuIndex, setTodayMenuIndex] = useState(-1);
-  const [isOnLeave, setIsOnLeave] = useState(false);
+  const [isOnLeave, setIsOnLeave] = useState(
+    localStorage.getItem("currently_present") === "true"
+  );
   const [leaveStartDate, setLeaveStartDate] = useState(null);
   const [leaveEndDate, setLeaveEndDate] = useState(null);
   const [leaveMessage, setLeaveMessage] = useState("");
+  const userId = localStorage.getItem("userId");
   const hostel_no = localStorage.getItem("hostel_no");
 
   useEffect(() => {
@@ -16,12 +19,12 @@ export default function MessMenu() {
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
-
+  
     return () => clearInterval(intervalId);
   }, []);
+  
 
   const fetchMenuData = () => {
-    // Update the fetch call to request menu data from the backend
     fetch("http://localhost:5000/api/auth/getmenu", {
       method: "POST",
       headers: {
@@ -46,14 +49,13 @@ export default function MessMenu() {
         const today = daysOfWeek[currentTime.getDay()];
         const todayMenu = data.findIndex((menu) => menu.day === today);
         setTodayMenuIndex(todayMenu);
+        
       })
       .catch((error) => console.error("Error fetching menu:", error));
   };
 
   const handleRebateClick = async () => {
     try {
-      const userId = localStorage.getItem("userId");
-      const hostel_no = localStorage.getItem("hostel_no");
       const response = await fetch("http://localhost:5000/api/auth/rebate", {
         method: "POST",
         headers: {
@@ -62,18 +64,21 @@ export default function MessMenu() {
         body: JSON.stringify({
           userId: userId,
           hostel_no: hostel_no,
-          isOnLeave:isOnLeave
+          isOnLeave: !isOnLeave,
         }),
       });
   
       if (!response.ok) {
         throw new Error("Failed to process rebate.");
       }
-  
+
+      setIsOnLeave(!isOnLeave);
+      const updatedLeaveStatus = !isOnLeave;
+      localStorage.setItem("currently_present", updatedLeaveStatus ? "true" : "false");
+
       const currentHour = currentTime.getHours();
       if (!isOnLeave) {
         if (currentHour < 7) {
-          setIsOnLeave(true);
           setLeaveStartDate(currentTime);
           setLeaveEndDate(null);
           setLeaveMessage(
@@ -90,7 +95,6 @@ export default function MessMenu() {
           const nextDay = new Date(currentTime);
           nextDay.setDate(nextDay.getDate() + 1);
           nextDay.setHours(0, 0, 0, 0);
-          setIsOnLeave(true);
           setLeaveStartDate(nextDay);
           setLeaveEndDate(null);
           setLeaveMessage(
@@ -108,7 +112,6 @@ export default function MessMenu() {
         if (leaveEndDate && leaveEndDate < leaveStartDate) {
           setLeaveMessage("Your rebate is cancelled.");
         } else {
-          setIsOnLeave(false);
           setLeaveEndDate(currentTime);
           setLeaveMessage(
             `You were on leave from ${leaveStartDate.toLocaleString("en-US", {
@@ -118,14 +121,16 @@ export default function MessMenu() {
               hour: "numeric",
               minute: "numeric",
               second: "numeric",
-            })} to ${currentTime.toLocaleString("en-US", {
-              weekday: "long",
-              month: "long",
-              day: "numeric",
-              hour: "numeric",
-              minute: "numeric",
-              second: "numeric",
-            })}`
+            })} `
+            // to ${currentTime.toLocaleString("en-US", {
+            //   weekday: "long",
+            //   month: "long",
+            //   day: "numeric",
+            //   hour: "numeric",
+            //   minute: "numeric",
+            //   second: "numeric",
+            // })}
+            // `
           );
         }
       }
@@ -133,7 +138,6 @@ export default function MessMenu() {
       console.error("Error processing rebate:", error);
     }
   };
-  
 
   return (
     <div className="bg-back flex relative">
@@ -155,11 +159,11 @@ export default function MessMenu() {
           <div className="flex justify-end">
             <button
               className={`${
-                isOnLeave ? "bg-green-700 hover:bg-green-800" : "bg-red-700 hover:bg-red-800"
+                !isOnLeave ? "bg-green-700 hover:bg-green-800" : "bg-red-700 hover:bg-red-800"
               } text-white transition duration-300 py-2 px-4 rounded-xl`}
               onClick={handleRebateClick}
             >
-              {isOnLeave ? "Cancel Rebate" : "Take Rebate"}
+              {!isOnLeave ? "Cancel Rebate" : "Take Rebate"}
             </button>
           </div>
           {leaveMessage && (
