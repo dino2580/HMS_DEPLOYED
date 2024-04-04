@@ -1,9 +1,10 @@
 jwt=require("jsonwebtoken")
-secretKey="CRHqvVp7ImQa1ZI"
-const generateWebToken=({email,admin,super_admin,hostel_no,userId,full_name},res)=>
+require('dotenv').config();
+secretKey=process.env.S_KEY;
+const generateWebToken=({email,admin,super_admin,hostel_no,userId,full_name,present},res)=>
 {
     console.log("super_admin from gentoken"+super_admin);
-    const token=jwt.sign({email,admin,hostel_no,userId,full_name,super_admin},secretKey,{
+    const token=jwt.sign({email,admin,hostel_no,userId,full_name,super_admin,present},secretKey,{
         expiresIn:'30d'
     })
     res.cookie("jwt",token,
