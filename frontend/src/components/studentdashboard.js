@@ -19,7 +19,7 @@ export default function Student() {
   const [studentsData, setStudentsData] = useState([]);
   const [editingRowId, setEditingRowId] = useState(null);
   const [editingData, setEditingData] = useState({});
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   const fetchStudent = async () => {
     try {
@@ -100,7 +100,7 @@ export default function Student() {
     <div className="h-100vh p-4 bg-back">
       <div className="container mx-auto">
         <div className="flex justify-center items-start gap-8 mt-2">
-        <Sidebardashboard hostel_no={hostel_no}/>
+          <Sidebardashboard hostel_no={hostel_no} />
 
           <div className="w-full md:w-3/4 mt-8 md:mt-0">
             <div className="bg-white p-8 rounded-xl bg-opacity-60">
@@ -118,12 +118,12 @@ export default function Student() {
                         className="absolute left-2.5 top-2.5 h-4 w-4 text-blue-500 "
                       />
                       <input
-  className="pl-8 w-full border border-blue-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white   bg-opacity-"
-  placeholder="Search..."
-  type="search"
-  value={searchQuery}
-  onChange={(e) => setSearchQuery(e.target.value)}
-/>
+                        className="pl-8 w-full border border-gray-500 rounded-md py-2 px-3 focus:outline-none   bg-Zinc-400 text-blue   "
+                        placeholder="Search..."
+                        type="search"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                      />
                     </div>
                     <div className="overflow-x-auto">
                       <table className="w-full border border-gray-200 rounded-md overflow-hidden">
@@ -139,17 +139,26 @@ export default function Student() {
                           </tr>
                         </thead>
                         <tbody className="divide-y ">
-                          
-                            {studentsData
-                              .filter(
-                                (student) =>
-                                  student.hostel_no === `${hostel_no}` &&
-                                  (student.full_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                                    student.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                                    student.roll_no.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                                    student.room_number.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                                    student.hostel_no.toLowerCase().includes(searchQuery.toLowerCase()))
-                              )
+                          {studentsData
+                            .filter(
+                              (student) =>
+                                student.hostel_no === `${hostel_no}` &&
+                                (student.full_name
+                                  .toLowerCase()
+                                  .includes(searchQuery.toLowerCase()) ||
+                                  student.email
+                                    .toLowerCase()
+                                    .includes(searchQuery.toLowerCase()) ||
+                                  student.roll_no
+                                    .toLowerCase()
+                                    .includes(searchQuery.toLowerCase()) ||
+                                  student.room_number
+                                    .toLowerCase()
+                                    .includes(searchQuery.toLowerCase()) ||
+                                  student.hostel_no
+                                    .toLowerCase()
+                                    .includes(searchQuery.toLowerCase()))
+                            )
                             .map((student, index) => (
                               <TableRow
                                 key={index}
@@ -187,7 +196,7 @@ function TableRow({
   hostel_no,
   handleDataUpdate,
   userId,
-  fetchStudent
+  fetchStudent,
 }) {
   // ...
   const [editingRowId, setEditingRowId] = useState(null);
@@ -197,11 +206,11 @@ function TableRow({
 
   const handleEditClick = () => {
     setEditingRowId(id);
-    setEditingData({ name, email, Roll, Room, hostel_no,userId });
+    setEditingData({ name, email, Roll, Room, hostel_no, userId });
   };
   const handleSaveClick = async () => {
     try {
-      console.log("kjsd"+name+ email+ Roll+ Room+"id"+userId)
+      console.log("kjsd" + name + email + Roll + Room + "id" + userId);
       const response = await fetch(
         `http://localhost:5000/api/auth/updatestudent`,
         {
@@ -220,8 +229,7 @@ function TableRow({
         setEditingData({});
         // Call a function in the parent component to update the studentsData state
         handleDataUpdate(id, updatedData);
-        fetchStudent()
-
+        fetchStudent();
       } else {
         console.error(response.statusText);
       }
@@ -320,7 +328,3 @@ function TableRow({
     </tr>
   );
 }
-
-
-
-

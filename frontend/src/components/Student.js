@@ -106,7 +106,7 @@ export default function Student() {
                 <div className="grid gap-6 md:gap-12">
                   <div className="space-y-4">
                     <div className="text-center">
-                      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl text-black ">
+                      <h1 className="text-3xl font-bold  text-gray-800 tracking-tight sm:text-4xl text-black ">
                         Student Information
                       </h1>
                     </div>
@@ -116,7 +116,7 @@ export default function Student() {
                         className="absolute left-2.5 top-2.5 h-4 w-4 text-blue-500 "
                       />
                       <input
-                        className="pl-8 w-full border border-blue-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white   bg-opacity-"
+                        className="pl-8 w-full border border-gray-500 rounded-md py-2 px-3 focus:outline-none   bg-Zinc-400 text-blue   "
                         placeholder="Search..."
                         type="search"
                         value={searchQuery}
