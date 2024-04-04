@@ -1,10 +1,11 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartBar, faUsers, faSadTear, faFileAlt, faUsersCog, faSearch, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import Sidebar from './sidebar';
 
 export default function FeeDetails() {
+  const [searchQuery, setSearchQuery] = useState('');
   return (
     <div className="h-100vh p-4 bg-back">
     <div className="container mx-auto">
@@ -29,10 +30,12 @@ export default function FeeDetails() {
                         className="absolute left-2.5 top-2.5 h-4 w-4 text-blue-500 "
                       />
                       <input
-                        className="pl-8 w-full border border-blue-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white   bg-opacity-"
-                        placeholder="Search..."
-                        type="search"
-                      />
+  className="pl-8 w-full border border-blue-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white   bg-opacity-"
+  placeholder="Search..."
+  type="search"
+  value={searchQuery}
+  onChange={(e) => setSearchQuery(e.target.value)}
+/>
                     </div>
                     <div className="overflow-x-auto">
                       <table className="w-full border border-gray-200 rounded-md overflow-hidden">

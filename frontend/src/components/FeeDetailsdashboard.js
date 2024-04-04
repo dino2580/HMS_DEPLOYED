@@ -15,7 +15,7 @@ export default function FeeDetailsdashboard() {
   const handleAddDueClick = () => {
     setShowInputBox(true);
   };
-
+  const [searchTerm, setSearchTerm] = useState("");
   const handleDueInputChange = (e) => {
     setDueInput(e.target.value);
   };
@@ -93,10 +93,12 @@ export default function FeeDetailsdashboard() {
                         className="absolute left-2.5 top-2.5 h-4 w-4 text-blue-500 "
                       />
                       <input
-                        className="pl-8 w-full border border-blue-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white bg-opacity-"
-                        placeholder="Search..."
-                        type="search"
-                      />
+  className="pl-8 w-full border border-blue-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300 bg-gray-700 text-white bg-opacity-"
+  placeholder="Search..."
+  type="search"
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+/>
                     </div>
                     <div className="overflow-x-auto">
                       <table className="w-full border border-gray-200 rounded-md overflow-hidden">
@@ -110,17 +112,23 @@ export default function FeeDetailsdashboard() {
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-200">
-                        {students.map((student, index) => (
-                            <TableRow
-                              key={index}
-                              id={index + 1}
-                              name={student.full_name}
-                              TotalPaid={student.user_paid}
-                              Remaining={student.user_dues}
-                              Status={student.status}
-                            />
-                          ))}
-                        </tbody>
+  {students
+    .filter(
+      (student) =>
+        student.full_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        student.status.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .map((student, index) => (
+      <TableRow
+        key={index}
+        id={index + 1}
+        name={student.full_name}
+        TotalPaid={student.user_paid}
+        Remaining={student.user_dues}
+        Status={student.status}
+      />
+    ))}
+</tbody>
                       </table>
                     </div>
                   </div>

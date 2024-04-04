@@ -31,6 +31,7 @@ function RoomList() {
                             'Content-Type': 'application/json',
                             // Add any additional headers if required
                         },
+                        
                         body: JSON.stringify({ room_number: roomNumber1, hostel_no: hostel_no }), // Send room_no and hostel_no in the request body
                         // You can add other options like credentials, etc., if needed
                     });
