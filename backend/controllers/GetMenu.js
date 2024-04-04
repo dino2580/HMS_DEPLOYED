@@ -1,7 +1,6 @@
 const MessModel = require("../models/MessModel");
 const Hostel = require("../models/hostelmodel");
 const User = require("../models/usermodel");
-
 const handletRebate = async (req, res) => {
     try {
         const { hostel_no, userId, isOnLeave } = req.body;
@@ -37,7 +36,7 @@ const handletRebate = async (req, res) => {
         res.status(500).json({ error: "Error processing rebate" });
     }
 }
- 
+
 
 const getMenu = async (req, res) => {
     try {
