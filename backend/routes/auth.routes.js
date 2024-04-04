@@ -2,7 +2,7 @@ const express = require('express');
 const { signUp, login, logout, emailVerification, otpcheck, forgotpassword, ResetPassword, uploadProfile, fetchUserProfile } = require('../controllers/auth.controller');
 const Complaint = require('./complaintRoute');
 const menu = require('../controllers/Messmenu');
-const { getMenu } = require('../controllers/GetMenu');
+const { getMenu, handletRebate } = require('../controllers/GetMenu');
 const { getallhostels, addHostel, gethostel } = require('../controllers/Hostelscontroller'); // Import getallhostels directly
 const createAnnouncement = require('../controllers/CreateAnnouncement');
 const getAnnouncements = require('../controllers/GetAnnouncement');
@@ -50,6 +50,7 @@ router.get("/getallcomplaints", getComplaint.getAllComplaint);
 router.post("/getcomplaint", getComplaint.getComplaint);
 router.post("/setmenu", menu);
 router.post("/getmenu", getMenu);
+router.post("/rebate", handletRebate);
 router.post("/addhostel", addHostel);
 router.post("/createworker", createWorker);
 router.post("/getworker", getWorker);

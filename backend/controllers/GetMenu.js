@@ -1,11 +1,49 @@
 const MessModel = require("../models/MessModel");
+const Hostel = require("../models/hostelmodel");
+const User = require("../models/usermodel");
+
+const handletRebate = async (req, res) => {
+    try {
+        const { hostel_no, userId, isOnLeave } = req.body;
+
+        // Find the hostel and user
+        const hostel = await Hostel.findOne({ hostel_no });
+        const user = await User.findOne({ _id: userId });
+
+        // If user and hostel exist
+        if (user && hostel) {
+            console.log("isOnLeave", isOnLeave);
+            // Update user's currently_present status based on isOnLeave
+            user.currently_present = !isOnLeave; // Invert the isOnLeave status
+
+            // Update hostel's students_present count based on isOnLeave
+            if (!isOnLeave) {
+                hostel.students_present = hostel.students_present + 1; // If not on leave, increment students_present
+            } else {
+                hostel.students_present = Math.max(hostel.students_present - 1, 0); // If on leave, decrement students_present (ensuring it doesn't go negative)
+            }
+
+            // Save the updated user and hostel
+            const updatedUser = await user.save();
+            const updatedHostel = await hostel.save();
+
+            // Respond with the updated user
+            res.status(200).json(updatedUser);
+        } else {
+            res.status(404).json({ error: "Hostel or User not found" });
+        }
+    } catch (error) {
+        console.error("Error processing rebate:", error);
+        res.status(500).json({ error: "Error processing rebate" });
+    }
+}
 
 const getMenu = async (req, res) => {
     try {
-        const {day,hostel_no}=req.body;
+        const {hostel_no}=req.body;
         console.log(req.body);
         // Fetch all menu items from the database
-        const menuItems = await MessModel.findOne({ day: day, hostel_no: hostel_no });
+        const menuItems = await MessModel.find({hostel_no: hostel_no });
 
         console.log(menuItems)
 
@@ -22,4 +60,4 @@ const getMenu = async (req, res) => {
     }
 };
 
-module.exports = { getMenu };
+module.exports = {handletRebate, getMenu };
