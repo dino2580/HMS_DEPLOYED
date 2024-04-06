@@ -3,7 +3,10 @@
     "concurrently": "^8.2.2"
   },
   "scripts": {
-    "both": "concurrently \"cd frontend && npm run start\" \"cd ../backend && npm start\""
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node backend/index.js",
+    "start": "node backend/index.js",
+    "build":"npm install && npm install --prefix frontend && npm install --prefix backend && npm run build --prefix frontend"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.1",

@@ -6,6 +6,7 @@ const connectToMongo = require('./db/connect.js');
 const GroupModel = require('./models/GroupModel.js');
 const MessageModel = require('./models/MessageModel.js');
 const auth = require('./routes/auth.routes.js');
+const path = require('path')
 require('dotenv').config();
 
 connectToMongo();
@@ -26,6 +27,12 @@ app.get('/', (req, res) => {
 
 // Handle user authentication routes
 app.use("/api/auth", auth);
+
+app.use(express.static(path.join(__dirname,"../frontend/build")));
+app.get("*",(req,res)=>
+{
+    res.sendFile(path.join(__dirname,"../frontend/build","index.html"));
+})
 
 const server = http.createServer(app);
 const io = new Server(server, {
