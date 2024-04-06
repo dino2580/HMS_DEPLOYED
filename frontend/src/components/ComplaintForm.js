@@ -116,18 +116,9 @@
 
 // export default ComplaintForm;
 
-
-
-
-
-
-
-
-
-
 import React, { useState } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const ComplaintForm = () => {
   const [name, setName] = useState("");
@@ -136,14 +127,37 @@ const ComplaintForm = () => {
   const [message, setMessage] = useState("");
   const [showForm, setShowForm] = useState(true);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     // Handle form submission logic here
-    console.log("Name:", name);
-    console.log("Roll No:", rollNo);
-    console.log("Complaint Type:", complaintType);
-    console.log('Message:', message);
+    const jsonData = JSON.stringify({
+      name,
+      rollNo,
+      complaintType,
+      message,
+    });
+    // console.log(jsonData);
+    try {
+      const response = await fetch(
+        "https://hms-deployed.onrender.com/api/auth/complaint",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: jsonData,
+        }
+      );
+      // console.log("Response:", response);
+      // Handle response as needed
+    } catch (error) {
+      console.log("Error submitting complaint:", error);
+      // Handle error as needed
+    }
   };
+  
+  
 
   const handleCloseForm = () => {
     setShowForm(false);
@@ -155,7 +169,7 @@ const ComplaintForm = () => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
-      <div className="flex overflow-hidden" style={{ borderRadius: '50px' }}>
+      <div className="flex overflow-hidden" style={{ borderRadius: "50px" }}>
         <div className="flex items-center justify-center hidden xl:block flex-grow">
           <img
             src="/complaintimg.jpg"
@@ -228,18 +242,21 @@ const ComplaintForm = () => {
               </select>
             </div>
             <div className="mb-4">
-            <label htmlFor="message" className="block text-gray-700 font-bold mb-1">
-              Message
-            </label>
-            <textarea
-              id="message"
-              className="w-full px-3 py-2 bg-slate-200 rounded-md focus:outline-none"
-              rows="4"
-              placeholder="Enter your message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            />
-          </div>
+              <label
+                htmlFor="message"
+                className="block text-gray-700 font-bold mb-1"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                className="w-full px-3 py-2 bg-slate-200 rounded-md focus:outline-none"
+                rows="4"
+                placeholder="Enter your message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              />
+            </div>
             <button
               type="submit"
               className="w-full mx-auto mt-6 py-2 px-4 bg-blue-600 text-white font-bold rounded-md hover:bg-blue-700 transition duration-300"
