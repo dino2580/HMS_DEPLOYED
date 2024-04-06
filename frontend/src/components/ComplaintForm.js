@@ -126,15 +126,16 @@ const ComplaintForm = () => {
   const [complaintType, setComplaintType] = useState("");
   const [message, setMessage] = useState("");
   const [showForm, setShowForm] = useState(true);
-
+  const hostel_no=localStorage.getItem("hostel_no");
   const handleSubmit = async(e) => {
     e.preventDefault();
     // Handle form submission logic here
     const jsonData = JSON.stringify({
       name,
-      rollNo,
-      complaintType,
-      message,
+      roll_no:rollNo,
+      complaint_type:complaintType,
+      complaint_message:message,
+      hostel_no:hostel_no
     });
     // console.log(jsonData);
     try {
