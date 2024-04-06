@@ -21,9 +21,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
-app.get('/', (req, res) => {
-    res.send("---");
-});
 
 // Handle user authentication routes
 app.use("/api/auth", auth);
@@ -33,6 +30,9 @@ app.get("*",(req,res)=>
 {
     res.sendFile(path.join(__dirname,"../frontend/build","index.html"));
 })
+app.get('/', (req, res) => {
+    res.send("---");
+});
 
 const server = http.createServer(app);
 const io = new Server(server, {

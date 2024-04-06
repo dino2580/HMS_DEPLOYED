@@ -28,7 +28,7 @@ export default function FeeDetails() {
   const fetchStudentsAccounts = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/auth/getstudentsaccounts/${hostel_no}`
+        `https://hms-deployed.onrender.com/api/auth/getstudentsaccounts/${hostel_no}`
       );
       if (response.ok) {
         const data = await response.json();

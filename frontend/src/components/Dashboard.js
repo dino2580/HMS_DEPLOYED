@@ -69,7 +69,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchHostelData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/auth/gethostel", {
+        const response = await fetch("https://hms-deployed.onrender.com/api/auth/gethostel", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -92,7 +92,7 @@ function Dashboard() {
     const fetchCollection=async()=>
     {
       
-      const response = await fetch(`http://localhost:5000/api/auth/gethostelaccount/${hostel_no}`);
+      const response = await fetch(`https://hms-deployed.onrender.com/api/auth/gethostelaccount/${hostel_no}`);
       if(response.ok)
       {
         const data=await response.json();
@@ -104,7 +104,7 @@ function Dashboard() {
     }
     const fetchComplaints = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/auth/getcomplaint", {
+        const response = await fetch("https://hms-deployed.onrender.com/api/auth/getcomplaint", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

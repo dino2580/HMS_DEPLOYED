@@ -24,7 +24,7 @@ export default function Workers() {
   const fetchWorkers = async () => {
     try {
       const response = await fetch(
-        " http://localhost:5000/api/auth/getworker",
+        " https://hms-deployed.onrender.com/api/auth/getworker",
         {
           method: "POST",
           headers: {

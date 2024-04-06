@@ -28,7 +28,7 @@ function ProfileDropdown() {
     formData.append("userId", userId);
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/profileupload", {
+      const response = await fetch("https://hms-deployed.onrender.com/api/auth/profileupload", {
         method: "POST",
         body: formData,
       });
@@ -46,7 +46,7 @@ function ProfileDropdown() {
 
   const fetchProfile = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/profile/${userId}`);
+      const response = await fetch(`https://hms-deployed.onrender.com/api/auth/profile/${userId}`);
       if (response.ok) {
         const data = await response.json();
         setProfileDetails(data);
@@ -142,7 +142,7 @@ function ProfileDropdown() {
               onClick={async () => {
                 try {
                   const response = await fetch(
-                    "http://localhost:5000/api/auth/logout",
+                    "https://hms-deployed.onrender.com/api/auth/logout",
                     {
                       method: "POST",
                       credentials: "include",

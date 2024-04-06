@@ -23,7 +23,7 @@ const AdminDashboard = () => {
     const fetchAllHostels = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/auth/getallhostels"
+          "https://hms-deployed.onrender.com/api/auth/getallhostels"
         );
         if (response.ok) {
           const data = await response.json();
@@ -39,7 +39,7 @@ const AdminDashboard = () => {
     const fetchAllComplaints = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/auth/getallcomplaints"
+          "https://hms-deployed.onrender.com/api/auth/getallcomplaints"
         );
 
         if (response.ok) {

@@ -28,7 +28,7 @@ const ChatRoom = () => {
         // Fetch initial chat messages from the server
         const fetchMessages = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/auth/getGroupMessages/${group_id}`);
+                const response = await fetch(`https://hms-deployed.onrender.com/api/auth/getGroupMessages/${group_id}`);
                 if (response.ok) {
                     const data = await response.json();
                     const messagesWithTimestamp = data[0].messages.map(message => ({ ...message, timestamp: new Date() }));

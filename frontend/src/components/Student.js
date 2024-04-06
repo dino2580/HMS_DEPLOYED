@@ -22,7 +22,7 @@ export default function Student() {
   const fetchStudent = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/auth/getallstudent`,
+        `https://hms-deployed.onrender.com/api/auth/getallstudent`,
         {
           method: "GET",
           headers: {
@@ -51,7 +51,7 @@ export default function Student() {
   const handleSaveClick = async (id) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/auth/updatestudent/${id}`,
+        `https://hms-deployed.onrender.com/api/auth/updatestudent/${id}`,
         {
           method: "PUT",
           headers: {
@@ -214,7 +214,7 @@ function TableRow({
     try {
       console.log("kjsd" + name + email + Roll + Room + "id" + userId);
       const response = await fetch(
-        `http://localhost:5000/api/auth/updatestudent`,
+        `https://hms-deployed.onrender.com/api/auth/updatestudent`,
         {
           method: "PUT",
           headers: {

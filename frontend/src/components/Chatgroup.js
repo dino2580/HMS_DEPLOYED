@@ -21,7 +21,7 @@ const Chatgroup = () => {
   const fetchGroups = async () => {
     try {
       // Make a GET request to fetch all groups
-      const response = await fetch("http://localhost:5000/api/auth/getgroup"); // Adjust the URL based on your API route
+      const response = await fetch("https://hms-deployed.onrender.com/api/auth/getgroup"); // Adjust the URL based on your API route
       if (!response.ok) {
         throw new Error("Failed to fetch groups");
       }

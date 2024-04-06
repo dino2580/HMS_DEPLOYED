@@ -18,7 +18,7 @@ function Transaction() {
     const fetchTransactions = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/auth/gettransactionshostel`
+          `https://hms-deployed.onrender.com/api/auth/gettransactionshostel`
         );
         if (response.ok) {
           const data = await response.json();
@@ -60,7 +60,7 @@ function Transaction() {
   const fetchCollection=async()=>
   {
     
-    const response = await fetch(`http://localhost:5000/api/auth/gethostelaccount/${hostel_no}`);
+    const response = await fetch(`https://hms-deployed.onrender.com/api/auth/gethostelaccount/${hostel_no}`);
     if(response.ok)
     {
       const data=await response.json();
@@ -80,7 +80,7 @@ function Transaction() {
       const transactionId = entries[index].T_id;
       const status = 'Verified'; // Assuming 'deleted' is the status to be sent
       // console.log(transactionId);
-      const response = await fetch('http://localhost:5000/api/auth/updatetransactionstatus', {
+      const response = await fetch('https://hms-deployed.onrender.com/api/auth/updatetransactionstatus', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ function Transaction() {
       const transactionId = entries[index].T_id;
       const status = 'Failed'; // Assuming 'deleted' is the status to be sent
   
-      const response = await fetch('http://localhost:5000/api/auth/updatetransactionstatus', {
+      const response = await fetch('https://hms-deployed.onrender.com/api/auth/updatetransactionstatus', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

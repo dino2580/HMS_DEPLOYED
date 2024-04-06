@@ -25,7 +25,7 @@ function RoomList() {
                     else
                         roomNumber1 = "A" + floor + roomNumber;
                     
-                    const response = await fetch('http://localhost:5000/api/auth/roomNumber', {
+                    const response = await fetch('https://hms-deployed.onrender.com/api/auth/roomNumber', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

@@ -24,7 +24,7 @@ function Signup() {
   
   const generateOtp = async (e) => {
     // e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/emailverification", {
+    const response = await fetch("https://hms-deployed.onrender.com/api/auth/emailverification", {
       method: "POST",
       body: JSON.stringify({ email, full_name}), // Convert data to JSON string
       headers: {

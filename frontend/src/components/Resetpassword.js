@@ -33,7 +33,7 @@ function ResetPassword1() {
 
   const handleReset = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/reset-password", {
+    const response = await fetch("https://hms-deployed.onrender.com/api/auth/reset-password", {
       method: "POST",
       body: JSON.stringify({token,password}), // Convert data to JSON string
       headers: {

@@ -11,7 +11,7 @@ function Announcement() {
   useEffect(() => {
     const fetchAnnouncements = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/auth/getannouncements', {
+        const response = await fetch('https://hms-deployed.onrender.com/api/auth/getannouncements', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

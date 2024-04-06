@@ -12,7 +12,7 @@ export default function Contacts({ changeChat }) {
   const fetchData = async () => {
     try {
       // Fetch groups
-      const responseGroups = await fetch("http://localhost:5000/api/auth/getgroup");
+      const responseGroups = await fetch("https://hms-deployed.onrender.com/api/auth/getgroup");
       if (!responseGroups.ok) {
         throw new Error("Failed to fetch groups");
       }
@@ -21,7 +21,7 @@ export default function Contacts({ changeChat }) {
 
       // Fetch user groups
       const userId = localStorage.getItem("userId");
-      const responseUserGroups = await fetch(`http://localhost:5000/api/auth/getusergroups/${userId}`);
+      const responseUserGroups = await fetch(`https://hms-deployed.onrender.com/api/auth/getusergroups/${userId}`);
       if (!responseUserGroups.ok) {
         throw new Error("Failed to fetch user groups");
       }
@@ -58,7 +58,7 @@ export default function Contacts({ changeChat }) {
 
     // Make a POST request to the server
     try {
-      const response = await fetch('http://localhost:5000/api/auth/joingroup', {
+      const response = await fetch('https://hms-deployed.onrender.com/api/auth/joingroup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -25,7 +25,7 @@ export default function MessMenu() {
   
 
   const fetchMenuData = () => {
-    fetch("http://localhost:5000/api/auth/getmenu", {
+    fetch("https://hms-deployed.onrender.com/api/auth/getmenu", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -56,7 +56,7 @@ export default function MessMenu() {
 
   const handleRebateClick = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/auth/rebate", {
+      const response = await fetch("https://hms-deployed.onrender.com/api/auth/rebate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

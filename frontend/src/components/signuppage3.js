@@ -29,7 +29,7 @@ function Signup3({email}) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/signup", {
+    const response = await fetch("https://hms-deployed.onrender.com/api/auth/signup", {
       method: "POST",
       body: JSON.stringify({email,password}), // Convert data to JSON string
       headers: {

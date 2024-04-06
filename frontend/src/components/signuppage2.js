@@ -28,7 +28,7 @@ function Signup2({ email, setStep,full_name,generateOtp}) {
     e.preventDefault();
     const enteredOtp = otp.join('');
     console.log('Entered OTP:', enteredOtp);
-    const response = await fetch("http://localhost:5000/api/auth/otpcheck", {
+    const response = await fetch("https://hms-deployed.onrender.com/api/auth/otpcheck", {
       method: "POST",
       body: JSON.stringify({ email, otp }), // Convert data to JSON string
       headers: {

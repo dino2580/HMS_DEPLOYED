@@ -66,7 +66,7 @@ export default function ChatContainer({ currentChat }) {
     const fetchMessages = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/auth/getGroupMessages/${group_id}`
+          `https://hms-deployed.onrender.com/api/auth/getGroupMessages/${group_id}`
         );
         if (response.ok) {
           const data = await response.json();

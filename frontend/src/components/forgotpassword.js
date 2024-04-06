@@ -18,7 +18,7 @@ function Forgotpassword() {
   
   const handleverify = async (e) => {
     // e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/forgotpassword", {
+    const response = await fetch("https://hms-deployed.onrender.com/api/auth/forgotpassword", {
       method: "POST",
       body: JSON.stringify({ email}), // Convert data to JSON string
       headers: {

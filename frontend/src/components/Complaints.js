@@ -20,7 +20,7 @@ export default function Complaints() {
   const getComplaints = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/auth/getcomplaint",
+        "https://hms-deployed.onrender.com/api/auth/getcomplaint",
         {
           method: "POST",
           headers: {

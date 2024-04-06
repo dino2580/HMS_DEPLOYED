@@ -29,7 +29,7 @@ function TransactionStudent() {
       const hostel_no = localStorage.getItem('hostel_no');
       console.log(amount);
       const { nonce } = await instance.requestPaymentMethod();
-      const response = await fetch('http://localhost:5000/api/auth/braintree/payment', {
+      const response = await fetch('https://hms-deployed.onrender.com/api/auth/braintree/payment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -63,7 +63,7 @@ function TransactionStudent() {
   const fetchUserDues = async () => {
     try {
       const user_id = localStorage.getItem('userId');
-      const amountResponse = await fetch(`http://localhost:5000/api/auth/getuserdues/${user_id}`);
+      const amountResponse = await fetch(`https://hms-deployed.onrender.com/api/auth/getuserdues/${user_id}`);
       if (amountResponse.ok) {
         const responseData = await amountResponse.json();
         const amount1 = responseData.user_dues;
@@ -91,7 +91,7 @@ function TransactionStudent() {
   const fetchTransactions = async () => {
     try {
       const userId = localStorage.getItem('userId'); // Assuming you store the userId in localStorage
-      const response = await fetch(`http://localhost:5000/api/auth/transactions/${userId}`);
+      const response = await fetch(`https://hms-deployed.onrender.com/api/auth/transactions/${userId}`);
       
       if (!response.ok) {
         throw new Error('Failed to fetch transactions');
@@ -118,7 +118,7 @@ function TransactionStudent() {
     const hostel_no = localStorage.getItem('hostel_no');
     console.log(amount);
     try {
-      const response = await fetch('http://localhost:5000/api/auth/formtransaction', {
+      const response = await fetch('https://hms-deployed.onrender.com/api/auth/formtransaction', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -147,7 +147,7 @@ function TransactionStudent() {
 
   const getToken = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/auth/braintree/token');
+      const response = await fetch('https://hms-deployed.onrender.com/api/auth/braintree/token');
       const data = await response.json();
       setClientToken(data.clientToken);
     } catch (error) {
