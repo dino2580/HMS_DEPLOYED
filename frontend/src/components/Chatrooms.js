@@ -13,7 +13,7 @@ const ChatRoom = () => {
         const user = localStorage.getItem('userId'); // Assuming user info is stored in localStorage
         setCurrentUser(user);
         // Connect to the server using Socket.IO
-        const newSocket = io('http://localhost:5000');
+        const newSocket = io('https://hms-deployed.onrender.com');
         setSocket(newSocket);
 
         // Join the group room
