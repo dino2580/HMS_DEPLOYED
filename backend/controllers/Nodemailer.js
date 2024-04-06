@@ -205,7 +205,7 @@ const sendVerificationEmail = (email, otp) => {
 };
 const sendPasswordResetEmail = (email, token,full_name) => {
     // Define the base URL of your application where the password reset page is hosted
-    const baseUrl = 'http://localhost:3000/reset-password'; // Replace 'example.com' with your actual domain
+    const baseUrl = 'https://hms-deployed.onrender.com/reset-password'; // Replace 'example.com' with your actual domain
 
     // Generate the password reset link with the token embedded in the URL
     const resetLink = `${baseUrl}?token=${token}`;
@@ -296,7 +296,7 @@ const sendPasswordResetEmail = (email, token,full_name) => {
             <p>We received a request to reset your password. If you made this request, please click the button below to reset your password:</p>
             <a href="${resetLink}" class="button">ResetPassword</a>
             <p>If you didn't request this password reset, you can safely ignore this email.</p>
-            <p class="footer">Best regards,<br>The Hms Team<br><a href="http://localhost:3000/">Visit our website</a></p>
+            <p class="footer">Best regards,<br>The Hms Team<br><a href="https://hms-deployed.onrender.com/">Visit our website</a></p>
         </div>
     
     </body>
