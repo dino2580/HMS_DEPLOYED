@@ -96,9 +96,11 @@ function App() {
               throw new Error("Invalid JWT token");
             }
             const base64Payload = tokenParts[1];
-            const decodedPayload = atob(base64Payload);
+            const base64 = base64Payload.replace(/-/g, '+').replace(/_/g, '/');
+            const decodedPayload = atob(base64);
             const payloadObj = JSON.parse(decodedPayload);
             return payloadObj;
+            
           };
           // Example usage:
           const payload = extractValuesFromJWT(jwtToken);
