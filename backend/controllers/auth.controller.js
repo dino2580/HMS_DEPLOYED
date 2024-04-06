@@ -273,6 +273,7 @@ const login = async (req, res) => {
     const full_name = user.full_name;
     const super_admin = user.super_admin;
     const present = user.currently_present;
+    const profile_pic=user.profile_pic;
     // console.log(user.hostel_no);
 
     if (!user) {
@@ -286,7 +287,7 @@ const login = async (req, res) => {
     console.log("super_admin" + super_admin);
     if (user.super_admin)
       generateWebToken(
-        { email, super_admin: true, admin: true, hostel_no, userId, full_name,present },
+        { email, super_admin: true, admin: true, hostel_no, userId, full_name,present,profile_pic },
         res
       );
     else if (user.admin)
@@ -298,7 +299,8 @@ const login = async (req, res) => {
           hostel_no,
           userId,
           full_name,
-          present
+          present,
+          profile_pic
         },
         res
       );
@@ -311,7 +313,8 @@ const login = async (req, res) => {
           hostel_no,
           userId,
           full_name,
-          present
+          present,
+          profile_pic
         },
         res
       );

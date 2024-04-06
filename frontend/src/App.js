@@ -107,6 +107,7 @@ function App() {
           // console.log("Email:", payload.email);
           // console.log("Is admin:", payload.admin);
           // console.log("Is admin:", payload.userId);
+          // console.log("profile_pic",payload.profile_pic)
           localStorage.setItem("cookie", jwtCookie);
           localStorage.setItem("Email", payload.email);
           localStorage.setItem("admin", payload.admin);

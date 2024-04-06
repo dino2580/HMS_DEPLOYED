@@ -33,14 +33,15 @@ export default function ChatContainer({ currentChat }) {
       return;
     }
     const full_name = localStorage.getItem("full_name");
+    const profile_pic=localStorage.getItem("profile_pic");
     socket.emit("message", {
       message: messageInput,
       group_id,
-      user_id: { _id: currentUser, full_name: full_name },
+      user_id: { _id: currentUser, full_name: full_name,profile_pic:profile_pic },
     });
     const senderMessage = {
       message: messageInput,
-      user_id: { _id: currentUser, full_name: full_name },
+      user_id: { _id: currentUser, full_name: full_name,profile_pic:profile_pic  },
       timestamp: new Date(),
     };
     setChatMessages((prevMessages) => [...prevMessages, senderMessage]);

@@ -6,8 +6,8 @@ const Testimonial = () => {
     const testimonial = [
         {
             url: '/sachin.png',
-            paragraph: 'Sachin Kedia is a passionate and dedicated developer with a keen eye for detail and a knack for problem-solving. With years of experience in software development, Sachin brings a wealth of expertise to every project he undertakes.',
-            name: '-Sachin Kedia'
+            paragraph: 'Sachin Kuldeep is a passionate and dedicated developer with a keen eye for detail and a knack for problem-solving. With years of experience in software development, Sachin brings a wealth of expertise to every project he undertakes.',
+            name: '-Sachin Kuldeep'
         },
         {
             url: '/yashraj.png',
@@ -16,13 +16,13 @@ const Testimonial = () => {
         },
         {
             url: '/sachin.png',
-            paragraph: 'Sachin Kedia is a passionate and dedicated developer with a keen eye for detail and a knack for problem-solving. With years of experience in software development, Sachin brings a wealth of expertise to every project he undertakes..',
-            name: 'Sachin Kedia3'
+            paragraph: 'Sachin Kuldeep is a passionate and dedicated developer with a keen eye for detail and a knack for problem-solving. With years of experience in software development, Sachin brings a wealth of expertise to every project he undertakes..',
+            name: 'Sachin Kuldeep'
         },
         {
             url: '/sachin.png',
             paragraph: 'Sachin Kedia is a passionate and dedicated developer with a keen eye for detail and a knack for problem-solving. With years of experience in software development, Sachin brings a wealth of expertise to every project he undertakes.',
-            name: 'Sachin Kedia4'
+            name: 'Sachin Kuldeep'
         }
     ];
 

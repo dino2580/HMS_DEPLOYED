@@ -9,7 +9,8 @@ function ProfileDropdown() {
   const isSuperAdmin = localStorage.getItem("superadmin") === "true";
   const isCookie = localStorage.getItem("cookie");
   const [isOpen, setIsOpen] = useState(false);
-  const [profilePicture, setProfilePicture] = useState(null);
+  const profile_pic =localStorage.getItem("profile_pic");
+  const [profilePicture, setProfilePicture] = useState(profile_pic);
   const [profileDetails, setProfileDetails] = useState(null);
   const [showComponent, setShowComponent] = useState(false);
   const userId = localStorage.getItem("userId");
