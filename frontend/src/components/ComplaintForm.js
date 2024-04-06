@@ -131,7 +131,7 @@ const ComplaintForm = () => {
     e.preventDefault();
     // Handle form submission logic here
     const jsonData = JSON.stringify({
-      name,
+      user_name:name,
       roll_no:rollNo,
       complaint_type:complaintType,
       complaint_message:message,
