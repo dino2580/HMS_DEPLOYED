@@ -51,7 +51,7 @@ export default function ChatContainer({ currentChat }) {
   useEffect(() => {
     const user = localStorage.getItem("userId");
     setCurrentUser(user);
-    const newSocket = io("http://localhost:5000");
+    const newSocket = io("https://hms-deployed.onrender.com");
     setSocket(newSocket);
     newSocket.emit("joinGroup", group_id);
 
