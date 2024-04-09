@@ -152,6 +152,7 @@ const ComplaintForm = () => {
       );
       // console.log("Response:", response);
       // Handle response as needed
+      handleCloseForm();
     } catch (error) {
       console.log("Error submitting complaint:", error);
       // Handle error as needed
